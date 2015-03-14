@@ -1,6 +1,7 @@
 #!/bin/bash
 function html()
 {
+  #Funcion recursiva
   echo "<ul>" >> "$1.html"
   for x in $(find $2 -maxdepth 1)
   do

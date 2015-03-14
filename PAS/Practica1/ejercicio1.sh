@@ -8,8 +8,10 @@ function busqueda()
 					mkdir "$2/$x"
 			else
 					var=$[$(date +%s)-$(stat $x -c %Y)]
+					#Con esto comprobamos que su ultima modificacion fue hace mas de 20 segundos
 					if [ $var -gt 20 ]
 					then
+					#Si es asi la copiamos
 						cp $x "$2/$x"
 					fi
 			fi
@@ -29,7 +31,7 @@ if [ $# -lt 1 ] || [ $# -gt 2 ]
 		mkdir "$temp"
 
 		#Ahora recorremos las carpetas buscando los ficheros que almacenaremos en la temporal
-		
+
 		busqueda $1 $temp
 
 		#Y ahora comprimimos
@@ -50,6 +52,3 @@ if [ $# -lt 1 ] || [ $# -gt 2 ]
 	fi
 
 fi
-
-
-

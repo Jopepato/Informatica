@@ -19,28 +19,38 @@ if [  $# -eq 2 ]
 					do
 						let "i++"
 
-							#Mostramos las linea anterior y posterior
+
+								#Vemos si es la primera linea
+								if [ $x -eq 1 ]
+									then
+										#Imprimimos esa y la siguiente
+										if [ $i -eq $x -o $((i+1)) -eq $x ]
+											then
+												echo "$line"
+										fi
+								fi
+
+
+
+							#Vemos si no es ni la primera linea ni la ultima
+							if [ $x -gt 1 -a $x -lt $j ]
+								then
 								if [ $((i-1)) -eq $x -o $i -eq $x -o $((i+1)) -eq $x ]
 									then
-										#Ahora tenemos que comprobar si la linea que queremos leer es la primera
-										if [ $x -eq 1 ]
-											then
-												var=1
-										fi
-										#Y comprobamos si esta en la ultima linea
-										if [ $x -eq $j ]
-											then
-											var=2
-										fi
-
-										#Y ahora mostramos por pantalla dependiendo del caso
-										case $var in
-											0) echo "$line" ;;
-											1) echo "La linea a leer es la primera :<" ;;
-											2) echo "La linea a leer es la ultima :<" ;;
-											*) echo "Algo ha fallado" ;;
-										esac
+											echo "$line"
 								fi
+							fi
+
+							#Vemos si es la ultima linea
+
+							if [ $x -eq $j ]
+								then
+									if [ $((i-1)) -eq $x -o $i -eq $x ]
+										then
+											echo "$line"
+									fi
+
+							fi
 
 					done < $1
 					let "num++"

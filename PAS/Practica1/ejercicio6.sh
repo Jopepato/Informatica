@@ -49,66 +49,73 @@ function ordenar{
 
     if [ $# -eq 0 ]
       then
+
         for x in $(find -name "lib*")
         do
 
-
-
+            #Con cp es fichero origen, directorio destinatario
+            cp $x $carpetalib
         done
 
         for x in $(find -name "*.h")
         do
-
-
-
+            cp $x $carpetacabecera
         done
 
         for x in $(find -name "*.c*")
         do
-
-
+            cp $x $carpetafuente
         done
 
         for x in $(find)
         do
           if [ -x $x ]
             then
-
+            cp $x $carpetaejecutables
           fi
-
-
         done
 
     else
 
+      #Ahora tenemos que buscar en la carpeta que nos ha pasado el usuario
+      for x in $(find "$1" -name "lib*")
+      do
+          cp "$x" "$carpetalib"
+      done
 
-      #Repetimos la operacion pero ahora tenemos que coger el argumento que nos ha pasado el usuario
+      for x in $(find "$1" -name "*.h")
+      do
+          cp "$x" "$carpetacabecera"
+      done
 
+      for x in $(find "$1" -name "*.c*")
+      do
+          cp "$x" "$carpetafuente"
+      done
+
+      for x in $(find "$1")
+      do
+        if [ -x $x ]
+          then
+          cp "$carpetaejecutables"
+        fi
+      done
 
     fi
-
-
 
 
 }
 
 
-
-
-
   if [ $# -eq 0 ]         #Aqui se mete si no le hemos metido argumentos
     then
 
+      ordenar
 
-      for x in $(find -maxdepth 1 -name "*.sh")
-      do
-
-
-
-      done
   else
-
-
-
+      for x in $($#)
+      do
+          ordenar $x
+      done
 
   fi

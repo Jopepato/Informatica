@@ -1,7 +1,7 @@
 #!/bin/bash
 #Contamos los archivos de este directorio
 var=0
-for x in $(find *)
+for x in $(find)
 do
   if [ -f $x ]
 	#Con esto solo contamos los ficheros
