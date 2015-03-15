@@ -1,9 +1,8 @@
 #!/bin/bash
 
 #Si no nos pasa ningun argumento, tomamos la carpeta actual y buscamos los archivos
-function ordenar
+function creacionCarpetas
 {
-
   if read -t 5 -p "Nombre para la carpeta de las librerias: " carpetalib;
     then
     echo ""
@@ -20,7 +19,7 @@ function ordenar
     echo ""
   fi
 
-  if read -t 5 -p "Nombre para la carpeta de ficheros de cabecera:  " carpetacabecera;
+  if read -t 5 -p "Nombre para la carpeta de ficheros de cabecera: " carpetacabecera;
     then
     echo ""
   else
@@ -28,7 +27,7 @@ function ordenar
     carpetacabecera="$HOME/include"
   fi
 
-  if read -t 5 -p "Nombre para la carpeta con el codigo fuente " carpetafuente;
+  if read -t 5 -p "Nombre para la carpeta con el codigo fuente: " carpetafuente;
     then
     echo ""
     else
@@ -44,7 +43,10 @@ function ordenar
   mkdir "$carpetaejectuables"
   mkdir "$carpetacabecera"
   mkdir "$carpetafuente"
+}
 
+function ordenarYCompilar
+{
 
   #Y ahora metemos los archivos correspondientes en cada carpeta
 
@@ -56,7 +58,7 @@ function ordenar
             if [ ! -d $x ]
             then
             #Con cp es fichero origen, directorio destinatario
-            cp $x $carpetalib
+            cp -i $x $carpetalib
           fi
         done
 
@@ -64,7 +66,7 @@ function ordenar
         do
             if [ ! -d $x ]
             then
-            cp $x $carpetacabecera
+            cp -i $x $carpetacabecera
           fi
         done
 
@@ -72,7 +74,7 @@ function ordenar
         do
             if [ ! -d $x ]
             then
-            cp $x $carpetafuente
+            cp -i $x $carpetafuente
           fi
         done
 
@@ -80,7 +82,10 @@ function ordenar
         do
           if [ -x $x ]
             then
-            cp $x $carpetaejectuables
+            if [ ! -d $x ]
+              then
+            cp -i $x $carpetaejectuables
+          fi
           fi
         done
 
@@ -112,19 +117,73 @@ function ordenar
 
     fi
 
+    #Ahora compilamos los .c y los .cc
+    if [ $# -eq 0 ]
+      then
+    echo "Compilando..."
 
+    #Pasamos al log
+    #sh > ejercicio6.log 2>>ejercicio6.log
+    for x in $(find -name "*.c")
+    do
+      var1="$x"
+      var2=$($var1 | cut -d "." -f1)
+      #gcc $x -o $var1
+
+    done
+
+    for x in $(find -name "*.cpp")
+    do
+      var1="$x"
+      var2=$($var1 | cut -d "." -f1)
+      #g++ $x -o $var1
+    done
+
+  else
+
+      cd $1
+
+      for x in $(find -name "*.c")
+      do
+
+        gcc $x -o $x
+
+      done
+
+      for x in $(find $carpetaejecutables -name "*.cpp")
+      do
+
+        g++ $x -o $x
+      done
+
+      cd ..
+
+fi
 }
+
+  #Empieza el principal
+
+
 
 
   if [ $# -eq 0 ]         #Aqui se mete si no le hemos metido argumentos
     then
+      creacionCarpetas
+      ordenarYCompilar
 
-      ordenar
+      echo "Terminado"
 
   else
-      for x in $($#)
+    creacionCarpetas
+      for x in $*
       do
-          ordenar $x
+          if [ -d $x ]
+            then
+          ordenarYCompilar $x
+        else
+          echo "El nombre $x no es un directorio"
+        fi
       done
+      echo "Terminado"
 
   fi
