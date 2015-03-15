@@ -53,6 +53,7 @@ if [  $# -eq 2 ]
 							fi
 
 					done < $1
+					echo "------------------"
 					let "num++"
 				done
 	else

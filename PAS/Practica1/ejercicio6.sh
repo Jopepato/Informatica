@@ -1,13 +1,14 @@
 #!/bin/bash
 
 #Si no nos pasa ningun argumento, tomamos la carpeta actual y buscamos los archivos
-function ordenar{
+function ordenar
+{
 
   if read -t 5 -p "Nombre para la carpeta de las librerias: " carpetalib;
     then
     echo ""
   else
-    carpetalib = "$HOME/lib"
+    carpetalib="$HOME/lib"
     echo ""
   fi
 
@@ -15,7 +16,7 @@ function ordenar{
     then
     echo ""
   else
-    carpetaejecutables = "$HOME/bin"
+    carpetaejectuables="$HOME/bin"
     echo ""
   fi
 
@@ -24,15 +25,15 @@ function ordenar{
     echo ""
   else
     echo ""
-    carpetacabecera = "$HOME/include"
+    carpetacabecera="$HOME/include"
   fi
 
   if read -t 5 -p "Nombre para la carpeta con el codigo fuente " carpetafuente;
     then
-      echo ""
+    echo ""
     else
       echo ""
-      carpetafuente = "$HOME/src"
+      carpetafuente="$HOME/src"
   fi
 
 
@@ -40,7 +41,7 @@ function ordenar{
   #Ahora las creamos en el directorio actual
 
   mkdir "$carpetalib"
-  mkdir "$carpetaejecutables"
+  mkdir "$carpetaejectuables"
   mkdir "$carpetacabecera"
   mkdir "$carpetafuente"
 
@@ -52,26 +53,34 @@ function ordenar{
 
         for x in $(find -name "lib*")
         do
-
+            if [ ! -d $x ]
+            then
             #Con cp es fichero origen, directorio destinatario
             cp $x $carpetalib
+          fi
         done
 
         for x in $(find -name "*.h")
         do
+            if [ ! -d $x ]
+            then
             cp $x $carpetacabecera
+          fi
         done
 
         for x in $(find -name "*.c*")
         do
+            if [ ! -d $x ]
+            then
             cp $x $carpetafuente
+          fi
         done
 
         for x in $(find)
         do
           if [ -x $x ]
             then
-            cp $x $carpetaejecutables
+            cp $x $carpetaejectuables
           fi
         done
 
