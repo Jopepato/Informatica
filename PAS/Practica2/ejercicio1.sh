@@ -52,10 +52,9 @@ cat peliculas.txt | grep -E -i 'a' {8,}
 #Las lineas que terminan por 3 puntos y no empiezan por espacio
 echo "**********"
 echo "9) Lineas que terminan con tres puntos y no empiezan por espacio: "
-cat peliculas.txt | grep -E -i '^([[:alnum:]])^.*(\.\.\.)$'
-
+cat peliculas.txt | grep -E -i '^([[:alnum:]]).*(\.\.\.)$'
 
 #Mostrar entre comillas las vocales con tildes con sed
 echo "**********"
 echo "10) Vocales con tilde entre comillas: "
-#Hacer
+cat peliculas.txt | sed -r -e 's/á/"á"/' | sed -r -e 's/Á/"Á"/' | sed -r -e 's/é/"é"/' | sed -r -e 's/É/"É"/' | sed -r -e 's/í/"í"/' | sed -r -e 's/Í/"Í"/' | sed -r -e 's/ó/"ó"/' | sed -r -e 's/Ó/"Ó"/' | sed -r -e 's/ú/"ú"/' | sed -r -e 's/Ú/"Ú"/'
