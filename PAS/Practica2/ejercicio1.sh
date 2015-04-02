@@ -13,7 +13,7 @@ cat peliculas.txt | grep -E '\[.*\]'
 #Mostrar solo el pais, sin la linea completa
 echo "**********"
 echo "3) Solo los paises de las peliculas: "
-cat peliculas.txt | grep -E -o '\[.*\]' 
+cat peliculas.txt | grep -E -o '\[.*\]' | sed -r -e 's/\[//' | sed -r -e 's/\]//'
 
 #Contar cuantas peliculas son de 2014 y cuantas de 2015
 echo "**********"
@@ -46,7 +46,7 @@ echo "**********"
 echo "8) Lineas que contienen 8 'a' o mas"
 #Esto no va
 #Revisar
-cat peliculas.txt | grep -E -i 'a' {8,}
+cat peliculas.txt | grep -E -i '[a]'{8,}?
 
 
 #Las lineas que terminan por 3 puntos y no empiezan por espacio
@@ -57,4 +57,4 @@ cat peliculas.txt | grep -E -i '^([[:alnum:]]).*(\.\.\.)$'
 #Mostrar entre comillas las vocales con tildes con sed
 echo "**********"
 echo "10) Vocales con tilde entre comillas: "
-cat peliculas.txt | sed -r -e 's/á/"á"/' | sed -r -e 's/Á/"Á"/' | sed -r -e 's/é/"é"/' | sed -r -e 's/É/"É"/' | sed -r -e 's/í/"í"/' | sed -r -e 's/Í/"Í"/' | sed -r -e 's/ó/"ó"/' | sed -r -e 's/Ó/"Ó"/' | sed -r -e 's/ú/"ú"/' | sed -r -e 's/Ú/"Ú"/'
+cat peliculas.txt | sed -r -e 's/[áéíóúÁÉÍÓÚ]/"\1"/'
