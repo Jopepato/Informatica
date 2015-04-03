@@ -57,4 +57,4 @@ cat peliculas.txt | grep -E -i '^([[:alnum:]]).*(\.\.\.)$'
 #Mostrar entre comillas las vocales con tildes con sed
 echo "**********"
 echo "10) Vocales con tilde entre comillas: "
-cat peliculas.txt | sed -e -r 's/[áéíóúÁÉÍÓÚ]/"\1"/'
+cat peliculas.txt | sed -r -e 's/([áéíóúÁÉÍÓÚ])/"\1"/'
