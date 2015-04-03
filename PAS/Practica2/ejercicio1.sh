@@ -46,7 +46,7 @@ echo "**********"
 echo "8) Lineas que contienen 8 'a' o mas"
 #Esto no va
 #Revisar
-cat peliculas.txt | grep -E -i 'a{8,}?'
+cat peliculas.txt | grep -E -i '.*[a].*[a].*[a].*[a].*[a].*[a].*[a].*[a].*'
 
 
 #Las lineas que terminan por 3 puntos y no empiezan por espacio
