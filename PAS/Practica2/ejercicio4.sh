@@ -9,7 +9,7 @@ if [ ! $# -eq 2 ]
 	echo "Procesando..."
 	while read line
 	do
-		segundos=$(ping $line -c1 -W $2 | grep -E -o 'time=.* ' | sed -r -e 's/time=//' | sort)
+		segundos=$(ping $line -c1 -W $2 | grep -E -o 'time=.* ' | sed -r -e 's/time=//')
 
 		if [ "$segundos" == "" ]
 			then
