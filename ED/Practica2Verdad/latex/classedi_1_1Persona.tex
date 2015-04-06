@@ -1,0 +1,606 @@
+\hypertarget{classedi_1_1Persona}{\section{Referencia de la Clase edi\+:\+:Persona}
+\label{classedi_1_1Persona}\index{edi\+::\+Persona@{edi\+::\+Persona}}
+}
+
+
+Definición de la plantilla de la clase \hyperlink{classedi_1_1Persona}{Persona}.  
+
+
+
+
+{\ttfamily \#include $<$persona.\+hpp$>$}
+
+\subsection*{Métodos públicos}
+\begin{Indent}{\bf C\+O\+N\+S\+T\+R\+U\+C\+T\+O\+R\+E\+S}\par
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classedi_1_1Persona_adf50e6e02e0d82db7037f74a6cbd7650}{Persona} ()
+\begin{DoxyCompactList}\small\item\em Constructor por defecto de la clase \hyperlink{classedi_1_1Persona}{Persona}. \end{DoxyCompactList}\item 
+\hyperlink{classedi_1_1Persona_ac9b88a733b460d61ad145e9c38576eef}{Persona} (const char $\ast$n, const char $\ast$a, const int \&d)
+\begin{DoxyCompactList}\small\item\em Constructor parametrizado de la clase \hyperlink{classedi_1_1Persona}{Persona}. \end{DoxyCompactList}\item 
+\hyperlink{classedi_1_1Persona_aa73785a179a7230fba804826bff5ab62}{Persona} (const \hyperlink{classedi_1_1Persona}{Persona} \&p)
+\begin{DoxyCompactList}\small\item\em Constructor de copia de la clase \hyperlink{classedi_1_1Persona}{Persona}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf O\+B\+S\+E\+R\+V\+A\+D\+O\+R\+E\+S}\par
+\begin{DoxyCompactItemize}
+\item 
+const char $\ast$ \hyperlink{classedi_1_1Persona_acc287b52f557e4ae3a6041afef0ca141}{nombre} () const 
+\begin{DoxyCompactList}\small\item\em Función que permite consultar el nombre de la \hyperlink{classedi_1_1Persona}{Persona}. \end{DoxyCompactList}\item 
+const char $\ast$ \hyperlink{classedi_1_1Persona_a4d00212fe6e99c3864368a207a191767}{apellido} () const 
+\begin{DoxyCompactList}\small\item\em Función que permite consultar el apellido de la \hyperlink{classedi_1_1Persona}{Persona}. \end{DoxyCompactList}\item 
+const int \& \hyperlink{classedi_1_1Persona_a76626aaa10e27c4f860a450d78d96e18}{dni} () const 
+\begin{DoxyCompactList}\small\item\em Función que permite consultar el D\+N\+I de la \hyperlink{classedi_1_1Persona}{Persona}. \end{DoxyCompactList}\item 
+const char \& \hyperlink{classedi_1_1Persona_a3acfc3e07ec3dd168cfc2329a7ada7e4}{borrado} () const 
+\begin{DoxyCompactList}\small\item\em Función que permite consultar el valor del atributo borrado de la \hyperlink{classedi_1_1Persona}{Persona}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf M\+O\+D\+I\+F\+I\+C\+A\+D\+O\+R\+E\+S}\par
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classedi_1_1Persona_a3c95142ce2b5c59d3ad2a2b50c5973bd}{nombre} (const char $\ast$nombre)
+\begin{DoxyCompactList}\small\item\em Función que permite modificar el nombre de la \hyperlink{classedi_1_1Persona}{Persona}. \end{DoxyCompactList}\item 
+void \hyperlink{classedi_1_1Persona_ad5c9a9471884a19483b20279935efecc}{apellido} (const char $\ast$apellido)
+\begin{DoxyCompactList}\small\item\em Función que permite modificar el apellido de la \hyperlink{classedi_1_1Persona}{Persona}. \end{DoxyCompactList}\item 
+void \hyperlink{classedi_1_1Persona_aff4b82748061395c6c169c298fca89b3}{dni} (const int \&dni)
+\begin{DoxyCompactList}\small\item\em Función que permite modificar el dni de la \hyperlink{classedi_1_1Persona}{Persona}. \end{DoxyCompactList}\item 
+void \hyperlink{classedi_1_1Persona_aa119ea26eeac583304547aee16b15c10}{borrado} (const char \&borrado)
+\begin{DoxyCompactList}\small\item\em Función que permite modificar el dni de la \hyperlink{classedi_1_1Persona}{Persona}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf O\+P\+E\+R\+A\+D\+O\+R\+E\+S}\par
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classedi_1_1Persona}{Persona} \& \hyperlink{classedi_1_1Persona_ae57360f67cc87d72b3529eab8fc10bea}{operator=} (const \hyperlink{classedi_1_1Persona}{Persona} \&p)
+\begin{DoxyCompactList}\small\item\em Sobrecarga del operador de asignación. \end{DoxyCompactList}\item 
+bool \hyperlink{classedi_1_1Persona_a72afb74752956b7fc478bbcf21a58419}{operator==} (const \hyperlink{classedi_1_1Persona}{Persona} \&p) const 
+\begin{DoxyCompactList}\small\item\em Sobrecarga del operador relacional de igualdad. \end{DoxyCompactList}\item 
+bool \hyperlink{classedi_1_1Persona_aa83845c0aa706592ca80355e66a4b489}{operator$<$} (const \hyperlink{classedi_1_1Persona}{Persona} \&p) const 
+\begin{DoxyCompactList}\small\item\em Sobrecarga del operador relacional \char`\"{}menor que\char`\"{}. \end{DoxyCompactList}\item 
+bool \hyperlink{classedi_1_1Persona_af183b841eb8e1b477e5e1391ea04c38e}{operator$>$} (const \hyperlink{classedi_1_1Persona}{Persona} \&p) const 
+\begin{DoxyCompactList}\small\item\em Sobrecarga del operador relacional \char`\"{}mayor que\char`\"{}. \end{DoxyCompactList}\item 
+bool \hyperlink{classedi_1_1Persona_a47db13059d784b7547a5a092b43f8971}{operator$<$=} (const \hyperlink{classedi_1_1Persona}{Persona} \&p) const 
+\begin{DoxyCompactList}\small\item\em Sobrecarga del operador relacional \char`\"{}menor o igual que\char`\"{}. \end{DoxyCompactList}\item 
+bool \hyperlink{classedi_1_1Persona_a7f3496fa4d87d6bd2c79ccbda98576d6}{operator$>$=} (const \hyperlink{classedi_1_1Persona}{Persona} \&p) const 
+\begin{DoxyCompactList}\small\item\em Sobrecarga del operador relacional \char`\"{}mayor o igual que\char`\"{}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\subsection*{Amigas}
+\begin{Indent}{\bf F\+U\+N\+C\+I\+O\+N\+E\+S A\+M\+I\+G\+A\+S}\par
+\begin{DoxyCompactItemize}
+\item 
+ostream \& \hyperlink{classedi_1_1Persona_a3b4f83a6d8b613e47e14d9982c0d8354}{operator$<$$<$} (ostream \&stream, const \hyperlink{classedi_1_1Persona}{Persona} \&p)
+\begin{DoxyCompactList}\small\item\em Escribe los datos de la \hyperlink{classedi_1_1Persona}{Persona} en un flujo de salida. \end{DoxyCompactList}\item 
+istream \& \hyperlink{classedi_1_1Persona_a0b6ab6dd403b11efdc800f537e911763}{operator$>$$>$} (istream \&stream, \hyperlink{classedi_1_1Persona}{Persona} \&p)
+\begin{DoxyCompactList}\small\item\em Lee los datos de la \hyperlink{classedi_1_1Persona}{Persona} desde un flujo de entrada. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+
+
+\subsection{Descripción detallada}
+Definición de la plantilla de la clase \hyperlink{classedi_1_1Persona}{Persona}. 
+
+\subsection{Documentación del constructor y destructor}
+\hypertarget{classedi_1_1Persona_adf50e6e02e0d82db7037f74a6cbd7650}{\index{edi\+::\+Persona@{edi\+::\+Persona}!Persona@{Persona}}
+\index{Persona@{Persona}!edi\+::\+Persona@{edi\+::\+Persona}}
+\subsubsection[{Persona}]{\setlength{\rightskip}{0pt plus 5cm}edi\+::\+Persona\+::\+Persona (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classedi_1_1Persona_adf50e6e02e0d82db7037f74a6cbd7650}
+
+
+Constructor por defecto de la clase \hyperlink{classedi_1_1Persona}{Persona}. 
+
+\begin{DoxyAttention}{Atención}
+Función sobrecargada 
+\end{DoxyAttention}
+\begin{DoxyNote}{Nota}
+Inicialmente se considera que la persona está borrada 
+\end{DoxyNote}
+\begin{DoxyPrecond}{Precondición}
+Ninguna 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+Ninguna 
+\end{DoxyPostcond}
+\begin{DoxySeeAlso}{Ver también}
+\hyperlink{classedi_1_1Persona_ac9b88a733b460d61ad145e9c38576eef}{Persona(const char $\ast$ n, const char $\ast$ a, const int \&d)}; \hyperlink{classedi_1_1Persona_aa73785a179a7230fba804826bff5ab62}{Persona(const Persona \&p)}; 
+\end{DoxySeeAlso}
+\hypertarget{classedi_1_1Persona_ac9b88a733b460d61ad145e9c38576eef}{\index{edi\+::\+Persona@{edi\+::\+Persona}!Persona@{Persona}}
+\index{Persona@{Persona}!edi\+::\+Persona@{edi\+::\+Persona}}
+\subsubsection[{Persona}]{\setlength{\rightskip}{0pt plus 5cm}edi\+::\+Persona\+::\+Persona (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{n, }
+\item[{const char $\ast$}]{a, }
+\item[{const int \&}]{d}
+\end{DoxyParamCaption}
+)}}\label{classedi_1_1Persona_ac9b88a733b460d61ad145e9c38576eef}
+
+
+Constructor parametrizado de la clase \hyperlink{classedi_1_1Persona}{Persona}. 
+
+\begin{DoxyAttention}{Atención}
+Función sobrecargada 
+\end{DoxyAttention}
+
+\begin{DoxyParams}{Parámetros}
+{\em n} & Nombre de la \hyperlink{classedi_1_1Persona}{Persona} \\
+\hline
+{\em a} & Apellidos de la \hyperlink{classedi_1_1Persona}{Persona} \\
+\hline
+{\em d} & D\+N\+I de la \hyperlink{classedi_1_1Persona}{Persona} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondición}
+Ninguna 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+Los valores de los atributos deben ser los valores de los parámetros 
+\end{DoxyPostcond}
+\begin{DoxySeeAlso}{Ver también}
+\hyperlink{classedi_1_1Persona_adf50e6e02e0d82db7037f74a6cbd7650}{Persona()}; \hyperlink{classedi_1_1Persona_aa73785a179a7230fba804826bff5ab62}{Persona(const Persona \&p)}; 
+\end{DoxySeeAlso}
+\hypertarget{classedi_1_1Persona_aa73785a179a7230fba804826bff5ab62}{\index{edi\+::\+Persona@{edi\+::\+Persona}!Persona@{Persona}}
+\index{Persona@{Persona}!edi\+::\+Persona@{edi\+::\+Persona}}
+\subsubsection[{Persona}]{\setlength{\rightskip}{0pt plus 5cm}edi\+::\+Persona\+::\+Persona (
+\begin{DoxyParamCaption}
+\item[{const {\bf Persona} \&}]{p}
+\end{DoxyParamCaption}
+)}}\label{classedi_1_1Persona_aa73785a179a7230fba804826bff5ab62}
+
+
+Constructor de copia de la clase \hyperlink{classedi_1_1Persona}{Persona}. 
+
+\begin{DoxyAttention}{Atención}
+Función sobrecargada 
+\end{DoxyAttention}
+
+\begin{DoxyParams}{Parámetros}
+{\em p} & \hyperlink{classedi_1_1Persona}{Persona} de la que se van copiar los valores de los atributos. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondición}
+Ninguna 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+Los valores de la \hyperlink{classedi_1_1Persona}{Persona} creada deben ser iguales a los de la \hyperlink{classedi_1_1Persona}{Persona} p 
+\end{DoxyPostcond}
+\begin{DoxySeeAlso}{Ver también}
+\hyperlink{classedi_1_1Persona_adf50e6e02e0d82db7037f74a6cbd7650}{Persona()}; \hyperlink{classedi_1_1Persona_ac9b88a733b460d61ad145e9c38576eef}{Persona(const char $\ast$ n, const char $\ast$ a, const int \&d)}; 
+\end{DoxySeeAlso}
+
+
+\subsection{Documentación de las funciones miembro}
+\hypertarget{classedi_1_1Persona_a4d00212fe6e99c3864368a207a191767}{\index{edi\+::\+Persona@{edi\+::\+Persona}!apellido@{apellido}}
+\index{apellido@{apellido}!edi\+::\+Persona@{edi\+::\+Persona}}
+\subsubsection[{apellido}]{\setlength{\rightskip}{0pt plus 5cm}const char $\ast$ edi\+::\+Persona\+::apellido (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classedi_1_1Persona_a4d00212fe6e99c3864368a207a191767}
+
+
+Función que permite consultar el apellido de la \hyperlink{classedi_1_1Persona}{Persona}. 
+
+\begin{DoxyReturn}{Devuelve}
+valor del atributo \+\_\+apellido 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondición}
+La \hyperlink{classedi_1_1Persona}{Persona} debe existir 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+Ninguna 
+\end{DoxyPostcond}
+\begin{DoxySeeAlso}{Ver también}
+const char $\ast$ \hyperlink{classedi_1_1Persona_acc287b52f557e4ae3a6041afef0ca141}{nombre()const}; const int \&\hyperlink{classedi_1_1Persona_a76626aaa10e27c4f860a450d78d96e18}{dni()const}; const char \&\hyperlink{classedi_1_1Persona_a3acfc3e07ec3dd168cfc2329a7ada7e4}{borrado() const}; 
+\end{DoxySeeAlso}
+\hypertarget{classedi_1_1Persona_ad5c9a9471884a19483b20279935efecc}{\index{edi\+::\+Persona@{edi\+::\+Persona}!apellido@{apellido}}
+\index{apellido@{apellido}!edi\+::\+Persona@{edi\+::\+Persona}}
+\subsubsection[{apellido}]{\setlength{\rightskip}{0pt plus 5cm}void edi\+::\+Persona\+::apellido (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{apellido}
+\end{DoxyParamCaption}
+)}}\label{classedi_1_1Persona_ad5c9a9471884a19483b20279935efecc}
+
+
+Función que permite modificar el apellido de la \hyperlink{classedi_1_1Persona}{Persona}. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em apellido} & Nuevo valor del atributo \+\_\+apellido \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondición}
+La \hyperlink{classedi_1_1Persona}{Persona} debe existir 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+El valor del atributo \+\_\+apellido debe ser igual al valor del parámetro apellido 
+\end{DoxyPostcond}
+\begin{DoxySeeAlso}{Ver también}
+void \hyperlink{classedi_1_1Persona_a3c95142ce2b5c59d3ad2a2b50c5973bd}{nombre(const char $\ast$ nombre)}; void \hyperlink{classedi_1_1Persona_aff4b82748061395c6c169c298fca89b3}{dni(const int \&dni)}; void \hyperlink{classedi_1_1Persona_aa119ea26eeac583304547aee16b15c10}{borrado(const char \&borrado)}; 
+\end{DoxySeeAlso}
+\hypertarget{classedi_1_1Persona_a3acfc3e07ec3dd168cfc2329a7ada7e4}{\index{edi\+::\+Persona@{edi\+::\+Persona}!borrado@{borrado}}
+\index{borrado@{borrado}!edi\+::\+Persona@{edi\+::\+Persona}}
+\subsubsection[{borrado}]{\setlength{\rightskip}{0pt plus 5cm}const char \& edi\+::\+Persona\+::borrado (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classedi_1_1Persona_a3acfc3e07ec3dd168cfc2329a7ada7e4}
+
+
+Función que permite consultar el valor del atributo borrado de la \hyperlink{classedi_1_1Persona}{Persona}. 
+
+\begin{DoxyReturn}{Devuelve}
+valor del atributo \+\_\+borrado 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondición}
+La \hyperlink{classedi_1_1Persona}{Persona} debe existir 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+Ninguna 
+\end{DoxyPostcond}
+\begin{DoxySeeAlso}{Ver también}
+const char $\ast$ \hyperlink{classedi_1_1Persona_acc287b52f557e4ae3a6041afef0ca141}{nombre()const}; const char $\ast$ \hyperlink{classedi_1_1Persona_a4d00212fe6e99c3864368a207a191767}{apellido()const}; const int \&\hyperlink{classedi_1_1Persona_a76626aaa10e27c4f860a450d78d96e18}{dni()const}; 
+\end{DoxySeeAlso}
+\hypertarget{classedi_1_1Persona_aa119ea26eeac583304547aee16b15c10}{\index{edi\+::\+Persona@{edi\+::\+Persona}!borrado@{borrado}}
+\index{borrado@{borrado}!edi\+::\+Persona@{edi\+::\+Persona}}
+\subsubsection[{borrado}]{\setlength{\rightskip}{0pt plus 5cm}void edi\+::\+Persona\+::borrado (
+\begin{DoxyParamCaption}
+\item[{const char \&}]{borrado}
+\end{DoxyParamCaption}
+)}}\label{classedi_1_1Persona_aa119ea26eeac583304547aee16b15c10}
+
+
+Función que permite modificar el dni de la \hyperlink{classedi_1_1Persona}{Persona}. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em borrado} & Nuevo valor del atributo \+\_\+borrado \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondición}
+La \hyperlink{classedi_1_1Persona}{Persona} debe existir 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+El valor del atributo \+\_\+borrado debe ser igual al valor del parámetro borrado 
+\end{DoxyPostcond}
+\begin{DoxySeeAlso}{Ver también}
+void \hyperlink{classedi_1_1Persona_a3c95142ce2b5c59d3ad2a2b50c5973bd}{nombre(const char $\ast$ nombre)}; void \hyperlink{classedi_1_1Persona_ad5c9a9471884a19483b20279935efecc}{apellido(const char $\ast$ apellido)}; void \hyperlink{classedi_1_1Persona_aff4b82748061395c6c169c298fca89b3}{dni(const int \&dni)}; 
+\end{DoxySeeAlso}
+\hypertarget{classedi_1_1Persona_a76626aaa10e27c4f860a450d78d96e18}{\index{edi\+::\+Persona@{edi\+::\+Persona}!dni@{dni}}
+\index{dni@{dni}!edi\+::\+Persona@{edi\+::\+Persona}}
+\subsubsection[{dni}]{\setlength{\rightskip}{0pt plus 5cm}const int \& edi\+::\+Persona\+::dni (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classedi_1_1Persona_a76626aaa10e27c4f860a450d78d96e18}
+
+
+Función que permite consultar el D\+N\+I de la \hyperlink{classedi_1_1Persona}{Persona}. 
+
+\begin{DoxyReturn}{Devuelve}
+valor del atributo \+\_\+dni 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondición}
+La \hyperlink{classedi_1_1Persona}{Persona} debe existir 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+Ninguna 
+\end{DoxyPostcond}
+\begin{DoxySeeAlso}{Ver también}
+const char $\ast$ \hyperlink{classedi_1_1Persona_acc287b52f557e4ae3a6041afef0ca141}{nombre()const}; const char $\ast$ \hyperlink{classedi_1_1Persona_acc287b52f557e4ae3a6041afef0ca141}{nombre()const}; const char \&\hyperlink{classedi_1_1Persona_a3acfc3e07ec3dd168cfc2329a7ada7e4}{borrado() const}; 
+\end{DoxySeeAlso}
+\hypertarget{classedi_1_1Persona_aff4b82748061395c6c169c298fca89b3}{\index{edi\+::\+Persona@{edi\+::\+Persona}!dni@{dni}}
+\index{dni@{dni}!edi\+::\+Persona@{edi\+::\+Persona}}
+\subsubsection[{dni}]{\setlength{\rightskip}{0pt plus 5cm}void edi\+::\+Persona\+::dni (
+\begin{DoxyParamCaption}
+\item[{const int \&}]{dni}
+\end{DoxyParamCaption}
+)}}\label{classedi_1_1Persona_aff4b82748061395c6c169c298fca89b3}
+
+
+Función que permite modificar el dni de la \hyperlink{classedi_1_1Persona}{Persona}. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em dni} & Nuevo valor del atributo \+\_\+dni \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondición}
+La \hyperlink{classedi_1_1Persona}{Persona} debe existir 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+El valor del atributo \+\_\+dni debe ser igual al valor del parámetro dni 
+\end{DoxyPostcond}
+\begin{DoxySeeAlso}{Ver también}
+void \hyperlink{classedi_1_1Persona_a3c95142ce2b5c59d3ad2a2b50c5973bd}{nombre(const char $\ast$ nombre)}; void \hyperlink{classedi_1_1Persona_ad5c9a9471884a19483b20279935efecc}{apellido(const char $\ast$ apellido)}; void \hyperlink{classedi_1_1Persona_aa119ea26eeac583304547aee16b15c10}{borrado(const char \&borrado)}; 
+\end{DoxySeeAlso}
+\hypertarget{classedi_1_1Persona_acc287b52f557e4ae3a6041afef0ca141}{\index{edi\+::\+Persona@{edi\+::\+Persona}!nombre@{nombre}}
+\index{nombre@{nombre}!edi\+::\+Persona@{edi\+::\+Persona}}
+\subsubsection[{nombre}]{\setlength{\rightskip}{0pt plus 5cm}const char $\ast$ edi\+::\+Persona\+::nombre (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classedi_1_1Persona_acc287b52f557e4ae3a6041afef0ca141}
+
+
+Función que permite consultar el nombre de la \hyperlink{classedi_1_1Persona}{Persona}. 
+
+\begin{DoxyReturn}{Devuelve}
+valor del atributo \+\_\+nombre 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondición}
+La \hyperlink{classedi_1_1Persona}{Persona} debe existir 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+Ninguna 
+\end{DoxyPostcond}
+\begin{DoxySeeAlso}{Ver también}
+const char $\ast$ \hyperlink{classedi_1_1Persona_a4d00212fe6e99c3864368a207a191767}{apellido()const}; const int \&\hyperlink{classedi_1_1Persona_a76626aaa10e27c4f860a450d78d96e18}{dni()const}; const char \&\hyperlink{classedi_1_1Persona_a3acfc3e07ec3dd168cfc2329a7ada7e4}{borrado() const}; 
+\end{DoxySeeAlso}
+\hypertarget{classedi_1_1Persona_a3c95142ce2b5c59d3ad2a2b50c5973bd}{\index{edi\+::\+Persona@{edi\+::\+Persona}!nombre@{nombre}}
+\index{nombre@{nombre}!edi\+::\+Persona@{edi\+::\+Persona}}
+\subsubsection[{nombre}]{\setlength{\rightskip}{0pt plus 5cm}void edi\+::\+Persona\+::nombre (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{nombre}
+\end{DoxyParamCaption}
+)}}\label{classedi_1_1Persona_a3c95142ce2b5c59d3ad2a2b50c5973bd}
+
+
+Función que permite modificar el nombre de la \hyperlink{classedi_1_1Persona}{Persona}. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em nombre} & Nuevo valor del atributo \+\_\+nombre \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondición}
+La \hyperlink{classedi_1_1Persona}{Persona} debe existir 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+El valor del atributo \+\_\+nombre debe ser igual al valor del parámetro nombre 
+\end{DoxyPostcond}
+\begin{DoxySeeAlso}{Ver también}
+void \hyperlink{classedi_1_1Persona_ad5c9a9471884a19483b20279935efecc}{apellido(const char $\ast$ apellido)}; void \hyperlink{classedi_1_1Persona_aff4b82748061395c6c169c298fca89b3}{dni(const int \&dni)}; void \hyperlink{classedi_1_1Persona_aa119ea26eeac583304547aee16b15c10}{borrado(const char \&borrado)}; 
+\end{DoxySeeAlso}
+\hypertarget{classedi_1_1Persona_aa83845c0aa706592ca80355e66a4b489}{\index{edi\+::\+Persona@{edi\+::\+Persona}!operator$<$@{operator$<$}}
+\index{operator$<$@{operator$<$}!edi\+::\+Persona@{edi\+::\+Persona}}
+\subsubsection[{operator$<$}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Persona} \& edi\+::\+Persona\+::operator$<$ (
+\begin{DoxyParamCaption}
+\item[{const {\bf Persona} \&}]{p}
+\end{DoxyParamCaption}
+) const}}\label{classedi_1_1Persona_aa83845c0aa706592ca80355e66a4b489}
+
+
+Sobrecarga del operador relacional \char`\"{}menor que\char`\"{}. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em p} & \hyperlink{classedi_1_1Persona}{Persona} con la que va a comparar a la \hyperlink{classedi_1_1Persona}{Persona} actual \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Valor lógico que indica si la \hyperlink{classedi_1_1Persona}{Persona} actual es alfabéticamente anterior a la \hyperlink{classedi_1_1Persona}{Persona} p 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondición}
+La \hyperlink{classedi_1_1Persona}{Persona} p debe existir 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+El valor devuelto debe ser true si la \hyperlink{classedi_1_1Persona}{Persona} actual es alfabéticamente anterior a la \hyperlink{classedi_1_1Persona}{Persona} p y false en caso contrario 
+\end{DoxyPostcond}
+\begin{DoxySeeAlso}{Ver también}
+operator==, operator$<$=, operator$>$, operator$>$= 
+\end{DoxySeeAlso}
+\hypertarget{classedi_1_1Persona_a47db13059d784b7547a5a092b43f8971}{\index{edi\+::\+Persona@{edi\+::\+Persona}!operator$<$=@{operator$<$=}}
+\index{operator$<$=@{operator$<$=}!edi\+::\+Persona@{edi\+::\+Persona}}
+\subsubsection[{operator$<$=}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Persona} \& edi\+::\+Persona\+::operator$<$= (
+\begin{DoxyParamCaption}
+\item[{const {\bf Persona} \&}]{p}
+\end{DoxyParamCaption}
+) const}}\label{classedi_1_1Persona_a47db13059d784b7547a5a092b43f8971}
+
+
+Sobrecarga del operador relacional \char`\"{}menor o igual que\char`\"{}. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em p} & \hyperlink{classedi_1_1Persona}{Persona} con la que va a comparar a la \hyperlink{classedi_1_1Persona}{Persona} actual \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Valor lógico que indica si la \hyperlink{classedi_1_1Persona}{Persona} actual es alfabéticamente anterior o igual que la \hyperlink{classedi_1_1Persona}{Persona} p 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondición}
+La \hyperlink{classedi_1_1Persona}{Persona} p debe existir 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+El valor devuelto debe ser true si la \hyperlink{classedi_1_1Persona}{Persona} actual es alfabéticamente posterior o igual que la \hyperlink{classedi_1_1Persona}{Persona} p y false en caso contrario 
+\end{DoxyPostcond}
+\begin{DoxySeeAlso}{Ver también}
+operator==, operator$<$, operator$>$, operator$>$= 
+\end{DoxySeeAlso}
+\hypertarget{classedi_1_1Persona_ae57360f67cc87d72b3529eab8fc10bea}{\index{edi\+::\+Persona@{edi\+::\+Persona}!operator=@{operator=}}
+\index{operator=@{operator=}!edi\+::\+Persona@{edi\+::\+Persona}}
+\subsubsection[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Persona} \& edi\+::\+Persona\+::operator= (
+\begin{DoxyParamCaption}
+\item[{const {\bf Persona} \&}]{p}
+\end{DoxyParamCaption}
+)}}\label{classedi_1_1Persona_ae57360f67cc87d72b3529eab8fc10bea}
+
+
+Sobrecarga del operador de asignación. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em p} & \hyperlink{classedi_1_1Persona}{Persona} que se va a copiar en la \hyperlink{classedi_1_1Persona}{Persona} actual \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Referencia a la \hyperlink{classedi_1_1Persona}{Persona} actual 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondición}
+La \hyperlink{classedi_1_1Persona}{Persona} p debe existir 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+Los valores de la \hyperlink{classedi_1_1Persona}{Persona} creada deben ser iguales a los de la \hyperlink{classedi_1_1Persona}{Persona} p 
+\end{DoxyPostcond}
+\begin{DoxySeeAlso}{Ver también}
+operator==, operator$<$, operator$<$=, operator$>$, operator$>$= 
+\end{DoxySeeAlso}
+\hypertarget{classedi_1_1Persona_a72afb74752956b7fc478bbcf21a58419}{\index{edi\+::\+Persona@{edi\+::\+Persona}!operator==@{operator==}}
+\index{operator==@{operator==}!edi\+::\+Persona@{edi\+::\+Persona}}
+\subsubsection[{operator==}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Persona} \& edi\+::\+Persona\+::operator== (
+\begin{DoxyParamCaption}
+\item[{const {\bf Persona} \&}]{p}
+\end{DoxyParamCaption}
+) const}}\label{classedi_1_1Persona_a72afb74752956b7fc478bbcf21a58419}
+
+
+Sobrecarga del operador relacional de igualdad. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em p} & \hyperlink{classedi_1_1Persona}{Persona} con la que va a comparar a la \hyperlink{classedi_1_1Persona}{Persona} actual \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Valor lógico que indica si la \hyperlink{classedi_1_1Persona}{Persona} actual es igual que la \hyperlink{classedi_1_1Persona}{Persona} p 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondición}
+La \hyperlink{classedi_1_1Persona}{Persona} p debe existir 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+El valor devuelto debe ser true si la \hyperlink{classedi_1_1Persona}{Persona} actual es igual a la \hyperlink{classedi_1_1Persona}{Persona} p y false en caso contrario 
+\end{DoxyPostcond}
+\begin{DoxySeeAlso}{Ver también}
+operator==, operator$<$, operator$<$=, operator$>$, operator$>$= 
+\end{DoxySeeAlso}
+\hypertarget{classedi_1_1Persona_af183b841eb8e1b477e5e1391ea04c38e}{\index{edi\+::\+Persona@{edi\+::\+Persona}!operator$>$@{operator$>$}}
+\index{operator$>$@{operator$>$}!edi\+::\+Persona@{edi\+::\+Persona}}
+\subsubsection[{operator$>$}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Persona} \& edi\+::\+Persona\+::operator$>$ (
+\begin{DoxyParamCaption}
+\item[{const {\bf Persona} \&}]{p}
+\end{DoxyParamCaption}
+) const}}\label{classedi_1_1Persona_af183b841eb8e1b477e5e1391ea04c38e}
+
+
+Sobrecarga del operador relacional \char`\"{}mayor que\char`\"{}. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em p} & \hyperlink{classedi_1_1Persona}{Persona} con la que va a comparar a la \hyperlink{classedi_1_1Persona}{Persona} actual \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Valor lógico que indica si la \hyperlink{classedi_1_1Persona}{Persona} actual es alfabéticamente posterior a la \hyperlink{classedi_1_1Persona}{Persona} p 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondición}
+La \hyperlink{classedi_1_1Persona}{Persona} p debe existir 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+El valor devuelto debe ser true si la \hyperlink{classedi_1_1Persona}{Persona} actual es alfabéticamente posterior a la \hyperlink{classedi_1_1Persona}{Persona} p y false en caso contrario 
+\end{DoxyPostcond}
+\begin{DoxySeeAlso}{Ver también}
+operator==, operator$<$, operator$<$=, operator$>$= 
+\end{DoxySeeAlso}
+\hypertarget{classedi_1_1Persona_a7f3496fa4d87d6bd2c79ccbda98576d6}{\index{edi\+::\+Persona@{edi\+::\+Persona}!operator$>$=@{operator$>$=}}
+\index{operator$>$=@{operator$>$=}!edi\+::\+Persona@{edi\+::\+Persona}}
+\subsubsection[{operator$>$=}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Persona} \& edi\+::\+Persona\+::operator$>$= (
+\begin{DoxyParamCaption}
+\item[{const {\bf Persona} \&}]{p}
+\end{DoxyParamCaption}
+) const}}\label{classedi_1_1Persona_a7f3496fa4d87d6bd2c79ccbda98576d6}
+
+
+Sobrecarga del operador relacional \char`\"{}mayor o igual que\char`\"{}. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em p} & \hyperlink{classedi_1_1Persona}{Persona} con la que va a comparar a la \hyperlink{classedi_1_1Persona}{Persona} actual \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Valor lógico que indica si la \hyperlink{classedi_1_1Persona}{Persona} actual es alfabéticamente posterior o igual que la \hyperlink{classedi_1_1Persona}{Persona} p 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondición}
+La \hyperlink{classedi_1_1Persona}{Persona} p debe existir 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+El valor devuelto debe ser true si la \hyperlink{classedi_1_1Persona}{Persona} actual es alfabéticamente posterior o igual que la \hyperlink{classedi_1_1Persona}{Persona} p y false en caso contrario 
+\end{DoxyPostcond}
+\begin{DoxySeeAlso}{Ver también}
+operator==, operator$<$, operator$<$=, operator$>$ 
+\end{DoxySeeAlso}
+
+
+\subsection{Documentación de las funciones relacionadas y clases amigas}
+\hypertarget{classedi_1_1Persona_a3b4f83a6d8b613e47e14d9982c0d8354}{\index{edi\+::\+Persona@{edi\+::\+Persona}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!edi\+::\+Persona@{edi\+::\+Persona}}
+\subsubsection[{operator$<$$<$}]{\setlength{\rightskip}{0pt plus 5cm}ostream \& operator$<$$<$ (
+\begin{DoxyParamCaption}
+\item[{ostream \&}]{stream, }
+\item[{const {\bf Persona} \&}]{p}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}}\label{classedi_1_1Persona_a3b4f83a6d8b613e47e14d9982c0d8354}
+
+
+Escribe los datos de la \hyperlink{classedi_1_1Persona}{Persona} en un flujo de salida. 
+
+\begin{DoxyNote}{Nota}
+Sobrecarga del operador de salida \char`\"{}$<$$<$\char`\"{} 
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parámetros}
+{\em stream} & Flujo de salida \\
+\hline
+{\em p} & \hyperlink{classedi_1_1Persona}{Persona}, cuyos datos se van a escribir en el flujo de salida \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Flujo de salida en el que se han escrito los datos de la \hyperlink{classedi_1_1Persona}{Persona} 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondición}
+La \hyperlink{classedi_1_1Persona}{Persona} p debe existir 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+El flujo de salida debe contener los datos de \hyperlink{classedi_1_1Persona}{Persona} 
+\end{DoxyPostcond}
+\begin{DoxySeeAlso}{Ver también}
+operator$>$$>$ 
+\end{DoxySeeAlso}
+\hypertarget{classedi_1_1Persona_a0b6ab6dd403b11efdc800f537e911763}{\index{edi\+::\+Persona@{edi\+::\+Persona}!operator$>$$>$@{operator$>$$>$}}
+\index{operator$>$$>$@{operator$>$$>$}!edi\+::\+Persona@{edi\+::\+Persona}}
+\subsubsection[{operator$>$$>$}]{\setlength{\rightskip}{0pt plus 5cm}istream \& operator$>$$>$ (
+\begin{DoxyParamCaption}
+\item[{istream \&}]{stream, }
+\item[{{\bf Persona} \&}]{p}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}}\label{classedi_1_1Persona_a0b6ab6dd403b11efdc800f537e911763}
+
+
+Lee los datos de la \hyperlink{classedi_1_1Persona}{Persona} desde un flujo de entrada. 
+
+\begin{DoxyNote}{Nota}
+Sobrecarga del operador de salida \char`\"{}$>$$>$\char`\"{} 
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parámetros}
+{\em stream} & Flujo de entrada \\
+\hline
+{\em p} & \hyperlink{classedi_1_1Persona}{Persona}, cuyos datos se van a leer desde el flujo de entrada \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Flujo de salida en el que se han escrito los datos de la \hyperlink{classedi_1_1Persona}{Persona} 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondición}
+La \hyperlink{classedi_1_1Persona}{Persona} p debe existir 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+La \hyperlink{classedi_1_1Persona}{Persona} p debe tener los datos leídos desde el flujo de entrada 
+\end{DoxyPostcond}
+\begin{DoxySeeAlso}{Ver también}
+operator$>$$>$ 
+\end{DoxySeeAlso}
+
+
+La documentación para esta clase fue generada a partir de los siguientes ficheros\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{persona_8hpp}{persona.\+hpp}\item 
+\hyperlink{persona_8cpp}{persona.\+cpp}\end{DoxyCompactItemize}

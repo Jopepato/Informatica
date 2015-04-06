@@ -140,7 +140,7 @@ class Asignatura{
 				cout << alumno1;
 			}else{
 				if(pos1 > pos2){
-					for(int i=pos1; i>=pos1; i--){
+					for(int i=pos1; i>=pos2; i--){
 						p = alumnos_.item(i);
 						cout << p;
 					}

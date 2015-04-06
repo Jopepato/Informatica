@@ -1,0 +1,220 @@
+\hypertarget{classedi_1_1List}{\section{Referencia de la plantilla de la Clase edi\+:\+:List$<$ T $>$}
+\label{classedi_1_1List}\index{edi\+::\+List$<$ T $>$@{edi\+::\+List$<$ T $>$}}
+}
+
+
+Abstrast template class to model the \hyperlink{classedi_1_1List}{List}\mbox{[}T\mbox{]} A\+D\+T.  
+
+
+
+
+{\ttfamily \#include $<$edi\+\_\+\+List.\+hpp$>$}
+
+
+
+Diagrama de herencias de edi\+:\+:List$<$ T $>$
+\subsection*{Métodos públicos}
+\begin{Indent}{\bf Makers}\par
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classedi_1_1List_a580693c36c4803aad8d178f1a2305410}{virtual {\bfseries $\sim$\+List} ()}\label{classedi_1_1List_a580693c36c4803aad8d178f1a2305410}
+
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Observers}\par
+\begin{DoxyCompactItemize}
+\item 
+virtual bool \hyperlink{classedi_1_1List_a99f1769968b6366cebdc529fc208a39c}{is\+Empty} () const =0
+\begin{DoxyCompactList}\small\item\em Is the list empty? \end{DoxyCompactList}\item 
+virtual bool \hyperlink{classedi_1_1List_aa1cc10f88bb6684fbb523987d51f341a}{is\+Last} (const int pos) const =0
+\begin{DoxyCompactList}\small\item\em Is pos the last list's position? \end{DoxyCompactList}\item 
+virtual bool \hyperlink{classedi_1_1List_ab3befc73438a24042d3aa6248e8a0e74}{is\+Valid} (const int pos) const =0
+\begin{DoxyCompactList}\small\item\em Is pos a valid \hyperlink{classedi_1_1List}{List}'s position? \end{DoxyCompactList}\item 
+virtual const T \& \hyperlink{classedi_1_1List_a7a7923cfc7a3a50f816be51bb49ba698}{item} (const int pos) const =0
+\begin{DoxyCompactList}\small\item\em Get the item at a given position. \end{DoxyCompactList}\item 
+virtual int \hyperlink{classedi_1_1List_a7dea612396f8ca58e9c97665dd7de750}{find\+Item} (const T \&\hyperlink{classedi_1_1List_a7a7923cfc7a3a50f816be51bb49ba698}{item}, const int from) const =0
+\begin{DoxyCompactList}\small\item\em Find the position of a given item. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Mutators}\par
+\begin{DoxyCompactItemize}
+\item 
+virtual void \hyperlink{classedi_1_1List_ae6f16aa8fcd3c6e5b93e6258ac89b335}{inserta} (const T \&\hyperlink{classedi_1_1List_a7a7923cfc7a3a50f816be51bb49ba698}{item})=0
+\begin{DoxyCompactList}\small\item\em Inserts item in an ordered way. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classedi_1_1List_a0b73c2aa55f28edd4908182fa34aea5d}{delete\+Position} (const int pos)=0
+\begin{DoxyCompactList}\small\item\em Deletes the given position. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+
+
+\subsection{Descripción detallada}
+\subsubsection*{template$<$class T$>$class edi\+::\+List$<$ T $>$}
+
+Abstrast template class to model the \hyperlink{classedi_1_1List}{List}\mbox{[}T\mbox{]} A\+D\+T. 
+
+\subsection{Documentación de las funciones miembro}
+\hypertarget{classedi_1_1List_a0b73c2aa55f28edd4908182fa34aea5d}{\index{edi\+::\+List@{edi\+::\+List}!delete\+Position@{delete\+Position}}
+\index{delete\+Position@{delete\+Position}!edi\+::\+List@{edi\+::\+List}}
+\subsubsection[{delete\+Position}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ virtual void {\bf edi\+::\+List}$<$ T $>$\+::delete\+Position (
+\begin{DoxyParamCaption}
+\item[{const int}]{pos}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classedi_1_1List_a0b73c2aa55f28edd4908182fa34aea5d}
+
+
+Deletes the given position. 
+
+\begin{DoxyItemize}
+\item \mbox{[}in\mbox{]} pos is the position to be deleted. \begin{DoxyPrecond}{Precondición}
+not \hyperlink{classedi_1_1List_a99f1769968b6366cebdc529fc208a39c}{is\+Empty()} 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+old.\+is\+Last(pos) implies not is\+Valid(pos). 
+
+pos=0 and old.\+is\+Last(pos) implies \hyperlink{classedi_1_1List_a99f1769968b6366cebdc529fc208a39c}{is\+Empty()}. 
+
+not old.\+is\+Last(pos) implies item(pos)=old.\+item(pos+1) 
+\end{DoxyPostcond}
+\end{DoxyItemize}
+
+
+Implementado en \hyperlink{classedi_1_1LinkedList_a5bf790b49f73467d0364656be3a2e2d6}{edi\+::\+Linked\+List$<$ T $>$} y \hyperlink{classedi_1_1LinkedList_a5bf790b49f73467d0364656be3a2e2d6}{edi\+::\+Linked\+List$<$ edi\+::\+Persona $>$}.
+
+\hypertarget{classedi_1_1List_a7dea612396f8ca58e9c97665dd7de750}{\index{edi\+::\+List@{edi\+::\+List}!find\+Item@{find\+Item}}
+\index{find\+Item@{find\+Item}!edi\+::\+List@{edi\+::\+List}}
+\subsubsection[{find\+Item}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ virtual int {\bf edi\+::\+List}$<$ T $>$\+::find\+Item (
+\begin{DoxyParamCaption}
+\item[{const T \&}]{item, }
+\item[{const int}]{from}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classedi_1_1List_a7dea612396f8ca58e9c97665dd7de750}
+
+
+Find the position of a given item. 
+
+\begin{DoxyItemize}
+\item \mbox{[}in\mbox{]} item is the data to be found. \item \mbox{[}in\mbox{]} from give a position to start the search. \begin{DoxyReturn}{Devuelve}
+-\/1 if it does not found or the item's position. 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondición}
+is\+Valid(from) 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+ret\+Val$>$=0 implies is\+Valid(ret\+Val) 
+
+ret\+Val$>$=0 implies item(ret\+Val)=item 
+\end{DoxyPostcond}
+\end{DoxyItemize}
+
+
+Implementado en \hyperlink{classedi_1_1LinkedList_ac60ccc9991289e28a617fbfd819350de}{edi\+::\+Linked\+List$<$ T $>$} y \hyperlink{classedi_1_1LinkedList_ac60ccc9991289e28a617fbfd819350de}{edi\+::\+Linked\+List$<$ edi\+::\+Persona $>$}.
+
+\hypertarget{classedi_1_1List_ae6f16aa8fcd3c6e5b93e6258ac89b335}{\index{edi\+::\+List@{edi\+::\+List}!inserta@{inserta}}
+\index{inserta@{inserta}!edi\+::\+List@{edi\+::\+List}}
+\subsubsection[{inserta}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ virtual void {\bf edi\+::\+List}$<$ T $>$\+::inserta (
+\begin{DoxyParamCaption}
+\item[{const T \&}]{item}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classedi_1_1List_ae6f16aa8fcd3c6e5b93e6258ac89b335}
+
+
+Inserts item in an ordered way. 
+
+\begin{DoxyItemize}
+\item \mbox{[}in\mbox{]} pos is the list's position to insert before. \item \mbox{[}in\mbox{]} item is the item to store. \begin{DoxyPrecond}{Precondición}
+is\+Valid(pos). 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+is\+Valid(pos+1). 
+
+not \hyperlink{classedi_1_1List_a99f1769968b6366cebdc529fc208a39c}{is\+Empty()}. 
+
+item(pos)=item. 
+
+item(pos+1)=old.\+item(pos) 
+\end{DoxyPostcond}
+\end{DoxyItemize}
+
+
+Implementado en \hyperlink{classedi_1_1LinkedList_abcf6acdcd3d791ddaf9d49b8a96a6c05}{edi\+::\+Linked\+List$<$ T $>$} y \hyperlink{classedi_1_1LinkedList_abcf6acdcd3d791ddaf9d49b8a96a6c05}{edi\+::\+Linked\+List$<$ edi\+::\+Persona $>$}.
+
+\hypertarget{classedi_1_1List_a99f1769968b6366cebdc529fc208a39c}{\index{edi\+::\+List@{edi\+::\+List}!is\+Empty@{is\+Empty}}
+\index{is\+Empty@{is\+Empty}!edi\+::\+List@{edi\+::\+List}}
+\subsubsection[{is\+Empty}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ virtual bool {\bf edi\+::\+List}$<$ T $>$\+::is\+Empty (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classedi_1_1List_a99f1769968b6366cebdc529fc208a39c}
+
+
+Is the list empty? 
+
+\begin{DoxyReturn}{Devuelve}
+true if the list is empty. 
+\end{DoxyReturn}
+
+
+Implementado en \hyperlink{classedi_1_1LinkedList_a441bd0ce83f968bfd035898aee35ce07}{edi\+::\+Linked\+List$<$ T $>$} y \hyperlink{classedi_1_1LinkedList_a441bd0ce83f968bfd035898aee35ce07}{edi\+::\+Linked\+List$<$ edi\+::\+Persona $>$}.
+
+\hypertarget{classedi_1_1List_aa1cc10f88bb6684fbb523987d51f341a}{\index{edi\+::\+List@{edi\+::\+List}!is\+Last@{is\+Last}}
+\index{is\+Last@{is\+Last}!edi\+::\+List@{edi\+::\+List}}
+\subsubsection[{is\+Last}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ virtual bool {\bf edi\+::\+List}$<$ T $>$\+::is\+Last (
+\begin{DoxyParamCaption}
+\item[{const int}]{pos}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classedi_1_1List_aa1cc10f88bb6684fbb523987d51f341a}
+
+
+Is pos the last list's position? 
+
+\begin{DoxyReturn}{Devuelve}
+true if the list is empty. 
+\end{DoxyReturn}
+
+
+Implementado en \hyperlink{classedi_1_1LinkedList_a4613b0e1e24af6da544c7925b47d4ade}{edi\+::\+Linked\+List$<$ T $>$} y \hyperlink{classedi_1_1LinkedList_a4613b0e1e24af6da544c7925b47d4ade}{edi\+::\+Linked\+List$<$ edi\+::\+Persona $>$}.
+
+\hypertarget{classedi_1_1List_ab3befc73438a24042d3aa6248e8a0e74}{\index{edi\+::\+List@{edi\+::\+List}!is\+Valid@{is\+Valid}}
+\index{is\+Valid@{is\+Valid}!edi\+::\+List@{edi\+::\+List}}
+\subsubsection[{is\+Valid}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ virtual bool {\bf edi\+::\+List}$<$ T $>$\+::is\+Valid (
+\begin{DoxyParamCaption}
+\item[{const int}]{pos}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classedi_1_1List_ab3befc73438a24042d3aa6248e8a0e74}
+
+
+Is pos a valid \hyperlink{classedi_1_1List}{List}'s position? 
+
+\begin{DoxyReturn}{Devuelve}
+true if pos is a valid list's position. 
+\end{DoxyReturn}
+
+
+Implementado en \hyperlink{classedi_1_1LinkedList_ace987043504bd3c24845249fa4b2bdb4}{edi\+::\+Linked\+List$<$ T $>$} y \hyperlink{classedi_1_1LinkedList_ace987043504bd3c24845249fa4b2bdb4}{edi\+::\+Linked\+List$<$ edi\+::\+Persona $>$}.
+
+\hypertarget{classedi_1_1List_a7a7923cfc7a3a50f816be51bb49ba698}{\index{edi\+::\+List@{edi\+::\+List}!item@{item}}
+\index{item@{item}!edi\+::\+List@{edi\+::\+List}}
+\subsubsection[{item}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ virtual const T\& {\bf edi\+::\+List}$<$ T $>$\+::item (
+\begin{DoxyParamCaption}
+\item[{const int}]{pos}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classedi_1_1List_a7a7923cfc7a3a50f816be51bb49ba698}
+
+
+Get the item at a given position. 
+
+\begin{DoxyItemize}
+\item \mbox{[}in\mbox{]} pos is the list's position. \begin{DoxyReturn}{Devuelve}
+a const reference to the stored. 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondición}
+is\+Valid(pos) 
+\end{DoxyPrecond}
+\end{DoxyItemize}
+
+
+Implementado en \hyperlink{classedi_1_1LinkedList_a9b964bff1d09e65a96150e8fe4317912}{edi\+::\+Linked\+List$<$ T $>$} y \hyperlink{classedi_1_1LinkedList_a9b964bff1d09e65a96150e8fe4317912}{edi\+::\+Linked\+List$<$ edi\+::\+Persona $>$}.
+
+
+
+La documentación para esta clase fue generada a partir del siguiente fichero\+:\begin{DoxyCompactItemize}
+\item 
+edi\+\_\+\+List.\+hpp\end{DoxyCompactItemize}

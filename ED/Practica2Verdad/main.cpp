@@ -19,6 +19,17 @@
 using namespace std;
 using namespace edi;
 
+/**
+  \mainpage Practica 2, creacion de una Lista
+  \author José Pérez-Parras Toledano
+  \date 4 de Abril de 2015
+*/
+
+
+/**
+  \main Programa principal
+  \brief Realiza las llamadas a las funciones para cargar los contornos y calcular el error
+*/
 int main(){
 	int numAlum;
 	Persona alumno1, alumno2;
@@ -36,7 +47,7 @@ int main(){
 		cout << "3) Mostrar los alumnos entre dos alumnos de forma ascendente" << endl;
 		cout << "4) Mostrar los alumnos entre dos alumnos de forma descendente" << endl;
 		cout << "5) Modificar un alumno" << endl;
-		cout << "Que desea hacer: "	<< endl;
+		cout << "Que desea hacer: ";
 		cin >> menu;
 
 
@@ -93,4 +104,5 @@ int main(){
 
 	}
 
+return 0;
 }

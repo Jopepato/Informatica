@@ -148,17 +148,15 @@ namespace edi {
         int insert = 0;
         //Comprobamos si la lista esta vacia, en tal caso insertamos el elemento como primero.
         if(isEmpty() == true){
-          edi::LinkedNode<T> cabeza(item, NULL, NULL);
           setHead(new edi::LinkedNode<T>(item, NULL, NULL));
           insert = 1;
         }else{
-        goTo(0);
+
+        setCurrent(head());
+        setPrevious(NULL);
         //Nos vamos al primer elemento de la lista y empezamos a recorrer
         
-        //Para moverse por la lista usamos el Goto
         for(int i=0; (current()!=NULL) && (insert == 0); i++){
-
-          goTo(i);
 
           //Si el elemento a insertar es menor que el elemento de cabecera
           if((item < (current()->item())) && (previous()==NULL)){
@@ -184,6 +182,10 @@ namespace edi {
             current()->setPrevious(previous()->next());
             insert=1;
           }
+
+          //Nos vamos al siguiente elemento
+          setPrevious(current());
+          setCurrent(current()->next());
         }
       }
         //Las postcondiciones
@@ -207,11 +209,13 @@ namespace edi {
 				goTo(pos);
 				edi::LinkedNode<T> * old = current();
 				if (previous()==0)
+          //Estamos borrando la cabeza
 					setHead(current()->next());
 				else{
 					previous()->setNext(current()->next());
-            //Comprobamos si era el ultimo
+            //Esto se queda asi si fuera el ultimo
             if((current()->next())!=NULL){
+              //Si esta en medio
               (current()->next())->setPrevious(previous());
             }
         }

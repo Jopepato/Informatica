@@ -247,7 +247,7 @@ Persona generarPersona()
 }
 
 //Selecciona personas aleatorias del fichero de personas 
-vector <Persona> generarPersonas(char *fichero, int numeroPersonas)
+vector <Persona> generarPersonas(const char *fichero,const int &numeroPersonas)
 {
 	vector <Persona> v;
 	vector <Persona> personasSeleccionadas;

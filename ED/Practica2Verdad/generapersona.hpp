@@ -33,6 +33,6 @@ edi::Persona generarPersona();
 	\post   El número de componentes del vector devuelto debe ser igual a numeroPersonas
 	\sa     generarPersona
 */
-std::vector <edi::Persona> generarPersonas(char *fichero, int numeroPersonas);
+std::vector <edi::Persona> generarPersonas(const char *fichero,const int &numeroPersonas);
 
 #endif //_GENERAR_PERSONA_HPP_
