@@ -85,7 +85,6 @@ class Asignatura{
 			\param	const Persona alumno1
 			\param 	const Persona alumno2
  		*/
-
 		inline void ListadoEntreDosAlumnosAscendente(const Persona &alumno1, const Persona alumno2){
 			//Condiciones iniciales
 			assert(alumnos_.findItem(alumno1) != -1);
@@ -122,7 +121,6 @@ class Asignatura{
 			\param	const Persona alumno1
 			\param 	const Persona alumno2
  		*/
-
 		inline void ListadoEntreDosAlumnosDescendente(const Persona &alumno1, const Persona alumno2){
 			//Condiciones iniciales
 			assert(alumnos_.findItem(alumno1) != -1);
