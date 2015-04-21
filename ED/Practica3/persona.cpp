@@ -95,7 +95,7 @@ namespace edi{
 		\return Flujo de salida en el que se han escrito los datos de la Persona
 		\sa     operator>>
 	*/
-	std::ostream & operator<<( std::ostream &stream, const edi::Persona &p)
+	friend std::ostream & operator<<( std::ostream &stream, const edi::Persona &p)
 	{
 		stream << p.nombre() << " " << p.apellido() << " " << p.dni() <<  std::endl;
 		return stream;
@@ -110,7 +110,7 @@ namespace edi{
 		\return Flujo de salida en el que se han escrito los datos de la Persona
 		\sa     operator<<
 	*/
-	std::istream &operator>>( std::istream &stream, edi::Persona &p)
+	friend std::istream &operator>>( std::istream &stream, edi::Persona &p)
 	{
 		char aux[30];
 		int dni;
@@ -128,18 +128,23 @@ namespace edi{
 		return stream;
 	};
 
-	std:ofstream & operator<<(std::ofstream& out, Persona const& p){
-		//Lee del fichero
-
-
-
-
+	friend std:ofstream & operator<<(std::ofstream& out, Persona const& p){
+		//Escribe en fichero
+		stream << p.nombre() << " " << p.apellido() << " " << p.dni() << std:endl;
+		return stream;
 	};
 
 
 	friend std::ifstream operator>> (std::ifstream& in, Persona& p){
-		//Escribe en el fichero
-
+		//Lee en fichero
+		char aux[30];
+		int dni;
+		stream >> aux;
+		p.nombre(aux);
+		stream >> aux;
+		p.apellido(aux);
+		stream >> dni;
+		p.dni(dni);
 	};
 }
 
