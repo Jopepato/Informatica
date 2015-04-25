@@ -13,7 +13,7 @@ int main()
         exit(-1);
     case 0:
         printf ("Soy el hijo, mi PID es %d y mi PPID es %d \n", getpid(), getppid());
-        sleep (30);
+        sleep (12);
         break;
     default:
         printf ("Soy el padre, mi PID es %d y el PID de mi hijo es %d \n", getpid(), rf);

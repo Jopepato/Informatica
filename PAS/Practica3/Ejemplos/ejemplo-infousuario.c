@@ -32,6 +32,7 @@ int main(int argc, char *argv[])
 
     printf("Nombre: %s\n", pw->pw_gecos);
     printf("Password: %s\n", pw->pw_passwd);
+    printf("UID: %d\n", pw->pw_uid);
     printf("Home: %s\n", pw->pw_dir);
     printf("Número de grupo principal: %d\n", pw->pw_gid);
 

@@ -1,12 +1,3 @@
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
-#include <sys/stat.h>
-#include <sys/types.h>
-#include <mqueue.h>
-#include <time.h>
-#include <errno.h>
-
 #include "common.h"
 
 // Apuntador al fichero de log (se utilizará en el ejercicio resumen)
@@ -14,14 +5,56 @@ FILE *fLog = NULL;
 
 int main(int argc, char **argv)
 {
+
+
+	//Nombre de la cola
+
+	char * user;
+	char server[MAX_SIZE];
+	char client[MAX_SIZE];
+	
 	// Cola del servidor
 	mqd_t mq_server;
+	//Cola del cliente
+	mqd_t mq_client;
+
+	//Para los atributos de la cola
+	struct mq_attr attr;
 
 	// Buffer para intercambiar mensajes
 	char buffer[MAX_SIZE];
+	char bufferRegex[MAX_SIZE];
+
+	//Numero de bytes leidos
+	ssize_t bytes_read;
+
+		// Inicializar los atributos de la cola
+	attr.mq_maxmsg = 10;        // Maximo número de mensajes
+	attr.mq_msgsize = MAX_SIZE; // Maximo tamaño de un mensaje
+
+
+	//Le ponemos nombre al servidor
+	user = getenv("USER");
+	strcpy(server, SERVER_QUEUE);
+	strcat(server, "-");
+	strcat(server, user);
+	
+	strcpy(client, CLIENT_QUEUE);
+	strcat(client, "-");
+	strcat(client, user);
+
+
+	//Abrimos la cola del cliente
+	mq_client = mq_open(client, O_CREAT | O_RDONLY, 0644, &attr);
+	if(mq_client == (mqd_t)-1){
+		perror("Error al abrir la cola del cliente\n");
+		exit(-1);
+	}
+
+
 
 	// Abrir la cola del servidor
-	mq_server = mq_open(SERVER_QUEUE, O_WRONLY);
+	mq_server = mq_open(server, O_WRONLY);
 	if(mq_server == (mqd_t)-1 ){
         	perror("Error al abrir la cola del servidor");
        		exit(-1);
@@ -43,12 +76,38 @@ int main(int argc, char **argv)
 			exit(-1);
 		}
 
+
+		//Y recibimos el mensaje del servidor del emparejamiento
+
+
+		// Recibir el mensaje
+		bytes_read = mq_receive(mq_client, bufferRegex, MAX_SIZE, NULL);
+		// Comprar que la recepción es correcta (bytes leidos no son negativos)
+		if(bytes_read < 0){
+			perror("Error al recibir el mensaje");
+			exit(-1);
+		}
+
+		// Cerrar la cadena
+		bufferRegex[bytes_read] = '\0';
+
+		printf("El mensaje: %s\n", bufferRegex);
+
+
+
+
 	// Iterar hasta escribir el código de salida
 	} while (strncmp(buffer, MSG_STOP, strlen(MSG_STOP)));
 
 	// Cerrar la cola del servidor
 	if(mq_close(mq_server) == (mqd_t)-1){
 		perror("Error al cerrar la cola del servidor");
+		exit(-1);
+	}
+
+	//Cerrar la cola del cliente
+	if(mq_close(mq_client) == (mqd_t)-1){
+		perror("Error al cerrar la cola del cliente");
 		exit(-1);
 	}
 

@@ -115,13 +115,13 @@ int main() {
 				perror("[PADRE]: Error cerrando la cola");
 				exit(-1);
 			}
+			printf("[PADRE]: Cola cerrada.\n");
+			died=wait(&status);
 			// Eliminar la cola
 			if(mq_unlink(QUEUE_NAME) == -1){
 				perror("[PADRE]: Error eliminando la cola");
 				exit(-1);
 			}
-			printf("[PADRE]: Cola cerrada.\n");
-			died=wait(&status);
 			printf("[PADRE]: El proceso hijo con PID %d ha salido con código de error %d. Salgo...\n", died, status);			
 	}
 
