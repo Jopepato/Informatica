@@ -3,6 +3,8 @@
 // Apuntador al fichero de log (se utilizará en el ejercicio resumen)
 FILE *fLog = NULL;
 
+void funcionLog(char * mensaje);
+
 int main(int argc, char **argv)
 {
 
@@ -10,6 +12,7 @@ int main(int argc, char **argv)
 	//Nombre de la cola
 
 	char * user;
+	char logmsg[MAX_SIZE];
 	char server[MAX_SIZE];
 	char client[MAX_SIZE];
 	
@@ -29,9 +32,10 @@ int main(int argc, char **argv)
 	ssize_t bytes_read;
 
 		// Inicializar los atributos de la cola
+	
 	attr.mq_maxmsg = 10;        // Maximo número de mensajes
 	attr.mq_msgsize = MAX_SIZE; // Maximo tamaño de un mensaje
-
+	
 
 	//Le ponemos nombre al servidor
 	user = getenv("USER");
@@ -45,9 +49,10 @@ int main(int argc, char **argv)
 
 
 	//Abrimos la cola del cliente
-	mq_client = mq_open(client, O_CREAT | O_RDONLY, 0644, &attr);
+	mq_client = mq_open(client, O_RDONLY, 0644, &attr);
 	if(mq_client == (mqd_t)-1){
-		perror("Error al abrir la cola del cliente\n");
+		perror("Error al abrir la cola del cliente");
+		funcionLog("Error al abrir la cola del cliente");
 		exit(-1);
 	}
 
@@ -57,10 +62,12 @@ int main(int argc, char **argv)
 	mq_server = mq_open(server, O_WRONLY);
 	if(mq_server == (mqd_t)-1 ){
         	perror("Error al abrir la cola del servidor");
+        	funcionLog("Error al abrir la cola del servidor");
        		exit(-1);
 	}
 
 	printf("Mandando mensajes al servidor (escribir \"%s\" para parar):\n", MSG_STOP);
+	funcionLog("Mandando mensajes al servidor");
 
 	do {
 		printf("> ");
@@ -73,8 +80,12 @@ int main(int argc, char **argv)
 		// Enviar y comprobar si el mensaje se manda
 		if(mq_send(mq_server, buffer, MAX_SIZE, 0) != 0){
 			perror("Error al enviar el mensaje");
+			funcionLog("Error al enviar el mensaje");
 			exit(-1);
 		}
+
+		sprintf(logmsg, "Mensaje enviado: %s", buffer);
+		funcionLog(logmsg);
 
 
 		//Y recibimos el mensaje del servidor del emparejamiento
@@ -85,36 +96,40 @@ int main(int argc, char **argv)
 		// Comprar que la recepción es correcta (bytes leidos no son negativos)
 		if(bytes_read < 0){
 			perror("Error al recibir el mensaje");
+			funcionLog("Error al recibir el mensaje del servidor");
 			exit(-1);
+		}else{
+			//Si el mensaje recibido es exit, no lo mostramos
+			if(strncmp(bufferRegex, MSG_STOP, strlen(MSG_STOP))){
+				printf("El mensaje: %s\n", bufferRegex);
+				sprintf(logmsg, "Mensaje recibido: %s", bufferRegex);
+				funcionLog(logmsg);
+			}
 		}
-
-		// Cerrar la cadena
-		bufferRegex[bytes_read] = '\0';
-
-		printf("El mensaje: %s\n", bufferRegex);
-
 
 
 
 	// Iterar hasta escribir el código de salida
-	} while (strncmp(buffer, MSG_STOP, strlen(MSG_STOP)));
+	} while (strncmp(bufferRegex, MSG_STOP, strlen(MSG_STOP)));
+
+	funcionLog("Cerramos las colas");
 
 	// Cerrar la cola del servidor
 	if(mq_close(mq_server) == (mqd_t)-1){
 		perror("Error al cerrar la cola del servidor");
+		funcionLog("Error al cerrar la cola del servidor");
 		exit(-1);
 	}
 
 	//Cerrar la cola del cliente
 	if(mq_close(mq_client) == (mqd_t)-1){
 		perror("Error al cerrar la cola del cliente");
+		funcionLog("Error al cerrar la cola del cliente");
 		exit(-1);
 	}
 
 	return 0;
 }
-
-
 
 
 

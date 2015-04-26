@@ -1,0 +1,5 @@
+Ejercicios realizados por: José Pérez-Parras Toledano
+
+
+	Ejercicio 4:
+		El programa servidor captura las señales y cierra las colas y las elimina, pero tengo un fallo al enviar la señal para cerrar el programa cliente, asi que este se queda abierto.

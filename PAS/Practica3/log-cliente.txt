@@ -1,0 +1,496 @@
+[2015-04-26, 13:10:39] ==> Mandando mensajes al servidor
+[2015-04-26, 13:10:40] ==> Mensaje enviado: aaa
+[2015-04-26, 13:10:40] ==> Recibido el mensaje: aaa
+[2015-04-26, 13:10:40] ==> Mensaje enviado: No empareja
+[2015-04-26, 13:10:40] ==> Mensaje recibido: No empareja
+[2015-04-26, 13:10:41] ==> Mensaje enviado: a
+[2015-04-26, 13:10:41] ==> Recibido el mensaje: a
+[2015-04-26, 13:10:41] ==> Mensaje enviado: No empareja
+[2015-04-26, 13:10:41] ==> Mensaje recibido: No empareja
+[2015-04-26, 13:10:41] ==> Mensaje enviado: a
+[2015-04-26, 13:10:41] ==> Recibido el mensaje: a
+[2015-04-26, 13:10:41] ==> Mensaje enviado: No empareja
+[2015-04-26, 13:10:41] ==> Mensaje recibido: No empareja
+[2015-04-26, 13:10:41] ==> Mensaje enviado: a
+[2015-04-26, 13:10:41] ==> Recibido el mensaje: a
+[2015-04-26, 13:10:41] ==> Mensaje enviado: No empareja
+[2015-04-26, 13:10:41] ==> Mensaje recibido: No empareja
+[2015-04-26, 13:10:41] ==> Mensaje enviado: a
+[2015-04-26, 13:10:41] ==> Recibido el mensaje: a
+[2015-04-26, 13:10:41] ==> Mensaje enviado: No empareja
+[2015-04-26, 13:10:41] ==> Mensaje recibido: No empareja
+[2015-04-26, 13:10:41] ==> Mensaje enviado: a
+[2015-04-26, 13:10:41] ==> Recibido el mensaje: a
+[2015-04-26, 13:10:41] ==> Mensaje enviado: No empareja
+[2015-04-26, 13:10:41] ==> Mensaje recibido: No empareja
+[2015-04-26, 13:10:41] ==> Mensaje enviado: a
+[2015-04-26, 13:10:41] ==> Recibido el mensaje: a
+[2015-04-26, 13:10:41] ==> Mensaje enviado: No empareja
+[2015-04-26, 13:10:41] ==> Mensaje recibido: No empareja
+[2015-04-26, 13:10:41] ==> Mensaje enviado: a
+[2015-04-26, 13:10:41] ==> Recibido el mensaje: a
+[2015-04-26, 13:10:41] ==> Mensaje enviado: No empareja
+[2015-04-26, 13:10:41] ==> Mensaje recibido: No empareja
+[2015-04-26, 13:10:42] ==> Mensaje enviado: aa
+[2015-04-26, 13:10:42] ==> Recibido el mensaje: aa
+[2015-04-26, 13:10:42] ==> Mensaje enviado: No empareja
+[2015-04-26, 13:10:42] ==> Mensaje recibido: No empareja
+[2015-04-26, 13:10:42] ==> Mensaje enviado: a
+[2015-04-26, 13:10:42] ==> Recibido el mensaje: a
+[2015-04-26, 13:10:42] ==> Mensaje enviado: No empareja
+[2015-04-26, 13:10:42] ==> Mensaje recibido: No empareja
+[2015-04-26, 13:10:43] ==> Mensaje enviado: a
+[2015-04-26, 13:10:43] ==> Recibido el mensaje: a
+[2015-04-26, 13:10:43] ==> Mensaje enviado: No empareja
+[2015-04-26, 13:10:43] ==> Mensaje recibido: No empareja
+[2015-04-26, 13:10:43] ==> Mensaje enviado: a
+[2015-04-26, 13:10:43] ==> Recibido el mensaje: a
+[2015-04-26, 13:10:43] ==> Mensaje enviado: No empareja
+[2015-04-26, 13:10:43] ==> Mensaje recibido: No empareja
+[2015-04-26, 13:10:43] ==> Mensaje enviado: a
+[2015-04-26, 13:10:43] ==> Recibido el mensaje: a
+[2015-04-26, 13:10:43] ==> Mensaje enviado: No empareja
+[2015-04-26, 13:10:43] ==> Mensaje recibido: No empareja
+[2015-04-26, 13:10:43] ==> Mensaje enviado: a
+[2015-04-26, 13:10:43] ==> Recibido el mensaje: a
+[2015-04-26, 13:10:43] ==> Mensaje enviado: No empareja
+[2015-04-26, 13:10:43] ==> Mensaje recibido: No empareja
+[2015-04-26, 13:10:43] ==> Mensaje enviado: a
+[2015-04-26, 13:10:43] ==> Recibido el mensaje: a
+[2015-04-26, 13:10:43] ==> Mensaje enviado: No empareja
+[2015-04-26, 13:10:43] ==> Mensaje recibido: No empareja
+[2015-04-26, 13:10:45] ==> Mensaje enviado: exit
+[2015-04-26, 13:10:45] ==> Recibido el mensaje: exit
+[2015-04-26, 13:10:45] ==> Mensaje enviado: No empareja
+[2015-04-26, 13:10:45] ==> Cerramos y borramos las colas
+[2015-04-26, 13:10:45] ==> Mensaje recibido: No empareja
+[2015-04-26, 13:10:45] ==> Colas cerradas y eliminadas
+[2015-04-26, 13:10:45] ==> Liberamos el regex
+[2015-04-26, 13:10:45] ==> Cerramos las colas
+[2015-04-26, 13:11:30] ==> Mandando mensajes al servidor
+[2015-04-26, 13:11:33] ==> Mensaje enviado: [A-Z]
+[2015-04-26, 13:11:33] ==> Recibido el mensaje: [A-Z]
+[2015-04-26, 13:11:33] ==> Mensaje enviado: Empareja
+[2015-04-26, 13:11:33] ==> Mensaje recibido: Empareja
+[2015-04-26, 13:11:36] ==> Mensaje enviado: exit
+[2015-04-26, 13:11:36] ==> Recibido el mensaje: exit
+[2015-04-26, 13:11:36] ==> Mensaje enviado: No empareja
+[2015-04-26, 13:11:36] ==> Cerramos y borramos las colas
+[2015-04-26, 13:11:36] ==> Mensaje recibido: No empareja
+[2015-04-26, 13:11:36] ==> Colas cerradas y eliminadas
+[2015-04-26, 13:11:36] ==> Cerramos las colas
+[2015-04-26, 13:11:36] ==> Liberamos el regex
+[2015-04-26, 13:37:24] ==> Mandando mensajes al servidor
+[2015-04-26, 13:37:25] ==> Mensaje enviado: hola
+[2015-04-26, 13:37:25] ==> Recibido el mensaje: hola
+[2015-04-26, 13:37:25] ==> Mensaje enviado: No empareja
+[2015-04-26, 13:37:25] ==> Mensaje recibido: No empareja
+[2015-04-26, 13:37:28] ==> Mensaje enviado: No empareja
+[2015-04-26, 13:37:28] ==> Mensaje enviado: exit
+[2015-04-26, 13:37:28] ==> Mensaje recibido: exit
+[2015-04-26, 13:37:28] ==> Mensaje enviado: No empareja
+[2015-04-26, 13:37:28] ==> Cerramos las colas
+[2015-04-26, 13:37:28] ==> Cerramos y borramos las colas
+[2015-04-26, 13:37:28] ==> Colas cerradas y eliminadas
+[2015-04-26, 13:37:28] ==> Liberamos el regex
+[2015-04-26, 13:37:28] ==> Cerramos ficheros
+[2015-04-26, 13:37:36] ==> Mandando mensajes al servidor
+[2015-04-26, 13:37:39] ==> Hemos capturado una señal y procedemos a cerrar ambos programas
+[2015-04-26, 13:37:39] ==> Mensaje enviado: exit
+[2015-04-26, 13:37:39] ==> Cerramos y borramos las colas
+[2015-04-26, 13:37:39] ==> Colas cerradas y eliminadas
+[2015-04-26, 13:37:39] ==> Liberamos el regex
+[2015-04-26, 13:37:39] ==> Cerramos ficheros
+[2015-04-26, 13:39:25] ==> Mandando mensajes al servidor
+[2015-04-26, 13:39:27] ==> Mensaje enviado: exit
+[2015-04-26, 13:39:27] ==> Mensaje recibido: exit
+[2015-04-26, 13:39:27] ==> Cerramos las colas
+[2015-04-26, 13:39:27] ==> Mensaje enviado:  Dn�
+[2015-04-26, 13:39:27] ==> Mensaje enviado: No empareja
+[2015-04-26, 13:39:27] ==> Cerramos y borramos las colas
+[2015-04-26, 13:39:27] ==> Colas cerradas y eliminadas
+[2015-04-26, 13:39:27] ==> Liberamos el regex
+[2015-04-26, 13:39:27] ==> Cerramos ficheros
+[2015-04-26, 13:39:35] ==> Mandando mensajes al servidor
+[2015-04-26, 13:39:37] ==> Mensaje enviado: exit
+[2015-04-26, 13:39:37] ==> Mensaje recibido: exit
+[2015-04-26, 13:39:37] ==> Cerramos las colas
+[2015-04-26, 13:39:37] ==> Mensaje enviado:  $X|�
+[2015-04-26, 13:39:37] ==> Mensaje enviado: No empareja
+[2015-04-26, 13:39:37] ==> Cerramos y borramos las colas
+[2015-04-26, 13:39:37] ==> Colas cerradas y eliminadas
+[2015-04-26, 13:39:37] ==> Liberamos el regex
+[2015-04-26, 13:39:37] ==> Cerramos ficheros
+[2015-04-26, 13:39:42] ==> Mandando mensajes al servidor
+[2015-04-26, 13:39:45] ==> Hemos capturado una señal y procedemos a cerrar ambos programas
+[2015-04-26, 13:39:45] ==> Mensaje enviado: exit
+[2015-04-26, 13:39:45] ==> Cerramos y borramos las colas
+[2015-04-26, 13:39:45] ==> Colas cerradas y eliminadas
+[2015-04-26, 13:39:45] ==> Liberamos el regex
+[2015-04-26, 13:39:45] ==> Cerramos ficheros
+[2015-04-26, 13:39:53] ==> Hemos capturado una señal y procedemos a cerrar ambos programas
+[2015-04-26, 13:39:53] ==> Mensaje enviado: exit
+[2015-04-26, 13:39:53] ==> Cerramos y borramos las colas
+[2015-04-26, 13:39:53] ==> Colas cerradas y eliminadas
+[2015-04-26, 13:39:53] ==> Liberamos el regex
+[2015-04-26, 13:39:53] ==> Cerramos ficheros
+[2015-04-26, 13:48:15] ==> Mandando mensajes al servidor
+[2015-04-26, 13:48:16] ==> Mensaje enviado: hola
+[2015-04-26, 13:48:16] ==> Recibido el mensaje: hola
+[2015-04-26, 13:48:16] ==> Mensaje enviado: No empareja
+[2015-04-26, 13:48:16] ==> Mensaje recibido: No empareja
+[2015-04-26, 13:48:18] ==> Mensaje enviado: exit
+[2015-04-26, 13:48:18] ==> Mensaje enviado: exit
+[2015-04-26, 13:48:18] ==> Mensaje recibido: exit
+[2015-04-26, 13:48:18] ==> Cerramos las colas
+[2015-04-26, 13:48:18] ==> Mensaje enviado: No empareja
+[2015-04-26, 13:48:18] ==> Cerramos y borramos las colas
+[2015-04-26, 13:48:18] ==> Colas cerradas y eliminadas
+[2015-04-26, 13:48:18] ==> Liberamos el regex
+[2015-04-26, 13:48:18] ==> Cerramos ficheros
+[2015-04-26, 13:48:59] ==> Mandando mensajes al servidor
+[2015-04-26, 13:49:01] ==> Mensaje enviado: hola
+[2015-04-26, 13:49:01] ==> Recibido el mensaje: hola
+[2015-04-26, 13:49:01] ==> Mensaje enviado: No empareja
+[2015-04-26, 13:49:01] ==> Mensaje recibido: No empareja
+[2015-04-26, 13:49:03] ==> Mensaje enviado: exit
+[2015-04-26, 13:49:03] ==> Mensaje enviado: exit
+[2015-04-26, 13:49:03] ==> Mensaje enviado: No empareja
+[2015-04-26, 13:49:03] ==> Mensaje recibido: exit
+[2015-04-26, 13:49:03] ==> Cerramos y borramos las colas
+[2015-04-26, 13:49:03] ==> Cerramos las colas
+[2015-04-26, 13:49:03] ==> Colas cerradas y eliminadas
+[2015-04-26, 13:49:03] ==> Liberamos el regex
+[2015-04-26, 13:49:03] ==> Cerramos ficheros
+[2015-04-26, 13:50:00] ==> Mandando mensajes al servidor
+[2015-04-26, 13:50:03] ==> Hemos capturado una señal y procedemos a cerrar ambos programas
+[2015-04-26, 13:50:03] ==> Mensaje enviado: exit
+[2015-04-26, 13:50:03] ==> Cerramos y borramos las colas
+[2015-04-26, 13:50:03] ==> Colas cerradas y eliminadas
+[2015-04-26, 13:50:03] ==> Liberamos el regex
+[2015-04-26, 13:50:03] ==> Cerramos ficheros
+[2015-04-26, 13:50:06] ==> Mensaje enviado: reset
+[2015-04-26, 13:50:06] ==> Mensaje recibido: exit
+[2015-04-26, 13:50:06] ==> Cerramos las colas
+[2015-04-26, 13:51:36] ==> Mandando mensajes al servidor
+[2015-04-26, 13:51:37] ==> Mensaje enviado: hola
+[2015-04-26, 13:51:37] ==> Recibido el mensaje: hola
+[2015-04-26, 13:51:37] ==> Mensaje enviado: No empareja
+[2015-04-26, 13:51:37] ==> Mensaje recibido: No empareja
+[2015-04-26, 13:51:39] ==> Mensaje enviado: exit
+[2015-04-26, 13:51:39] ==> Mensaje enviado: exit
+[2015-04-26, 13:51:39] ==> Mensaje recibido: exit
+[2015-04-26, 13:51:39] ==> Cerramos las colas
+[2015-04-26, 13:51:39] ==> Mensaje enviado: No empareja
+[2015-04-26, 13:51:39] ==> Cerramos y borramos las colas
+[2015-04-26, 13:51:39] ==> Colas cerradas y eliminadas
+[2015-04-26, 13:51:39] ==> Liberamos el regex
+[2015-04-26, 13:51:39] ==> Cerramos ficheros
+[2015-04-26, 13:51:44] ==> Mandando mensajes al servidor
+[2015-04-26, 13:51:46] ==> Hemos capturado una señal y procedemos a cerrar ambos programas
+[2015-04-26, 13:51:46] ==> Mensaje enviado: exit
+[2015-04-26, 13:51:46] ==> Cerramos y borramos las colas
+[2015-04-26, 13:51:46] ==> Colas cerradas y eliminadas
+[2015-04-26, 13:51:46] ==> Liberamos el regex
+[2015-04-26, 13:51:46] ==> Cerramos ficheros
+[2015-04-26, 13:51:50] ==> Mensaje enviado: aaaa
+[2015-04-26, 13:51:50] ==> Mensaje recibido: exit
+[2015-04-26, 13:51:50] ==> Cerramos las colas
+[2015-04-26, 13:54:45] ==> Mandando mensajes al servidor
+[2015-04-26, 13:54:48] ==> Mensaje enviado: exit
+[2015-04-26, 13:54:48] ==> Mensaje recibido: exit
+[2015-04-26, 13:54:48] ==> Cerramos las colas
+[2015-04-26, 13:54:48] ==> Mensaje enviado: exit
+[2015-04-26, 13:54:48] ==> Mensaje enviado: No empareja
+[2015-04-26, 13:54:48] ==> Cerramos y borramos las colas
+[2015-04-26, 13:54:48] ==> Colas cerradas y eliminadas
+[2015-04-26, 13:54:48] ==> Liberamos el regex
+[2015-04-26, 13:54:48] ==> Cerramos ficheros
+[2015-04-26, 13:56:30] ==> Mandando mensajes al servidor
+[2015-04-26, 13:56:32] ==> Mensaje enviado: exit
+[2015-04-26, 13:56:32] ==> Mensaje recibido: exit
+[2015-04-26, 13:56:32] ==> Cerramos las colas
+[2015-04-26, 13:56:32] ==> Mensaje enviado: exit
+[2015-04-26, 13:56:32] ==> Cerramos y borramos las colas
+[2015-04-26, 13:56:32] ==> Colas cerradas y eliminadas
+[2015-04-26, 13:56:32] ==> Liberamos el regex
+[2015-04-26, 13:56:32] ==> Cerramos ficheros
+[2015-04-26, 13:57:02] ==> Mandando mensajes al servidor
+[2015-04-26, 13:57:04] ==> Mensaje enviado: exit
+[2015-04-26, 13:57:04] ==> Mensaje recibido: exit
+[2015-04-26, 13:57:04] ==> Cerramos las colas
+[2015-04-26, 13:57:04] ==> Mensaje enviado: exit
+[2015-04-26, 13:57:04] ==> Cerramos y borramos las colas
+[2015-04-26, 13:57:04] ==> Colas cerradas y eliminadas
+[2015-04-26, 13:57:04] ==> Liberamos el regex
+[2015-04-26, 13:57:04] ==> Cerramos ficheros
+[2015-04-26, 13:58:00] ==> Mandando mensajes al servidor
+[2015-04-26, 13:58:01] ==> Mensaje enviado: exit
+[2015-04-26, 13:58:01] ==> Mensaje recibido: exit
+[2015-04-26, 13:58:01] ==> Mensaje enviado: exit
+[2015-04-26, 13:58:01] ==> Cerramos las colas
+[2015-04-26, 13:58:01] ==> Cerramos y borramos las colas
+[2015-04-26, 13:58:01] ==> Colas cerradas y eliminadas
+[2015-04-26, 13:58:01] ==> Liberamos el regex
+[2015-04-26, 13:58:16] ==> Mandando mensajes al servidor
+[2015-04-26, 13:58:18] ==> Hemos capturado una señal y procedemos a cerrar ambos programas
+[2015-04-26, 13:58:18] ==> Mensaje enviado: exit
+[2015-04-26, 13:58:18] ==> Cerramos y borramos las colas
+[2015-04-26, 13:58:18] ==> Colas cerradas y eliminadas
+[2015-04-26, 13:58:18] ==> Liberamos el regex
+[2015-04-26, 13:58:18] ==> Cerramos ficheros
+[2015-04-26, 13:59:32] ==> Mandando mensajes al servidor
+[2015-04-26, 13:59:33] ==> Mensaje enviado: exit
+[2015-04-26, 13:59:33] ==> Mensaje recibido: exit
+[2015-04-26, 13:59:33] ==> Cerramos las colas
+[2015-04-26, 13:59:33] ==> Mensaje enviado: exit
+[2015-04-26, 13:59:33] ==> Cerramos y borramos las colas
+[2015-04-26, 13:59:33] ==> Colas cerradas y eliminadas
+[2015-04-26, 13:59:33] ==> Liberamos el regex
+[2015-04-26, 13:59:33] ==> Cerramos el fichero
+[2015-04-26, 14:01:00] ==> Mandando mensajes al servidor
+[2015-04-26, 14:01:01] ==> Mensaje enviado: exit
+[2015-04-26, 14:01:01] ==> Mensaje recibido: exit
+[2015-04-26, 14:01:01] ==> Cerramos las colas
+[2015-04-26, 14:01:01] ==> Mensaje enviado: exit
+[2015-04-26, 14:01:01] ==> Cerramos y borramos las colas
+[2015-04-26, 14:01:01] ==> Colas cerradas y eliminadas
+[2015-04-26, 14:01:01] ==> Liberamos el regex
+[2015-04-26, 14:01:06] ==> Mandando mensajes al servidor
+[2015-04-26, 14:01:10] ==> Hemos capturado una señal y procedemos a cerrar ambos programas
+[2015-04-26, 14:01:10] ==> Mensaje enviado: exit
+[2015-04-26, 14:01:10] ==> Cerramos y borramos las colas
+[2015-04-26, 14:01:10] ==> Colas cerradas y eliminadas
+[2015-04-26, 14:01:10] ==> Liberamos el regex
+[2015-04-26, 14:01:10] ==> Cerramos ficheros
+[2015-04-26, 14:05:21] ==> Mandando mensajes al servidor
+[2015-04-26, 14:05:22] ==> Mensaje enviado: exit
+[2015-04-26, 14:05:22] ==> Mensaje recibido: exit
+[2015-04-26, 14:05:22] ==> Mensaje enviado: exit
+[2015-04-26, 14:05:22] ==> Cerramos las colas
+[2015-04-26, 14:05:22] ==> Cerramos y borramos las colas
+[2015-04-26, 14:05:22] ==> Colas cerradas y eliminadas
+[2015-04-26, 14:05:22] ==> Liberamos el regex
+[2015-04-26, 14:07:24] ==> Mandando mensajes al servidor
+[2015-04-26, 14:07:26] ==> Mensaje enviado: hola
+[2015-04-26, 14:07:26] ==> Recibido el mensaje: hola
+[2015-04-26, 14:07:26] ==> Mensaje enviado: No empareja
+[2015-04-26, 14:07:26] ==> Mensaje recibido: No empareja
+[2015-04-26, 14:07:28] ==> Mensaje enviado: exit
+[2015-04-26, 14:07:28] ==> Mensaje enviado: exit
+[2015-04-26, 14:07:28] ==> Cerramos las colas
+[2015-04-26, 14:07:28] ==> Cerramos y borramos las colas
+[2015-04-26, 14:07:28] ==> Colas cerradas y eliminadas
+[2015-04-26, 14:07:28] ==> Liberamos el regex
+[2015-04-26, 14:07:34] ==> Error al abrir la cola del cliente
+[2015-04-26, 14:07:38] ==> Mandando mensajes al servidor
+[2015-04-26, 14:07:44] ==> Hemos capturado una señal y procedemos a cerrar ambos programas
+[2015-04-26, 14:07:44] ==> Mensaje enviado: exit
+[2015-04-26, 14:07:44] ==> Cerramos y borramos las colas
+[2015-04-26, 14:07:44] ==> Colas cerradas y eliminadas
+[2015-04-26, 14:07:44] ==> Liberamos el regex
+[2015-04-26, 14:07:44] ==> Cerramos ficheros
+[2015-04-26, 14:07:44] ==> Error al recibir el mensaje
+[2015-04-26, 14:08:29] ==> Mandando mensajes al servidor
+[2015-04-26, 14:08:31] ==> Hemos capturado una señal y procedemos a cerrar ambos programas
+[2015-04-26, 14:08:31] ==> Mensaje enviado: exit
+[2015-04-26, 14:08:31] ==> Cerramos y borramos las colas
+[2015-04-26, 14:08:31] ==> Colas cerradas y eliminadas
+[2015-04-26, 14:08:31] ==> Liberamos el regex
+[2015-04-26, 14:08:31] ==> Cerramos ficheros
+[2015-04-26, 14:08:31] ==> Error al recibir el mensaje
+[2015-04-26, 14:08:50] ==> Mandando mensajes al servidor
+[2015-04-26, 14:08:52] ==> Mensaje enviado: exit
+[2015-04-26, 14:08:52] ==> Cerramos las colas
+[2015-04-26, 14:08:52] ==> Mensaje enviado: exit
+[2015-04-26, 14:08:52] ==> Cerramos y borramos las colas
+[2015-04-26, 14:08:52] ==> Colas cerradas y eliminadas
+[2015-04-26, 14:08:52] ==> Liberamos el regex
+[2015-04-26, 14:25:58] ==> Mandando mensajes al servidor
+[2015-04-26, 14:26:00] ==> Mensaje enviado: hola
+[2015-04-26, 14:26:00] ==> Recibido el mensaje: hola
+[2015-04-26, 14:26:00] ==> Mensaje enviado: No empareja
+[2015-04-26, 14:26:00] ==> Mensaje recibido: No empareja
+[2015-04-26, 14:26:03] ==> Hemos capturado una señal y procedemos a cerrar ambos programas
+[2015-04-26, 14:26:03] ==> Mensaje enviado: exit
+[2015-04-26, 14:26:03] ==> Cerramos y borramos las colas
+[2015-04-26, 14:26:03] ==> Colas cerradas y eliminadas
+[2015-04-26, 14:26:03] ==> Liberamos el regex
+[2015-04-26, 14:26:03] ==> Cerramos ficheros
+[2015-04-26, 14:26:40] ==> Mandando mensajes al servidor
+[2015-04-26, 14:26:41] ==> Mensaje enviado: exit
+[2015-04-26, 14:26:41] ==> Cerramos las colas
+[2015-04-26, 14:26:41] ==> Mensaje enviado: exit
+[2015-04-26, 14:26:41] ==> Cerramos y borramos las colas
+[2015-04-26, 14:26:41] ==> Colas cerradas y eliminadas
+[2015-04-26, 14:26:41] ==> Liberamos el regex
+[2015-04-26, 14:26:46] ==> Mandando mensajes al servidor
+[2015-04-26, 14:26:48] ==> Mensaje enviado: hola
+[2015-04-26, 14:26:48] ==> Recibido el mensaje: hola
+[2015-04-26, 14:26:48] ==> Mensaje enviado: No empareja
+[2015-04-26, 14:26:48] ==> Mensaje recibido: No empareja
+[2015-04-26, 14:26:49] ==> Hemos capturado una señal y procedemos a cerrar ambos programas
+[2015-04-26, 14:26:49] ==> Mensaje enviado: exit
+[2015-04-26, 14:26:49] ==> Cerramos y borramos las colas
+[2015-04-26, 14:26:49] ==> Colas cerradas y eliminadas
+[2015-04-26, 14:26:49] ==> Liberamos el regex
+[2015-04-26, 14:26:49] ==> Cerramos ficheros
+[2015-04-26, 14:27:55] ==> Mandando mensajes al servidor
+[2015-04-26, 14:28:37] ==> Mandando mensajes al servidor
+[2015-04-26, 14:28:38] ==> Mensaje enviado: hola
+[2015-04-26, 14:28:38] ==> Recibido el mensaje: hola
+[2015-04-26, 14:28:38] ==> Mensaje enviado: No empareja
+[2015-04-26, 14:28:38] ==> Mensaje recibido: No empareja
+[2015-04-26, 14:28:40] ==> Hemos capturado una señal y procedemos a cerrar ambos programas
+[2015-04-26, 14:28:40] ==> Mensaje enviado: exit
+[2015-04-26, 14:28:40] ==> Cerramos y borramos las colas
+[2015-04-26, 14:28:40] ==> Colas cerradas y eliminadas
+[2015-04-26, 14:28:40] ==> Liberamos el regex
+[2015-04-26, 14:28:40] ==> Cerramos ficheros
+[2015-04-26, 14:30:51] ==> Mandando mensajes al servidor
+[2015-04-26, 14:30:54] ==> Mensaje enviado: hola
+[2015-04-26, 14:30:54] ==> Recibido el mensaje: hola
+[2015-04-26, 14:30:54] ==> Mensaje enviado: No empareja
+[2015-04-26, 14:30:54] ==> Mensaje recibido: No empareja
+[2015-04-26, 14:30:54] ==> Mensaje enviado: exit
+[2015-04-26, 14:30:54] ==> Mensaje enviado: exit
+[2015-04-26, 14:30:54] ==> Cerramos y borramos las colas
+[2015-04-26, 14:30:54] ==> Mensaje recibido: exit
+[2015-04-26, 14:30:54] ==> Colas cerradas y eliminadas
+[2015-04-26, 14:30:54] ==> Liberamos el regex
+[2015-04-26, 14:30:54] ==> Cerramos las colas
+[2015-04-26, 14:30:59] ==> Mandando mensajes al servidor
+[2015-04-26, 14:31:00] ==> Hemos capturado una señal y procedemos a cerrar ambos programas
+[2015-04-26, 14:31:00] ==> Mensaje enviado: exit
+[2015-04-26, 14:31:00] ==> Cerramos y borramos las colas
+[2015-04-26, 14:31:00] ==> Colas cerradas y eliminadas
+[2015-04-26, 14:31:00] ==> Liberamos el regex
+[2015-04-26, 14:31:00] ==> Cerramos ficheros
+[2015-04-26, 14:33:00] ==> Mandando mensajes al servidor
+[2015-04-26, 14:33:01] ==> Mensaje enviado: hola
+[2015-04-26, 14:33:01] ==> Recibido el mensaje: hola
+[2015-04-26, 14:33:01] ==> Mensaje enviado: No empareja
+[2015-04-26, 14:33:01] ==> Mensaje recibido: No empareja
+[2015-04-26, 14:33:02] ==> Hemos capturado una señal y procedemos a cerrar ambos programas
+[2015-04-26, 14:33:02] ==> Cerramos y borramos las colas
+[2015-04-26, 14:33:02] ==> Colas cerradas y eliminadas
+[2015-04-26, 14:33:02] ==> Liberamos el regex
+[2015-04-26, 14:33:02] ==> Cerramos ficheros
+[2015-04-26, 14:34:20] ==> Mandando mensajes al servidor
+[2015-04-26, 14:34:21] ==> Mensaje enviado: hola
+[2015-04-26, 14:34:21] ==> Recibido el mensaje: hola
+[2015-04-26, 14:34:21] ==> Mensaje enviado: No empareja
+[2015-04-26, 14:34:21] ==> Mensaje recibido: No empareja
+[2015-04-26, 14:34:23] ==> Mensaje enviado: exit
+[2015-04-26, 14:34:23] ==> Cerramos las colas
+[2015-04-26, 14:34:23] ==> Mensaje enviado: exit
+[2015-04-26, 14:34:23] ==> Cerramos y borramos las colas
+[2015-04-26, 14:34:23] ==> Colas cerradas y eliminadas
+[2015-04-26, 14:34:23] ==> Liberamos el regex
+[2015-04-26, 14:34:27] ==> Mandando mensajes al servidor
+[2015-04-26, 14:34:28] ==> Hemos capturado una señal y procedemos a cerrar ambos programas
+[2015-04-26, 14:34:28] ==> Cerramos y borramos las colas
+[2015-04-26, 14:34:28] ==> Colas cerradas y eliminadas
+[2015-04-26, 14:34:28] ==> Liberamos el regex
+[2015-04-26, 14:34:28] ==> Cerramos ficheros
+[2015-04-26, 14:37:05] ==> Mandando mensajes al servidor
+[2015-04-26, 14:37:07] ==> Hemos capturado una señal y procedemos a cerrar ambos programas
+[2015-04-26, 14:37:07] ==> Cerramos y borramos las colas
+[2015-04-26, 14:37:07] ==> Colas cerradas y eliminadas
+[2015-04-26, 14:37:07] ==> Liberamos el regex
+[2015-04-26, 14:37:07] ==> Cerramos ficheros
+[2015-04-26, 14:37:58] ==> Mandando mensajes al servidor
+[2015-04-26, 14:38:02] ==> Mensaje enviado: hola
+[2015-04-26, 14:38:02] ==> Recibido el mensaje: hola
+[2015-04-26, 14:38:02] ==> Mensaje enviado: No empareja
+[2015-04-26, 14:38:02] ==> Mensaje recibido: No empareja
+[2015-04-26, 14:38:04] ==> Hemos capturado una señal y procedemos a cerrar ambos programas
+[2015-04-26, 14:38:04] ==> Cerramos y borramos las colas
+[2015-04-26, 14:38:04] ==> Colas cerradas y eliminadas
+[2015-04-26, 14:38:04] ==> Liberamos el regex
+[2015-04-26, 14:38:04] ==> Cerramos ficheros
+[2015-04-26, 14:41:39] ==> Mandando mensajes al servidor
+[2015-04-26, 14:41:40] ==> Mensaje enviado: hola
+[2015-04-26, 14:41:40] ==> Recibido el mensaje: hola
+[2015-04-26, 14:41:40] ==> Error al enviar el mensaje
+[2015-04-26, 14:46:54] ==> Hemos capturado una señal y procedemos a cerrar ambos programas
+[2015-04-26, 14:46:54] ==> Cerramos y borramos las colas
+[2015-04-26, 14:46:54] ==> Cerramos las colas
+[2015-04-26, 14:46:54] ==> Colas cerradas y eliminadas
+[2015-04-26, 14:46:54] ==> Liberamos el regex
+[2015-04-26, 14:46:54] ==> Cerramos ficheros
+[2015-04-26, 14:47:09] ==> Mandando mensajes al servidor
+[2015-04-26, 14:47:11] ==> Hemos capturado una señal y procedemos a cerrar ambos programas
+[2015-04-26, 14:47:11] ==> Cerramos y borramos las colas
+[2015-04-26, 14:47:11] ==> Colas cerradas y eliminadas
+[2015-04-26, 14:47:11] ==> Liberamos el regex
+[2015-04-26, 14:47:11] ==> Cerramos ficheros
+[2015-04-26, 14:47:14] ==> Hemos capturado una señal y procedemos a cerrar ambos programas
+[2015-04-26, 14:47:14] ==> Cerramos y borramos las colas
+[2015-04-26, 14:47:14] ==> Colas cerradas y eliminadas
+[2015-04-26, 14:47:14] ==> Liberamos el regex
+[2015-04-26, 14:47:14] ==> Cerramos ficheros
+[2015-04-26, 14:47:15] ==> Hemos capturado una señal y procedemos a cerrar ambos programas
+[2015-04-26, 14:47:15] ==> Cerramos y borramos las colas
+[2015-04-26, 14:47:15] ==> Colas cerradas y eliminadas
+[2015-04-26, 14:47:15] ==> Liberamos el regex
+[2015-04-26, 14:47:15] ==> Cerramos ficheros
+[2015-04-26, 14:47:17] ==> Hemos capturado una señal y procedemos a cerrar ambos programas
+[2015-04-26, 14:47:17] ==> Cerramos y borramos las colas
+[2015-04-26, 14:47:17] ==> Colas cerradas y eliminadas
+[2015-04-26, 14:47:17] ==> Liberamos el regex
+[2015-04-26, 14:47:17] ==> Cerramos ficheros
+[2015-04-26, 14:47:18] ==> Hemos capturado una señal y procedemos a cerrar ambos programas
+[2015-04-26, 14:47:18] ==> Cerramos y borramos las colas
+[2015-04-26, 14:47:18] ==> Colas cerradas y eliminadas
+[2015-04-26, 14:47:18] ==> Liberamos el regex
+[2015-04-26, 14:47:18] ==> Cerramos ficheros
+[2015-04-26, 14:47:25] ==> Mensaje enviado: hola
+[2015-04-26, 14:47:25] ==> Cerramos las colas
+[2015-04-26, 14:47:27] ==> Mandando mensajes al servidor
+[2015-04-26, 14:47:28] ==> Mensaje enviado: hola
+[2015-04-26, 14:47:28] ==> Recibido el mensaje: hola
+[2015-04-26, 14:47:28] ==> Mensaje enviado: No empareja
+[2015-04-26, 14:47:28] ==> Mensaje recibido: No empareja
+[2015-04-26, 14:47:29] ==> Mensaje enviado: :>
+[2015-04-26, 14:47:29] ==> Recibido el mensaje: :>
+[2015-04-26, 14:47:29] ==> Mensaje enviado: No empareja
+[2015-04-26, 14:47:29] ==> Mensaje recibido: No empareja
+[2015-04-26, 14:47:31] ==> Mensaje enviado: exit
+[2015-04-26, 14:47:31] ==> Mensaje enviado: exit
+[2015-04-26, 14:47:31] ==> Cerramos las colas
+[2015-04-26, 14:47:31] ==> Cerramos y borramos las colas
+[2015-04-26, 14:47:31] ==> Colas cerradas y eliminadas
+[2015-04-26, 14:47:31] ==> Liberamos el regex
+[2015-04-26, 14:47:38] ==> Mandando mensajes al servidor
+[2015-04-26, 14:47:54] ==> Hemos capturado una señal y procedemos a cerrar ambos programas
+[2015-04-26, 14:47:54] ==> Cerramos y borramos las colas
+[2015-04-26, 14:47:54] ==> Colas cerradas y eliminadas
+[2015-04-26, 14:47:54] ==> Liberamos el regex
+[2015-04-26, 14:47:54] ==> Cerramos ficheros
+[2015-04-26, 14:49:02] ==> Hemos capturado una señal y procedemos a cerrar ambos programas
+[2015-04-26, 14:49:02] ==> Cerramos y borramos las colas
+[2015-04-26, 14:49:02] ==> Colas cerradas y eliminadas
+[2015-04-26, 14:49:02] ==> Liberamos el regex
+[2015-04-26, 14:49:02] ==> Cerramos ficheros
+[2015-04-26, 14:49:07] ==> Mandando mensajes al servidor
+[2015-04-26, 14:49:08] ==> Hemos capturado una señal y procedemos a cerrar ambos programas
+[2015-04-26, 14:49:08] ==> Cerramos y borramos las colas
+[2015-04-26, 14:49:08] ==> Colas cerradas y eliminadas
+[2015-04-26, 14:49:08] ==> Liberamos el regex
+[2015-04-26, 14:49:08] ==> Cerramos ficheros
+[2015-04-26, 14:49:13] ==> Mandando mensajes al servidor
+[2015-04-26, 14:49:15] ==> Mensaje enviado: exit
+[2015-04-26, 14:49:15] ==> Mensaje enviado: exit
+[2015-04-26, 14:49:15] ==> Cerramos y borramos las colas
+[2015-04-26, 14:49:15] ==> Colas cerradas y eliminadas
+[2015-04-26, 14:49:15] ==> Liberamos el regex
+[2015-04-26, 14:50:14] ==> Mandando mensajes al servidor
+[2015-04-26, 14:50:16] ==> Hemos capturado una señal y procedemos a cerrar ambos programas
+[2015-04-26, 14:50:16] ==> Cerramos y borramos las colas
+[2015-04-26, 14:50:16] ==> Colas cerradas y eliminadas
+[2015-04-26, 14:50:16] ==> Liberamos el regex
+[2015-04-26, 14:50:16] ==> Cerramos ficheros
+[2015-04-26, 14:52:05] ==> Hemos capturado una señal y procedemos a cerrar ambos programas
+[2015-04-26, 14:52:05] ==> Cerramos y borramos las colas
+[2015-04-26, 14:52:05] ==> Error al eliminar la cola del servidor
