@@ -127,32 +127,6 @@ namespace edi{
 		
 		return stream;
 	};
-
-	//Sobrecarga para ficheros
-
-	std::ofstream & operator<<( std::ofstream &stream, const edi::Persona &p){
-		stream << p.nombre() << " " << p.apellido() << " " << p.dni() << std::endl;
-	}
-
-
-	std::ifstream &operator>>( std::ifstream &stream, const edi::Persona &p){
-		char aux[30];
-
-		stream >> aux;
-		p.nombre(aux);
-
-		stream >>aux;
-		p.apellido(aux);
-
-		stream>>aux;
-		p.dni(atoi(aux));
-
-		p.borrado('n');
-
-		return stream;
-
-	}
-
 }
 
 const  std::string & edi::Persona::nombre()const

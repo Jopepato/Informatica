@@ -137,35 +137,6 @@ namespace edi
 			*/			
 			friend  std::istream & operator>>( std::istream &stream, Persona &p);
 
-
-			//Sobrecargamos para lectura de ficheros
-
-			/*! 
-				\fn     friend ofstream & operator<<(ostream &stream, const Persona &p);
-				\brief  Escribe los datos de la Persona en un fichero
-				\note   Sobrecarga del operador de salida "<<"
-				\param	stream Fichero
-				\param  p Persona, cuyos datos se van a escribir en el fichero
-				\return Flujo de salida en el que se han escrito los datos de la Persona
-				\sa    friend  std::istream & operator>>( std::istream &stream, Persona &p);
-			*/
-
-			friend std::ofstream & operator<<( std::ofstream &stream, const Persona&p);
-
-
-
-			/*! 
-				\fn     friend ifstream & operator>>(istream &stream, Persona &p);
-				\brief  Lee los datos de la Persona desde un fichero
-				\note   Sobrecarga del operador de salida ">>"
-				\param	stream Fichero
-				\param  p Persona, cuyos datos se van a leer desde el flujo de entrada
-				\return Flujo de salida en el que se han escrito los datos de la Persona
-				\sa     friend  std::ostream & operator<<( std::ostream &stream, const Persona &p);
-			*/	
-			friend std::ifstream & operator>>( std::ifstream &stream, const Persona &p);
-
-
 			//! \name OBSERVADORES
 
 			/*! 

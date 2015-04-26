@@ -55,3 +55,51 @@ bool edi::Clave::operator>=(const edi::Clave &c) const{
 
 	return not(*this <= c);
 }
+
+
+//Falta sobrecargar los operadores << y >>
+namespace edi{
+	
+	friend std::ostream & operator<<(std::ostream &out, Clave const& c){
+		out << c.getDni() << " " << c.getPosicion() << " " << std::endl;
+		return(out);
+	}
+
+	friend std::istream & operator>>(std::istream &in, Clave& c){
+		int dni;
+		int pos;
+
+		cout << "Dni: ";
+		in >> dni;
+		c.setDni(dni);
+
+		cout << "Posicion: "
+		in >> pos;
+		c.setPosicion(pos);
+
+		return(in);
+
+	}
+
+	friend std:ofstream & operator<<(std::ofstream &out, Clave const& c){
+		out << c.getDni() << " " << c.getPosicion() << " " << std::endl;
+
+		return(out);
+
+	}
+
+	friend std::ifstream & operator>>(std::ifstream &in, Clave &c){
+
+		char aux[30];
+
+		in >> aux;
+		c.setDni(atoi(aux));
+		in >> aux;
+		c.setPosicion(atoi(aux));
+
+		return(in);
+
+
+	}
+
+}
