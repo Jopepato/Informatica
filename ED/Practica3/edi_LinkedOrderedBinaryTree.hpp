@@ -3,10 +3,10 @@
 
 #include <cassert>
 #include <memory>
-#include <edi_exports.hpp>
+#include "edi_exports.hpp"
 //#include <edi_LinkedStack.hpp>
-#include <edi_OrderedBinaryTree.hpp>
-#include <edi_LinkedBinaryTree.hpp>
+#include "edi_OrderedBinaryTree.hpp"
+#include "edi_LinkedBinaryTree.hpp"
 
 namespace edi 
 {

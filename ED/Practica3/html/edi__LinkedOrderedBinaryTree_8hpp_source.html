@@ -1,0 +1,476 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.9.1"/>
+<title>Persona: Fichero Fuente edi_LinkedOrderedBinaryTree.hpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Persona
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.8.9.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Página&#160;principal</span></a></li>
+      <li><a href="modules.html"><span>Módulos</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
+      <li><a href="annotated.html"><span>Clases</span></a></li>
+      <li class="current"><a href="files.html"><span>Archivos</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Buscar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Lista&#160;de&#160;archivos</span></a></li>
+      <li><a href="globals.html"><span>Miembros&#160;de&#160;los&#160;ficheros</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">edi_LinkedOrderedBinaryTree.hpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef __EDI_LinkedOrderedBinaryTree_HPP__</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define __EDI_LinkedOrderedBinaryTree_HPP__</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;cassert&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;memory&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;edi_exports.hpp&gt;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">//#include &lt;edi_LinkedStack.hpp&gt;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;edi_OrderedBinaryTree.hpp&gt;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;edi_LinkedBinaryTree.hpp&gt;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceedi.html">edi</a> </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;{</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> T&gt;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">class </span>EDI_API LinkedOrderedBinaryTree: <span class="keyword">public</span> <a class="code" href="classedi_1_1OrderedBinaryTree.html">edi::OrderedBinaryTree</a>&lt;T&gt;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;{</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="classedi_1_1LinkedOrderedBinaryTree.html#a0ae5fd701d1b194676d590f18375f5b0">   24</a></span>&#160;    <a class="code" href="classedi_1_1LinkedOrderedBinaryTree.html#a0ae5fd701d1b194676d590f18375f5b0">LinkedOrderedBinaryTree</a>() :</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        _tree(), _curr(0), _prev(0)</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    {</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        assert((_invariantCount=0, checkInvariants()));</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    }</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    </div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="classedi_1_1LinkedOrderedBinaryTree.html#a11367eaf9b5739b2dff4d6075e9afd81">   34</a></span>&#160;    <a class="code" href="classedi_1_1LinkedOrderedBinaryTree.html#a11367eaf9b5739b2dff4d6075e9afd81">~LinkedOrderedBinaryTree</a>()</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    {</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        flush();</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        assert((_invariantCount=0, checkInvariants()));</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    }</div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="classedi_1_1LinkedOrderedBinaryTree.html#a0479f9820f7c5faa2bb22c8ab666904e">   44</a></span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="classedi_1_1LinkedOrderedBinaryTree.html#a0479f9820f7c5faa2bb22c8ab666904e">isEmpty</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="keywordflow">return</span> tree()-&gt;isEmpty();</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    }</div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="classedi_1_1LinkedOrderedBinaryTree.html#af8c07aed24f76b6de0d89849827cc70a">   48</a></span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="classedi_1_1LinkedOrderedBinaryTree.html#af8c07aed24f76b6de0d89849827cc70a">isSubTree</a>()<span class="keyword"> const </span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="keywordflow">return</span> tree()-&gt;isSubTree();</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    }</div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="classedi_1_1LinkedOrderedBinaryTree.html#a247c8a03d73f9174d2ae1a06a5f1e25b">   52</a></span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="classedi_1_1LinkedOrderedBinaryTree.html#a247c8a03d73f9174d2ae1a06a5f1e25b">isLeaf</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <span class="keywordflow">return</span> tree()-&gt;isLeaf();</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    }</div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="classedi_1_1LinkedOrderedBinaryTree.html#a46ee951ccf54cc81bf490780ef1f895a">   56</a></span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="classedi_1_1LinkedOrderedBinaryTree.html#a46ee951ccf54cc81bf490780ef1f895a">hasLeftChild</a>()<span class="keyword"> const </span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="keywordflow">return</span> tree()-&gt;hasLeftChild();</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    }</div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="classedi_1_1LinkedOrderedBinaryTree.html#a7411d3e6c12ccc78ae4b59a497f921eb">   60</a></span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="classedi_1_1LinkedOrderedBinaryTree.html#a7411d3e6c12ccc78ae4b59a497f921eb">hasRightChild</a>()<span class="keyword"> const </span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keywordflow">return</span> tree()-&gt;hasRightChild();</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    }</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                        </div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="classedi_1_1LinkedOrderedBinaryTree.html#a58108c458aacdba90d11ebb0e2ea9308">   65</a></span>&#160;    <span class="keyword">virtual</span> <span class="keyword">const</span> T&amp; <a class="code" href="classedi_1_1LinkedOrderedBinaryTree.html#a58108c458aacdba90d11ebb0e2ea9308">item</a>()<span class="keyword"> const </span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="keyword">    </span>{    </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        assert (existsItem());</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="keywordflow">return</span> curr()-&gt;item();</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    }</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        </div>
+<div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="classedi_1_1LinkedOrderedBinaryTree.html#a7e72422b40891d5f0d4d6f295d44a87a">   74</a></span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="classedi_1_1LinkedOrderedBinaryTree.html#a7e72422b40891d5f0d4d6f295d44a87a">existsItem</a>()<span class="keyword"> const </span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <span class="keywordflow">return</span> curr() != 0;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    }</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    </div>
+<div class="line"><a name="l00084"></a><span class="lineno"><a class="line" href="classedi_1_1LinkedOrderedBinaryTree.html#a0e1cb01580ec65c8bc286998c7cd5606">   84</a></span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="classedi_1_1LinkedOrderedBinaryTree.html#a0e1cb01580ec65c8bc286998c7cd5606">has</a>(<span class="keyword">const</span> T&amp; x)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        <span class="keywordtype">bool</span> retVal=<span class="keyword">false</span>;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <span class="keywordflow">if</span> (not tree()-&gt;isEmpty())</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        {</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;            <a class="code" href="classedi_1_1LinkedOrderedBinaryTree.html">LinkedOrderedBinaryTree&lt;T&gt;</a> * _this=<span class="keyword">const_cast&lt;</span><a class="code" href="classedi_1_1LinkedOrderedBinaryTree.html">LinkedOrderedBinaryTree&lt;T&gt;</a> *<span class="keyword">&gt;</span>(<span class="keyword">this</span>);</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            <a class="code" href="classedi_1_1LinkedBinaryTreeNode.html">LinkedBinaryTreeNode&lt;T&gt;</a>* saveCurr = _this-&gt;curr();</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            <a class="code" href="classedi_1_1LinkedBinaryTreeNode.html">LinkedBinaryTreeNode&lt;T&gt;</a>* savePrev = _this-&gt;prev();</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            _this-&gt;<a class="code" href="classedi_1_1LinkedOrderedBinaryTree.html#a89f3f8d6b6551befd0085d4199f77d65">search</a>(x);</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;            retVal=existsItem();</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;            _this-&gt;setCurr(saveCurr);</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;            _this-&gt;setPrev(savePrev);</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        }</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        <span class="keywordflow">return</span> retVal;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    }</div>
+<div class="line"><a name="l00107"></a><span class="lineno"><a class="line" href="classedi_1_1LinkedOrderedBinaryTree.html#aed5e3fa0fec792d15fb11d2ef57ae7ac">  107</a></span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classedi_1_1LinkedOrderedBinaryTree.html#aed5e3fa0fec792d15fb11d2ef57ae7ac">goToRoot</a>()</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    {</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        setPrev(0);</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        setCurr(root());</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    }</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    </div>
+<div class="line"><a name="l00117"></a><span class="lineno"><a class="line" href="classedi_1_1LinkedOrderedBinaryTree.html#a89f3f8d6b6551befd0085d4199f77d65">  117</a></span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classedi_1_1LinkedOrderedBinaryTree.html#a89f3f8d6b6551befd0085d4199f77d65">search</a>(<span class="keyword">const</span> T&amp; x)</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    {</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        assert(checkInvariants()&amp;&amp; ++_invariantCount);</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        <span class="keywordtype">bool</span> found=<span class="keyword">false</span>;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        goToRoot();</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        <span class="keywordflow">while</span> (not (found or _curr==0))</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        {</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;            <span class="keywordflow">if</span> (x&lt;curr()-&gt;item())</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;            {</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;                setPrev(curr());</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;                setCurr(curr()-&gt;left());</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;            }</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (x&gt;curr()-&gt;item())</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;            {</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;                setPrev(curr());</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;                setCurr(curr()-&gt;right());</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;            }</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;                found=<span class="keyword">true</span>;</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        }</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        assert(--_invariantCount || checkInvariants());</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    }</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    </div>
+<div class="line"><a name="l00144"></a><span class="lineno"><a class="line" href="classedi_1_1LinkedOrderedBinaryTree.html#a096c936a88a6f8e71f40bbe56fdcb062">  144</a></span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classedi_1_1LinkedOrderedBinaryTree.html#a096c936a88a6f8e71f40bbe56fdcb062">insert</a>(<span class="keyword">const</span> T&amp; x)</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    {</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;        assert(checkInvariants()&amp;&amp; ++_invariantCount);</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;        <span class="comment">//This implementation uses the rescursive structure of a tree</span></div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        <span class="comment">//however it is not very efficient in C++ due to the dynamic</span></div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        <span class="comment">//memory management overload.</span></div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;<span class="comment">//     if (tree()-&gt;isEmpty())</span></div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;<span class="comment">//       createRoot(x);   </span></div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;<span class="comment">//     else if (x&lt;root()-&gt;item())</span></div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;<span class="comment">//     {      </span></div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;<span class="comment">//       if (tree()-&gt;hasLeftChild())</span></div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;<span class="comment">//  std::unique_ptr&lt;edi::LinkedOrderedBinaryTree&lt;T&gt; &gt; (leftSubTree())-&gt;insert(x);</span></div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;<span class="comment">//       else</span></div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;<span class="comment">//  tree()-&gt;createLeftSubTree(x);</span></div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;<span class="comment">//     }</span></div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;<span class="comment">//     else if (x&gt;root()-&gt;item())</span></div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;<span class="comment">//     {</span></div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;<span class="comment">//       if (tree()-&gt;hasRightChild())</span></div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;<span class="comment">//  std::unique_ptr&lt;edi::LinkedOrderedBinaryTree&lt;T&gt; &gt;(rightSubTree())-&gt;insert(x);</span></div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;<span class="comment">//       else</span></div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;<span class="comment">//  tree()-&gt;createRightSubTree(x);      </span></div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;<span class="comment">//     }</span></div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;        <span class="keywordflow">if</span> (tree()-&gt;isEmpty())</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;            createRoot(x);</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;        {</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;            <a class="code" href="classedi_1_1LinkedBinaryTreeNode.html">LinkedBinaryTreeNode&lt;T&gt;</a>* savedCurr = curr();</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;            <a class="code" href="classedi_1_1LinkedBinaryTreeNode.html">LinkedBinaryTreeNode&lt;T&gt;</a>* savedPrev = prev();      </div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;            search(x);</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;            <span class="keywordflow">if</span> (not existsItem())</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;            {</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;                assert(prev()); <span class="comment">//This is an invariant.     </span></div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;                <span class="keywordflow">if</span> (x &lt; prev()-&gt;item()) </div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;                    prev()-&gt;setLeft(<span class="keyword">new</span> <a class="code" href="classedi_1_1LinkedBinaryTreeNode.html">edi::LinkedBinaryTreeNode&lt;T&gt;</a>(x));   </div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;                <span class="keywordflow">else</span>    </div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;                    prev()-&gt;setRight(<span class="keyword">new</span> <a class="code" href="classedi_1_1LinkedBinaryTreeNode.html">edi::LinkedBinaryTreeNode&lt;T&gt;</a>(x));</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;            }</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;                setItem(x); <span class="comment">//update node data.</span></div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;            setCurr(savedCurr);</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;            setPrev(savedPrev); </div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;        }</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;        </div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;        assert(--_invariantCount || checkInvariants());</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    }</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;    </div>
+<div class="line"><a name="l00195"></a><span class="lineno"><a class="line" href="classedi_1_1LinkedOrderedBinaryTree.html#a8b236a24c8e60d3ae23d6ae2433bec4f">  195</a></span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classedi_1_1LinkedOrderedBinaryTree.html#a8b236a24c8e60d3ae23d6ae2433bec4f">removeItem</a>()</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    {</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;        assert(existsItem());</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;        assert(checkInvariants() &amp;&amp; ++_invariantCount);</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;        <a class="code" href="classedi_1_1LinkedBinaryTreeNode.html">edi::LinkedBinaryTreeNode&lt;T&gt;</a> * replaceNode=0;</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;        <a class="code" href="classedi_1_1LinkedBinaryTreeNode.html">edi::LinkedBinaryTreeNode&lt;T&gt;</a> * savePrev=0;</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;        <a class="code" href="classedi_1_1LinkedBinaryTreeNode.html">edi::LinkedBinaryTreeNode&lt;T&gt;</a> * saveCurr=0;    </div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;        <span class="keywordtype">bool</span> replaceNodeFound=<span class="keyword">false</span>;    </div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;        <span class="keywordflow">if</span> (not _curr-&gt;right()) <span class="comment">//Node to remove has not rightSubTree</span></div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;        {</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;            replaceNode=_curr-&gt;<a class="code" href="classedi_1_1LinkedBinaryTreeNode.html#a1a4400ac020ae86464de5ec718fbc469">left</a>();</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;            replaceNodeFound=<span class="keyword">true</span>;</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;        }</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (not _curr-&gt;left()) <span class="comment">//Node to remove has not leftSubTree</span></div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;        {</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;            replaceNode=_curr-&gt;<a class="code" href="classedi_1_1LinkedBinaryTreeNode.html#ac0467a6b4be4c4a4b45ebd3f0f6b2865">right</a>();</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;            replaceNodeFound=<span class="keyword">true</span>;</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;        }</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;        </div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;        <span class="keywordflow">if</span> (replaceNodeFound)</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;        {      </div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;            <span class="keywordflow">if</span> (_prev==0)         </div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;                setRoot(replaceNode);   </div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (_prev-&gt;left()==_curr) <span class="comment">//Node to remove is leftSubTree</span></div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;                _prev-&gt;setLeft(replaceNode);</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;            <span class="keywordflow">else</span> <span class="comment">//Node to remove is rigthSubTree</span></div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;                _prev-&gt;setRight(replaceNode);</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;            <span class="keyword">delete</span> _curr; <span class="comment">//free the node to remove</span></div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;            _curr=replaceNode; <span class="comment">//_curr is the repalceNode</span></div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;        }</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;        <span class="keywordflow">else</span> <span class="comment">//Node to remove has two subtrees.</span></div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;        {</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;            savePrev=_prev;</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;            saveCurr=_curr;</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;            findInorderPrecessor(); <span class="comment">//seek the highest of the leftSubTree</span></div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;            saveCurr-&gt;<a class="code" href="classedi_1_1LinkedBinaryTreeNode.html#abebcb6deb58299ed029d76e638914028">setItem</a>(_curr-&gt;item());</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;            removeItem(); <span class="comment">//Remove the highest of the leftSubTree. </span></div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;            _prev=savePrev;</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;            _curr=saveCurr;</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;        }</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;        assert(--_invariantCount || checkInvariants());    </div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;    }</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;    </div>
+<div class="line"><a name="l00242"></a><span class="lineno"><a class="line" href="classedi_1_1LinkedOrderedBinaryTree.html#ac6b0835a39c9986fe8773f5685f5e34b">  242</a></span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classedi_1_1LinkedOrderedBinaryTree.html#ac6b0835a39c9986fe8773f5685f5e34b">flush</a>()</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;    {</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;        assert(checkInvariants()&amp;&amp; ++_invariantCount);</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;        tree()-&gt;flush();</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;        assert(--_invariantCount || checkInvariants());</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;    }</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;    </div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;    </div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;    </div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;    <span class="comment">//Avoid copy constructor and assign operator.</span></div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;    <a class="code" href="classedi_1_1LinkedOrderedBinaryTree.html">LinkedOrderedBinaryTree</a>(<span class="keyword">const</span> <a class="code" href="classedi_1_1LinkedOrderedBinaryTree.html">LinkedOrderedBinaryTree&lt;T&gt;</a>&amp; o) {};</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;    LinkedOrderedBinaryTree&lt;T&gt;&amp; operator=(<span class="keyword">const</span> LinkedOrderedBinaryTree&lt;T&gt;* other) {<span class="keywordflow">return</span> *<span class="keyword">this</span>;}</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;    </div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;<span class="keyword">protected</span>:  </div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;    </div>
+<div class="line"><a name="l00259"></a><span class="lineno"><a class="line" href="classedi_1_1LinkedOrderedBinaryTree.html#aeabfb032f8ed9f194cfde1f23ab6d3fa">  259</a></span>&#160;    <span class="keyword">virtual</span> <span class="keyword">const</span> <a class="code" href="classedi_1_1LinkedOrderedBinaryTree.html">LinkedOrderedBinaryTree&lt;T&gt;</a>* <a class="code" href="classedi_1_1LinkedOrderedBinaryTree.html#aeabfb032f8ed9f194cfde1f23ab6d3fa">leftSubTree</a>()<span class="keyword"> const </span></div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;        assert(not isEmpty());</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;        assert(hasLeftChild());</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="classedi_1_1LinkedOrderedBinaryTree.html">LinkedOrderedBinaryTree&lt;T&gt;</a>(root()-&gt;left());</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;    }</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;    </div>
+<div class="line"><a name="l00266"></a><span class="lineno"><a class="line" href="classedi_1_1LinkedOrderedBinaryTree.html#a2c7f07e256426cc5ac55d137f175c688">  266</a></span>&#160;    <span class="keyword">virtual</span> <span class="keyword">const</span> <a class="code" href="classedi_1_1LinkedOrderedBinaryTree.html">LinkedOrderedBinaryTree&lt;T&gt;</a>* <a class="code" href="classedi_1_1LinkedOrderedBinaryTree.html#a2c7f07e256426cc5ac55d137f175c688">rightSubTree</a>()<span class="keyword"> const </span></div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;        assert(not isEmpty());</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;        assert(hasRightChild());    </div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="classedi_1_1LinkedOrderedBinaryTree.html">LinkedOrderedBinaryTree&lt;T&gt;</a>(root()-&gt;right());</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;    }</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;</div>
+<div class="line"><a name="l00273"></a><span class="lineno"><a class="line" href="classedi_1_1LinkedOrderedBinaryTree.html#a8b218daa53024b62f827389e356a0d39">  273</a></span>&#160;    <span class="keyword">virtual</span> <a class="code" href="classedi_1_1LinkedOrderedBinaryTree.html">LinkedOrderedBinaryTree&lt;T&gt;</a>* <a class="code" href="classedi_1_1LinkedOrderedBinaryTree.html#a8b218daa53024b62f827389e356a0d39">leftSubTree</a>()</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;    {</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;        assert(not tree()-&gt;isEmpty());</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;        assert(tree()-&gt;hasLeftChild());</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="classedi_1_1LinkedOrderedBinaryTree.html">LinkedOrderedBinaryTree&lt;T&gt;</a>(root()-&gt;left());</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;    }</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;    </div>
+<div class="line"><a name="l00280"></a><span class="lineno"><a class="line" href="classedi_1_1LinkedOrderedBinaryTree.html#a2e60c39472650cedfb14dc1cdd4da91d">  280</a></span>&#160;    <span class="keyword">virtual</span> <a class="code" href="classedi_1_1LinkedOrderedBinaryTree.html">LinkedOrderedBinaryTree&lt;T&gt;</a>* <a class="code" href="classedi_1_1LinkedOrderedBinaryTree.html#a2e60c39472650cedfb14dc1cdd4da91d">rightSubTree</a>()</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;    {</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;        assert(not tree()-&gt;isEmpty());</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;        assert(tree()-&gt;hasRightChild());</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="classedi_1_1LinkedOrderedBinaryTree.html">LinkedOrderedBinaryTree&lt;T&gt;</a>(root()-&gt;right());</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;    }  </div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;    </div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;    </div>
+<div class="line"><a name="l00291"></a><span class="lineno"><a class="line" href="classedi_1_1LinkedOrderedBinaryTree.html#ae264bf62d497d99c6ed36de99920f4b5">  291</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classedi_1_1LinkedOrderedBinaryTree.html#ae264bf62d497d99c6ed36de99920f4b5">findInorderPrecessor</a>()</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;    {</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;        assert(existsItem());</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;        <span class="keywordflow">if</span> (curr()-&gt;left())</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;        {</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;            setPrev(curr());</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;            setCurr(curr()-&gt;left());</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;            <span class="keywordflow">while</span>(curr()-&gt;right())</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;            {</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;                setPrev(curr());</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;                setCurr(curr()-&gt;right());</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;            }</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;        }</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;    }</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;</div>
+<div class="line"><a name="l00309"></a><span class="lineno"><a class="line" href="classedi_1_1LinkedOrderedBinaryTree.html#aada1f1be2464a67a9d1e6970a9ae0904">  309</a></span>&#160;    <span class="keyword">virtual</span> <a class="code" href="classedi_1_1LinkedBinaryTreeNode.html">LinkedBinaryTreeNode&lt;T&gt;</a> * <a class="code" href="classedi_1_1LinkedOrderedBinaryTree.html#aada1f1be2464a67a9d1e6970a9ae0904">root</a>() {<span class="keywordflow">return</span> tree()-&gt;root();}    </div>
+<div class="line"><a name="l00313"></a><span class="lineno"><a class="line" href="classedi_1_1LinkedOrderedBinaryTree.html#a5d03f21ffae37c27b17a6a257b4d86d9">  313</a></span>&#160;    <span class="keyword">virtual</span> <span class="keyword">const</span> <a class="code" href="classedi_1_1LinkedBinaryTreeNode.html">LinkedBinaryTreeNode&lt;T&gt;</a> * <a class="code" href="classedi_1_1LinkedOrderedBinaryTree.html#a5d03f21ffae37c27b17a6a257b4d86d9">root</a>()<span class="keyword"> const </span>{<span class="keywordflow">return</span> tree()-&gt;root();} </div>
+<div class="line"><a name="l00317"></a><span class="lineno"><a class="line" href="classedi_1_1LinkedOrderedBinaryTree.html#a1a28fae1ae8b9f1616756835560fd953">  317</a></span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classedi_1_1LinkedOrderedBinaryTree.html#a1a28fae1ae8b9f1616756835560fd953">setRoot</a>(<a class="code" href="classedi_1_1LinkedBinaryTreeNode.html">LinkedBinaryTreeNode&lt;T&gt;</a> * newRoot) { tree()-&gt;setRoot(newRoot);}</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;    </div>
+<div class="line"><a name="l00320"></a><span class="lineno"><a class="line" href="classedi_1_1LinkedOrderedBinaryTree.html#ab7b3cc17c8d4be5c85bb610fd094c660">  320</a></span>&#160;    <a class="code" href="classedi_1_1LinkedOrderedBinaryTree.html#ab7b3cc17c8d4be5c85bb610fd094c660">LinkedOrderedBinaryTree</a> (<a class="code" href="classedi_1_1LinkedBinaryTreeNode.html">LinkedBinaryTreeNode&lt;T&gt;</a>* root)</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;    : _tree(root), _curr(root), _prev(0)</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;    {</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;        assert((_invariantCount=0,  checkInvariants()));</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;    }</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;    </div>
+<div class="line"><a name="l00327"></a><span class="lineno"><a class="line" href="classedi_1_1LinkedOrderedBinaryTree.html#a8173abb4e6be0b6dcd90a48050e7bc6e">  327</a></span>&#160;    <a class="code" href="classedi_1_1LinkedOrderedBinaryTree.html#a8173abb4e6be0b6dcd90a48050e7bc6e">LinkedOrderedBinaryTree</a> (<span class="keyword">const</span> <a class="code" href="classedi_1_1LinkedBinaryTreeNode.html">LinkedBinaryTreeNode&lt;T&gt;</a>* root)</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;    : _tree(const_cast&lt;<a class="code" href="classedi_1_1LinkedBinaryTreeNode.html">LinkedBinaryTreeNode</a>&lt;T&gt;*&gt;(root)), _curr(const_cast&lt;<a class="code" href="classedi_1_1LinkedBinaryTreeNode.html">LinkedBinaryTreeNode</a>&lt;T&gt;*&gt;(root)), _prev(0)</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;    {</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;        assert((_invariantCount=0, checkInvariants()));</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;    }</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;        </div>
+<div class="line"><a name="l00333"></a><span class="lineno"><a class="line" href="classedi_1_1LinkedOrderedBinaryTree.html#ab01f400883cd6576ab1589182e79a389">  333</a></span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classedi_1_1LinkedOrderedBinaryTree.html#ab01f400883cd6576ab1589182e79a389">createRightSubTree</a>(<span class="keyword">const</span> T&amp; it)</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;    {</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;        tree()-&gt;createRightSubTree(it);</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;    }</div>
+<div class="line"><a name="l00337"></a><span class="lineno"><a class="line" href="classedi_1_1LinkedOrderedBinaryTree.html#ab79273ab0efebb8610e12d80030d06a3">  337</a></span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classedi_1_1LinkedOrderedBinaryTree.html#ab79273ab0efebb8610e12d80030d06a3">createLeftSubTree</a>(<span class="keyword">const</span> T&amp; it)</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;    {</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;        tree()-&gt;createLeftSubTree(it);</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;    }</div>
+<div class="line"><a name="l00341"></a><span class="lineno"><a class="line" href="classedi_1_1LinkedOrderedBinaryTree.html#a52fcae09bc1281b3e35df94304d6540c">  341</a></span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classedi_1_1LinkedOrderedBinaryTree.html#a52fcae09bc1281b3e35df94304d6540c">setItem</a>(<span class="keyword">const</span> T&amp; it) {tree()-&gt;setItem(it);}</div>
+<div class="line"><a name="l00342"></a><span class="lineno"><a class="line" href="classedi_1_1LinkedOrderedBinaryTree.html#a9e72d40ff2759f42f91b1ff815aeeed6">  342</a></span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classedi_1_1LinkedOrderedBinaryTree.html#a9e72d40ff2759f42f91b1ff815aeeed6">createRoot</a>(<span class="keyword">const</span> T&amp; it) {tree()-&gt;createRoot(it); setCurr(root()); setPrev(0);}</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="classedi_1_1LinkedBinaryTreeNode.html">LinkedBinaryTreeNode&lt;T&gt;</a>* curr () { <span class="keywordflow">return</span> _curr;}</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;    <span class="keyword">virtual</span> <span class="keyword">const</span> LinkedBinaryTreeNode&lt;T&gt;* curr ()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> _curr;}  </div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> setCurr(LinkedBinaryTreeNode&lt;T&gt;* curr) { _curr=curr;}</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> setPrev(LinkedBinaryTreeNode&lt;T&gt;* prev) { _prev=prev;}</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;    <span class="keyword">virtual</span> LinkedBinaryTreeNode&lt;T&gt;* prev () { <span class="keywordflow">return</span> _prev;}</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;    <span class="keyword">virtual</span> <span class="keyword">const</span> LinkedBinaryTreeNode&lt;T&gt;* prev ()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> _prev;}</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;    <span class="keyword">virtual</span> <span class="keyword">const</span> LinkedBinaryTree&lt;T&gt;* tree()<span class="keyword"> const </span>{<span class="keywordflow">return</span> &amp;_tree;}</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;    <span class="keyword">virtual</span> LinkedBinaryTree&lt;T&gt;* tree() {<span class="keywordflow">return</span> &amp;_tree;}</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;<span class="preprocessor">#ifndef NDEBUG</span></div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;    <span class="comment">//This class is used as example of Functor to check the invariant (inorderBinaryTreeProcessor is ordered).</span></div>
+<div class="line"><a name="l00353"></a><span class="lineno"><a class="line" href="classedi_1_1LinkedOrderedBinaryTree_1_1CheckOrdering.html">  353</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classedi_1_1LinkedOrderedBinaryTree_1_1CheckOrdering.html">CheckOrdering</a></div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;    {</div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;        <a class="code" href="classedi_1_1LinkedOrderedBinaryTree_1_1CheckOrdering.html">CheckOrdering</a>() :_isFirst(<span class="keyword">true</span>), _lastItem(0) {}</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;        <span class="keywordtype">bool</span> operator()(T <span class="keyword">const</span>&amp; t)</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;        {</div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;            <span class="keywordtype">bool</span> retVal=<span class="keyword">true</span>;</div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;            <span class="comment">//check if it is the first item or is less than the last item (is ordered in a inorder processor </span></div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;            <span class="keywordflow">if</span> (isFirst() or lastItem()&lt;t)                                                              </div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;                setLastItem(t); <span class="comment">//t is the las item por the next node</span></div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;            <span class="comment">//it is not ordered, the invariant is not true</span></div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;            <span class="keywordflow">else</span> </div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;                retVal=<span class="keyword">false</span>;</div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;            <span class="keywordflow">return</span> retVal;</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;        }</div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;    <span class="keyword">protected</span>:   </div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;        <span class="keywordtype">bool</span> isFirst()<span class="keyword"> const </span>{<span class="keywordflow">return</span> _isFirst;}</div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;        <span class="keyword">const</span> T&amp; lastItem()<span class="keyword"> const </span>{<span class="keywordflow">return</span> *_lastItem;}</div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;        <span class="keywordtype">void</span> setLastItem(T <span class="keyword">const</span>&amp; t) {_lastItem=&amp;t;_isFirst=<span class="keyword">false</span>;}</div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;        <span class="keywordtype">bool</span> _isFirst;</div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;        <span class="keyword">const</span> T* _lastItem;</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;    };</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;    </div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;    <span class="keywordtype">bool</span> checkInvariants()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;        <span class="keywordtype">bool</span> retVal = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;        <span class="keywordflow">if</span> (_invariantCount == 0)</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;        {  </div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;        <a class="code" href="classedi_1_1LinkedOrderedBinaryTree.html">LinkedOrderedBinaryTree&lt;T&gt;</a> * _this=<span class="keyword">const_cast&lt;</span><a class="code" href="classedi_1_1LinkedOrderedBinaryTree.html">LinkedOrderedBinaryTree&lt;T&gt;</a> *<span class="keyword">&gt;</span>(<span class="keyword">this</span>);</div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;        <a class="code" href="classedi_1_1LinkedBinaryTreeNode.html">LinkedBinaryTreeNode&lt;T&gt;</a>* saveCurr = _this-&gt;curr();</div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;        <a class="code" href="classedi_1_1LinkedBinaryTreeNode.html">LinkedBinaryTreeNode&lt;T&gt;</a>* savePrev = _this-&gt;prev();</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;        _this-&gt;setCurr(_this-&gt;<a class="code" href="classedi_1_1LinkedOrderedBinaryTree.html#aada1f1be2464a67a9d1e6970a9ae0904">root</a>());</div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;        _this-&gt;setPrev(0);</div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;        <span class="comment">//check the ordering is preserved.</span></div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;        <a class="code" href="classedi_1_1LinkedOrderedBinaryTree_1_1CheckOrdering.html">CheckOrdering</a> f;</div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;        retVal = edi::inorderBinaryTreeProcessor&lt;T&gt;(<span class="keyword">this</span>, f); </div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;        _this-&gt;setCurr(saveCurr);</div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;        _this-&gt;setPrev(savePrev);</div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;        }</div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;        <span class="keywordflow">return</span> retVal;    </div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;    }</div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;    <span class="keywordtype">int</span> _invariantCount;</div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;<span class="preprocessor">#endif //NDEBUG</span></div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;    LinkedBinaryTree&lt;T&gt; _tree; </div>
+<div class="line"><a name="l00399"></a><span class="lineno"><a class="line" href="classedi_1_1LinkedOrderedBinaryTree.html#af08ca9ef20e8265fde64f1b9b517f907">  399</a></span>&#160;    <a class="code" href="classedi_1_1LinkedBinaryTreeNode.html">LinkedBinaryTreeNode&lt;T&gt;</a> * <a class="code" href="classedi_1_1LinkedOrderedBinaryTree.html#af08ca9ef20e8265fde64f1b9b517f907">_curr</a>; </div>
+<div class="line"><a name="l00400"></a><span class="lineno"><a class="line" href="classedi_1_1LinkedOrderedBinaryTree.html#a5ad4052d817e481c6bc4f28cb3840228">  400</a></span>&#160;    <a class="code" href="classedi_1_1LinkedBinaryTreeNode.html">LinkedBinaryTreeNode&lt;T&gt;</a> * <a class="code" href="classedi_1_1LinkedOrderedBinaryTree.html#a5ad4052d817e481c6bc4f28cb3840228">_prev</a>; </div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;};</div>
+<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;</div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;}</div>
+<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;<span class="preprocessor">#endif //__EDI_LinkedOrderedBinaryTree_HPP__</span></div>
+<div class="ttc" id="classedi_1_1LinkedOrderedBinaryTree_html_ab7b3cc17c8d4be5c85bb610fd094c660"><div class="ttname"><a href="classedi_1_1LinkedOrderedBinaryTree.html#ab7b3cc17c8d4be5c85bb610fd094c660">edi::LinkedOrderedBinaryTree::LinkedOrderedBinaryTree</a></div><div class="ttdeci">LinkedOrderedBinaryTree(LinkedBinaryTreeNode&lt; T &gt; *root)</div><div class="ttdoc">Makes an ordered sub-tree. </div><div class="ttdef"><b>Definition:</b> <a href="edi__LinkedOrderedBinaryTree_8hpp_source.html#l00320">edi_LinkedOrderedBinaryTree.hpp:320</a></div></div>
+<div class="ttc" id="classedi_1_1LinkedOrderedBinaryTree_html_a2e60c39472650cedfb14dc1cdd4da91d"><div class="ttname"><a href="classedi_1_1LinkedOrderedBinaryTree.html#a2e60c39472650cedfb14dc1cdd4da91d">edi::LinkedOrderedBinaryTree::rightSubTree</a></div><div class="ttdeci">virtual LinkedOrderedBinaryTree&lt; T &gt; * rightSubTree()</div><div class="ttdoc">Gets the right sub-tree. Time Analysis: O(1) </div><div class="ttdef"><b>Definition:</b> <a href="edi__LinkedOrderedBinaryTree_8hpp_source.html#l00280">edi_LinkedOrderedBinaryTree.hpp:280</a></div></div>
+<div class="ttc" id="classedi_1_1LinkedOrderedBinaryTree_html_a11367eaf9b5739b2dff4d6075e9afd81"><div class="ttname"><a href="classedi_1_1LinkedOrderedBinaryTree.html#a11367eaf9b5739b2dff4d6075e9afd81">edi::LinkedOrderedBinaryTree::~LinkedOrderedBinaryTree</a></div><div class="ttdeci">~LinkedOrderedBinaryTree()</div><div class="ttdoc">Destroys a LinkedOrderedBinaryTree. Time analysis: O(n). </div><div class="ttdef"><b>Definition:</b> <a href="edi__LinkedOrderedBinaryTree_8hpp_source.html#l00034">edi_LinkedOrderedBinaryTree.hpp:34</a></div></div>
+<div class="ttc" id="classedi_1_1LinkedOrderedBinaryTree_html_a0e1cb01580ec65c8bc286998c7cd5606"><div class="ttname"><a href="classedi_1_1LinkedOrderedBinaryTree.html#a0e1cb01580ec65c8bc286998c7cd5606">edi::LinkedOrderedBinaryTree::has</a></div><div class="ttdeci">virtual bool has(const T &amp;x) const </div><div class="ttdoc">Does the tree contain x? Time analysis: O(h), h is the height of the tree, worst case. </div><div class="ttdef"><b>Definition:</b> <a href="edi__LinkedOrderedBinaryTree_8hpp_source.html#l00084">edi_LinkedOrderedBinaryTree.hpp:84</a></div></div>
+<div class="ttc" id="classedi_1_1LinkedBinaryTreeNode_html_abebcb6deb58299ed029d76e638914028"><div class="ttname"><a href="classedi_1_1LinkedBinaryTreeNode.html#abebcb6deb58299ed029d76e638914028">edi::LinkedBinaryTreeNode::setItem</a></div><div class="ttdeci">virtual void setItem(const T &amp;item)</div><div class="ttdoc">Sets the stored data. Time analysis: O(1) </div><div class="ttdef"><b>Definition:</b> <a href="edi__LinkedBinaryTreeNode_8hpp_source.html#l00113">edi_LinkedBinaryTreeNode.hpp:113</a></div></div>
+<div class="ttc" id="classedi_1_1LinkedOrderedBinaryTree_html_a247c8a03d73f9174d2ae1a06a5f1e25b"><div class="ttname"><a href="classedi_1_1LinkedOrderedBinaryTree.html#a247c8a03d73f9174d2ae1a06a5f1e25b">edi::LinkedOrderedBinaryTree::isLeaf</a></div><div class="ttdeci">virtual bool isLeaf() const </div><div class="ttdoc">Is this a tree without any childs? </div><div class="ttdef"><b>Definition:</b> <a href="edi__LinkedOrderedBinaryTree_8hpp_source.html#l00052">edi_LinkedOrderedBinaryTree.hpp:52</a></div></div>
+<div class="ttc" id="classedi_1_1LinkedOrderedBinaryTree_html_aada1f1be2464a67a9d1e6970a9ae0904"><div class="ttname"><a href="classedi_1_1LinkedOrderedBinaryTree.html#aada1f1be2464a67a9d1e6970a9ae0904">edi::LinkedOrderedBinaryTree::root</a></div><div class="ttdeci">virtual LinkedBinaryTreeNode&lt; T &gt; * root()</div><div class="ttdoc">Get the root node. is convenence function to void write the templete prefix all time. </div><div class="ttdef"><b>Definition:</b> <a href="edi__LinkedOrderedBinaryTree_8hpp_source.html#l00309">edi_LinkedOrderedBinaryTree.hpp:309</a></div></div>
+<div class="ttc" id="classedi_1_1LinkedOrderedBinaryTree_html_a58108c458aacdba90d11ebb0e2ea9308"><div class="ttname"><a href="classedi_1_1LinkedOrderedBinaryTree.html#a58108c458aacdba90d11ebb0e2ea9308">edi::LinkedOrderedBinaryTree::item</a></div><div class="ttdeci">virtual const T &amp; item() const </div><div class="ttdoc">Gets the stored data int the current node. Time analysis: O(1) </div><div class="ttdef"><b>Definition:</b> <a href="edi__LinkedOrderedBinaryTree_8hpp_source.html#l00065">edi_LinkedOrderedBinaryTree.hpp:65</a></div></div>
+<div class="ttc" id="classedi_1_1LinkedOrderedBinaryTree_html_a7411d3e6c12ccc78ae4b59a497f921eb"><div class="ttname"><a href="classedi_1_1LinkedOrderedBinaryTree.html#a7411d3e6c12ccc78ae4b59a497f921eb">edi::LinkedOrderedBinaryTree::hasRightChild</a></div><div class="ttdeci">virtual bool hasRightChild() const </div><div class="ttdoc">Has current got a right child? </div><div class="ttdef"><b>Definition:</b> <a href="edi__LinkedOrderedBinaryTree_8hpp_source.html#l00060">edi_LinkedOrderedBinaryTree.hpp:60</a></div></div>
+<div class="ttc" id="classedi_1_1LinkedOrderedBinaryTree_html_a7e72422b40891d5f0d4d6f295d44a87a"><div class="ttname"><a href="classedi_1_1LinkedOrderedBinaryTree.html#a7e72422b40891d5f0d4d6f295d44a87a">edi::LinkedOrderedBinaryTree::existsItem</a></div><div class="ttdeci">virtual bool existsItem() const </div><div class="ttdoc">Is there a current item? Time analysis: O(1) </div><div class="ttdef"><b>Definition:</b> <a href="edi__LinkedOrderedBinaryTree_8hpp_source.html#l00074">edi_LinkedOrderedBinaryTree.hpp:74</a></div></div>
+<div class="ttc" id="classedi_1_1LinkedOrderedBinaryTree_html_ab79273ab0efebb8610e12d80030d06a3"><div class="ttname"><a href="classedi_1_1LinkedOrderedBinaryTree.html#ab79273ab0efebb8610e12d80030d06a3">edi::LinkedOrderedBinaryTree::createLeftSubTree</a></div><div class="ttdeci">virtual void createLeftSubTree(const T &amp;it)</div><div class="ttdoc">Create the left child. </div><div class="ttdef"><b>Definition:</b> <a href="edi__LinkedOrderedBinaryTree_8hpp_source.html#l00337">edi_LinkedOrderedBinaryTree.hpp:337</a></div></div>
+<div class="ttc" id="classedi_1_1LinkedBinaryTreeNode_html_ac0467a6b4be4c4a4b45ebd3f0f6b2865"><div class="ttname"><a href="classedi_1_1LinkedBinaryTreeNode.html#ac0467a6b4be4c4a4b45ebd3f0f6b2865">edi::LinkedBinaryTreeNode::right</a></div><div class="ttdeci">virtual const LinkedBinaryTreeNode&lt; T &gt; * right() const </div><div class="ttdoc">Gets the link to right child. Time analysis: O(1) </div><div class="ttdef"><b>Definition:</b> <a href="edi__LinkedBinaryTreeNode_8hpp_source.html#l00060">edi_LinkedBinaryTreeNode.hpp:60</a></div></div>
+<div class="ttc" id="classedi_1_1LinkedOrderedBinaryTree_html_a5d03f21ffae37c27b17a6a257b4d86d9"><div class="ttname"><a href="classedi_1_1LinkedOrderedBinaryTree.html#a5d03f21ffae37c27b17a6a257b4d86d9">edi::LinkedOrderedBinaryTree::root</a></div><div class="ttdeci">virtual const LinkedBinaryTreeNode&lt; T &gt; * root() const </div><div class="ttdoc">Get the root node. is convenence function to void write the templete prefix all time. </div><div class="ttdef"><b>Definition:</b> <a href="edi__LinkedOrderedBinaryTree_8hpp_source.html#l00313">edi_LinkedOrderedBinaryTree.hpp:313</a></div></div>
+<div class="ttc" id="classedi_1_1LinkedOrderedBinaryTree_html_a8b236a24c8e60d3ae23d6ae2433bec4f"><div class="ttname"><a href="classedi_1_1LinkedOrderedBinaryTree.html#a8b236a24c8e60d3ae23d6ae2433bec4f">edi::LinkedOrderedBinaryTree::removeItem</a></div><div class="ttdeci">virtual void removeItem()</div><div class="ttdoc">Remove current item from the tree. Time analysis: O(h) where h is the height of the tree...</div><div class="ttdef"><b>Definition:</b> <a href="edi__LinkedOrderedBinaryTree_8hpp_source.html#l00195">edi_LinkedOrderedBinaryTree.hpp:195</a></div></div>
+<div class="ttc" id="classedi_1_1LinkedOrderedBinaryTree_html_a096c936a88a6f8e71f40bbe56fdcb062"><div class="ttname"><a href="classedi_1_1LinkedOrderedBinaryTree.html#a096c936a88a6f8e71f40bbe56fdcb062">edi::LinkedOrderedBinaryTree::insert</a></div><div class="ttdeci">virtual void insert(const T &amp;x)</div><div class="ttdoc">Insert x into the tree. Time analysis: O(h), h is the height of the tree, worst case. </div><div class="ttdef"><b>Definition:</b> <a href="edi__LinkedOrderedBinaryTree_8hpp_source.html#l00144">edi_LinkedOrderedBinaryTree.hpp:144</a></div></div>
+<div class="ttc" id="classedi_1_1LinkedOrderedBinaryTree_html_a89f3f8d6b6551befd0085d4199f77d65"><div class="ttname"><a href="classedi_1_1LinkedOrderedBinaryTree.html#a89f3f8d6b6551befd0085d4199f77d65">edi::LinkedOrderedBinaryTree::search</a></div><div class="ttdeci">virtual void search(const T &amp;x)</div><div class="ttdoc">Go to item x, if it is in the tree. Time analysis: O(h), h is the height of the tree, worst case. </div><div class="ttdef"><b>Definition:</b> <a href="edi__LinkedOrderedBinaryTree_8hpp_source.html#l00117">edi_LinkedOrderedBinaryTree.hpp:117</a></div></div>
+<div class="ttc" id="classedi_1_1LinkedOrderedBinaryTree_html_a9e72d40ff2759f42f91b1ff815aeeed6"><div class="ttname"><a href="classedi_1_1LinkedOrderedBinaryTree.html#a9e72d40ff2759f42f91b1ff815aeeed6">edi::LinkedOrderedBinaryTree::createRoot</a></div><div class="ttdeci">virtual void createRoot(const T &amp;it)</div><div class="ttdoc">Create the root node. </div><div class="ttdef"><b>Definition:</b> <a href="edi__LinkedOrderedBinaryTree_8hpp_source.html#l00342">edi_LinkedOrderedBinaryTree.hpp:342</a></div></div>
+<div class="ttc" id="classedi_1_1LinkedOrderedBinaryTree_html_a5ad4052d817e481c6bc4f28cb3840228"><div class="ttname"><a href="classedi_1_1LinkedOrderedBinaryTree.html#a5ad4052d817e481c6bc4f28cb3840228">edi::LinkedOrderedBinaryTree::_prev</a></div><div class="ttdeci">LinkedBinaryTreeNode&lt; T &gt; * _prev</div><div class="ttdef"><b>Definition:</b> <a href="edi__LinkedOrderedBinaryTree_8hpp_source.html#l00400">edi_LinkedOrderedBinaryTree.hpp:400</a></div></div>
+<div class="ttc" id="classedi_1_1LinkedOrderedBinaryTree_html_a0479f9820f7c5faa2bb22c8ab666904e"><div class="ttname"><a href="classedi_1_1LinkedOrderedBinaryTree.html#a0479f9820f7c5faa2bb22c8ab666904e">edi::LinkedOrderedBinaryTree::isEmpty</a></div><div class="ttdeci">virtual bool isEmpty() const </div><div class="ttdoc">Is the tree empty?. </div><div class="ttdef"><b>Definition:</b> <a href="edi__LinkedOrderedBinaryTree_8hpp_source.html#l00044">edi_LinkedOrderedBinaryTree.hpp:44</a></div></div>
+<div class="ttc" id="classedi_1_1LinkedOrderedBinaryTree_html_a46ee951ccf54cc81bf490780ef1f895a"><div class="ttname"><a href="classedi_1_1LinkedOrderedBinaryTree.html#a46ee951ccf54cc81bf490780ef1f895a">edi::LinkedOrderedBinaryTree::hasLeftChild</a></div><div class="ttdeci">virtual bool hasLeftChild() const </div><div class="ttdoc">Has current got a left child? </div><div class="ttdef"><b>Definition:</b> <a href="edi__LinkedOrderedBinaryTree_8hpp_source.html#l00056">edi_LinkedOrderedBinaryTree.hpp:56</a></div></div>
+<div class="ttc" id="classedi_1_1LinkedOrderedBinaryTree_html_ac6b0835a39c9986fe8773f5685f5e34b"><div class="ttname"><a href="classedi_1_1LinkedOrderedBinaryTree.html#ac6b0835a39c9986fe8773f5685f5e34b">edi::LinkedOrderedBinaryTree::flush</a></div><div class="ttdeci">virtual void flush()</div><div class="ttdoc">Remove current all the items from the tree. Time analysis: O(n) where n is the number of nodes of the...</div><div class="ttdef"><b>Definition:</b> <a href="edi__LinkedOrderedBinaryTree_8hpp_source.html#l00242">edi_LinkedOrderedBinaryTree.hpp:242</a></div></div>
+<div class="ttc" id="classedi_1_1OrderedBinaryTree_html"><div class="ttname"><a href="classedi_1_1OrderedBinaryTree.html">edi::OrderedBinaryTree</a></div><div class="ttdoc">The ADT OrderedBinaryTree. </div><div class="ttdef"><b>Definition:</b> <a href="edi__OrderedBinaryTree_8hpp_source.html#l00012">edi_OrderedBinaryTree.hpp:12</a></div></div>
+<div class="ttc" id="classedi_1_1LinkedOrderedBinaryTree_html_a8b218daa53024b62f827389e356a0d39"><div class="ttname"><a href="classedi_1_1LinkedOrderedBinaryTree.html#a8b218daa53024b62f827389e356a0d39">edi::LinkedOrderedBinaryTree::leftSubTree</a></div><div class="ttdeci">virtual LinkedOrderedBinaryTree&lt; T &gt; * leftSubTree()</div><div class="ttdoc">Gets the left sub-tree. Time Analysis: O(1) </div><div class="ttdef"><b>Definition:</b> <a href="edi__LinkedOrderedBinaryTree_8hpp_source.html#l00273">edi_LinkedOrderedBinaryTree.hpp:273</a></div></div>
+<div class="ttc" id="classedi_1_1LinkedOrderedBinaryTree_html_a0ae5fd701d1b194676d590f18375f5b0"><div class="ttname"><a href="classedi_1_1LinkedOrderedBinaryTree.html#a0ae5fd701d1b194676d590f18375f5b0">edi::LinkedOrderedBinaryTree::LinkedOrderedBinaryTree</a></div><div class="ttdeci">LinkedOrderedBinaryTree()</div><div class="ttdoc">Makes a LinkedOrderedBinaryTree. Time analysis: O(1). </div><div class="ttdef"><b>Definition:</b> <a href="edi__LinkedOrderedBinaryTree_8hpp_source.html#l00024">edi_LinkedOrderedBinaryTree.hpp:24</a></div></div>
+<div class="ttc" id="classedi_1_1LinkedOrderedBinaryTree_1_1CheckOrdering_html"><div class="ttname"><a href="classedi_1_1LinkedOrderedBinaryTree_1_1CheckOrdering.html">edi::LinkedOrderedBinaryTree::CheckOrdering</a></div><div class="ttdef"><b>Definition:</b> <a href="edi__LinkedOrderedBinaryTree_8hpp_source.html#l00353">edi_LinkedOrderedBinaryTree.hpp:353</a></div></div>
+<div class="ttc" id="classedi_1_1LinkedOrderedBinaryTree_html_a1a28fae1ae8b9f1616756835560fd953"><div class="ttname"><a href="classedi_1_1LinkedOrderedBinaryTree.html#a1a28fae1ae8b9f1616756835560fd953">edi::LinkedOrderedBinaryTree::setRoot</a></div><div class="ttdeci">virtual void setRoot(LinkedBinaryTreeNode&lt; T &gt; *newRoot)</div><div class="ttdoc">Set the root node. is convenence function to void write the templete prefix all time. </div><div class="ttdef"><b>Definition:</b> <a href="edi__LinkedOrderedBinaryTree_8hpp_source.html#l00317">edi_LinkedOrderedBinaryTree.hpp:317</a></div></div>
+<div class="ttc" id="classedi_1_1LinkedOrderedBinaryTree_html_ab01f400883cd6576ab1589182e79a389"><div class="ttname"><a href="classedi_1_1LinkedOrderedBinaryTree.html#ab01f400883cd6576ab1589182e79a389">edi::LinkedOrderedBinaryTree::createRightSubTree</a></div><div class="ttdeci">virtual void createRightSubTree(const T &amp;it)</div><div class="ttdoc">Create the right child. </div><div class="ttdef"><b>Definition:</b> <a href="edi__LinkedOrderedBinaryTree_8hpp_source.html#l00333">edi_LinkedOrderedBinaryTree.hpp:333</a></div></div>
+<div class="ttc" id="classedi_1_1LinkedOrderedBinaryTree_html_a52fcae09bc1281b3e35df94304d6540c"><div class="ttname"><a href="classedi_1_1LinkedOrderedBinaryTree.html#a52fcae09bc1281b3e35df94304d6540c">edi::LinkedOrderedBinaryTree::setItem</a></div><div class="ttdeci">virtual void setItem(const T &amp;it)</div><div class="ttdoc">Sets the data stored in current. </div><div class="ttdef"><b>Definition:</b> <a href="edi__LinkedOrderedBinaryTree_8hpp_source.html#l00341">edi_LinkedOrderedBinaryTree.hpp:341</a></div></div>
+<div class="ttc" id="classedi_1_1LinkedOrderedBinaryTree_html_af8c07aed24f76b6de0d89849827cc70a"><div class="ttname"><a href="classedi_1_1LinkedOrderedBinaryTree.html#af8c07aed24f76b6de0d89849827cc70a">edi::LinkedOrderedBinaryTree::isSubTree</a></div><div class="ttdeci">virtual bool isSubTree() const </div><div class="ttdoc">Is this a sub-tree?. </div><div class="ttdef"><b>Definition:</b> <a href="edi__LinkedOrderedBinaryTree_8hpp_source.html#l00048">edi_LinkedOrderedBinaryTree.hpp:48</a></div></div>
+<div class="ttc" id="classedi_1_1LinkedOrderedBinaryTree_html_aeabfb032f8ed9f194cfde1f23ab6d3fa"><div class="ttname"><a href="classedi_1_1LinkedOrderedBinaryTree.html#aeabfb032f8ed9f194cfde1f23ab6d3fa">edi::LinkedOrderedBinaryTree::leftSubTree</a></div><div class="ttdeci">virtual const LinkedOrderedBinaryTree&lt; T &gt; * leftSubTree() const </div><div class="ttdoc">Gets the left sub-tree. Time Analysis: O(1) </div><div class="ttdef"><b>Definition:</b> <a href="edi__LinkedOrderedBinaryTree_8hpp_source.html#l00259">edi_LinkedOrderedBinaryTree.hpp:259</a></div></div>
+<div class="ttc" id="namespaceedi_html"><div class="ttname"><a href="namespaceedi.html">edi</a></div><div class="ttdoc">Espacio de nombres para la asignatura de Estructura de datos y de la información. ...</div><div class="ttdef"><b>Definition:</b> <a href="asignatura_8hpp_source.html#l00020">asignatura.hpp:20</a></div></div>
+<div class="ttc" id="classedi_1_1LinkedOrderedBinaryTree_html_a2c7f07e256426cc5ac55d137f175c688"><div class="ttname"><a href="classedi_1_1LinkedOrderedBinaryTree.html#a2c7f07e256426cc5ac55d137f175c688">edi::LinkedOrderedBinaryTree::rightSubTree</a></div><div class="ttdeci">virtual const LinkedOrderedBinaryTree&lt; T &gt; * rightSubTree() const </div><div class="ttdoc">Gets the right sub-tree. Time Analysis: O(1) </div><div class="ttdef"><b>Definition:</b> <a href="edi__LinkedOrderedBinaryTree_8hpp_source.html#l00266">edi_LinkedOrderedBinaryTree.hpp:266</a></div></div>
+<div class="ttc" id="classedi_1_1LinkedBinaryTreeNode_html_a1a4400ac020ae86464de5ec718fbc469"><div class="ttname"><a href="classedi_1_1LinkedBinaryTreeNode.html#a1a4400ac020ae86464de5ec718fbc469">edi::LinkedBinaryTreeNode::left</a></div><div class="ttdeci">virtual const LinkedBinaryTreeNode&lt; T &gt; * left() const </div><div class="ttdoc">Gets the link to left child. Time analysis: O(1) </div><div class="ttdef"><b>Definition:</b> <a href="edi__LinkedBinaryTreeNode_8hpp_source.html#l00052">edi_LinkedBinaryTreeNode.hpp:52</a></div></div>
+<div class="ttc" id="classedi_1_1LinkedOrderedBinaryTree_html_aed5e3fa0fec792d15fb11d2ef57ae7ac"><div class="ttname"><a href="classedi_1_1LinkedOrderedBinaryTree.html#aed5e3fa0fec792d15fb11d2ef57ae7ac">edi::LinkedOrderedBinaryTree::goToRoot</a></div><div class="ttdeci">virtual void goToRoot()</div><div class="ttdoc">Move current to the root of the tree. Time analysis: O(1) </div><div class="ttdef"><b>Definition:</b> <a href="edi__LinkedOrderedBinaryTree_8hpp_source.html#l00107">edi_LinkedOrderedBinaryTree.hpp:107</a></div></div>
+<div class="ttc" id="classedi_1_1LinkedOrderedBinaryTree_html_af08ca9ef20e8265fde64f1b9b517f907"><div class="ttname"><a href="classedi_1_1LinkedOrderedBinaryTree.html#af08ca9ef20e8265fde64f1b9b517f907">edi::LinkedOrderedBinaryTree::_curr</a></div><div class="ttdeci">LinkedBinaryTreeNode&lt; T &gt; * _curr</div><div class="ttdef"><b>Definition:</b> <a href="edi__LinkedOrderedBinaryTree_8hpp_source.html#l00399">edi_LinkedOrderedBinaryTree.hpp:399</a></div></div>
+<div class="ttc" id="classedi_1_1LinkedOrderedBinaryTree_html_a8173abb4e6be0b6dcd90a48050e7bc6e"><div class="ttname"><a href="classedi_1_1LinkedOrderedBinaryTree.html#a8173abb4e6be0b6dcd90a48050e7bc6e">edi::LinkedOrderedBinaryTree::LinkedOrderedBinaryTree</a></div><div class="ttdeci">LinkedOrderedBinaryTree(const LinkedBinaryTreeNode&lt; T &gt; *root)</div><div class="ttdoc">Makes an ordered sub-tree. </div><div class="ttdef"><b>Definition:</b> <a href="edi__LinkedOrderedBinaryTree_8hpp_source.html#l00327">edi_LinkedOrderedBinaryTree.hpp:327</a></div></div>
+<div class="ttc" id="classedi_1_1LinkedBinaryTreeNode_html"><div class="ttname"><a href="classedi_1_1LinkedBinaryTreeNode.html">edi::LinkedBinaryTreeNode</a></div><div class="ttdoc">Implement the LinkedBinaryTreeNode ADT. </div><div class="ttdef"><b>Definition:</b> <a href="edi__LinkedBinaryTreeNode_8hpp_source.html#l00011">edi_LinkedBinaryTreeNode.hpp:11</a></div></div>
+<div class="ttc" id="classedi_1_1LinkedOrderedBinaryTree_html_ae264bf62d497d99c6ed36de99920f4b5"><div class="ttname"><a href="classedi_1_1LinkedOrderedBinaryTree.html#ae264bf62d497d99c6ed36de99920f4b5">edi::LinkedOrderedBinaryTree::findInorderPrecessor</a></div><div class="ttdeci">void findInorderPrecessor()</div><div class="ttdoc">Find the in order precessor of current. Time Analysis: O(h), where h is the height of the tree...</div><div class="ttdef"><b>Definition:</b> <a href="edi__LinkedOrderedBinaryTree_8hpp_source.html#l00291">edi_LinkedOrderedBinaryTree.hpp:291</a></div></div>
+<div class="ttc" id="classedi_1_1LinkedOrderedBinaryTree_html"><div class="ttname"><a href="classedi_1_1LinkedOrderedBinaryTree.html">edi::LinkedOrderedBinaryTree</a></div><div class="ttdoc">Linked implementation of the ADT OrderedBinaryTree. </div><div class="ttdef"><b>Definition:</b> <a href="edi__LinkedBinaryTree_8hpp_source.html#l00015">edi_LinkedBinaryTree.hpp:15</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generado el Lunes, 27 de Abril de 2015 01:11:21 para Persona por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.9.1
+</small></address>
+</body>
+</html>

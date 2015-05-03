@@ -1,7 +1,7 @@
 #ifndef __EDI_LinkedBinaryTreeNode_HPP__
 #define __EDI_LinkedBinaryTreeNode_HPP__
 
-#include <edi_exports.hpp>
+#include "edi_exports.hpp"
 
 namespace edi 
 {

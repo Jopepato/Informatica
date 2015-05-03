@@ -7,17 +7,17 @@
 
 
 #include "clave.hpp"
+#include <cstdlib>
 
 
-
-using namespace std;
+using namespace edi;
 
 
 
 
 	//La sobrecarga
 
-edi::Clave & edi::Clave::operator=(const edi::Clave &c){
+Clave & Clave::operator=(const Clave &c){
 	if (this != &c)
 	{
 		setDni(c.getDni());
@@ -26,11 +26,11 @@ edi::Clave & edi::Clave::operator=(const edi::Clave &c){
 	return *this;
 }
 
-bool edi::Clave::operator==(const edi::Clave &c)const{
+bool Clave::operator==(const Clave &c)const{
 	return (getDni() == c.getDni())
 }
 
-bool edi::Clave::operator<(const edi::Clave &c) const{
+bool Clave::operator<(const Clave &c) const{
 	if (getDni() < c.getDni())
 		return true;
 	else if (getDni() == c.getDni())
@@ -41,17 +41,17 @@ bool edi::Clave::operator<(const edi::Clave &c) const{
 		return false;
 }
 
-bool edi::Clave::operator>(const edi::Clave &c) const{
+bool Clave::operator>(const Clave &c) const{
 
 		return not(*this < c);
 }
 
-bool edi::Clave::operator<=(const edi::Clave &c) const{
+bool Clave::operator<=(const Clave &c) const{
 		
 	return (*this < c or *this == c);
 }
 
-bool edi::Clave::operator>=(const edi::Clave &c) const{
+bool Clave::operator>=(const Clave &c) const{
 
 	return not(*this <= c);
 }
@@ -98,7 +98,6 @@ namespace edi{
 		c.setPosicion(atoi(aux));
 
 		return(in);
-
 
 	}
 

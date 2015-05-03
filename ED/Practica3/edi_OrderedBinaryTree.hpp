@@ -2,8 +2,8 @@
 #define __EDI_OrderedBinaryTree_HPP__
 
 #include <cassert>
-#include <edi_exports.hpp>
-#include <edi_BinaryTree.hpp>
+#include "edi_exports.hpp"
+#include "edi_BinaryTree.hpp"
 
 namespace edi 
 {

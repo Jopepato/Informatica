@@ -40,6 +40,12 @@ class Asignatura{
 
 		//! \name Observadores
 
+
+		inline LinkedList<Persona> getLista(){
+			return alumnos_;
+		}
+
+
 		/*! 
 			\fn     inline void VectorALista(const vector<Persona>& vector)
 			\brief  Pasa un vector de alumnos a una lista doblemente enlazada y ordenada

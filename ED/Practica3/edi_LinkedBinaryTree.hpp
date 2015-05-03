@@ -2,10 +2,10 @@
 #define __EDI_LinkedBinaryTree_HPP__
 
 #include <cassert>
-#include <edi_exports.hpp>
+#include "edi_exports.hpp"
 //#include <edi_LinkedStack.hpp>
-#include <edi_BinaryTree.hpp>
-#include <edi_LinkedBinaryTreeNode.hpp>
+#include "edi_BinaryTree.hpp"
+#include "edi_LinkedBinaryTreeNode.hpp"
 
 namespace edi 
 {

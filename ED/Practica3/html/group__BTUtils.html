@@ -1,0 +1,233 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.9.1"/>
+<title>Persona: Binary Tree Utilities.</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Persona
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.8.9.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Página&#160;principal</span></a></li>
+      <li><a href="modules.html"><span>Módulos</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
+      <li><a href="annotated.html"><span>Clases</span></a></li>
+      <li><a href="files.html"><span>Archivos</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Buscar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div><!-- top -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Funciones</a>  </div>
+  <div class="headertitle">
+<div class="title">Binary Tree Utilities.<div class="ingroups"><a class="el" href="group__edi.html">Estructuras de Datos</a></div></div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="dynheader">
+Diagrama de colaboración para Binary Tree Utilities.:</div>
+<div class="dyncontent">
+<center><table><tr><td><img src="group__BTUtils.png" border="0" alt="" usemap="#group____BTUtils"/>
+<map name="group____BTUtils" id="group____BTUtils">
+</map>
+</td></tr></table></center>
+</div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Funciones</h2></td></tr>
+<tr class="memitem:ga4aeb75053283685b778f6253be052d58"><td class="memTemplParams" colspan="2">template&lt;class T , class Functor &gt; </td></tr>
+<tr class="memitem:ga4aeb75053283685b778f6253be052d58"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__BTUtils.html#ga4aeb75053283685b778f6253be052d58">edi::postorderBinaryTreeProcessor</a> (const BinaryTree&lt; T &gt; *t, Functor &amp;f)</td></tr>
+<tr class="memdesc:ga4aeb75053283685b778f6253be052d58"><td class="mdescLeft">&#160;</td><td class="mdescRight">Carries out a post order traversal through the tree. This template makes use of a Functor class with the interface:  <a href="#ga4aeb75053283685b778f6253be052d58">Más...</a><br /></td></tr>
+<tr class="separator:ga4aeb75053283685b778f6253be052d58"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9e212e5e60ad35e3d5786f78148057a2"><td class="memTemplParams" colspan="2">template&lt;class T , class Functor &gt; </td></tr>
+<tr class="memitem:ga9e212e5e60ad35e3d5786f78148057a2"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__BTUtils.html#ga9e212e5e60ad35e3d5786f78148057a2">edi::inorderBinaryTreeProcessor</a> (const BinaryTree&lt; T &gt; *t, Functor &amp;f)</td></tr>
+<tr class="memdesc:ga9e212e5e60ad35e3d5786f78148057a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Carries out an in order traversal through the tree. This template makes use of a Functor class with the interface:  <a href="#ga9e212e5e60ad35e3d5786f78148057a2">Más...</a><br /></td></tr>
+<tr class="separator:ga9e212e5e60ad35e3d5786f78148057a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga494bc0e28f04620e0f47a386a4bf4415"><td class="memTemplParams" colspan="2">template&lt;class T , class Functor &gt; </td></tr>
+<tr class="memitem:ga494bc0e28f04620e0f47a386a4bf4415"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__BTUtils.html#ga494bc0e28f04620e0f47a386a4bf4415">edi::preorderBinaryTreeProcessor</a> (const BinaryTree&lt; T &gt; *t, Functor &amp;f)</td></tr>
+<tr class="memdesc:ga494bc0e28f04620e0f47a386a4bf4415"><td class="mdescLeft">&#160;</td><td class="mdescRight">Carries out a pre order traversal through the tree. This template makes use of a Functor class with the interface:  <a href="#ga494bc0e28f04620e0f47a386a4bf4415">Más...</a><br /></td></tr>
+<tr class="separator:ga494bc0e28f04620e0f47a386a4bf4415"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Descripción detallada</h2>
+<h2 class="groupheader">Documentación de las funciones</h2>
+<a class="anchor" id="ga9e212e5e60ad35e3d5786f78148057a2"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T , class Functor &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool edi::inorderBinaryTreeProcessor </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classedi_1_1BinaryTree.html">BinaryTree</a>&lt; T &gt; *&#160;</td>
+          <td class="paramname"><em>t</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Functor &amp;&#160;</td>
+          <td class="paramname"><em>f</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Carries out an in order traversal through the tree. This template makes use of a Functor class with the interface: </p>
+<p>bool operator()(const T&amp; t) method.</p>
+<ul>
+<li>[in] t is the tree. </li>
+<li>[in] f is a functor object with the <dl class="section return"><dt>Devuelve</dt><dd>false if the process must stop or true in other case. </dd></dl>
+</li>
+</ul>
+
+<p>Definición en la línea <a class="el" href="edi__BinaryTree_8hpp_source.html#l00168">168</a> del archivo <a class="el" href="edi__BinaryTree_8hpp_source.html">edi_BinaryTree.hpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga4aeb75053283685b778f6253be052d58"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T , class Functor &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool edi::postorderBinaryTreeProcessor </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classedi_1_1BinaryTree.html">BinaryTree</a>&lt; T &gt; *&#160;</td>
+          <td class="paramname"><em>t</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Functor &amp;&#160;</td>
+          <td class="paramname"><em>f</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Carries out a post order traversal through the tree. This template makes use of a Functor class with the interface: </p>
+<p>bool operator()(const T&amp; t) method.</p>
+<ul>
+<li>[in] t is the tree. </li>
+<li>[in] f is a functor object with the <dl class="section return"><dt>Devuelve</dt><dd>false if the process must stop or true in other case. </dd></dl>
+</li>
+</ul>
+
+<p>Definición en la línea <a class="el" href="edi__BinaryTree_8hpp_source.html#l00135">135</a> del archivo <a class="el" href="edi__BinaryTree_8hpp_source.html">edi_BinaryTree.hpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga494bc0e28f04620e0f47a386a4bf4415"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T , class Functor &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool edi::preorderBinaryTreeProcessor </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classedi_1_1BinaryTree.html">BinaryTree</a>&lt; T &gt; *&#160;</td>
+          <td class="paramname"><em>t</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Functor &amp;&#160;</td>
+          <td class="paramname"><em>f</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Carries out a pre order traversal through the tree. This template makes use of a Functor class with the interface: </p>
+<p>bool operator()(const T&amp; t) method.</p>
+<ul>
+<li>[in] t is the tree. </li>
+<li>[in] f is a functor object with the <dl class="section return"><dt>Devuelve</dt><dd>false if the process must stop or true in other case. </dd></dl>
+</li>
+</ul>
+
+<p>Definición en la línea <a class="el" href="edi__BinaryTree_8hpp_source.html#l00201">201</a> del archivo <a class="el" href="edi__BinaryTree_8hpp_source.html">edi_BinaryTree.hpp</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generado el Lunes, 27 de Abril de 2015 01:11:21 para Persona por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.9.1
+</small></address>
+</body>
+</html>

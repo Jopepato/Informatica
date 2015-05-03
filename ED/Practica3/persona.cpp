@@ -7,7 +7,9 @@
 #include <iostream>
 #include "persona.hpp"
 
-edi::Persona::Persona(const  std::string &n, const  std::string &a, const int &d)
+  using namespace edi;
+
+Persona::Persona(const  std::string &n, const  std::string &a, const int &d)
 {
 	nombre(n);
 	apellido(a);
@@ -15,7 +17,7 @@ edi::Persona::Persona(const  std::string &n, const  std::string &a, const int &d
   borrado('n');
 };
 
-edi::Persona::Persona()
+Persona::Persona()
 {
 	nombre("");
 	apellido("");
@@ -23,12 +25,12 @@ edi::Persona::Persona()
   	borrado('n');
 };
 		
-edi::Persona::Persona(const edi::Persona &p)
+Persona::Persona(const edi::Persona &p)
 {
 	*this = p;
 };
 
-edi::Persona & edi::Persona::operator=(const edi::Persona &p)
+Persona & Persona::operator=(const edi::Persona &p)
 {
 	if (this != &p)
 	{
@@ -39,13 +41,13 @@ edi::Persona & edi::Persona::operator=(const edi::Persona &p)
 	return *this;
 };
 	
-bool edi::Persona::operator==(const edi::Persona &p) const
+bool Persona::operator==(const edi::Persona &p) const
 {
 	return apellido() == p.apellido() and nombre() == p.nombre() and dni() == p.dni();
 };
 
 //Sobrecarga del operador < para la ordenación.
-bool edi::Persona::operator<(const edi::Persona &p) const
+bool Persona::operator<(const edi::Persona &p) const
 {
 	if (apellido() < p.apellido())
 		return true;
@@ -66,17 +68,17 @@ bool edi::Persona::operator<(const edi::Persona &p) const
 		return false;
 };
 
-bool edi::Persona::operator<=(const edi::Persona &p) const
+bool Persona::operator<=(const edi::Persona &p) const
 {
 	return (*this < p or *this == p);
 };
 
-bool edi::Persona::operator>(const edi::Persona &p) const
+bool Persona::operator>(const edi::Persona &p) const
 {
 	return not (*this <= p);
 };
 
-bool edi::Persona::operator>=(const edi::Persona &p) const
+bool Persona::operator>=(const edi::Persona &p) const
 {
 	return not (*this < p);
 };
@@ -132,7 +134,7 @@ namespace edi{
 
 	std::ofstream & operator<<( std::ofstream &stream, const edi::Persona &p){
 		stream << p.nombre() << " " << p.apellido() << " " << p.dni() << std::endl;
-	}
+	};
 
 
 	std::ifstream &operator>>( std::ifstream &stream, const edi::Persona &p){
@@ -151,7 +153,7 @@ namespace edi{
 
 		return stream;
 
-	}
+	};
 
 }
 

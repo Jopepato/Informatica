@@ -13,8 +13,7 @@
 /*! 
   \name Espacio de nombres de la asignatura de Estructuras de datos y de la información
 */
-namespace edi
-{
+namespace edi{
 	//!  Definición de la plantilla de la clase Persona
 	class Persona
 	{
@@ -114,6 +113,8 @@ namespace edi
 				\sa     operator==, operator<, operator<=, operator>
 			*/
 			bool operator>=(const Persona &p) const;
+			
+
 			
 			/*! 
 				\fn     friend ostream & operator<<(ostream &stream, const Persona &p);

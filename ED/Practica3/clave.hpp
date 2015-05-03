@@ -13,7 +13,6 @@
 
 using namespace std;
 
-
 /*! 
   \name Espacio de nombres de la asignatura de Estructuras de datos y de la información
 */
@@ -122,6 +121,9 @@ namespace edi{
 				\sa     operator==, operator<, operator<=, operator>
 			*/
 				bool operator>=(const Clave &c) const;
+
+
+
 			/*! 
 				\fn     friend ostream & operator<<(ostream &stream, const Clave &p);
 				\brief  Escribe los datos de la Clave en un flujo de salida
@@ -214,18 +216,5 @@ namespace edi{
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-};
+}
 #endif

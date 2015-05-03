@@ -10,7 +10,9 @@
 #include "persona.hpp"
 #include "edi_LinkedList.hpp"
 #include <fstream>
+#include <cstddef>
 
+ 	using namespace edi;
 
 		/*! 
 		\fn     inline void guardarListaFichero(const LinkedList<Persona>& lista, const char * fichero)
@@ -23,14 +25,14 @@
 
 			//Recorrer la lista y guardar cada alumno en el fichero
 			Persona p;
-			fstream f;
+			ofstream f;
 
-			f.fopen(fichero);
+			f.open(fichero);
 
 			//Recorremos la lista entera y la guardamos en el fichero
 			for(int i=0; lista.isValid(i); i++){	
 				if(lista.isValid(i)){
-					p = personas.item(i);
+					p = lista.item(i);
 
 					f << p;
 				}
@@ -46,20 +48,23 @@
 		\param	LinkedList<Persona>& lista
 		\param 	const char * fichero
 		*/
+
+
 		inline void cargarListaFichero(LinkedList<Persona>& lista, const char * fichero){
 
 			//Recorrer el fichero guardando cada alumno en un alumno auxiliar, para insertarlo a la lista
 			Persona p;
-			fstream f;
+			ifstream f;
 
 			f.open(fichero);
 
 			//Recorremos el fichero insertando las personas en la lista
 
-			while(!f.eof){
-				f >> p;
+			while(!f.eof()){
+				//f>>p;
+
 					if(p.nombre() != ""){
-						lista.insert(p);
+						lista.inserta(p);
 					}
 			}
 			f.close();
