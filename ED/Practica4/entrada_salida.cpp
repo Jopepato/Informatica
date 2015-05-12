@@ -3,6 +3,8 @@
 #include "graph_matrix.hpp"
 #include "entrada_salida.hpp"
 
+using namespace edi;
+
 bool cargarGrafo(edi::GraphMatrix * &g, std::string fileGraph)
 {
 	std::ifstream f(fileGraph.c_str()); //Se define el stream de lectura y se abre el fichero.

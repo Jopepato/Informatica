@@ -3,6 +3,7 @@
 
 
 #include <cassert>
+#include "vertex.hpp"
 
 
 /*!
