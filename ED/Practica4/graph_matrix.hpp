@@ -26,7 +26,7 @@ namespace edi
 		private:
 			vector<Vertex> vertexes_;	//Vector of vertexes
 			float ** matrixW_;			//Adjacency matrix of weights
-			bool isDirected_;			//Is directed
+			bool directed_;			//Is directed
 			Vertex* vCursor_;			//cursor of vertexes
 			Edge* eCursor_;				//cursor of edges
 			unsigned int numVertexes_;	//number of vertexes
@@ -51,23 +51,17 @@ namespace edi
 			
 			//Nos devuelve otras cosas
 			inline const unsigned int &capacity()const{
-				return(capacity);
+				return(capacity_);
 			};
 			
 			//Para comprobar si el grafo esta vacio
 			inline bool isEmpty() const{
 				//Miramos el numero de nodos
-					if(numVertexes_==0)
-						return true;
-					else
-						return false;
+				return(numVertexes_==0);
 			}; 
 			
 			inline const bool & isDirected() const{
-				if(isDirected_)
-					return true;
-				else
-					return false;
+				return(directed_);
 			};
 			
 			//Devuelve el elemento de la matriz de adyacencia (INFINITO si no hay lado)
@@ -76,7 +70,7 @@ namespace edi
 				//Valor a devolver
 				float *retVal;
 
-				retval = &matrixW_[u.getLabel()][v.getLabel()];
+				retVal = &matrixW_[u.getLabel()][v.getLabel()];
 
 				if(retVal==NULL){
 					//Devolvemos infinito
@@ -84,33 +78,27 @@ namespace edi
 					//numeric_limits<float>::infinity()
 					//Tambien podemos usar eso
 				}else{
-					return(retVal);
+					return(*retVal);
 				}
 
 			};
 			
 			//Está el cursor de vértices posición válida
 			inline bool hasCurrVertex() const{
-				if(vCursor_!=NULL)
-					return true;
-				else
-					return false;
+				return(vCursor_!=NULL);
 			}; 
 			
 			//Pre: hasCurrVertex() is true.
 			//Devuelve el vértice referenciado por cursor de vértices
 			inline const Vertex & currVertex() const{
 				assert(hasCurrVertex());
-				return(vCursor_);
+				return(*vCursor_);
 			};
       
 			//Está el cursor de lados posición válida
 			inline bool hasCurrEdge() const{
 				//Comprobamos que el cursor apunta a una posicion valida
-				if(eCursor_!=NULL)
-					return true;
-				else
-					return false;
+				return(eCursor_!=NULL);
 			};
 			
 			//Pre: hasCurrEdge() is true
@@ -118,7 +106,7 @@ namespace edi
 			inline const Edge currEdge(){
 				//Comprobamos que el cursor apunta a una posicion valida
 				assert(hasCurrEdge());
-				return(eCursor_);
+				return(*eCursor_);
 			};
 			
 			//Modifiers
