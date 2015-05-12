@@ -34,6 +34,7 @@ GraphMatrix::GraphMatrix(const unsigned int & capacity, const bool & isDirected)
 	eCursor_ = NULL;
 	numVertexes_ = 0;
 	numEdges_ = 0;
+	vectorV_.clear();
 
 };
 
@@ -42,29 +43,59 @@ GraphMatrix::GraphMatrix(const unsigned int & capacity, const bool & isDirected)
 
 //Hacemos un grafo dirigido
 void GraphMatrix::makeDirected(){
-
+	directed_=true;
 };
 
 //Hacemos un grafo no dirigido
 void GraphMatrix::makeUndirected(){
-
+	directed_=false;
 };
 
-//Añadimos un Vertex
+//Añadimos un Vertex a partir del data
 void GraphMatrix::addVertex(const std::string & data){
-
+	assert(numVertexes_<capacity_);
+	Vertex v;
+	v.setData(data);
+	v.setLabel(numVertexes_);
+	vectorV_.push_back(v);
+	numVertexes_++;
 };
 
 //Añadimos un Edge
 void GraphMatrix::addEdge(const double & data, const Vertex & u, const Vertex & v){
+	//Comprobamos que u y v pertenecen al grafo
+	assert(searchVertex(u.data) && vCursor_=NULL);
+	assert(searchVertex(v.data) && vCursor_=NULL);
+
+	//Ahora añadimos, si es dirigido en una sola posicion y si no lo es, en las dos
+	if(directed_){
+		matrixW_[u.getLabel()][v.getLabel()] = data;
+	}else{
+		matrixW_[u.getLabel()][v.getLabel()] = data;
+		matrixW_[v.getLabel()][u.getLabel()] = data;
+	}
+
+	numEdges_++;
 
 };
 
-//Buscamos un Vertex
+//Buscamos un Vertex en el vector de Vertexes y colocamos el cursor apuntandole a el
 void GraphMatrix::searchVertex(const std::string &data){
+	bool found = false;
+
+	for(unsigned int i = 0; i<vectorV_.capacity(), i++){
+		
+		if(vectorV_[i].getData() == data){
+			vCursor_=&vectorV_[i];
+			found= true;
+		}
+	}
+
+	return found;
 
 };
 
+//Los GoTo estan wapens
 void GraphMatrix::goTo(const Vertex & u){
 
 };

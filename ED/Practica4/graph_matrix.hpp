@@ -24,7 +24,7 @@ namespace edi
 	class GraphMatrix
 	{
 		private:
-			vector<Vertex> vertexes_;	//Vector of vertexes
+			vector<Vertex> vectorV_;	//Vector of vertexes
 			float ** matrixW_;			//Adjacency matrix of weights
 			bool directed_;			//Is directed
 			Vertex* vCursor_;			//cursor of vertexes
