@@ -64,8 +64,10 @@ void GraphMatrix::addVertex(const std::string & data){
 //Añadimos un Edge
 void GraphMatrix::addEdge(const double & data, const Vertex & u, const Vertex & v){
 	//Comprobamos que u y v pertenecen al grafo
-	assert(searchVertex(u.data) && vCursor_=NULL);
-	assert(searchVertex(v.data) && vCursor_=NULL);
+	searchVertex(u.getData());
+	assert(vCursor_!=NULL);
+	searchVertex(v.getData());
+	assert(vCursor_!=NULL);
 
 	//Ahora añadimos, si es dirigido en una sola posicion y si no lo es, en las dos
 	if(directed_){
@@ -81,54 +83,129 @@ void GraphMatrix::addEdge(const double & data, const Vertex & u, const Vertex & 
 
 //Buscamos un Vertex en el vector de Vertexes y colocamos el cursor apuntandole a el
 void GraphMatrix::searchVertex(const std::string &data){
-	bool found = false;
 
-	for(unsigned int i = 0; i<vectorV_.capacity(), i++){
+	for(unsigned int i = 0; i<vectorV_.capacity(); i++){
 		
 		if(vectorV_[i].getData() == data){
 			vCursor_=&vectorV_[i];
-			found= true;
 		}
 	}
 
-	return found;
-
 };
 
-//Los GoTo estan wapens
+//Los el vector a un vertice a partir del data
 void GraphMatrix::goTo(const Vertex & u){
+		//Primero comprobamos que el vertice pertenece
+		searchVertex(u.getData());
+		assert(vCursor_!=NULL);
+
+		for(unsigned int i=0; i<vectorV_.capacity(); i++){
+
+				if(vectorV_[i].getData() == u.getData()){
+					vCursor_ = &vectorV_[i];
+				}
+		}
+
 
 };
 
+//lleva el cursor a un vértice a partir de la posicion de dicho vertice
+void GraphMatrix::goTo(const int &idx){
+	//Comprobamos que el indice esta entre los indices del vector
+	assert(0<=idx && idx<numVertexes());
 
-void GraphMatrix::goTo(int &idx){
+		vCursor_ = &vectorV_[idx];
 
 };
 
+//Lleva el cursor a un lado a partir de sus vertices
 void GraphMatrix::searchEdge(const Vertex & u, const Vertex & v){
+	//Primero comprobamos que ambos vertices existen
+	searchVertex(u.getData());
+	assert(vCursor_!=NULL);
+	searchVertex(v.getData());
+	assert(vCursor_!=NULL);
+
+	eCursor_->setData(matrixW_[u.getLabel()][v.getLabel()]);
+	eCursor_->setFirst(u);
+	eCursor_->setSecond(v);
 
 };
 
+//Lleva el cursor al primer vertice
 void GraphMatrix::beginVertex(){
-
+	vCursor_=&vectorV_[0];
 };
 
+//Avanza el cursor al siguiente vertice
 void GraphMatrix::nextVertex(){
-
+	vCursor_++;
 };
 
+//Comprueba si el cursor ha sobrepasado su última posicion válida
 bool GraphMatrix::afterEndVertex() const{
 
+	if(vCursor_!=&vectorV_[capacity()]){
+		return true;
+	}else{
+		return false;
+	}
+
 };
 
+//Lleva el cursor al primer lado que sale del vertice u
 void GraphMatrix::beginEdge(const Vertex & u){
+	bool found = false;
+	Edge * aux = eCursor_;
+	aux->setFirst(u);
+
+	for(unsigned int i=0; i<capacity() && found == false; i++){
+
+		if(matrixW_[u.getLabel()][i]>0 && matrixW_[u.getLabel()][i]<INFINITY){
+			found = true;
+			aux->setSecond(vectorV_[i]);
+			aux->setData(matrixW_[u.getLabel()][i]);
+		}
+	}
+
+	if(found == true){
+		eCursor_=aux;
+	}else{
+		eCursor_=NULL;
+	}
+
 
 };
 
+//Avanza el cursor al siguiente lado que sale de currEdge().first()
 void GraphMatrix::nextEdge(){
+	bool found;
+	Edge * aux = eCursor_;
+
+	for(unsigned int i = aux->second().getLabel()+1; i< capacity() && found == false; i++){
+
+		if(matrixW_[aux->first().getLabel()][i]>0 && matrixW_[aux->first().getLabel()][i]<INFINITY){
+
+			aux->setSecond(vectorV_[i]);
+			aux->setData(matrixW_[aux->first().getLabel()][i]);
+			found = true;
+		}
+	}
+	if(found == true){
+		eCursor_=aux;
+	}else{
+		eCursor_=NULL;
+	}
 
 };
 
+//Comprueba si el cursor ha sobrepasado su última posicion válida para los lados que salen de currEdge().first()
 bool GraphMatrix::afterEndEdge(){
+
+	if(eCursor_==NULL){
+		return true;
+	}else{
+		return false;
+	}
 
 };
