@@ -1,3 +1,9 @@
+/*!
+  \file   graph_matrix.cpp
+  \brief  Definición de las funciones de la clase GraphMatrix
+  \author José Pérez-Parras Toledano
+  \date   16/05/2015
+*/
 #include "graph_matrix.hpp"
 
 //Aqui haremos las funciones del archivo graph_matrix.hpp

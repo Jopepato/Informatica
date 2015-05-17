@@ -1,3 +1,10 @@
+/*!
+  \file   entrada_salida.cpp
+  \brief  Definición de las funciones de entrada/salida del grafo
+  \author José Pérez-Parras Toledano
+  \date   16/05/2015
+*/
+
 #include <iostream>
 #include <fstream>
 #include "graph_matrix.hpp"

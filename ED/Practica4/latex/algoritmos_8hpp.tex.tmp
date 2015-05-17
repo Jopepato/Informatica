@@ -1,0 +1,23 @@
+\hypertarget{algoritmos_8hpp}{}\section{Referencia del Archivo algoritmos.\+hpp}
+\label{algoritmos_8hpp}\index{algoritmos.\+hpp@{algoritmos.\+hpp}}
+
+
+Declaración de las funciones algoritmicas.  
+
+
+{\ttfamily \#include \char`\"{}graph\+\_\+matrix.\+hpp\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}edge.\+hpp\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}vertex.\+hpp\char`\"{}}\\*
+Dependencia gráfica adjunta para algoritmos.\+hpp\+:
+% FIG 0
+
+
+\subsection{Descripción detallada}
+Declaración de las funciones algoritmicas. 
+
+\begin{DoxyAuthor}{Autor}
+José Pérez-\/\+Parras Toledano 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Fecha}
+16/05/2015 
+\end{DoxyDate}

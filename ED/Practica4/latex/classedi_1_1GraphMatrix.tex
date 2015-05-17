@@ -1,0 +1,276 @@
+\hypertarget{classedi_1_1GraphMatrix}{}\section{Referencia de la Clase edi\+:\+:Graph\+Matrix}
+\label{classedi_1_1GraphMatrix}\index{edi\+::\+Graph\+Matrix@{edi\+::\+Graph\+Matrix}}
+
+
+Definición de la plantilla de la clase \hyperlink{classedi_1_1GraphMatrix}{Graph\+Matrix}.  
+
+
+
+
+{\ttfamily \#include $<$graph\+\_\+matrix.\+hpp$>$}
+
+\subsection*{Métodos públicos}
+\begin{Indent}{\bf Constructores}\par
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classedi_1_1GraphMatrix_a190aa459192a271a0d23d7d17b61d820}{Graph\+Matrix} (const unsigned int \&\hyperlink{classedi_1_1GraphMatrix_afbcaf9d1a05c4ae921325641148c0a63}{capacity}=0, const bool \&\hyperlink{classedi_1_1GraphMatrix_ac9ecf45464596cc29ee2e70ce8342c4c}{is\+Directed}=true)
+\begin{DoxyCompactList}\small\item\em Constructor por defecto de la clase \hyperlink{classedi_1_1GraphMatrix}{Graph\+Matrix}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Observadores}\par
+\begin{DoxyCompactItemize}
+\item 
+const unsigned int \& \hyperlink{classedi_1_1GraphMatrix_ada3e3accdfeb7dc48482560cc2842f59}{num\+Vertexes} () const 
+\begin{DoxyCompactList}\small\item\em Observador del campo num\+Vertexes. \end{DoxyCompactList}\item 
+const unsigned int \& \hyperlink{classedi_1_1GraphMatrix_a4f5efb372ff3e02a42f2b77ba2932b04}{num\+Edges} () const 
+\begin{DoxyCompactList}\small\item\em Observador del campo num\+Edges. \end{DoxyCompactList}\item 
+const unsigned int \& \hyperlink{classedi_1_1GraphMatrix_afbcaf9d1a05c4ae921325641148c0a63}{capacity} () const 
+\begin{DoxyCompactList}\small\item\em Observador del campo capacity. \end{DoxyCompactList}\item 
+bool \hyperlink{classedi_1_1GraphMatrix_aada33cb444bf07048b782c0ed3915600}{is\+Empty} () const 
+\begin{DoxyCompactList}\small\item\em Nos dice sie el grafo esta vacio. \end{DoxyCompactList}\item 
+const bool \& \hyperlink{classedi_1_1GraphMatrix_ac9ecf45464596cc29ee2e70ce8342c4c}{is\+Directed} () const 
+\begin{DoxyCompactList}\small\item\em Nos dice si el grafo es dirigido. \end{DoxyCompactList}\item 
+const float \hyperlink{classedi_1_1GraphMatrix_a0e26027ed3a86fa2ec48b1be7f67d4a3}{adjacent} (const \hyperlink{classedi_1_1Vertex}{Vertex} \&u, const \hyperlink{classedi_1_1Vertex}{Vertex} \&v) const 
+\begin{DoxyCompactList}\small\item\em Devuelve el elemento de la matriz de adyacencia (I\+N\+F\+I\+N\+I\+T\+O si no hay lado) \end{DoxyCompactList}\item 
+bool \hyperlink{classedi_1_1GraphMatrix_afa8535e20eca6a765399e2d18859cd97}{has\+Curr\+Vertex} () const 
+\begin{DoxyCompactList}\small\item\em Está el cursor de vértices posición válida. \end{DoxyCompactList}\item 
+const \hyperlink{classedi_1_1Vertex}{Vertex} \& \hyperlink{classedi_1_1GraphMatrix_a3e1ebb6cfd5bafafd05cd94b9cf12b54}{curr\+Vertex} () const 
+\begin{DoxyCompactList}\small\item\em Devuelve el vértice referenciado por el cursor de vértices. \end{DoxyCompactList}\item 
+bool \hyperlink{classedi_1_1GraphMatrix_a0edc09b18604d94eb4692cbff0d4ce2a}{has\+Curr\+Edge} () const 
+\begin{DoxyCompactList}\small\item\em Está el cursor de lados posición válida. \end{DoxyCompactList}\item 
+const \hyperlink{classedi_1_1Edge}{Edge} \hyperlink{classedi_1_1GraphMatrix_ada0a9c50e87493338527baab50600501}{curr\+Edge} ()
+\begin{DoxyCompactList}\small\item\em Miramos si el lado referenciado por el cursor es valido. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Modificadores}\par
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classedi_1_1GraphMatrix_a39cd619c58980dbffe2829faf74fc1a8}{}void {\bfseries make\+Directed} ()\label{classedi_1_1GraphMatrix_a39cd619c58980dbffe2829faf74fc1a8}
+
+\item 
+\hypertarget{classedi_1_1GraphMatrix_abfb0864461e3ee6d93f60c734f392440}{}void {\bfseries make\+Undirected} ()\label{classedi_1_1GraphMatrix_abfb0864461e3ee6d93f60c734f392440}
+
+\item 
+\hypertarget{classedi_1_1GraphMatrix_ab268a4d5bcb45584bb7bf6bac08e688e}{}void {\bfseries add\+Vertex} (const std\+::string \&data)\label{classedi_1_1GraphMatrix_ab268a4d5bcb45584bb7bf6bac08e688e}
+
+\item 
+\hypertarget{classedi_1_1GraphMatrix_adb04d7dfc5d92054a3959535f82b04e3}{}void {\bfseries add\+Edge} (const double \&data, const \hyperlink{classedi_1_1Vertex}{Vertex} \&u, const \hyperlink{classedi_1_1Vertex}{Vertex} \&v)\label{classedi_1_1GraphMatrix_adb04d7dfc5d92054a3959535f82b04e3}
+
+\item 
+\hypertarget{classedi_1_1GraphMatrix_ac1905fa089dc5a0f2eeaf6cc49d5c8ce}{}void {\bfseries search\+Vertex} (const std\+::string \&data)\label{classedi_1_1GraphMatrix_ac1905fa089dc5a0f2eeaf6cc49d5c8ce}
+
+\item 
+\hypertarget{classedi_1_1GraphMatrix_ad1bdeca49812d33f95b37ff5d6c8ff7c}{}void {\bfseries go\+To} (const \hyperlink{classedi_1_1Vertex}{Vertex} \&u)\label{classedi_1_1GraphMatrix_ad1bdeca49812d33f95b37ff5d6c8ff7c}
+
+\item 
+\hypertarget{classedi_1_1GraphMatrix_a38174f88a32cf9c1a85646d919f04197}{}void {\bfseries go\+To} (const unsigned int \&idx)\label{classedi_1_1GraphMatrix_a38174f88a32cf9c1a85646d919f04197}
+
+\item 
+\hypertarget{classedi_1_1GraphMatrix_ac8e622d25a70e5ec1e23a125b4098859}{}void {\bfseries search\+Edge} (const \hyperlink{classedi_1_1Vertex}{Vertex} \&u, const \hyperlink{classedi_1_1Vertex}{Vertex} \&v)\label{classedi_1_1GraphMatrix_ac8e622d25a70e5ec1e23a125b4098859}
+
+\item 
+\hypertarget{classedi_1_1GraphMatrix_a32535f4e3207a8d0b63bc8a047dd81e5}{}void {\bfseries begin\+Vertex} ()\label{classedi_1_1GraphMatrix_a32535f4e3207a8d0b63bc8a047dd81e5}
+
+\item 
+\hypertarget{classedi_1_1GraphMatrix_ae043f8172225062b913da70ea1aed269}{}void {\bfseries next\+Vertex} ()\label{classedi_1_1GraphMatrix_ae043f8172225062b913da70ea1aed269}
+
+\item 
+\hypertarget{classedi_1_1GraphMatrix_ab511285c540eb590673cdbf0f96fc271}{}bool {\bfseries after\+End\+Vertex} () const \label{classedi_1_1GraphMatrix_ab511285c540eb590673cdbf0f96fc271}
+
+\item 
+\hypertarget{classedi_1_1GraphMatrix_ad79425baeef6d9077cc3d071e67a98c9}{}void {\bfseries begin\+Edge} (const \hyperlink{classedi_1_1Vertex}{Vertex} \&u)\label{classedi_1_1GraphMatrix_ad79425baeef6d9077cc3d071e67a98c9}
+
+\item 
+\hypertarget{classedi_1_1GraphMatrix_a39e3e3a3a9c3cb7837f1d185f9390e4e}{}void {\bfseries next\+Edge} ()\label{classedi_1_1GraphMatrix_a39e3e3a3a9c3cb7837f1d185f9390e4e}
+
+\item 
+\hypertarget{classedi_1_1GraphMatrix_aebff1f69d8f0080caca65c0849d3500c}{}bool {\bfseries after\+End\+Edge} ()\label{classedi_1_1GraphMatrix_aebff1f69d8f0080caca65c0849d3500c}
+
+\end{DoxyCompactItemize}
+\end{Indent}
+
+
+\subsection{Descripción detallada}
+Definición de la plantilla de la clase \hyperlink{classedi_1_1GraphMatrix}{Graph\+Matrix}. 
+
+\subsection{Documentación del constructor y destructor}
+\hypertarget{classedi_1_1GraphMatrix_a190aa459192a271a0d23d7d17b61d820}{}\index{edi\+::\+Graph\+Matrix@{edi\+::\+Graph\+Matrix}!Graph\+Matrix@{Graph\+Matrix}}
+\index{Graph\+Matrix@{Graph\+Matrix}!edi\+::\+Graph\+Matrix@{edi\+::\+Graph\+Matrix}}
+\subsubsection[{Graph\+Matrix}]{\setlength{\rightskip}{0pt plus 5cm}edi\+::\+Graph\+Matrix\+::\+Graph\+Matrix (
+\begin{DoxyParamCaption}
+\item[{const unsigned int \&}]{capacity = {\ttfamily 0}, }
+\item[{const bool \&}]{is\+Directed = {\ttfamily true}}
+\end{DoxyParamCaption}
+)}\label{classedi_1_1GraphMatrix_a190aa459192a271a0d23d7d17b61d820}
+
+
+Constructor por defecto de la clase \hyperlink{classedi_1_1GraphMatrix}{Graph\+Matrix}. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em capacity} & Capacidad del grafo \\
+\hline
+{\em is\+Directed} & Es el grafo dirigido o no \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Documentación de las funciones miembro}
+\hypertarget{classedi_1_1GraphMatrix_a0e26027ed3a86fa2ec48b1be7f67d4a3}{}\index{edi\+::\+Graph\+Matrix@{edi\+::\+Graph\+Matrix}!adjacent@{adjacent}}
+\index{adjacent@{adjacent}!edi\+::\+Graph\+Matrix@{edi\+::\+Graph\+Matrix}}
+\subsubsection[{adjacent}]{\setlength{\rightskip}{0pt plus 5cm}const float edi\+::\+Graph\+Matrix\+::adjacent (
+\begin{DoxyParamCaption}
+\item[{const {\bf Vertex} \&}]{u, }
+\item[{const {\bf Vertex} \&}]{v}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classedi_1_1GraphMatrix_a0e26027ed3a86fa2ec48b1be7f67d4a3}
+
+
+Devuelve el elemento de la matriz de adyacencia (I\+N\+F\+I\+N\+I\+T\+O si no hay lado) 
+
+\begin{DoxyReturn}{Devuelve}
+Devuelve el elemento de la matriz de adyacencia 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parámetros}
+{\em u} & \hyperlink{classedi_1_1Edge}{Edge} u \\
+\hline
+{\em v} & \hyperlink{classedi_1_1Edge}{Edge} v \\
+\hline
+\end{DoxyParams}
+\hypertarget{classedi_1_1GraphMatrix_afbcaf9d1a05c4ae921325641148c0a63}{}\index{edi\+::\+Graph\+Matrix@{edi\+::\+Graph\+Matrix}!capacity@{capacity}}
+\index{capacity@{capacity}!edi\+::\+Graph\+Matrix@{edi\+::\+Graph\+Matrix}}
+\subsubsection[{capacity}]{\setlength{\rightskip}{0pt plus 5cm}const unsigned int \& edi\+::\+Graph\+Matrix\+::capacity (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classedi_1_1GraphMatrix_afbcaf9d1a05c4ae921325641148c0a63}
+
+
+Observador del campo capacity. 
+
+\begin{DoxyReturn}{Devuelve}
+Valor del atributo capacity\+\_\+ 
+\end{DoxyReturn}
+\hypertarget{classedi_1_1GraphMatrix_ada0a9c50e87493338527baab50600501}{}\index{edi\+::\+Graph\+Matrix@{edi\+::\+Graph\+Matrix}!curr\+Edge@{curr\+Edge}}
+\index{curr\+Edge@{curr\+Edge}!edi\+::\+Graph\+Matrix@{edi\+::\+Graph\+Matrix}}
+\subsubsection[{curr\+Edge}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf Edge} edi\+::\+Graph\+Matrix\+::curr\+Edge (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classedi_1_1GraphMatrix_ada0a9c50e87493338527baab50600501}
+
+
+Miramos si el lado referenciado por el cursor es valido. 
+
+\begin{DoxyPrecond}{Precondición}
+\hyperlink{classedi_1_1GraphMatrix_a0edc09b18604d94eb4692cbff0d4ce2a}{has\+Curr\+Edge()} is true 
+\end{DoxyPrecond}
+\begin{DoxyReturn}{Devuelve}
+Devuelve el lado referenciado por cursor de lados 
+\end{DoxyReturn}
+\hypertarget{classedi_1_1GraphMatrix_a3e1ebb6cfd5bafafd05cd94b9cf12b54}{}\index{edi\+::\+Graph\+Matrix@{edi\+::\+Graph\+Matrix}!curr\+Vertex@{curr\+Vertex}}
+\index{curr\+Vertex@{curr\+Vertex}!edi\+::\+Graph\+Matrix@{edi\+::\+Graph\+Matrix}}
+\subsubsection[{curr\+Vertex}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf Vertex} \& edi\+::\+Graph\+Matrix\+::curr\+Vertex (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classedi_1_1GraphMatrix_a3e1ebb6cfd5bafafd05cd94b9cf12b54}
+
+
+Devuelve el vértice referenciado por el cursor de vértices. 
+
+\begin{DoxyPrecond}{Precondición}
+\hyperlink{classedi_1_1GraphMatrix_afa8535e20eca6a765399e2d18859cd97}{has\+Curr\+Vertex()} is true 
+\end{DoxyPrecond}
+\begin{DoxyReturn}{Devuelve}
+Devuelve el vértice referenciado por cursor de vértices 
+\end{DoxyReturn}
+\hypertarget{classedi_1_1GraphMatrix_a0edc09b18604d94eb4692cbff0d4ce2a}{}\index{edi\+::\+Graph\+Matrix@{edi\+::\+Graph\+Matrix}!has\+Curr\+Edge@{has\+Curr\+Edge}}
+\index{has\+Curr\+Edge@{has\+Curr\+Edge}!edi\+::\+Graph\+Matrix@{edi\+::\+Graph\+Matrix}}
+\subsubsection[{has\+Curr\+Edge}]{\setlength{\rightskip}{0pt plus 5cm}bool edi\+::\+Graph\+Matrix\+::has\+Curr\+Edge (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classedi_1_1GraphMatrix_a0edc09b18604d94eb4692cbff0d4ce2a}
+
+
+Está el cursor de lados posición válida. 
+
+\begin{DoxyReturn}{Devuelve}
+Devuelve true si el cursor está en posicion válida y false en otro caso 
+\end{DoxyReturn}
+\hypertarget{classedi_1_1GraphMatrix_afa8535e20eca6a765399e2d18859cd97}{}\index{edi\+::\+Graph\+Matrix@{edi\+::\+Graph\+Matrix}!has\+Curr\+Vertex@{has\+Curr\+Vertex}}
+\index{has\+Curr\+Vertex@{has\+Curr\+Vertex}!edi\+::\+Graph\+Matrix@{edi\+::\+Graph\+Matrix}}
+\subsubsection[{has\+Curr\+Vertex}]{\setlength{\rightskip}{0pt plus 5cm}bool edi\+::\+Graph\+Matrix\+::has\+Curr\+Vertex (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classedi_1_1GraphMatrix_afa8535e20eca6a765399e2d18859cd97}
+
+
+Está el cursor de vértices posición válida. 
+
+\begin{DoxyReturn}{Devuelve}
+Devuelve true si existe el elemento al que apunta el v\+Cursor 
+\end{DoxyReturn}
+\hypertarget{classedi_1_1GraphMatrix_ac9ecf45464596cc29ee2e70ce8342c4c}{}\index{edi\+::\+Graph\+Matrix@{edi\+::\+Graph\+Matrix}!is\+Directed@{is\+Directed}}
+\index{is\+Directed@{is\+Directed}!edi\+::\+Graph\+Matrix@{edi\+::\+Graph\+Matrix}}
+\subsubsection[{is\+Directed}]{\setlength{\rightskip}{0pt plus 5cm}const bool \& edi\+::\+Graph\+Matrix\+::is\+Directed (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classedi_1_1GraphMatrix_ac9ecf45464596cc29ee2e70ce8342c4c}
+
+
+Nos dice si el grafo es dirigido. 
+
+\begin{DoxyReturn}{Devuelve}
+Devuelve true si el grafo es dirigido y false en caso contrario 
+\end{DoxyReturn}
+\hypertarget{classedi_1_1GraphMatrix_aada33cb444bf07048b782c0ed3915600}{}\index{edi\+::\+Graph\+Matrix@{edi\+::\+Graph\+Matrix}!is\+Empty@{is\+Empty}}
+\index{is\+Empty@{is\+Empty}!edi\+::\+Graph\+Matrix@{edi\+::\+Graph\+Matrix}}
+\subsubsection[{is\+Empty}]{\setlength{\rightskip}{0pt plus 5cm}bool edi\+::\+Graph\+Matrix\+::is\+Empty (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classedi_1_1GraphMatrix_aada33cb444bf07048b782c0ed3915600}
+
+
+Nos dice sie el grafo esta vacio. 
+
+\begin{DoxyReturn}{Devuelve}
+Devuelve true si el grafo esta vacio y false en caso contrario 
+\end{DoxyReturn}
+\hypertarget{classedi_1_1GraphMatrix_a4f5efb372ff3e02a42f2b77ba2932b04}{}\index{edi\+::\+Graph\+Matrix@{edi\+::\+Graph\+Matrix}!num\+Edges@{num\+Edges}}
+\index{num\+Edges@{num\+Edges}!edi\+::\+Graph\+Matrix@{edi\+::\+Graph\+Matrix}}
+\subsubsection[{num\+Edges}]{\setlength{\rightskip}{0pt plus 5cm}const unsigned int \& edi\+::\+Graph\+Matrix\+::num\+Edges (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classedi_1_1GraphMatrix_a4f5efb372ff3e02a42f2b77ba2932b04}
+
+
+Observador del campo num\+Edges. 
+
+\begin{DoxyReturn}{Devuelve}
+Valor del atributo num\+Edges\+\_\+ 
+\end{DoxyReturn}
+\hypertarget{classedi_1_1GraphMatrix_ada3e3accdfeb7dc48482560cc2842f59}{}\index{edi\+::\+Graph\+Matrix@{edi\+::\+Graph\+Matrix}!num\+Vertexes@{num\+Vertexes}}
+\index{num\+Vertexes@{num\+Vertexes}!edi\+::\+Graph\+Matrix@{edi\+::\+Graph\+Matrix}}
+\subsubsection[{num\+Vertexes}]{\setlength{\rightskip}{0pt plus 5cm}const unsigned int \& edi\+::\+Graph\+Matrix\+::num\+Vertexes (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classedi_1_1GraphMatrix_ada3e3accdfeb7dc48482560cc2842f59}
+
+
+Observador del campo num\+Vertexes. 
+
+\begin{DoxyReturn}{Devuelve}
+Valor del atributo num\+Vertexes\+\_\+ 
+\end{DoxyReturn}
+
+
+La documentación para esta clase fue generada a partir de los siguientes ficheros\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{graph__matrix_8hpp}{graph\+\_\+matrix.\+hpp}\item 
+\hyperlink{graph__matrix_8cpp}{graph\+\_\+matrix.\+cpp}\end{DoxyCompactItemize}
