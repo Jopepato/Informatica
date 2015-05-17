@@ -3,8 +3,6 @@
 #include "graph_matrix.hpp"
 #include "entrada_salida.hpp"
 
-using namespace edi;
-
 bool cargarGrafo(edi::GraphMatrix * &g, std::string fileGraph)
 {
 	std::ifstream f(fileGraph.c_str()); //Se define el stream de lectura y se abre el fichero.
@@ -12,8 +10,8 @@ bool cargarGrafo(edi::GraphMatrix * &g, std::string fileGraph)
 		return false;
 	
   //Se definen variables auxiliares para cargar el grafo.
-  unsigned int vertexes;
-  int type;
+  	unsigned int vertexes;
+  	int type;
 	bool isDirected;
 	std::string dataVertex;
 	std::string dataEdgeFirst, dataEdgeSecond;
@@ -50,6 +48,7 @@ bool cargarGrafo(edi::GraphMatrix * &g, std::string fileGraph)
 		//std::cout << "Cargo Lado\n";
 		//Para localizar el indice del nodo
 		g->searchVertex(dataEdgeFirst);
+
 		first.setLabel((g->currVertex()).getLabel()); 
 		
 		first.setData(dataEdgeFirst);
@@ -88,27 +87,30 @@ void mostrarGrafo(edi::GraphMatrix & g)
 		v = g.currVertex();
 		std::cout << v.getData() << std::endl;
 		g.nextVertex();
-	}while(not g.afterEndVertex());
-	
+	}while(!g.afterEndVertex());
+
 	//Lados del grafo
 	std::cout << "\nLados del grafo\n";
 	std::cout << "===============\n";
 	std::cout << " Lados = " << g.numEdges() << std::endl;
-
 	edi::Vertex aux;
 	g.beginVertex();
 
 	while(not g.afterEndVertex())
 	{
+		
 		aux = g.currVertex();
 		
 		g.beginEdge(aux); //Se posiciona en el primer lado que tiene a aux como nodo origen
+		
+		
 		while (not g.afterEndEdge())
 		{
+			
 			std::cout << g.currEdge().first().getData() << ", " << g.currEdge().second().getData() << ", " << g.currEdge().getData() << std::endl;
 			g.nextEdge();
 		}
 		g.nextVertex();
 	}
+
 }
-	

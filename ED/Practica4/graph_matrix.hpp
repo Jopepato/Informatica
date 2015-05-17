@@ -16,7 +16,6 @@ using namespace std;
 
 /*!
 \brief Espacio de nombres para la asignatura Estructura de datos.
-
 */
 namespace edi 
 {
@@ -26,7 +25,7 @@ namespace edi
 		private:
 			vector<Vertex> vectorV_;	//Vector of vertexes
 			float ** matrixW_;			//Adjacency matrix of weights
-			bool directed_;			//Is directed
+			bool directed_;				//Is directed
 			Vertex* vCursor_;			//cursor of vertexes
 			Edge* eCursor_;				//cursor of edges
 			unsigned int numVertexes_;	//number of vertexes
@@ -68,18 +67,18 @@ namespace edi
 			const float adjacent(const Vertex & u, const Vertex & v) const{
 
 				//Valor a devolver
-				float *retVal;
+				float *retVal=NULL;
 
 				retVal = &matrixW_[u.getLabel()][v.getLabel()];
 
 				if(retVal==NULL){
 					//Devolvemos infinito
-					return(INFINITY);
+					return(std::numeric_limits<float>::infinity());
 					//numeric_limits<float>::infinity()
 					//Tambien podemos usar eso
-				}else{
-					return(*retVal);
 				}
+
+				return(*retVal);
 
 			};
 			
@@ -91,7 +90,6 @@ namespace edi
 			//Pre: hasCurrVertex() is true.
 			//Devuelve el vértice referenciado por cursor de vértices
 			inline const Vertex & currVertex() const{
-				assert(hasCurrVertex());
 				return(*vCursor_);
 			};
       
@@ -104,8 +102,6 @@ namespace edi
 			//Pre: hasCurrEdge() is true
 			//Devuelve el lado referenciado por cursor de lados
 			inline const Edge currEdge(){
-				//Comprobamos que el cursor apunta a una posicion valida
-				assert(hasCurrEdge());
 				return(*eCursor_);
 			};
 			
@@ -134,7 +130,7 @@ namespace edi
 			
 			//Prec: 0 <= idx < numVertexes()
 			//lleva el cursor a un vértice a partir de la posicion de dicho vertice
-			void goTo(const int &idx);
+			void goTo(const unsigned int &idx);
 			
 			//Prec: u y v pertenecen al grafo
 			//Lleva el cursor a un lado a partir de sus vertices

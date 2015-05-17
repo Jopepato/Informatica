@@ -3,8 +3,8 @@
 
 
 #include <cassert>
-#include "vertex.hpp"
 
+#include  "vertex.hpp"
 
 /*!
 \brief Espacio de nombres para la asignatura Estructura de datos.
