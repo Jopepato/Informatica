@@ -11,7 +11,9 @@
 #include "graph_matrix.hpp"
 #include "edge.hpp"
 #include "vertex.hpp"
+#include <vector>
 
+namespace edi{
 
 //Floyd
 
@@ -22,7 +24,7 @@
 		\param	distancias Matriz de tipo float en la que se almacenaran las distancias
 		\param 	intermedios Matriz de tipo int en la que se almacenaran los nodos intermedios
   */
-  void floyd(GraphMatrix *g, float *** distancias, int *** intermedios);
+  void floyd(GraphMatrix *g, float ** distancias, int ** intermedios);
 
   /*
 		\fn 	void caminoMinimo(GraphMatrix *g, float *** diatancias, int *** intermedios, const Edge * origen, const Edge * destino)
@@ -35,7 +37,7 @@
 
   */
 
-  void caminoMinimo(GraphMatrix *g, float *** diatancias, int *** intermedios, const Vertex * origen, const Vertex * destino);
+  void caminoMinimo(GraphMatrix *g, float ** diatancias, int ** intermedios, const Vertex * origen, const Vertex * destino);
 
   /*
 		\fn 	void profundidad(GraphMatrix *g, Vertex * origen)
@@ -44,22 +46,19 @@
 		\param 	origen Nodo de tipo Vertex desde el cual se iniciara el algoritmo de profundidad
   */
 
-  void profundidad(GraphMatrix *g, Vertex * origen);
+  void profundidad(GraphMatrix &g, const Vertex & origen, vector<Vertex> & encontrados);
+
+  /*
+		\fn 	bool compruebaEncontrados(Vertex * u, vector<Vertex> * encontrados)
+		\brief 	Funcion que comprueba si un vertice esta en el vector de encontrados
+		\param 	u De tipo Vertex, sera el vertice a buscar
+		\param	encontrados Vector de vertices donde buscar el vertice
+		\return Devuelve valor lógico, true si lo ha encontrado y false en caso contrario
+  */
+	bool compruebaEncontrados(const Vertex & u, vector<Vertex>& encontrados);
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
 
 
 #endif

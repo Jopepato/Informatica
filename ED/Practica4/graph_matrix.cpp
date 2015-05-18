@@ -190,12 +190,12 @@ void GraphMatrix::nextEdge(){
 	bool found = false;
 	Edge * aux = new Edge;
 
-	aux = eCursor_;
 
-	for(unsigned int i = aux->second().getLabel()+1; i< capacity() && found == false; i++){
 
-		if(matrixW_[aux->first().getLabel()][i]>0 && matrixW_[aux->first().getLabel()][i]<std::numeric_limits<float>::infinity()){
+	for(unsigned int i = currEdge().second().getLabel()+1; i< capacity() && found == false; i++){
 
+		if(matrixW_[currEdge().first().getLabel()][i]>0 && matrixW_[currEdge().first().getLabel()][i]<std::numeric_limits<float>::infinity()){
+			aux->setFirst(currEdge().first());
 			aux->setSecond(vectorV_[i]);
 			aux->setData(matrixW_[aux->first().getLabel()][i]);
 			found = true;
@@ -212,10 +212,8 @@ void GraphMatrix::nextEdge(){
 
 //Comprueba si el cursor ha sobrepasado su última posicion válida para los lados que salen de currEdge().first()
 bool GraphMatrix::afterEndEdge(){
-	Edge * aux = new Edge;
-	aux = eCursor_;
 
-	if(aux==NULL){
+	if(eCursor_==NULL){
 		return(true);
 	}else{
 		return(false);
