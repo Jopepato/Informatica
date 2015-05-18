@@ -31,7 +31,7 @@ namespace edi
 		public:
 			//! \name Observadores
 
-			/*
+			/*!
 				\fn 	const std::string & getData()
 				\brief 	Funcion que devuelve el atributo data
 				\return Devuelve el atributo _data
@@ -42,7 +42,7 @@ namespace edi
 				return _data;
 			}
 			
-			/*
+			/*!
 				\fn 	const int & getLabel()
 				\brief 	Funcion que devuelve el atributo label
 				\return Devuelve el atributo _label
@@ -54,7 +54,7 @@ namespace edi
 			
 			//! \name Modificadores
 
-			/*
+			/*!
 				\fn 	void setData(const std::string &data)
 				\brief 	Asigna al atributo _data el valor pasado por parametro
 				\param 	data Valor que se le asignara al campo privado _data
@@ -64,7 +64,7 @@ namespace edi
 				_data = data;
 			}
 			
-			/*
+			/*!
 				\fn 	void setLabel(const int &label)
 				\brief 	Asigna al atributo _label el valor pasado por parametro
 				\param 	label Valor que se le asignara al campo privado _label
@@ -76,7 +76,7 @@ namespace edi
 			
 			//! \name Operadores
 
-			/*
+			/*!
 				\fn 	bool operator==(const Vertex &v)
 				\brief 	Sobrecarga del operador relacional de igualdad
 				\param 	v Vertice con el que se va a comparar el vertice actual
@@ -87,7 +87,7 @@ namespace edi
 				return (v.getData() == getData());
 			}
 
-			/*
+			/*!
 				\fn 	bool operator!=(const Vertex &v)
 				\brief 	Sobrecarga del operador relacional de distinción	
 				\param 	v Vertice con el que ver si hay distincion con el vertice actual

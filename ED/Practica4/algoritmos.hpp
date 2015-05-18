@@ -17,7 +17,7 @@ namespace edi{
 
 //Floyd
 
-  /*
+  /**
 		\fn 	void floyd(GraphMatrix *g, float *** distancias, int *** intermedios)
 		\brief	Funcion que aplica el algoritmo de floyd a un grafo y rellena las matrices de distancias e intermedios
 		\param 	g Grafo de tipo GraphMatrix sobre el que se realizará el algoritmo de Floyd
@@ -26,7 +26,7 @@ namespace edi{
   */
   void floyd(GraphMatrix *g, float ** distancias, int ** intermedios);
 
-  /*
+  /**
 		\fn 	void caminoMinimo(GraphMatrix *g, float *** diatancias, int *** intermedios, const Edge * origen, const Edge * destino)
 		\brief 	Funcion que gracias al algoritmo de Floyd puede darnos el camino minimo entre dos nodos
 		\param	g Grafo de tipo GraphMatrix
@@ -48,7 +48,7 @@ namespace edi{
 
   void profundidad(GraphMatrix &g, const Vertex & origen, vector<Vertex> & encontrados);
 
-  /*
+  /**
 		\fn 	bool compruebaEncontrados(Vertex * u, vector<Vertex> * encontrados)
 		\brief 	Funcion que comprueba si un vertice esta en el vector de encontrados
 		\param 	u De tipo Vertex, sera el vertice a buscar

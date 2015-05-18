@@ -11,7 +11,7 @@
 #include <fstream>
 #include "graph_matrix.hpp"
 
- /*
+ /**
 	\fn 	bool cargarGrafo(edi::GraphMatrix * &g, std::string fileGraph)
 	\brief 	Carga un grafo a partir de un fichero donde vienen especificados sus nodos y sus lados
 	\param	g Grafo de la clase GraphMatrix donde se almacenará el grafo cargado
@@ -20,7 +20,7 @@
  */
 bool cargarGrafo(edi::GraphMatrix * &g, std::string fileGraph);
 
-/*
+/**
 	\fn 	void mostrarGrafo(edi::GraphMatrix & g)
 	\brief 	Muestra el grafo pasado por parametro por pantalla
 	\param 	g Grafo de la clase GraphMatrix que queremos mostrar por pantalla

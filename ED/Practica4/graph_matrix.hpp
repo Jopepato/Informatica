@@ -169,26 +169,26 @@ namespace edi
 			
 			//! \name Modificadores
 
-			/*
+			/*!
 				\fn		void makeDirected()
 				\brief	Crea un grafo dirigido
 			*/			
 			
 			void makeDirected();
-			/*
+			/*!
 				\fn		makeUndirected()
 				\brief	Crea un grafo no dirigido
 			*/	
 			void makeUndirected();
 
-			/*
+			/*!
 				\fn		void addVertex(const std::string & data)
 				\pre 	numVertexes() < capacity()
 				\brief	Añade un vertice al grafo a partir del data
 				\param 	data El dato que le pasamos para que cree el vertice
 			*/
 			void addVertex(const std::string & data);
-			/*
+			/*!
 				\fn 	void addEdge(const double & data, const Vertex & u, const Vertex & v)
 				\pre  	u y v pertenecen al grafo
 				\brief	Añade un lado a partir de sus dos vértices y su peso. Esto se reflejará sólo en la matriz de adyacencia
@@ -198,14 +198,14 @@ namespace edi
 			*/
 			void addEdge(const double & data, const Vertex & u, const Vertex & v);
 			
-			/*
+			/*!
 				\fn 	void searchVertex(const std::string &data)
 				\brief  Busca un vertice a partir de su data, colocando el cursor en dicho vértice
 				\param	data Peso que debemos buscar
 			*/
 			void searchVertex(const std::string &data);
 
-			/*
+			/*!
 				\fn		void goTo(const Vertex & u)
 				\pre 	u pertenece al grafo
 				\brief 	Lleva el cursor a un vertice a partir de dicho vertice
@@ -213,7 +213,7 @@ namespace edi
 			*/
 			void goTo(const Vertex & u);
 			
-			/*
+			/*!
 				\fn  	void goTo(const unsigned int &idx)
 				\pre 	0 <= idx < numVertexes()
 				\brief 	Lleva el cursor a un vértice a partir de la posicion de dicho vertice
@@ -221,7 +221,7 @@ namespace edi
 			*/
 			void goTo(const unsigned int &idx);
 
-			/*
+			/*!
 				\fn 	void searchEdge(const Vertex & u, const Vertex & v)
 				\brief 	Lleva el cursor a un lado a partir de sus vertices
 				\pre 	u y v pertenecen al grafo
@@ -230,38 +230,38 @@ namespace edi
 			*/
 			void searchEdge(const Vertex & u, const Vertex & v);
 
-			/*
+			/*!
 				\fn 	void beginVertex()
 				\brief 	Lleva el cursor al primer vertice
 			*/
 			void beginVertex();
 			
-			/*
+			/*!
 				\fn		void nextVertex()
 				\brief 	Avanza el cursor al siguiente vertice
 			*/
 			void nextVertex();
 
-			/*
+			/*!
 				\fn 	bool afterEndVertex()
 				\brief 	Comprueba si el cursor ha sobrepasado su última posicion válida
 				\return	Devuelve true si lo ha sobrepasado, false en caso contrario
 			*/
 			bool afterEndVertex() const;
 
-			/*
+			/*!
 				\fn 	void beginEdge(const Vertex & u)
 				\brief 	Lleva el cursor al primer lado que sale del vertice u
 				\param 	u Vertice del que cogeremos el primer lado que sale de el
 			*/
 			void beginEdge(const Vertex & u);
-			/*
+			/*!
 				\fn 	void nextEdge()
 				\brief 	Avanza el cursor al siguiente lado que sale de currEdge().first()
 			*/
 			void nextEdge();
 			
-			/*
+			/*!
 				\fn 	bool afterEndEdge()
 				\brief	Comprueba si el cursor ha sobrepasado su última posicion válida para los lados que salen de currEdge().first()
 				\return Devuelve true en caso de que sea cierto, false en caso contrario

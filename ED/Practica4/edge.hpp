@@ -29,7 +29,7 @@ namespace edi
 		public:
 			//! \name Obeservadores
 
-			/*
+			/*!
 				\fn		const double & getData()
 				\brief 	Funcion que devuelve el atributo privado _data
 				\return Valor del atributo _data
@@ -39,7 +39,7 @@ namespace edi
 				return _data;
 			}
 
-			/*
+			/*!
 				\fn		const Vertex & first()
 				\brief 	Funcion que devuelve el atributo privado _first
 				\return Valor del atributo _first
@@ -49,7 +49,7 @@ namespace edi
 				return _first;
 			}
 
-			/*
+			/*!
 				\fn		const Vertex & second()
 				\brief 	Funcion que devuelve el atributo privado _second
 				\return Valor del atributo _second
@@ -59,7 +59,7 @@ namespace edi
 				return _second;
 			}
 			
-			/*
+			/*!
 				\fn 	bool has(const Vertex & u)
 				\brief	Funcion que comprueba si un vertice pasado por parametro pertenece a este lado
 				\param 	u Vertice para saber si pertenece a este lado
@@ -70,7 +70,7 @@ namespace edi
 				return u == first() or u == second();
 			}
 			
-			/*
+			/*!
 				\fn 	const Vertex & other(const Vertex & u)
 				\brief 	Funcion que nos devuelve el segundo vertice de este lado si le pasamos el primero
 				\pre 	has(u) = true
@@ -87,7 +87,7 @@ namespace edi
 			
 			//! \name Modificadores
 
-			/*
+			/*!
 				\fn 	void setData(const double & data)
 				\brief 	Asigna al atributo privado _data el valor pasado por parametro
 				\param 	data Parametro que se le asignara al atributo privado _data
@@ -97,7 +97,7 @@ namespace edi
 				_data = data;				
 			}
 			
-			/*
+			/*!
 				\fn 	void setFirst(const Vertex & first)
 				\brief 	Asigna al atributo privado _first el valor pasado por parametro
 				\param 	first Parametro que se le asignara al atributo privado _first
@@ -107,7 +107,7 @@ namespace edi
 				_first = first;		
 			}
 
-			/*
+			/*!
 				\fn 	void setSecond(const Vertex & second) 
 				\brief 	Asigna al atributo privado _second el valor pasado por parametro
 				\param 	second Parametro que se le asignara al atributo privado _second
