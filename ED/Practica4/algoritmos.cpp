@@ -6,3 +6,28 @@
 */
 
 #include "algoritmos.hpp"
+
+
+
+
+  void profundidad(GraphMatrix *g, Vertex * origen){
+
+
+
+
+
+
+  }
+
+  void floyd(GraphMatrix *g, float *** distancias, int *** intermedios){
+
+
+
+  }
+
+
+  void caminoMinimo(GraphMatrix *g, float *** diatancias, int *** intermedios, const Vertex * origen, const Vertex * destino){
+
+
+
+  }
