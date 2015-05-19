@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['numedges',['numEdges',['../classedi_1_1GraphMatrix.html#a4f5efb372ff3e02a42f2b77ba2932b04',1,'edi::GraphMatrix']]],
-  ['numvertexes',['numVertexes',['../classedi_1_1GraphMatrix.html#ada3e3accdfeb7dc48482560cc2842f59',1,'edi::GraphMatrix']]]
+  ['has',['has',['../classedi_1_1Edge.html#aa4e3c3020eac39e526e440e515259126',1,'edi::Edge']]],
+  ['hascurredge',['hasCurrEdge',['../classedi_1_1GraphMatrix.html#a0edc09b18604d94eb4692cbff0d4ce2a',1,'edi::GraphMatrix']]],
+  ['hascurrvertex',['hasCurrVertex',['../classedi_1_1GraphMatrix.html#afa8535e20eca6a765399e2d18859cd97',1,'edi::GraphMatrix']]]
 ];

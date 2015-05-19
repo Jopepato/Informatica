@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.9.1"/>
-<title>Practica 4 ED: Fichero Fuente entrada_salida.hpp</title>
+<title>Practica 3: Fichero Fuente entrada_salida.hpp</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -23,7 +23,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">Practica 4 ED
+   <div id="projectname">Practica 3
    </div>
   </td>
  </tr>
@@ -61,6 +61,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>Lista&#160;de&#160;archivos</span></a></li>
+      <li><a href="globals.html"><span>Miembros&#160;de&#160;los&#160;ficheros</span></a></li>
     </ul>
   </div>
 </div><!-- top -->
@@ -90,29 +91,19 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;fstream&gt;</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="graph__matrix_8hpp.html">graph_matrix.hpp</a>&quot;</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; <span class="comment">/*</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">    \fn     bool cargarGrafo(edi::GraphMatrix * &amp;g, std::string fileGraph)</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">    \brief  Carga un grafo a partir de un fichero donde vienen especificados sus nodos y sus lados</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">    \param  g Grafo de la clase GraphMatrix donde se almacenará el grafo cargado</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">    \param  fileGraph Nombre del fichero donde viene declarado el grafo a cargar</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">    \return Devuelve true en caso de que se haya cargado el grafo con exito y false en caso contrario</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keywordtype">bool</span> cargarGrafo(<a class="code" href="classedi_1_1GraphMatrix.html">edi::GraphMatrix</a> * &amp;g, std::string fileGraph);</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="entrada__salida_8hpp.html#ae1987e5dd2df64505f6900fd70694b9b">cargarGrafo</a>(<a class="code" href="classedi_1_1GraphMatrix.html">edi::GraphMatrix</a> * &amp;g, std::string fileGraph);</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">    \fn     void mostrarGrafo(edi::GraphMatrix &amp; g)</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">    \brief  Muestra el grafo pasado por parametro por pantalla</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">    \param  g Grafo de la clase GraphMatrix que queremos mostrar por pantalla</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">*/</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keywordtype">void</span> mostrarGrafo(<a class="code" href="classedi_1_1GraphMatrix.html">edi::GraphMatrix</a> &amp; g);</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keywordtype">void</span> <a class="code" href="entrada__salida_8hpp.html#a8f942941fa9e71786d9feda01a65b904">mostrarGrafo</a>(<a class="code" href="classedi_1_1GraphMatrix.html">edi::GraphMatrix</a> &amp; g);</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="classedi_1_1GraphMatrix_html"><div class="ttname"><a href="classedi_1_1GraphMatrix.html">edi::GraphMatrix</a></div><div class="ttdoc">Definición de la plantilla de la clase GraphMatrix. </div><div class="ttdef"><b>Definition:</b> graph_matrix.hpp:30</div></div>
+<div class="ttc" id="entrada__salida_8hpp_html_a8f942941fa9e71786d9feda01a65b904"><div class="ttname"><a href="entrada__salida_8hpp.html#a8f942941fa9e71786d9feda01a65b904">mostrarGrafo</a></div><div class="ttdeci">void mostrarGrafo(edi::GraphMatrix &amp;g)</div><div class="ttdoc">Muestra el grafo pasado por parametro por pantalla. </div><div class="ttdef"><b>Definition:</b> entrada_salida.cpp:84</div></div>
+<div class="ttc" id="entrada__salida_8hpp_html_ae1987e5dd2df64505f6900fd70694b9b"><div class="ttname"><a href="entrada__salida_8hpp.html#ae1987e5dd2df64505f6900fd70694b9b">cargarGrafo</a></div><div class="ttdeci">bool cargarGrafo(edi::GraphMatrix *&amp;g, std::string fileGraph)</div><div class="ttdoc">Carga un grafo a partir de un fichero donde vienen especificados sus nodos y sus lados. </div><div class="ttdef"><b>Definition:</b> entrada_salida.cpp:13</div></div>
 <div class="ttc" id="graph__matrix_8hpp_html"><div class="ttname"><a href="graph__matrix_8hpp.html">graph_matrix.hpp</a></div><div class="ttdoc">Definición de la clase GraphMatrix. </div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generado el Lunes, 18 de Mayo de 2015 01:04:48 para Practica 4 ED por &#160;<a href="http://www.doxygen.org/index.html">
+Generado el Martes, 19 de Mayo de 2015 19:00:57 para Practica 3 por &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.9.1
 </small></address>

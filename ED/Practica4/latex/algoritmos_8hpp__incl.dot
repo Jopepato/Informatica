@@ -27,4 +27,6 @@ digraph "algoritmos.hpp"
   Node2 -> Node10 [color="midnightblue",fontsize="10",style="solid"];
   Node1 -> Node9 [color="midnightblue",fontsize="10",style="solid"];
   Node1 -> Node10 [color="midnightblue",fontsize="10",style="solid"];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid"];
+  Node1 -> Node5 [color="midnightblue",fontsize="10",style="solid"];
 }

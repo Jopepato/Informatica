@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.9.1"/>
-<title>Practica 4 ED: Referencia del Archivo entrada_salida.cpp</title>
+<title>Practica 3: Referencia del Archivo entrada_salida.cpp</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -23,7 +23,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">Practica 4 ED
+   <div id="projectname">Practica 3
    </div>
   </td>
  </tr>
@@ -61,6 +61,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>Lista&#160;de&#160;archivos</span></a></li>
+      <li><a href="globals.html"><span>Miembros&#160;de&#160;los&#160;ficheros</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -101,21 +102,82 @@ Dependencia gráfica adjunta para entrada_salida.cpp:</div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Funciones</h2></td></tr>
-<tr class="memitem:ae1987e5dd2df64505f6900fd70694b9b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae1987e5dd2df64505f6900fd70694b9b"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>cargarGrafo</b> (<a class="el" href="classedi_1_1GraphMatrix.html">edi::GraphMatrix</a> *&amp;g, std::string fileGraph)</td></tr>
+<tr class="memitem:ae1987e5dd2df64505f6900fd70694b9b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="entrada__salida_8cpp.html#ae1987e5dd2df64505f6900fd70694b9b">cargarGrafo</a> (<a class="el" href="classedi_1_1GraphMatrix.html">edi::GraphMatrix</a> *&amp;g, std::string fileGraph)</td></tr>
+<tr class="memdesc:ae1987e5dd2df64505f6900fd70694b9b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Carga un grafo a partir de un fichero donde vienen especificados sus nodos y sus lados.  <a href="#ae1987e5dd2df64505f6900fd70694b9b">Más...</a><br /></td></tr>
 <tr class="separator:ae1987e5dd2df64505f6900fd70694b9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8f942941fa9e71786d9feda01a65b904"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8f942941fa9e71786d9feda01a65b904"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>mostrarGrafo</b> (<a class="el" href="classedi_1_1GraphMatrix.html">edi::GraphMatrix</a> &amp;g)</td></tr>
+<tr class="memitem:a8f942941fa9e71786d9feda01a65b904"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="entrada__salida_8cpp.html#a8f942941fa9e71786d9feda01a65b904">mostrarGrafo</a> (<a class="el" href="classedi_1_1GraphMatrix.html">edi::GraphMatrix</a> &amp;g)</td></tr>
+<tr class="memdesc:a8f942941fa9e71786d9feda01a65b904"><td class="mdescLeft">&#160;</td><td class="mdescRight">Muestra el grafo pasado por parametro por pantalla.  <a href="#a8f942941fa9e71786d9feda01a65b904">Más...</a><br /></td></tr>
 <tr class="separator:a8f942941fa9e71786d9feda01a65b904"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Descripción detallada</h2>
 <div class="textblock"><p>Definición de las funciones de entrada/salida del grafo. </p>
 <dl class="section author"><dt>Autor</dt><dd>José Pérez-Parras Toledano </dd></dl>
 <dl class="section date"><dt>Fecha</dt><dd>16/05/2015 </dd></dl>
-</div></div><!-- contents -->
+</div><h2 class="groupheader">Documentación de las funciones</h2>
+<a class="anchor" id="ae1987e5dd2df64505f6900fd70694b9b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool cargarGrafo </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classedi_1_1GraphMatrix.html">edi::GraphMatrix</a> *&amp;&#160;</td>
+          <td class="paramname"><em>g</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>fileGraph</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Carga un grafo a partir de un fichero donde vienen especificados sus nodos y sus lados. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">g</td><td>Grafo de la clase GraphMatrix donde se almacenará el grafo cargado </td></tr>
+    <tr><td class="paramname">fileGraph</td><td>Nombre del fichero donde viene declarado el grafo a cargar </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>Devuelve true en caso de que se haya cargado el grafo con exito y false en caso contrario </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a8f942941fa9e71786d9feda01a65b904"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void mostrarGrafo </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classedi_1_1GraphMatrix.html">edi::GraphMatrix</a> &amp;&#160;</td>
+          <td class="paramname"><em>g</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Muestra el grafo pasado por parametro por pantalla. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">g</td><td>Grafo de la clase GraphMatrix que queremos mostrar por pantalla </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generado el Lunes, 18 de Mayo de 2015 01:04:48 para Practica 4 ED por &#160;<a href="http://www.doxygen.org/index.html">
+Generado el Martes, 19 de Mayo de 2015 19:00:57 para Practica 3 por &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.9.1
 </small></address>

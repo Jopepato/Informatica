@@ -106,6 +106,14 @@ void GraphMatrix::goTo(const Vertex & u){
 		searchVertex(u.getData());
 		assert(hasCurrEdge());
 
+		for(unsigned int i=0; i<vectorV_.capacity(); ++i){
+
+				if(vectorV_[i].getData() == u.getData()){
+					vCursor_ = &vectorV_[i];
+				}
+		}
+
+
 };
 
 //lleva el cursor a un vértice a partir de la posicion de dicho vertice
@@ -120,9 +128,9 @@ void GraphMatrix::goTo(const unsigned int &idx){
 //Lleva el cursor a un lado a partir de sus vertices
 void GraphMatrix::searchEdge(const Vertex & u, const Vertex & v){
 	//Primero comprobamos que ambos vertices existen
-	goTo(u);
+	searchVertex(u.getData());
 	assert(vCursor_!=NULL);
-	goTo(v);
+	searchVertex(v.getData());
 	assert(vCursor_!=NULL);
 
 	eCursor_->setData(matrixW_[u.getLabel()][v.getLabel()]);
@@ -144,7 +152,7 @@ void GraphMatrix::nextVertex(){
 //Comprueba si el cursor ha sobrepasado su última posicion válida
 bool GraphMatrix::afterEndVertex() const{
 
-	if(numVertexes()<=capacity()){
+	if(vCursor_!=&vectorV_[capacity()]){
 		return(false);
 	}else{
 		return(true);

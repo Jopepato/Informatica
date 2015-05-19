@@ -15,12 +15,10 @@ Gráfico de los archivos que directa o indirectamente incluyen a este archivo\+:
 \subsection*{Funciones}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{entrada__salida_8hpp_ae1987e5dd2df64505f6900fd70694b9b}{}bool {\bfseries cargar\+Grafo} (\hyperlink{classedi_1_1GraphMatrix}{edi\+::\+Graph\+Matrix} $\ast$\&g, std\+::string file\+Graph)\label{entrada__salida_8hpp_ae1987e5dd2df64505f6900fd70694b9b}
-
-\item 
-\hypertarget{entrada__salida_8hpp_a8f942941fa9e71786d9feda01a65b904}{}void {\bfseries mostrar\+Grafo} (\hyperlink{classedi_1_1GraphMatrix}{edi\+::\+Graph\+Matrix} \&g)\label{entrada__salida_8hpp_a8f942941fa9e71786d9feda01a65b904}
-
-\end{DoxyCompactItemize}
+bool \hyperlink{entrada__salida_8hpp_ae1987e5dd2df64505f6900fd70694b9b}{cargar\+Grafo} (\hyperlink{classedi_1_1GraphMatrix}{edi\+::\+Graph\+Matrix} $\ast$\&g, std\+::string file\+Graph)
+\begin{DoxyCompactList}\small\item\em Carga un grafo a partir de un fichero donde vienen especificados sus nodos y sus lados. \end{DoxyCompactList}\item 
+void \hyperlink{entrada__salida_8hpp_a8f942941fa9e71786d9feda01a65b904}{mostrar\+Grafo} (\hyperlink{classedi_1_1GraphMatrix}{edi\+::\+Graph\+Matrix} \&g)
+\begin{DoxyCompactList}\small\item\em Muestra el grafo pasado por parametro por pantalla. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Descripción detallada}
@@ -32,3 +30,44 @@ José Pérez-\/\+Parras Toledano
 \begin{DoxyDate}{Fecha}
 16/05/2015 
 \end{DoxyDate}
+
+
+\subsection{Documentación de las funciones}
+\hypertarget{entrada__salida_8hpp_ae1987e5dd2df64505f6900fd70694b9b}{}\index{entrada\+\_\+salida.\+hpp@{entrada\+\_\+salida.\+hpp}!cargar\+Grafo@{cargar\+Grafo}}
+\index{cargar\+Grafo@{cargar\+Grafo}!entrada\+\_\+salida.\+hpp@{entrada\+\_\+salida.\+hpp}}
+\subsubsection[{cargar\+Grafo}]{\setlength{\rightskip}{0pt plus 5cm}bool cargar\+Grafo (
+\begin{DoxyParamCaption}
+\item[{{\bf edi\+::\+Graph\+Matrix} $\ast$\&}]{g, }
+\item[{std\+::string}]{file\+Graph}
+\end{DoxyParamCaption}
+)}\label{entrada__salida_8hpp_ae1987e5dd2df64505f6900fd70694b9b}
+
+
+Carga un grafo a partir de un fichero donde vienen especificados sus nodos y sus lados. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em g} & Grafo de la clase Graph\+Matrix donde se almacenará el grafo cargado \\
+\hline
+{\em file\+Graph} & Nombre del fichero donde viene declarado el grafo a cargar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Devuelve true en caso de que se haya cargado el grafo con exito y false en caso contrario 
+\end{DoxyReturn}
+\hypertarget{entrada__salida_8hpp_a8f942941fa9e71786d9feda01a65b904}{}\index{entrada\+\_\+salida.\+hpp@{entrada\+\_\+salida.\+hpp}!mostrar\+Grafo@{mostrar\+Grafo}}
+\index{mostrar\+Grafo@{mostrar\+Grafo}!entrada\+\_\+salida.\+hpp@{entrada\+\_\+salida.\+hpp}}
+\subsubsection[{mostrar\+Grafo}]{\setlength{\rightskip}{0pt plus 5cm}void mostrar\+Grafo (
+\begin{DoxyParamCaption}
+\item[{{\bf edi\+::\+Graph\+Matrix} \&}]{g}
+\end{DoxyParamCaption}
+)}\label{entrada__salida_8hpp_a8f942941fa9e71786d9feda01a65b904}
+
+
+Muestra el grafo pasado por parametro por pantalla. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em g} & Grafo de la clase Graph\+Matrix que queremos mostrar por pantalla \\
+\hline
+\end{DoxyParams}

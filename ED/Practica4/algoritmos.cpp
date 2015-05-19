@@ -9,22 +9,23 @@
 
 namespace edi{
 
-  void profundidad(GraphMatrix g, const Vertex & origen, vector<Vertex>& encontrados){
+
+  void profundidad(GraphMatrix &g, const Vertex & origen, vector<Vertex>& encontrados){
 
   	//Metemos el nodo que nos dan en el vector de encontrados
   	g.beginEdge(origen);
   	encontrados.push_back(origen);
 
-	 cout << origen.getData() << endl;
+	cout << origen.getData() << endl;
 
 	//*aux = g.currEdge();
 	
-	if(encontrados.size()>=g.capacity()){
+	if(encontrados.size()>=g.numVertexes()){
 		cout << "Fin de grafo" << endl;
 	}else{
-    
+
 		  //Hacemos un bucle para ir pasando por sus vertices
-		  while((!g.afterEndEdge()) && (encontrados.size()<=g.capacity())){	
+		  while((!g.afterEndVertex()) && (encontrados.size()<=g.numVertexes())){	
 
 		  		//Ahora tenemos que mirar si ya estaba en encontrados
 		  		if(!compruebaEncontrados(g.currEdge().second(), encontrados)){
@@ -57,7 +58,7 @@ namespace edi{
     int n=g.capacity();
 
     for(int i = 0; i < n; i++){
-        //Rellenamos la diagonal con 0
+        //Rellenamos la diagonal con 0 puesto que son las relaciones de los nodos con ellos mismos
         distancias[i][i] = 0;
 
     }
@@ -70,7 +71,7 @@ namespace edi{
                }else{ 
                   suma = distancias[i][k] + distancias[k][j];
                }
-                if(distancias[i][j] > suma){
+                if(suma < distancias[i][j]){
                       distancias[i][j] = suma;
                       intermedios[i][j]= k;
               }
@@ -85,18 +86,13 @@ namespace edi{
   float caminoMinimo(GraphMatrix &g, float ** distancias, int ** intermedios, const Vertex & origen, const Vertex & destino){
 
     //Primero comprobamos que ambos nodos estan en el grafo
-    /*
-    g.goTo(origen);
-    assert(g.hasCurrVertex());
-    g.goTo(destino);
-    assert(g.hasCurrVertex());
-    */
     float suma=0;
         Vertex aux;
         unsigned int label;
 
 
         if(intermedios[origen.getLabel()][destino.getLabel()]==0){
+              //Quiere decir que estamos ante dos nodos que no tienen intermedio
               cout << origen.getData() << "---";
               return(distancias[origen.getLabel()][destino.getLabel()]);
         }else{

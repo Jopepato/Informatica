@@ -92,7 +92,7 @@ namespace edi
 
 			/*!
 				\fn		bool isEmpty()
-				\brief	Nos dice si el grafo esta vacio
+				\brief	Nos dice sie el grafo esta vacio
 				\return Devuelve true si el grafo esta vacio y false en caso contrario
 			*/				
 
@@ -108,6 +108,7 @@ namespace edi
 			inline const bool & isDirected() const{
 				return(directed_);
 			};
+
 			/*!
 				\fn		const float adjacent(const Vertex & u, const Vertex & v)
 				\brief	Devuelve el elemento de la matriz de adyacencia (INFINITO si no hay lado)

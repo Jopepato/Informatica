@@ -57,6 +57,7 @@ int main ()
 	std::cin >> nombreFicheroGrafo;
 
 	cargado = cargarGrafo(g, nombreFicheroGrafo);
+	if(cargado){
 
 	//Reservamos memoria para las dos matrices
 
@@ -77,6 +78,9 @@ int main ()
 		}
 	}
 
+	//Pasamos la matriz del grafo a la matriz de distancias
+	pasaMatriz(g->matrizW(), distancias, g->capacity());
+
 	while(opcion!=5){
 
 
@@ -94,8 +98,6 @@ int main ()
 	case(1):
 			if(cargado){
 				mostrarGrafo(*g);
-			//Pasamos la matriz del grafo a la matriz de distancias
-			pasaMatriz(g->matrizW(), distancias, g->capacity());
 
 			cout << endl << endl;
 			}else{
@@ -107,7 +109,7 @@ int main ()
 
 
 	case(2):
-			//Primero aplicamos el algoritmo de floyd y despues mostramos las matrines
+			//Primero aplicamos el algoritmo de floyd y despues mostramos las matrinces
 			encontrados.clear();
 			floyd(*g, distancias, intermedios);
 
@@ -128,13 +130,21 @@ int main ()
 			//Buscamos dichos nodos en el grafo y los asociamos
 			g->searchVertex(nodoOrigen);
 			origen = g->currVertex();
+			if(!g->hasCurrVertex()){
+				cout << "Nodo 1 seleccionado invalido" << endl;
+				break;
+			}
 			g->searchVertex(nodoDestino);
 			destino = g->currVertex();
+			if(!g->hasCurrVertex()){
+				cout << "Nodo 2 seleccionado invalido" << endl;
+				break;
+			}
 
 			//Ahora llamamos a la funcion del caminoMinimo
 			caminoMin = caminoMinimo(*g, distancias, intermedios, origen, destino);
 			cout << nodoDestino << endl;
-			cout << "El camino minimo entre " << nodoOrigen << " y " << nodoDestino << " es : " << caminoMin << endl;
+			cout << "El camino minimo entre " << nodoOrigen << " y " << nodoDestino << " es : " << caminoMin << endl<< endl;
 
 			cout << endl << endl;
 
@@ -144,6 +154,8 @@ int main ()
 	case(4):
 		std::cout << "Dime el nodo por el que quieres hacer profundidad: ";
 		std::cin >> dataProfundidad;
+		//Limpiamos el vector de explorados
+		encontrados.clear();
 
 		//Ahora buscamos ese nodo en el grafo
 
@@ -160,14 +172,19 @@ int main ()
 			break;
 	default:
 
-			std::cout<<"Opcion introducida no valida" << endl;
+			std::cout<<"Opcion introducida no valida" << endl << endl << endl;
 			break;
 
 	}
 
 }
-  return 0;
 
+	  return 0;
 
-
+}else{
+	cout << "No se ha podido cargar el grafo, adios" << endl;
+	return 0;
 }
+}
+
+

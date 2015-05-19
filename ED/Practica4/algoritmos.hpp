@@ -47,7 +47,7 @@ namespace edi{
 		\param 	origen Nodo de tipo Vertex desde el cual se iniciara el algoritmo de profundidad
   */
 
-  void profundidad(GraphMatrix g, const Vertex & origen, vector<Vertex> & encontrados);
+  void profundidad(GraphMatrix &g, const Vertex & origen, vector<Vertex> & encontrados);
 
   /**
 		\fn 	bool compruebaEncontrados(Vertex * u, vector<Vertex> * encontrados)

@@ -8,8 +8,25 @@ Declaración de las funciones algoritmicas.
 {\ttfamily \#include \char`\"{}graph\+\_\+matrix.\+hpp\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}edge.\+hpp\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}vertex.\+hpp\char`\"{}}\\*
+{\ttfamily \#include $<$vector$>$}\\*
+{\ttfamily \#include $<$cassert$>$}\\*
 Dependencia gráfica adjunta para algoritmos.\+hpp\+:
 % FIG 0
+\subsection*{Funciones}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{namespaceedi_a24166f389273f88c021c7dc5a8eb7597}{}void {\bfseries edi\+::floyd} (Graph\+Matrix \&g, float $\ast$$\ast$distancias, int $\ast$$\ast$intermedios)\label{namespaceedi_a24166f389273f88c021c7dc5a8eb7597}
+
+\item 
+\hypertarget{namespaceedi_a12c1af57363b7dd9ccfdc5e6a6edf18b}{}float {\bfseries edi\+::camino\+Minimo} (Graph\+Matrix \&g, float $\ast$$\ast$distancias, int $\ast$$\ast$intermedios, const Vertex \&origen, const Vertex \&destino)\label{namespaceedi_a12c1af57363b7dd9ccfdc5e6a6edf18b}
+
+\item 
+\hypertarget{namespaceedi_ac73b0987017f1707625491403b3f0955}{}void {\bfseries edi\+::profundidad} (Graph\+Matrix \&g, const Vertex \&origen, vector$<$ Vertex $>$ \&encontrados)\label{namespaceedi_ac73b0987017f1707625491403b3f0955}
+
+\item 
+\hypertarget{namespaceedi_a71ac72af16e1567b5c036e07a033bb64}{}bool {\bfseries edi\+::comprueba\+Encontrados} (const Vertex \&u, vector$<$ Vertex $>$ \&encontrados)\label{namespaceedi_a71ac72af16e1567b5c036e07a033bb64}
+
+\end{DoxyCompactItemize}
 
 
 \subsection{Descripción detallada}
