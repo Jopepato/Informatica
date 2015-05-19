@@ -9,25 +9,22 @@
 
 namespace edi{
 
-  void profundidad(GraphMatrix &g, const Vertex & origen, vector<Vertex>& encontrados){
+  void profundidad(GraphMatrix g, const Vertex & origen, vector<Vertex>& encontrados){
 
   	//Metemos el nodo que nos dan en el vector de encontrados
-  	//Edge *aux = new Edge;
   	g.beginEdge(origen);
   	encontrados.push_back(origen);
 
-	cout << origen.getData() << endl;
+	 cout << origen.getData() << endl;
 
 	//*aux = g.currEdge();
 	
 	if(encontrados.size()>=g.capacity()){
 		cout << "Fin de grafo" << endl;
 	}else{
-
+    
 		  //Hacemos un bucle para ir pasando por sus vertices
-		  while((!g.afterEndVertex()) && (encontrados.size()<=g.capacity())){
-
-		  		//*aux = g.currEdge();  		
+		  while((!g.afterEndEdge()) && (encontrados.size()<=g.capacity())){	
 
 		  		//Ahora tenemos que mirar si ya estaba en encontrados
 		  		if(!compruebaEncontrados(g.currEdge().second(), encontrados)){
@@ -55,17 +52,67 @@ namespace edi{
 
   }
 
-  void floyd(GraphMatrix *g, float ** distancias, int ** intermedios){
+  void floyd(GraphMatrix &g, float ** distancias, int ** intermedios){
+    float suma;
+    int n=g.capacity();
 
+    for(int i = 0; i < n; i++){
+        //Rellenamos la diagonal con 0
+        distancias[i][i] = 0;
+
+    }
+    for(int k = 0; k < n; k++)
+        for(int i = 0; i < n; i++)
+            for(int j = 0; j < n; j++){
+                
+              if(distancias[i][k]==std::numeric_limits<float>::infinity() || distancias[k][j]==std::numeric_limits<float>::infinity()){ 
+                    suma=std::numeric_limits<float>::infinity();
+               }else{ 
+                  suma = distancias[i][k] + distancias[k][j];
+               }
+                if(distancias[i][j] > suma){
+                      distancias[i][j] = suma;
+                      intermedios[i][j]= k;
+              }
+            }
+          
+        
 
 
   }
 
 
-  void caminoMinimo(GraphMatrix *g, float ** diatancias, int ** intermedios, const Vertex * origen, const Vertex * destino){
+  float caminoMinimo(GraphMatrix &g, float ** distancias, int ** intermedios, const Vertex & origen, const Vertex & destino){
 
+    //Primero comprobamos que ambos nodos estan en el grafo
+    /*
+    g.goTo(origen);
+    assert(g.hasCurrVertex());
+    g.goTo(destino);
+    assert(g.hasCurrVertex());
+    */
+    float suma=0;
+        Vertex aux;
+        unsigned int label;
+
+
+        if(intermedios[origen.getLabel()][destino.getLabel()]==0){
+              cout << origen.getData() << "---";
+              return(distancias[origen.getLabel()][destino.getLabel()]);
+        }else{
+          label = intermedios[origen.getLabel()][destino.getLabel()];
+          g.goTo(label);
+          aux = g.currVertex();
+
+          suma += caminoMinimo(g, distancias, intermedios, origen, aux);
+
+          suma += caminoMinimo(g, distancias, intermedios, aux, destino);
+
+          return(suma);
+        }
 
 
   }
 
-}
+
+}//namespace edi

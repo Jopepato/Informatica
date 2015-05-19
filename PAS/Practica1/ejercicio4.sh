@@ -20,15 +20,15 @@ if [  $# -eq 2 ]
 						let "i++"
 
 
-								#Vemos si es la primera linea
-								if [ $x -eq 1 ]
+							#Vemos si es la primera linea
+							if [ $x -eq 1 ]
+								then
+									#Imprimimos esa y la siguiente
+									if [ $i -eq $x -o $((i-1)) -eq $x ]
 									then
-										#Imprimimos esa y la siguiente
-										if [ $i -eq $x -o $((i+1)) -eq $x ]
-											then
-												echo "$line"
-										fi
-								fi
+										echo "$line"
+									fi
+							fi
 
 
 
@@ -45,7 +45,7 @@ if [  $# -eq 2 ]
 
 							if [ $x -eq $j ]
 								then
-									if [ $((i-1)) -eq $x -o $i -eq $x ]
+									if [ $((i+1)) -eq $x -o $i -eq $x ]
 										then
 											echo "$line"
 									fi

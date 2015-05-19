@@ -2,7 +2,7 @@
 if [ $# -eq 2 ]
 	then
 
-	for x in $(find "$1" -name "*$2*")
+	for x in $(find "$1" -name "*$2*" | stat -c %s | sort)
 		do
 				if [ -x $x ] #Con esto sabemos si es ejecutable
 					then
@@ -12,9 +12,10 @@ if [ $# -eq 2 ]
 				fi
 		done
 	else
+				
 				if [ $# -eq 0 ]	#No ha introducido ninguno parametro se buscando todos los ficheros de la carpeta actual
-
-					for x in $(find)
+					then
+					for x in $(find | stat -c %s | sort)
 					do
 						if [ -x $x ] #Con esto sabemos si es ejecutable
 						then
@@ -27,8 +28,8 @@ if [ $# -eq 2 ]
 
 		#Comprobacion de parametros
 
-			if[ $# -eq 1 -o $# -ge 3 ]
-				then
+			if [ $# -eq 1 -o $# -ge 3 ]
+			then
 						echo "Numero de parametros introducidos incorrectos"
 			fi
 fi

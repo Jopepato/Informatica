@@ -13,6 +13,8 @@ if [ $# -eq 1 ]
 		home=$(echo $line | sed -r 's/(.*):(.*):(.*):(.*):(.*):(.*):(.*)/\6/')
 		shell=$(echo $line | sed -r 's/(.*):(.*):(.*):(.*):(.*):(.*):(.*)/\7/')
 
+if [ $uid -ge 1000 ]
+	then
 
 		echo "***********"
 		echo "Logname: $logname"
@@ -52,7 +54,7 @@ if [ $# -eq 1 ]
 		done < <(who |sed -r -n 's/([^ ]*)[ ]*([^ ]*)[ ]*([^ ]*)[ ]*([^ ]*)[ ]*([^ ]*)/\1/p')
 
 		echo "Logeado = $ejecutable"
-
+	fi
 	done < <(cat /etc/passwd | grep -E $1)
 	else
 	echo "Numero de argumentos invalidos, debes introducir una cadena de texto"

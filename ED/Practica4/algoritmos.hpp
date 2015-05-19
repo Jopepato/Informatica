@@ -12,6 +12,7 @@
 #include "edge.hpp"
 #include "vertex.hpp"
 #include <vector>
+#include <cassert>
 
 namespace edi{
 
@@ -21,13 +22,13 @@ namespace edi{
 		\fn 	void floyd(GraphMatrix *g, float *** distancias, int *** intermedios)
 		\brief	Funcion que aplica el algoritmo de floyd a un grafo y rellena las matrices de distancias e intermedios
 		\param 	g Grafo de tipo GraphMatrix sobre el que se realizará el algoritmo de Floyd
-		\param	distancias Matriz de tipo float en la que se almacenaran las distancias
+		\param	distancias Matriz de tipo float que contiene las distancias
 		\param 	intermedios Matriz de tipo int en la que se almacenaran los nodos intermedios
   */
-  void floyd(GraphMatrix *g, float ** distancias, int ** intermedios);
+  void floyd(GraphMatrix &g, float ** distancias, int ** intermedios);
 
   /**
-		\fn 	void caminoMinimo(GraphMatrix *g, float *** diatancias, int *** intermedios, const Edge * origen, const Edge * destino)
+		\fn 	void caminoMinimo(GraphMatrix *g, float *** distancias, int *** intermedios, const Edge * origen, const Edge * destino)
 		\brief 	Funcion que gracias al algoritmo de Floyd puede darnos el camino minimo entre dos nodos
 		\param	g Grafo de tipo GraphMatrix
 		\param 	distancias Matriz de tipo float que almacena las distancias halladas con el algoritmo de Floyd
@@ -37,7 +38,7 @@ namespace edi{
 
   */
 
-  void caminoMinimo(GraphMatrix *g, float ** diatancias, int ** intermedios, const Vertex * origen, const Vertex * destino);
+  float caminoMinimo(GraphMatrix &g, float ** distancias, int ** intermedios, const Vertex & origen, const Vertex & destino);
 
   /*
 		\fn 	void profundidad(GraphMatrix *g, Vertex * origen)
@@ -46,7 +47,7 @@ namespace edi{
 		\param 	origen Nodo de tipo Vertex desde el cual se iniciara el algoritmo de profundidad
   */
 
-  void profundidad(GraphMatrix &g, const Vertex & origen, vector<Vertex> & encontrados);
+  void profundidad(GraphMatrix g, const Vertex & origen, vector<Vertex> & encontrados);
 
   /**
 		\fn 	bool compruebaEncontrados(Vertex * u, vector<Vertex> * encontrados)

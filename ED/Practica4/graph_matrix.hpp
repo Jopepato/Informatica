@@ -82,8 +82,17 @@ namespace edi
 				return(capacity_);
 			};
 			/*!
+				\fn		inline const float ** matrizW()
+				\brief	Observador del campo matrizW_
+				\return Valor del atributo matrizW_
+			*/
+			inline float ** matrizW()const{
+				return(matrixW_);
+			}
+
+			/*!
 				\fn		bool isEmpty()
-				\brief	Nos dice sie el grafo esta vacio
+				\brief	Nos dice si el grafo esta vacio
 				\return Devuelve true si el grafo esta vacio y false en caso contrario
 			*/				
 
@@ -99,7 +108,6 @@ namespace edi
 			inline const bool & isDirected() const{
 				return(directed_);
 			};
-
 			/*!
 				\fn		const float adjacent(const Vertex & u, const Vertex & v)
 				\brief	Devuelve el elemento de la matriz de adyacencia (INFINITO si no hay lado)
