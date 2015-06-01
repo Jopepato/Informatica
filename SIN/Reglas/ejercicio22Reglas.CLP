@@ -1,4 +1,4 @@
-;Hacer 22
+;Ejercicio 22
 (deffacts hechos
 	(vector v1 2 3 4 5 6 7 8 3 1 3 4)
 	(vector v2 1 2 3 4 5 4 3 2 1)
@@ -24,8 +24,9 @@
 
 
 (defrule esSimetrico
-	(aux ?nombre $?valores)
+	?a<-(aux ?nombre $?valores)
 	(test (< (length$ $?valores) 2))
 	=>
+	(retract ?a)
 	(printout t "El vector " ?nombre " es simetrico" crlf)
 )

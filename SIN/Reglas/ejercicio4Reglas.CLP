@@ -7,7 +7,7 @@
 
 (defrule compruebaParYMenor
 	(datos ?x&:(numberp ?x) $?a ?y&:(numberp ?y))
-	(test(< ?x ?y))
+	(test(<= ?x ?y))
 	(test(= (mod ?x 2) 0))
 	=>
 	(printout t "Cumple la condicion: "?x " " $?a " " ?y crlf)

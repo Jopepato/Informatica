@@ -1,13 +1,15 @@
-(deffacts hecho
-	(datos a b c d e f g 1 hola adios yo soy 1 tu 1 padre 1 2 4 1 1 1)
+;Ejercicio 5
+;Que elimine todas las apariciones de 1
+
+(deffacts hechos
+	(hecho a 3 4 2 4 5 3 1 3 4 1 3 5 2 1)
 )
 
-(defrule eleminaUno
-	?nuevo<-(datos $?cabeza
-	 ?x&:(numberp ?x)
-	 $?cola)
-	(test(= ?x 1))
+(defrule eliminaUno
+	?h<-(hecho $?cola ?x $?cabeza)
+	(test (eq ?x 1))
 	=>
-	(retract ?nuevo)
-	(assert (datos $?cabeza $?cola))
+	(retract ?h)
+	(assert (hecho $?cola $?cabeza))
+
 )

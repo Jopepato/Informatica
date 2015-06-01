@@ -1,29 +1,28 @@
-;Ejercicio 6 de Reglas
+;Ejercicio 6
 
 (deffacts hechos
-	(vector vector1 1 4 5 2 3 6 54 7 6 6 4)
-	(vector vector2 3 5 6 4)
-	(vector vector3 4 5 6 7 3)
+	(hecho 2 3 5 56 7 6 3 4)
+	(hecho 1 2 3 5 4)
+	(hecho 4 6 3 2 2)
+	(hecho 4 2 2 3)
 )
 
-
-(defrule compruebaNumerosEntre3Y4
-	(vector ?nombre
-	 $?cabeza
-	 ?x&:(numberp ?x)
-	 $?valores
-	 ?y&:(numberp ?y)
-	 $?cola)
+(defrule encuentra3y4
+	(hecho $?cabeza ?x $?medio ?y $?cola)
 	
-	(test (or
-		(and(= ?x 3)(= ?y 4))
-		(and(= ?x 4)(= ?y 3))
+	(or
+		(and 
+		(test(eq ?x 3))
+		(test(eq ?y 4))
+		)
+		(and
+		(test(eq ?y 3))
+		(test(eq ?x 4))
 		)
 	)
-	
 
-	(test(= (mod (length$ $?valores) 2) 1))
+	(test(= (mod(length$ $?medio) 2) 1))
 	=>
-	(printout t "El " ?nombre " cumple esta condicion" crlf)
-	
+	(printout t "El hecho " $?cabeza crlf)
+
 )

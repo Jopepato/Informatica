@@ -16,10 +16,22 @@
 	(sensor (codigo 8)(estado incorrecto))
 	(sensor (codigo 9)(estado correcto))
 	(sensor (codigo 10)(estado correcto))
+	(contador 0)
 )
 
 
-(defrule avisoSensoresIncorrectos
+(defrule advertencia
+	 (contador ?x)
+	 (test(>= 3 ?x))
+	=>
+ 	(printout t "Tres o mas sensores estan incorrectos" crlf)
+)
 
-;Terminar
+(defrule sensorMal
+	 ?c<-(contador ?x)
+	 (sensor(estado incorrecto))
+	 (test(< ?x 3))
+	=>
+ 	(retract ?c)
+ 	(assert(contador (+ ?x 1)))
 )

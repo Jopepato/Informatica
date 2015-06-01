@@ -9,7 +9,7 @@
 
 (defrule compruebaMayor
 	(datos ?x&:(numberp ?x) ?y&:(numberp ?y))
-	(test(< ?x ?y))
+	(test(> ?y ?x))
 	=>
 	(printout t ?x " " ?y crlf)
 )

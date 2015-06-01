@@ -1,17 +1,19 @@
-;Ejercicio 12 de la relacion :>
+;Ejercicio 12
 
-(deffacts ejer12
+
+(deffacts hechos
 	(dato 4)
-	(dato 3)
-	(dato 60)
+	(dato 5)
 	(dato 2)
-	(dato 99)
+	(dato 5)
+	(dato 10)
 )
 
-(defrule insertaOrden
-?d<-(dato ?x&:(numberp ?x))
-(not (dato ?y&:(< ?y ?x)))
-=>
-(retract ?d)
-(printout t "Variable datos: " ?x crlf)
+
+(defrule imprimeOrdenado
+	?d<-(dato ?x)
+	(not (dato ?y&:(< ?y ?x)))
+	=>
+	(retract ?d)
+	(printout t ?x crlf)
 )

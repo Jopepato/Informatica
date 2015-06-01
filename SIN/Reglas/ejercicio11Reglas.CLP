@@ -12,6 +12,7 @@
 (dato ?x)
 ?v<-(todos-datos $?valores)
 
+	;Comprobamos que no esta en todos los datos
 	(not(todos-datos $? ?x $?))
 =>
 (retract ?v)

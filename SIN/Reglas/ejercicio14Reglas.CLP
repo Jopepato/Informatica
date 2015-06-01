@@ -1,22 +1,35 @@
 ;Ejercicio del factorial
-;Lo tenemos que hacer con 3 reglas para poder capturar el factorial y hacernos con todos :>
 
-;Esto es para el ejercicio anterior (/ (+ ?x ?y) 2)
-;Para la mediana hay que ponerle eso a los numeros pares
+
+(deffacts factoriales
+	(factorial 3)
+	(factorial 4)
+	(factorial 2)
+	(factorial 5)
+)
+
+(defrule mostrarAux	
+	?h<-(aux ?x ?y ?z)
+	(test(eq ?x 0))
+
+	=>
+	(retract ?h)
+	(printout t "El factorial de " ?z " es: " ?y crlf)
+
+)
+
+(defrule copiaFactorial
+	?h<-(factorial ?x)
+	=>
+	(assert (aux ?x 1 ?x))
+)
+
 
 (defrule factorial
-	;Aqui hacemos el factorial :>
 
-)
-
-(defrule pedirdatos
-	;Aqui le pedimos los datos al usuario
-)
-
-(defrule algomas
-	;Esta es la tercera regla que hay que hacer pero no se para que sirve :>
-)
-
-
-(defrule do||do not there's no try
+	?h<-(aux ?x ?y ?z)
+	(test(> ?x 0))
+	=>
+	(retract ?h)
+	(assert (aux (- ?x 1) (* ?y ?x) ?z))
 )

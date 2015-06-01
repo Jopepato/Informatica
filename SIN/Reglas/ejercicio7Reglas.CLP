@@ -1,5 +1,3 @@
-;Ejercicios de la relacion de reglas
-
 ;Ejercicio 7 de la relacion de reglas
 
 (deffacts datos
@@ -10,9 +8,7 @@
 
 
 (defrule borrarNumeroVector
-	?y<-(datos $?cabeza
-		?x&~:(numberp ?x)
-		$?cola)
+	?y<-(datos $?cabeza ?x&~:(numberp ?x) $?cola)
 	=>
 	(retract ?y)
 	(assert (datos $?cabeza $?cola))
