@@ -7,7 +7,7 @@
 )
 
 
-(defrule borrarNumeroVector
+(defrule borrarNoNumeroVector
 	?y<-(datos $?cabeza ?x&~:(numberp ?x) $?cola)
 	=>
 	(retract ?y)

@@ -6,15 +6,15 @@
 	(dato 5)
 	(dato verde)
 	(dato 45)
-	(todos-datos))
+	(todos-los-datos))
 
-(defrule insertaOrden
+(defrule inserta
 (dato ?x)
-?v<-(todos-datos $?valores)
+?v<-(todos-los-datos $?valores)
 
 	;Comprobamos que no esta en todos los datos
-	(not(todos-datos $? ?x $?))
+	(not(todos-los-datos $? ?x $?))
 =>
 (retract ?v)
-(assert(todos-datos $?valores ?x))
+(assert(todos-los-datos $?valores ?x))
 )

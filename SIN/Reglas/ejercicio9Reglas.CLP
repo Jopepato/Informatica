@@ -7,7 +7,7 @@
 	(dato 45)
 	(todos-los-datos))
 
-(defrule insertaOrden
+(defrule inserta
 ?d<-(dato ?x)
 ?v<-(todos-los-datos $?valores)
 =>

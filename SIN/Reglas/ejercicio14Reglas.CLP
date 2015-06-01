@@ -8,7 +8,7 @@
 	(factorial 5)
 )
 
-(defrule mostrarAux	
+(defrule mostrarFactorial
 	?h<-(aux ?x ?y ?z)
 	(test(eq ?x 0))
 
