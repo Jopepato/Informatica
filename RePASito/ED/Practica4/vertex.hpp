@@ -25,32 +25,32 @@ namespace edi
 			const std::string & getData()const
 			{ 
 				return _data;
-			}
+			};
 			
 			const int & getLabel()const
 			{
 				return _label;
-			}
+			};
 			
 			void setData(const std::string &data)
 			{
 				_data = data;
-			}
+			};
 			
 			void setLabel(const int &label)
 			{
 				_label = label;
-			}
+			};
 			
 			bool operator==(const Vertex &v)const
 			{
 				return (v.getData() == getData());
-			}
+			};
 			
 			bool operator!=(const Vertex &v)const
 			{
 				return (v.getData() != getData());
-			}
+			};
 	};
 	
 	

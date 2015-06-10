@@ -4,6 +4,8 @@
 #include <vector>
 #include <iostream>
 #include <cassert>
+#include <cmath>
+#include <cstdlib>
 
 #include  "edge.hpp"
 #include  "vertex.hpp"
@@ -12,26 +14,34 @@
 \brief Espacio de nombres para la asignatura Estructura de datos.
 
 */
+using namespace std;
+
 namespace edi 
 {
 
 	class GraphMatrix
 	{
 		private:
-			//Vector of vertexes
-			//Adjacency matrix of weights
-			//Is directed
-			//cursor of vertexes
-			//cursor of edges
-			//number of vertexes
-			//number of edges
-			//Capacity of graph (maximum value of _numVertexes. _capacity >= _numVertexes)
+			vector<Vertex> vVertex_;		//!< Vector of vertexes
+			float ** wMatrix_;				//!< Adjacency matrix of weights
+			bool isDirected_;				//!< Is directed
+			Vertex * currVertex_;			//!< cursor of vertexes
+			Edge * currEdge_;				//!< cursor of edges
+			unsigned int numVertexes_;		//!< number of vertexes
+			unsigned int numEdges_;			//!< number of edges
+			unsigned int capacity_;			//!< Capacity of graph (maximum value of _numVertexes. _capacity >= _numVertexes)
 
 		public:
-			GraphMatrix (const unsigned int & capacity=0, const bool & isDirected = true)
+			/*!
+				\name Constructor
+			*/
+
+			GraphMatrix (const unsigned int & capacity=0, const bool & isDirected = true);
 
 
-			//Observers
+			/*!
+				\name Oberservers
+			*/
 			const unsigned int numVertexes()const;
 			
 			const unsigned int numEdges()const;
@@ -59,17 +69,19 @@ namespace edi
 			//Devuelve el lado referenciado por cursor de lados
 			const Edge currEdge();
 			
-			//Modifiers
+			/*!
+				\name Modifiers
+			*/
 			
 			//Crea un grafo dirigido
 			void makeDirected();
 			
 			//Crea un grafo no dirigido
-			void makeUndirected()
+			void makeUndirected();
 
 			//Prec: numVertexes() < capacity()
 			//Añade un vertice al grafo a partir del data
-			void addVertex(const std::string & data)
+			void addVertex(const std::string & data);
 
 			//Prec: u y v pertenecen al grafo
 			//Añade un lado al grafo a partir de sus dos vértices y su peso. Esto se reflejará sólo en la matriz de adyacencia
@@ -77,6 +89,10 @@ namespace edi
 					
 			//Busca un vertice a partir de su data, colocando el cursor en dicho vértice
 			void searchVertex(const std::string &data);
+
+			float ** matrizW(){
+				return(wMatrix_);
+			}
       
 			//Prec: u pertenece al grafo
 			//Lleva el cursor a un vertice a partir de dicho vertice
@@ -84,7 +100,7 @@ namespace edi
 			
 			//Prec: 0 <= idx < numVertexes()
 			//lleva el cursor a un vértice a partir de la posicion de dicho vertice
-			void goTo(const int &idx);
+			void goTo(const unsigned int &idx);
 			
 			//Prec: u y v pertenecen al grafo
 			//Lleva el cursor a un lado a partir de sus vertices
