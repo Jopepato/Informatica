@@ -3,7 +3,7 @@
 
 #include <cassert>
 #include <memory>
-#include <edi_exports.hpp>
+#include "edi_exports.hpp"
 
 namespace edi 
 {

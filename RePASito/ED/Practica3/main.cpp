@@ -12,6 +12,8 @@
 #include "persona.hpp"
 #include "generarpersona.hpp"
 #include "clave.hpp"
+#include "asignatura.hpp"
+#include "edi_LinkedList.hpp"
 
 using namespace edi;
 using namespace std;
