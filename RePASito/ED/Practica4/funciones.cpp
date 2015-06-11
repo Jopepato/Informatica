@@ -5,6 +5,8 @@ using namespace std;
 
 namespace edi{
 
+
+//No va :( 
 void profundidad(GraphMatrix & g, const Vertex & origen, vector<Vertex> & encontrados){
 
 	//Metemos el nodo en el vector de encontrados
@@ -78,6 +80,7 @@ void caminoMin(GraphMatrix &g,float ** intermedios, float ** distancias, const V
 
 	//Miramos si no tiene intermedios
 
+	//Esto es que no existe nodo intermedio y estan interconectados a tiempo y armonizados
 	if(intermedios[origen.getLabel()][destino.getLabel()] == INFINITY){
 		cout << origen.getData() << "---";
 	}else{
