@@ -109,7 +109,7 @@ private:
   OrderedBinaryTree(const OrderedBinaryTree<T>& o) {};
   OrderedBinaryTree<T>& operator=(const OrderedBinaryTree<T>* other) {return *this;}
   
-protected:  
+protected:
       
   /** @name Redefined as private
    * Avoid some public inherited BinaryTree methods for users.

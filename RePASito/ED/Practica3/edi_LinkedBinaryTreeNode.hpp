@@ -137,7 +137,7 @@ public:
   }
   /**@}*/
   
-private:    
+private:
   
   //Avoid assign operator.
   LinkedBinaryTreeNode<T>& operator=(const LinkedBinaryTreeNode<T>& o) {return *this;}    

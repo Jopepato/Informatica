@@ -89,7 +89,7 @@ namespace edi{
 
 	ofstream & operator << (ofstream &stream, const Clave &c){
 
-		stream << c.dni() << " " << c.posicion() << endl;
+		stream << c.dni() << "," << c.posicion() << endl;
 		return stream;
 
 	}

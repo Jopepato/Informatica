@@ -245,6 +245,38 @@ public:
 		tree()->flush();
 		assert(--_invariantCount || checkInvariants());
 	}
+
+	friend ofstream & operator <<(ofstream &stream,const LinkedOrderedBinaryTree<T>* tree){
+
+		if(!tree->isEmpty()){
+			stream << "(";
+			stream << tree->item();
+			stream << ":";
+
+			//Ahora recorremos el subarbol izquierdo
+			if(tree->hasLeftChild()){
+				//Lo cogemos con un puntero y hacemos recursividad
+				std::auto_ptr<const LinkedOrderedBinaryTree<T> > ptr(tree->leftSubTree());
+				stream << ptr.get();
+			}
+			//Despues recorremos el subarbol derecho
+			if(tree->hasRightChild()){
+				//Lo cogemos con un puntero y hacemos recursividad
+				std::auto_ptr<const LinkedOrderedBinaryTree<T> > ptr(tree->rightSubTree());
+				stream << ptr.get();
+			}
+			stream << ")";
+
+		}
+
+
+		return stream;
+	}
+
+	friend ifstream & operator >>(ifstream &stream, LinkedOrderedBinaryTree<T> &tree){
+
+		return stream;
+	}
 	
 	
 	/**@}*/  
