@@ -1,0 +1,15 @@
+7
+0
+A
+B
+C
+D
+E
+F
+G
+A B 1
+A E 1
+B C 2
+B D 2
+E F 2
+E G 2

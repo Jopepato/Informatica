@@ -1,0 +1,7 @@
+[2015-04-26, 16:49:07] ==> Mandando mensajes al servidor
+[2015-04-26, 16:49:10] ==> Mensaje enviado: exit
+[2015-04-26, 16:49:10] ==> Cerramos las colas
+[2015-04-26, 16:49:10] ==> Mensaje enviado: exit
+[2015-04-26, 16:49:10] ==> Cerramos y borramos las colas
+[2015-04-26, 16:49:10] ==> Colas cerradas y eliminadas
+[2015-04-26, 16:49:10] ==> Liberamos el regex
