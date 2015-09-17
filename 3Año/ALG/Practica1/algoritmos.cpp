@@ -19,8 +19,8 @@ void ordenacionBurbuja(vector <int> &v){
         v[j] = v[j+1];
         v[j+1] = aux;
       }//finsi
-    }//finparaJ
-  }//finparaI
+    }//finpara J
+  }//finpara I
 
 }
 
@@ -31,4 +31,11 @@ void muestraVector(vector<int> &v){
   }
 
   cout << endl;
+}
+
+bool estaOrdenado(vector<int> &v){
+  for(int i=0; i<v.size()-1; i++){
+    assert(v[i]<v[i+1]);
+  }
+  return(true);
 }
