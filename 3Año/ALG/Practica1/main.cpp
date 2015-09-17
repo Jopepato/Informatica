@@ -26,7 +26,6 @@ int main(int argc, char ** argv){
   cout << "Probando la creacion" << endl;
 
   rellenaVector(v, maxEle);
-  estaOrdenado(v);
   cout << "Mostramos el vector" << endl;
 
   muestraVector(v);
