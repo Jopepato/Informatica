@@ -9,7 +9,7 @@ Data Type: struct timespec
     time_t tv_sec
        This represents the number of whole seconds of elapsed time.
     long  tv_nsec
-    This is the rest of the elapsed time (a fraction of a second), represented as the number of nanoseconds.  
+    This is the rest of the elapsed time (a fraction of a second), represented as the number of nanoseconds.
 */
 
 // Ojo hay que compilar g++ -Wall main.cpp -lrt para incluir las librerías de tiempos.
@@ -35,34 +35,34 @@ Data Type: struct timespec
       memset(&_start,0,sizeof(timespec));
       memset(&_stop,0,sizeof(timespec));
       _isStarted=false;
-    } 
+    }
     /*!\brief Starts the clock.
      * \pre not isStarted()
      * \post isStarted()
      */
     void start ()
-    {      
+    {
       assert (!isStarted());
-      clock_gettime (CLOCK_REALTIME, &_start);   
+      clock_gettime (CLOCK_REALTIME, &_start);
       _isStarted=true;
     }
     /*!\brief Re-starts the clock.
      * \post isStarted()
      */
     void restart ()
-    {      
-      clock_gettime (CLOCK_REALTIME, &_start);   
+    {
+      clock_gettime (CLOCK_REALTIME, &_start);
       _isStarted=true;
     }
-   
+
     /*!\brief Stops the clock.
      * \pre isStarted()
      * \post not isStarted()
-     */ 
+     */
     void stop ()
     {
       assert (_isStarted);
-      clock_gettime (CLOCK_REALTIME, &_stop);   
+      clock_gettime (CLOCK_REALTIME, &_stop);
       _isStarted=false;
     }
     /*!\brief Is the clock started?
@@ -88,9 +88,9 @@ int main()
 	unsigned int a, b;
 	a = 0;
 	b = 0;
-	
+
 	time.start();
-	
+
 	for(unsigned int i = 0; i <= 1000000000; i++)
 	{
 		a++;
@@ -99,7 +99,7 @@ int main()
 	if (time.isStarted())
 	{
 		time.stop();
-		std::cout << "Han pasado " << time.elapsed() << "microsegundos \n";
+		std::cout << "Han pasado " << time.elapsed() << " microsegundos \n";
 	}
 	return 0;
 }
