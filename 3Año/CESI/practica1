@@ -1,0 +1,24 @@
+Cuestion 1:
+	¿Qué   significado   tienen   los   colores   de   los   cables   de   una   fuente   de  
+alimentación?
+
+	Cada color significa un voltaje:
+	Naranja: 3.3V
+	Rojo: +5V
+	Amarillo: +12V
+	Negro: Tierra
+	Rosa: PWR OK
+	Violeta: 5V in standby
+
+Cuestion 2:
+	¿Para que sirve el disipador?
+	Para que no pete el microprocesador del caló k pega eso killo
+
+Cuestion 3:
+	¿Cómo  se  identifica  el  PIN  1  en  los  cables  PATA?
+	El pin 1 suele ser de un color diferente, normalmente rojo.
+Cuestión 4:
+	Una  vez  ensamblado  el  PC,  en  el  arranque  y  en  general,  ¿Qué  significa  1  
+	”beep”  en  el  arranque  y  cual  puede  ser  la  causa?  ¿Y  2  ”beeps”?  ¿Y  5  ”beeps”?  
+
+	
