@@ -1,0 +1,14 @@
+Imagenes tomadas con una camara "Imaging Source"
+
+Patrón de 5 filas x 6 columnas con tamaño = 0.04m
+
+Se han realizado dos calibraciones una con modelo clásico y otro con modelo "rational"
+
+También hay imágenes de escenas con líneas para poder observar como funciona "iundist".
+
+!!Ojo!! la vista 15 del patrón introduce mucho ruido y hace que el error de calibración se vaya a 0.38 pixeles (en vez de 0.11 que se consigue sin ella).
+
+La versión de opencv usada es la 2.3.1
+
+
+
