@@ -2,6 +2,8 @@
 
 void rellenaVector(vector <int> &v, const int nEle){
   //Colocamos la semilla con el tiempo actual
+  //Limpiamos el vector por si ya estaba relleno
+  v.clear();
   for(int i=0; i<nEle; i++){
     //Ahora rellenamos el vector con numeros aleatorios hasta 9999
     v.push_back(rand()%10000);
@@ -21,7 +23,7 @@ void ordenacionBurbuja(vector <int> &v){
       }//finsi
     }//finpara J
   }//finpara I
-
+  estaOrdenado(v);
 }
 
 void muestraVector(vector<int> &v){
@@ -35,7 +37,7 @@ void muestraVector(vector<int> &v){
 
 bool estaOrdenado(vector<int> &v){
   for(int i=0; i<v.size()-1; i++){
-    assert(v[i]<v[i+1]);
+    assert(v[i]<=v[i+1]);
   }
   return(true);
 }

@@ -1,7 +1,0 @@
-Ejercicios realizados por: José Pérez-Parras Toledano
-
-	Ejercicio 2:
-		Hay que pasarle como primer parametro el nombre del fichero de las IPS y como segundo el tiempo que se desea esperar
-
-	Ejercicio 6:
-		Se debe de pasar como parametro la cadena a buscar

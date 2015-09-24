@@ -1,6 +1,6 @@
 /*!
   \file persona.cpp
-  \brief  Implememtación de la clase Persona 
+  \brief  Implememación de la clase Persona 
   \author Name
   \date   16/03/2015
 */

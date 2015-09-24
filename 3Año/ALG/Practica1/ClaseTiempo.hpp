@@ -81,26 +81,3 @@ Data Type: struct timespec
       return stopT-startT;
     }
   };
-/*
-int main()
-{
-	Clock time;
-	unsigned int a, b;
-	a = 0;
-	b = 0;
-
-	time.start();
-
-	for(unsigned int i = 0; i <= 1000000000; i++)
-	{
-		a++;
-		b++;
-	}
-	if (time.isStarted())
-	{
-		time.stop();
-		std::cout << "Han pasado " << time.elapsed() << " microsegundos \n";
-	}
-	return 0;
-}
-*/

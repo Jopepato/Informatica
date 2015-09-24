@@ -1,9 +1,0 @@
-digraph "Representación gráfica de la clase"
-{
-  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
-  node [fontname="Helvetica",fontsize="10",shape=record];
-  rankdir="LR";
-  Node1 [label="edi::List\< T \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classedi_1_1List.html",tooltip="Abstrast template class to model the List[T] ADT. "];
-  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node2 [label="edi::LinkedList\< T \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classedi_1_1LinkedList.html",tooltip="Implement the List[T] ADT as a linked list. "];
-}

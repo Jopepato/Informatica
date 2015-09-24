@@ -1,4 +1,0 @@
-Al ejecutar sin el sleep, el programa puede dar distintas salidas interponiendose los mensajes de enviado y leido.
-Pero siempre se meteran los mensajes en la tuberia para despues leerlos.
-Mientras que si lo ejevutamos con sleep(5), vamos metiendo mensaje a mensaje y leyendo a la par que metemos el mensaje.
-Con esto podemos concluir que la tuberia es autobloqueante, ya que si no hay ningun mensaje para leer, espera hasta que este es introducido para leerlo y esperar al siguiente.
