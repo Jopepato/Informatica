@@ -2,7 +2,7 @@ import random
 import sys
 def devPalabras(fichero):
 	f= open(fichero, "r")
-	lineas = []	
+	lineas = []
 	for linea in f:
 		lineas.append(linea)
 	return lineas
@@ -34,10 +34,10 @@ for i in palabra:
 	pista.append('-')
 pista.pop()
 
-while 1: 
-	letra=introLetra() 
-	listaLetra=buscaLetra(letra,palabra) 
-	for i in listaLetra: 
+while 1:
+	letra=introLetra()
+	listaLetra=buscaLetra(letra,palabra)
+	for i in listaLetra:
 		pista[i]=letra
 	print pista
 	if "-" not in pista: break
