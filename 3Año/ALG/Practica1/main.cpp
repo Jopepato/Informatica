@@ -20,9 +20,10 @@ int main(int argc, char ** argv){
   int incremento;
   int repeticion;
   uint64_t tiempo;
-  vector<int> v;
-  vector <int> tiempoMedio;
-  vector <int> muestra;
+  vector<double> v;
+  vector <double> tiempoMedioLineal;
+  vector <double> tiempoMedioCuadratico;
+  vector <double> muestra;
   double media=0;
   int contador;
   Clock reloj;
@@ -46,19 +47,19 @@ int main(int argc, char ** argv){
       rellenaVector(v, i);
       //Aqui cogemos el tiempo y mostramos el tiempo por pantalla
       reloj.start();
-      ordenacionBurbuja(v);
+      quickSortIterative(v, 0, v.size());
       reloj.stop();
       tiempo = reloj.elapsed();
       //cout << "Han pasado " << tiempo << " microsegundos" << endl;
       media = media + tiempo;
     }
     media = media/repeticion;
-    tiempoMedio.push_back(media);
+    tiempoMedioLineal.push_back(media);
     muestra.push_back(i);
 
   }
 
-muestraVector(tiempoMedio);
+muestraVector(tiempoMedioLineal);
 muestraVector(muestra);
 
 }
