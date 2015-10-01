@@ -8,9 +8,7 @@ void estadisticosMask(const cv::Mat &matriz,const cv::Mat &mascara, const int fi
 	double suma;
 	double sumaCuadrados;
 	double varianza;
-	double distopia;
-	double asimetria;
-	double coef;
+	double asimetria=0;
 	double contador;
 	int numCeros=0;
 	int numPos=0;
@@ -51,7 +49,7 @@ void estadisticosMask(const cv::Mat &matriz,const cv::Mat &mascara, const int fi
 	suma = media;
 	media = media/contador;
 	varianza = (sumaCuadrados/contador)-pow(media,2);
-	distopia = sqrt(varianza);
+	//distopia = sqrt(varianza);
 
 
 	
@@ -82,10 +80,9 @@ void estadisticos(const cv::Mat &matriz, const int fil, const int col){
 	double sumaCuadrados=0;
 	double sumaCubos=0;
 	double varianza;
-	double asimetria;
+	double asimetria=0.0;
 	double desviacion;
-	double momento3=0;
-	double momento3bueno=0;
+	double sumaMediaCubo=0;
 	int contador=0;
 	int numCeros=0;
 	int numPos=0;
@@ -125,13 +122,23 @@ void estadisticos(const cv::Mat &matriz, const int fil, const int col){
 	suma = media;
 	media = media/contador;
 	varianza = (sumaCuadrados/contador)-pow(media,2);
+	
 	desviacion = sqrt(varianza);
-	momento3 = sumaCubos/contador;
-	momento3bueno = momento3 - 3*media*varianza - pow(media,3);
-	asimetria = pow(desviacion,3)/momento3bueno;
+		
+	//Voy a hacer algo nuevo
+	double cosa=0.0;
+	for(int i=0; i<fil; i++){
+		for(int j=0; j<col;j++){
+			aux = matriz.at<uchar>(i,j);
+			//sumaMediaCuadrado += pow(aux-media,2);
+			cosa = aux -media;
+			sumaMediaCubo = sumaMediaCubo + pow(cosa,3);	
 
+		}
+	}
 
-	//Volvemos a recorrer la imagen
+	asimetria = sumaMediaCubo/(pow(desviacion,3)*(contador));
+	
 
 	std::cout << "La media es: " << media << std::endl;
 	std::cout << "El mayor es: " << mayor << std::endl;

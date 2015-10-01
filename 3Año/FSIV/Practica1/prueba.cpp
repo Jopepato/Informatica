@@ -12,6 +12,8 @@ int main(){
 	std::string nombreImagen;
 	std::cout << "Introduce el nombre de la imagen que quieres cargar: ";
 	std::cin >> nombreImagen;
+	double x=100,y=100,w=400,h=100;
+	cv::Rect roi1(x,y,w,h); 
 
 	imagen = cv::imread(nombreImagen, -1);//Con esto cargamos la imagen de la forma en la que esta sin aplicarle filtro alguno
 		if(imagen.empty()){
@@ -50,6 +52,13 @@ int main(){
 		}
 
 
+		//Ahora vamos a coger una submatriz
+
+		//Asi se hacen las submatrices
+		cv::Mat sub1(imagen, roi1);
+		cv::namedWindow("Submatriz", CV_WINDOW_AUTOSIZE);
+		cv::imshow("Submatriz", sub1);
+		cv::waitKey(0);
 	return (1);
 }
 
