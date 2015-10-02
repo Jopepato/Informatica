@@ -1,157 +1,148 @@
 #include "funciones.hpp"
 
+void calculaEstadisticos(const cv::Mat &matriz){
 
-void estadisticosMask(const cv::Mat &matriz,const cv::Mat &mascara, const int fil, const int col){
 
-	double media=0;
+	estadisticos est;
+
 	double aux = matriz.at<uchar>(0,0);//Donde almacenaremos el pixel de la matriz para recorrerlo
-	double suma;
-	double sumaCuadrados;
-	double varianza;
-	double asimetria=0;
-	double contador;
-	int numCeros=0;
-	int numPos=0;
-	double sumaPos=0;
-	int numNeg=0;
-	double sumaNeg=0;
-	int menor=aux;
-	int mayor=aux;
-		for(int i=0; i<fil;i++){
-			for(int j=0; j<col; j++){
-				if(mascara.at<uchar>(i,j)==255.0){
-					aux = matriz.at<uchar>(i,j);
-					media = media + aux;
-					sumaCuadrados = sumaCuadrados + pow(aux, 2);
-						if(aux<menor){
-							menor = aux;
-						}
-						if(aux>mayor){
-							mayor = aux;
-						}
-						if(aux == 0){
-							numCeros++;
-						}
-						if(aux >0.0){
-							numPos++;
-							sumaPos = sumaPos + aux;
-						}
-						if(aux <0.0){
-							numNeg++;
-							sumaNeg = sumaNeg + aux;
-						}
-						contador++;
-					}
-			}
-
-		}
-
-	suma = media;
-	media = media/contador;
-	varianza = (sumaCuadrados/contador)-pow(media,2);
-	//distopia = sqrt(varianza);
-
-
-	
-
-	std::cout << "La media es: " << media << std::endl;
-	std::cout << "El mayor es: " << mayor << std::endl;
-	std::cout << "El menor es: " << menor << std::endl;
-	std::cout << "La suma es: " << suma << std::endl;
-	std::cout << "La suma de cuadrados es: " << sumaCuadrados << std::endl;
-	std::cout << "La varianza es: " << varianza << std::endl;
-	std::cout << "El numero de elementos positivos es: " << numPos << std::endl;
-	std::cout << "El numero de elementos negativos es: " << numNeg << std::endl;
-	std::cout << "El numero de ceros es: " << numCeros << std::endl;
-	std::cout << "El area positiva es: " << sumaPos << std::endl;
-	std::cout << "El area negativa es: " << sumaNeg << std::endl;
-	std::cout << "El coeficiente de asimetria es: " << asimetria << std::endl;
-
-
-}
-
-
-void estadisticos(const cv::Mat &matriz, const int fil, const int col){
-
-
-	double media=0;
-	double aux = matriz.at<uchar>(0,0);//Donde almacenaremos el pixel de la matriz para recorrerlo
-	double suma;
-	double sumaCuadrados=0;
-	double sumaCubos=0;
-	double varianza;
-	double asimetria=0.0;
 	double desviacion;
 	double sumaMediaCubo=0;
-	int contador=0;
-	int numCeros=0;
-	int numPos=0;
-	double sumaPos=0;
-	int numNeg=0;
-	double sumaNeg=0;
-	int menor=aux;
-	int mayor=aux;
-		for(int i=0; i<fil;i++){
-			for(int j=0; j<col; j++){
-					aux = matriz.at<uchar>(i,j);
-					media = media + aux;
-					sumaCuadrados = sumaCuadrados + pow(aux, 2);
-					sumaCubos = sumaCubos + pow(aux, 3);
-						if(aux<menor){
-							menor = aux;
-						}
-						if(aux>mayor){
-							mayor = aux;
-						}
-						if(aux == 0){
-							numCeros++;
-						}
-						if(aux >0.0){
-							numPos++;
-							sumaPos = sumaPos + aux;
-						}
-						if(aux <0.0){
-							numNeg++;
-							sumaNeg = sumaNeg + aux;
-						}
-						contador++;
+	est.menor=aux;
+	est.mayor=aux;
+	double contador=0.0;
+
+		for(int i=0; i<matriz.rows;i++){
+			for(int j=0; j<matriz.cols; j++){
+						aux = matriz.at<uchar>(i,j);
+						est.media += aux;
+						est.sumaCuadrados += pow(aux, 2);
+							if(aux<est.menor){
+								est.menor = aux;
+							}
+							if(aux>est.mayor){
+								est.mayor = aux;
+							}
+							if(aux == 0){
+								est.numCeros+=1;
+							}
+							if(aux >0.0){
+								est.numPos+=1;
+								est.areaPos += aux;
+							}
+							if(aux <0.0){
+								est.numNeg++;
+								est.areaNeg += aux;
+							}
+							contador++;
+
 			}
 
 		}
 
-	suma = media;
-	media = media/contador;
-	varianza = (sumaCuadrados/contador)-pow(media,2);
+	est.suma = est.media;
+	est.media = est.media/contador;
+	est.varianza = (est.sumaCuadrados/contador)-pow(est.media,2);
 	
-	desviacion = sqrt(varianza);
-		
-	//Voy a hacer algo nuevo
+	desviacion = sqrt(est.varianza);
+
 	double cosa=0.0;
-	for(int i=0; i<fil; i++){
-		for(int j=0; j<col;j++){
+	for(int i=0; i<matriz.rows; i++){
+		for(int j=0; j<matriz.cols;j++){
 			aux = matriz.at<uchar>(i,j);
-			//sumaMediaCuadrado += pow(aux-media,2);
-			cosa = aux -media;
+			cosa = aux -est.media;
 			sumaMediaCubo = sumaMediaCubo + pow(cosa,3);	
 
 		}
 	}
 
-	asimetria = sumaMediaCubo/(pow(desviacion,3)*(contador));
+	est.asimetria = sumaMediaCubo/(pow(desviacion,3)*(contador));
+
+	muestraEstadisticos(est);
+}
+
+
+void calculaEstadisticosMascara(const cv::Mat &matriz, const cv::Mat &mascara){
+
+
+	estadisticos est;
+	bool empty = mascara.empty();
+
+	double aux = matriz.at<uchar>(0,0);//Donde almacenaremos el pixel de la matriz para recorrerlo
+	double desviacion;
+	double sumaMediaCubo=0;
+	est.menor=aux;
+	est.mayor=aux;
+	double contador=0.0;
+
+		for(int i=0; i<matriz.rows;i++){
+			for(int j=0; j<matriz.cols; j++){
+						if(mascara.at<uchar>(i,j)==255.0){
+						
+							aux = matriz.at<uchar>(i,j);
+							est.media += aux;
+							est.sumaCuadrados += pow(aux, 2);
+								if(aux<est.menor){
+									est.menor = aux;
+								}
+								if(aux>est.mayor){
+									est.mayor = aux;
+								}
+								if(aux == 0){
+									est.numCeros+=1;
+								}
+								if(aux >0.0){
+									est.numPos+=1;
+									est.areaPos += aux;
+								}
+								if(aux <0.0){
+									est.numNeg++;
+									est.areaNeg += aux;
+								}
+								contador++;
+						}
+
+			}
+
+		}
+
+	est.suma = est.media;
+	est.media = est.media/contador;
+	est.varianza = (est.sumaCuadrados/contador)-pow(est.media,2);
 	
+	desviacion = sqrt(est.varianza);
+	
+	double cosa=0.0;
+	for(int i=0; i<matriz.rows; i++){
+		for(int j=0; j<matriz.cols;j++){
+			aux = matriz.at<uchar>(i,j);
+			cosa = aux -est.media;
+			sumaMediaCubo = sumaMediaCubo + pow(cosa,3);	
 
-	std::cout << "La media es: " << media << std::endl;
-	std::cout << "El mayor es: " << mayor << std::endl;
-	std::cout << "El menor es: " << menor << std::endl;
-	std::cout << "La suma es: " << suma << std::endl;
-	std::cout << "La suma de cuadrados es: " << sumaCuadrados << std::endl;
-	std::cout << "La varianza es: " << varianza << std::endl;
-	std::cout << "El numero de elementos positivos es: " << numPos << std::endl;
-	std::cout << "El numero de elementos negativos es: " << numNeg << std::endl;
-	std::cout << "El numero de ceros es: " << numCeros << std::endl;
-	std::cout << "El area positiva es: " << sumaPos << std::endl;
-	std::cout << "El area negativa es: " << sumaNeg << std::endl;
-	std::cout << "El coeficiente de asimetria es: " << asimetria << std::endl;
+		}
+	}
 
+	est.asimetria = sumaMediaCubo/(pow(desviacion,3)*(contador));
+
+	muestraEstadisticos(est);
+}
+
+
+
+void muestraEstadisticos(const struct estadisticos &est){
+
+
+	//Aqui vamos a mostrar todos los estadisticos de forma ordenada:
+	std::cout << "El valor minimo es: " << est.menor << std::endl;
+	std::cout << "El valor máximo es: " << est.mayor << std::endl;
+	std::cout << "La media es: " << est.media << std::endl;
+	std::cout << "La varianza es: " << est.varianza << std::endl;
+	std::cout << "La suma es: " << est.suma << std::endl;
+	std::cout << "La suma de cuadrados es: " << est.sumaCuadrados << std::endl;
+	std::cout << "El area positiva es: " << est.areaPos << std::endl;
+	std::cout << "El area negativa es: " << est.areaNeg << std::endl;
+	std::cout << "El numero de ceros es: " << est.numCeros << std::endl;
+	std::cout << "El numero de positivos es: " << est.numPos << std::endl;
+	std::cout << "El coeficiente de asimetria es: " << est.asimetria << std::endl;
 
 }

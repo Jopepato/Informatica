@@ -1,6 +1,8 @@
 #include "funciones.hpp"
 
-//g++ -Wall prueba.cpp -o prueba `pkg-config opencv --cflags --libs`
+//g++ -Wall prueba.cpp funciones.cpp -o prueba `pkg-config opencv --cflags --libs`
+
+
 
 int main(){
 
@@ -21,7 +23,7 @@ int main(){
 			exit(-1);
 		}else{
 			std::cout << "Imagen cargada con exito" << std::endl;
-			//cv::namedWindow("Ventana a", CV_WINDOW_AUTOSIZE);//Creamos una ventana para reescalar la imagen por si tiene mayor resolucion que nuestra pantalla
+			//cv::namedWindow("Ventana", CV_WINDOW_AUTOSIZE);//Creamos una ventana para reescalar la imagen por si tiene mayor resolucion que nuestra pantalla
 			//cv::imshow("Ventana", imagen);//Mostramos la imagen en dicha ventana que acabamos de crear
 			//cv::waitKey(0);//Esto se debe de poner despues del imshow puesto que si no se pone el programa se cerrara y no mostrara nada
 					//Con esto esperamos hasta que el usuario pulse alguna tecla asi se abrira la ventana de la imagen de forma indefinida
@@ -47,7 +49,7 @@ int main(){
 		//Mostramos los estadisticos de la imagen
 		for(int i=0; i<canales; i++){
 			std::cout << "Canal: " << i << std::endl;
-			estadisticos(canal[i], canal[i].rows, canal[i].cols);
+			calculaEstadisticos(canal[i],mascara);
 			std::cout << std::endl << std::endl;
 		}
 
