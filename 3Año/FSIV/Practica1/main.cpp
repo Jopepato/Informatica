@@ -120,6 +120,7 @@ int main(int argc, char ** argv){
 
      if(iflag==1){
       //Hacemos lo del roi interactvo
+
      }
 
 

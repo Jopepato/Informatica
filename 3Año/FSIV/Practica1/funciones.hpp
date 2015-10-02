@@ -14,7 +14,9 @@
 #include <sstream>
 
 
+using namespace cv;
 //Estructura con todos los datos estadisticos que vamos a calcular
+
 struct estadisticos{
 
 	estadisticos ()

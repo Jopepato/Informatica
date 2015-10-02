@@ -212,3 +212,4 @@ void calculaEstadisticosDef(cv::Mat const &imagen, cv::Mat const &mascara, cv::M
 	}
 
 }
+
