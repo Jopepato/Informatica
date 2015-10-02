@@ -66,7 +66,6 @@ void calculaEstadisticosMascara(const cv::Mat &matriz, const cv::Mat &mascara){
 
 
 	estadisticos est;
-	bool empty = mascara.empty();
 
 	double aux = matriz.at<uchar>(0,0);//Donde almacenaremos el pixel de la matriz para recorrerlo
 	double desviacion;
@@ -102,6 +101,7 @@ void calculaEstadisticosMascara(const cv::Mat &matriz, const cv::Mat &mascara){
 								contador++;
 						}
 
+
 			}
 
 		}
@@ -115,9 +115,11 @@ void calculaEstadisticosMascara(const cv::Mat &matriz, const cv::Mat &mascara){
 	double cosa=0.0;
 	for(int i=0; i<matriz.rows; i++){
 		for(int j=0; j<matriz.cols;j++){
-			aux = matriz.at<uchar>(i,j);
-			cosa = aux -est.media;
-			sumaMediaCubo = sumaMediaCubo + pow(cosa,3);	
+			if(mascara.at<uchar>(i,j)==255.0){
+				aux = matriz.at<uchar>(i,j);
+				cosa = aux -est.media;
+				sumaMediaCubo = sumaMediaCubo + pow(cosa,3);
+			}
 
 		}
 	}
@@ -155,5 +157,58 @@ void help(){
 	std::cout << "-m nombreMascara: Nombre de la mascara a usar" << std::endl;
 	std::cout << "-w x,y,w,h: Parametros para obtener la submatriz" << std::endl;
 	std::cout << "-i: Modo interactivo para obtener la submatriz" << std::endl;
+
+}
+
+void calculaEstadisticosDef(cv::Mat const &imagen, cv::Mat const &mascara, cv::Mat const &subImagen, cv::Mat const subMascara, int wflag, int iflag, int mflag){
+
+	//En esta funcion lo que haremos sera comprobar que clase de cosa debemos hacer
+
+	//Primero mostramos el numero de canales y canales de la imagen original
+
+	std::vector<cv::Mat> canal;
+	std::cout << "La imagen tiene " << imagen.rows << " filas y " << imagen.cols << " columnas" << std::endl;
+	std::cout << "Canales " << imagen.channels() << std::endl; 
+
+
+	//Ahora mirando los flags vemos que tenemos que hacer
+
+	if(iflag==1||wflag==1){
+		//Imagen con roi
+		//Sacamos los canales de la submatriz
+		cv::split(subImagen, canal);
+
+		std::cout << "La region de interes tiene: " << std::endl;
+		std::cout << "Filas: " << subImagen.rows;
+		std::cout << "Columnas: " << subImagen.cols;
+
+		for(int i=0; i<subImagen.channels(); i++){
+			std::cout << "Canal: " << i << std::endl;
+			if(mflag==1){
+				//Con mascara
+				calculaEstadisticosMascara(canal[i], subMascara);
+			}else{
+				//Sin mascara
+				calculaEstadisticos(canal[i]);
+			}
+		}
+	}else{
+
+		//Spliteamos la imagen entera en canales
+		cv::split(imagen, canal);
+
+		for(int i=0; i<imagen.channels(); i++){
+			std::cout << "Canal: " << i << std::endl;
+			//Miramos si han introducido mascara
+			if(mflag==1){
+				//Con mascara
+				calculaEstadisticosMascara(canal[i], mascara);
+			}else{
+				calculaEstadisticos(canal[i]);
+			}
+		}
+
+
+	}
 
 }

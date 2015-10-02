@@ -18,9 +18,10 @@ int main(int argc, char ** argv){
   string delimitador=",";
   string token,token2,token3,token4;
   double x,y,w,h; //Para el roi
-  std::vector<cv::Mat> canal;
   cv::Mat imagen;
   cv::Mat mascara;
+  cv::Mat subImagen;
+  cv::Mat subMascara;
 
   while((opcion=getopt(argc, argv, "hiw:m:v:")) !=-1 ){
 
@@ -86,6 +87,11 @@ int main(int argc, char ** argv){
         help();
         exit(-1);
         break;
+
+      default:
+        help();
+        exit(-1);
+        break;
       }
 
    }
@@ -105,7 +111,7 @@ int main(int argc, char ** argv){
         }
       cout << "Imagen cargada con exito" << endl;
      }else{
-      std::cout << "No se puede porque necesito un nombre de imagen" << std::endl;
+      help();
       exit(-1);
      }
 
@@ -129,18 +135,15 @@ int main(int argc, char ** argv){
       //Hacemos el roi manual
       //Y creamos las subimagenes
       cv::Rect roi1(x,y,w,h);
-      cv::Mat subImagen(imagen, roi1);
+      subImagen = imagen(roi1);
         if(mflag==1){
           cv::Rect roi2(x,y,w,h);
-          cv::Mat subMascara(mascara, roi2);
+          subMascara = mascara(roi2);
         }
       
      }
 
-
-     //Mostramos los estadisticos de lo que tengamos
-
-
+     calculaEstadisticosDef(imagen,mascara,subImagen,subMascara,wflag,iflag,mflag);
 
 
 

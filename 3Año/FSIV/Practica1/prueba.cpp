@@ -23,9 +23,9 @@ int main(){
 			exit(-1);
 		}else{
 			std::cout << "Imagen cargada con exito" << std::endl;
-			//cv::namedWindow("Ventana", CV_WINDOW_AUTOSIZE);//Creamos una ventana para reescalar la imagen por si tiene mayor resolucion que nuestra pantalla
-			//cv::imshow("Ventana", imagen);//Mostramos la imagen en dicha ventana que acabamos de crear
-			//cv::waitKey(0);//Esto se debe de poner despues del imshow puesto que si no se pone el programa se cerrara y no mostrara nada
+			cv::namedWindow("Ventana", CV_WINDOW_AUTOSIZE);//Creamos una ventana para reescalar la imagen por si tiene mayor resolucion que nuestra pantalla
+			cv::imshow("Ventana", imagen);//Mostramos la imagen en dicha ventana que acabamos de crear
+			cv::waitKey(0);	//Esto se debe de poner despues del imshow puesto que si no se pone el programa se cerrara y no mostrara nada
 					//Con esto esperamos hasta que el usuario pulse alguna tecla asi se abrira la ventana de la imagen de forma indefinida
 		}
 
@@ -49,7 +49,7 @@ int main(){
 		//Mostramos los estadisticos de la imagen
 		for(int i=0; i<canales; i++){
 			std::cout << "Canal: " << i << std::endl;
-			calculaEstadisticos(canal[i],mascara);
+			calculaEstadisticos(canal[i]);
 			std::cout << std::endl << std::endl;
 		}
 
@@ -57,10 +57,10 @@ int main(){
 		//Ahora vamos a coger una submatriz
 
 		//Asi se hacen las submatrices
-		cv::Mat sub1(imagen, roi1);
-		cv::namedWindow("Submatriz", CV_WINDOW_AUTOSIZE);
-		cv::imshow("Submatriz", sub1);
-		cv::waitKey(0);
+		//cv::Mat sub1(imagen, roi1);
+		//cv::namedWindow("Submatriz", CV_WINDOW_AUTOSIZE);
+		//cv::imshow("Submatriz", sub1);
+		//cv::waitKey(0);
 	return (1);
 }
 
