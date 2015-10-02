@@ -11,6 +11,7 @@
 #include <cmath>
 #include <opencv2/core/core.hpp>
 #include <opencv2/highgui/highgui.hpp>
+#include <sstream>
 
 
 //Estructura con todos los datos estadisticos que vamos a calcular
@@ -47,6 +48,7 @@ struct estadisticos{
 
 void calculaEstadisticos(const cv::Mat &matriz,const cv::Mat &mascara);
 void muestraEstadisticos(const struct estadisticos &est);
+void help();
 
 
 #endif
