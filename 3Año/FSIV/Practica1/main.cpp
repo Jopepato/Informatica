@@ -110,6 +110,9 @@ int main(int argc, char ** argv){
           exit(-1);
         }
       cout << "Imagen cargada con exito" << endl;
+      cv::namedWindow("imagen", CV_WINDOW_AUTOSIZE);
+      cv::imshow("imagen", imagen);
+      cv::waitKey(0);
      }else{
       help();
       exit(-1);
@@ -136,6 +139,9 @@ int main(int argc, char ** argv){
       //Y creamos las subimagenes
       cv::Rect roi1(x,y,w,h);
       subImagen = imagen(roi1);
+      cv::namedWindow("roi", CV_WINDOW_AUTOSIZE);
+      cv::imshow("roi", subImagen);
+      cv::waitKey(0);
         if(mflag==1){
           cv::Rect roi2(x,y,w,h);
           subMascara = mascara(roi2);

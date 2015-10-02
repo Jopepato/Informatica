@@ -179,8 +179,8 @@ void calculaEstadisticosDef(cv::Mat const &imagen, cv::Mat const &mascara, cv::M
 		cv::split(subImagen, canal);
 
 		std::cout << "La region de interes tiene: " << std::endl;
-		std::cout << "Filas: " << subImagen.rows;
-		std::cout << "Columnas: " << subImagen.cols;
+		std::cout << "Filas: " << subImagen.rows << std::endl;
+		std::cout << "Columnas: " << subImagen.cols << std::endl;
 
 		for(int i=0; i<subImagen.channels(); i++){
 			std::cout << "Canal: " << i << std::endl;
