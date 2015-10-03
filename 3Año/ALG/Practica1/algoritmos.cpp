@@ -51,7 +51,7 @@ void swap ( double* a, double* b )
 }
 
 /* This function is same in both iterative and recursive*/
-int partition (vector<double> arr, int l, int h)
+int partition (vector<double> &arr, int l, int h)
 {
     double x = arr[h];
     int i = (l - 1);
@@ -69,7 +69,7 @@ int partition (vector<double> arr, int l, int h)
 }
 
 /* A[] --> Array to be sorted, l  --> Starting index, h  --> Ending index */
-void quickSortIterative (vector<double> arr, int l, int h)
+void quickSortIterative (vector<double> &arr, int l, int h)
 {
     // Create an auxiliary stack
     int stack[ h - l + 1 ];

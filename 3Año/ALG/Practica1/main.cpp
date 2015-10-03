@@ -8,12 +8,12 @@
 using namespace std;
 
 int main(int argc, char ** argv){
-/*
+
   if(argc!=5){
     cout << "Numero de parametros introducidos incorrecto" << endl;
     return(0);
   }
-*/
+
   //Declaramos las variables que nos han introducido por linea de comandos
   int minEle;
   int maxEle;
@@ -26,18 +26,15 @@ int main(int argc, char ** argv){
   vector <double> muestra;
   double media=0;
   int contador;
-  Clock reloj;
+  Clock relojLineal, relojCuadratico;
 
   //Declaramos la semilla de la aleatoriedad
   srand(time(NULL));
-  cout << "Introduce el numero minimo de elementos: ";
-  cin >> minEle;
-  cout << "Introduce el numero maximo de elementos: ";
-  cin >> maxEle;
-  cout << "Introduce el incremento en cada iteracion: ";
-  cin >> incremento;
-  cout << "Introduce el numero de veces: ";
-  cin >> repeticion;
+  //Pasamos los argumentos a las variables
+  minEle = atoi(argv[1]);
+  maxEle = atoi(argv[2]);
+  incremento = atoi(argv[3]);
+  repeticion = atoi(argv[4]);
 
   //Ahora tenemos que coger los tiempos para mostrarlos despues
 
