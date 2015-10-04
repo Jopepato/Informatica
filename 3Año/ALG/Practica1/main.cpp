@@ -19,12 +19,12 @@ int main(int argc, char ** argv){
   int maxEle;
   int incremento;
   int repeticion;
-  uint64_t tiempo;
-  vector<double> v;
+  double tiempoLineal, tiempoCuadratico;
+  vector<double> v, x;
   vector <double> tiempoMedioLineal;
   vector <double> tiempoMedioCuadratico;
   vector <double> muestra;
-  double media=0;
+  double mediaLineal=0, mediaCuadratica=0;
   int contador;
   Clock relojLineal, relojCuadratico;
 
@@ -42,21 +42,39 @@ int main(int argc, char ** argv){
 
     for(int j=0; j<repeticion; j++){
       rellenaVector(v, i);
+      rellenaVector(x, i);
+
       //Aqui cogemos el tiempo y mostramos el tiempo por pantalla
-      reloj.start();
+      //Cogemos el tiempo del lineal
+      relojLineal.start();
       quickSortIterative(v, 0, v.size());
-      reloj.stop();
-      tiempo = reloj.elapsed();
-      //cout << "Han pasado " << tiempo << " microsegundos" << endl;
-      media = media + tiempo;
+      relojLineal.stop();
+      tiempoLineal = relojLineal.elapsed();
+
+      //Cogemos el tiempo del cuadratico
+      relojCuadratico.start();
+      ordenacionBurbuja(v);
+      relojCuadratico.stop();
+      tiempoCuadratico = relojCuadratico.elapsed();
+
+      //Aqui hacemos el sumatorio de los tiempos
+      mediaLineal += tiempoLineal;
+      mediaCuadratica += tiempoCuadratico;
+
+
     }
-    media = media/repeticion;
-    tiempoMedioLineal.push_back(media);
+
+
+    mediaLineal = mediaLineal/repeticion;
+    mediaCuadratica = mediaCuadratica/repeticion;
+    tiempoMedioLineal.push_back(mediaLineal);
+    tiempoMedioCuadratico.push_back(mediaCuadratica);
     muestra.push_back(i);
 
   }
 
 muestraVector(tiempoMedioLineal);
+muestraVector(tiempoMedioCuadratico);
 muestraVector(muestra);
 
 }

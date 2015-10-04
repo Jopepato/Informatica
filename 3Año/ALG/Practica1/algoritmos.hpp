@@ -34,4 +34,7 @@ void calcularTiemposEstimadosCuadraticos(const vector<double> &x,
 										 const double &a0,
 										 const double &a1,
 										 vector<double> &yEstimada);
+
+double determinanteDe2(const double ** &matriz);
+double determinanteDe3(const double ** &matriz);
 #endif

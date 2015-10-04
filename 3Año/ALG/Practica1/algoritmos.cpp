@@ -113,6 +113,8 @@ void quickSortIterative (vector<double> &arr, int l, int h)
 
 void calcularAjusteLineal(const vector<double> &x, const vector<double> &y, double &a0, double &a1, double &r2){
 
+  
+
 
 
 
@@ -134,4 +136,32 @@ void calcularTiemposEstimadosLineales(const vector<double> &x, const double &a0,
 void calcularTiemposEstimadosCuadraticos(const vector<double> &x, const double &a0, const double &a1, vector<double> &yEstimada){
 
 
+}
+
+
+double determinanteDe2(const double ** &matriz){
+
+  double resultado;
+
+  resultado = (matriz[0][0] * matriz[1][1])-(matriz[0][1] * matriz[1][0]);
+
+  return resultado;
+
+}
+
+double determinanteDe3(double ** matriz){
+
+  double resultado;
+
+
+  resultado = matriz[0][0]*matriz[1][1]*matriz[2][2] +
+              matriz[0][1]*matriz[1][2]*matriz[2][0] +
+              matriz[1][0]*matriz[2][1]*matriz[0][2];
+
+
+  resultado = resultado - (matriz[2][0]*matriz[1][1]*matriz[0][2] +
+                           matriz[2][1]*matriz[1][1]*matriz[0][0] +
+                           matriz[1][0]*matriz[0][1]*matriz[2][2]);
+
+  return resultado;
 }
