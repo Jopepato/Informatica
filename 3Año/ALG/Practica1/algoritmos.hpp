@@ -7,6 +7,7 @@
 #include <iostream>
 #include <cassert>
 #include <stack>
+#include <cmath>
 using namespace std;
 
 
@@ -19,21 +20,23 @@ void muestraVector(vector <double> &v);
 bool estaOrdenado(vector<double> &v);
 void calcularAjusteLineal(const vector<double> &x,
 						 const vector<double> &y,
-						 double &a0, double &a1, double &r2);
+						 double &a0, double &a1);
 
 void calcularAjustePolinomico(const vector<double> &x,
 							 const vector<double> &y,
-							 double &a0, double &a1, double &a2, double &r2);
+							 double &a0, double &a1, double &a2);
 
 void calcularTiemposEstimadosLineales(const vector<double> &x,
 									  const double &a0,
 									  const double &a1,
-									  vector<double> &yEstimada);
+									  vector<double> &yEstimada,
+									  double &r2);
 
 void calcularTiemposEstimadosCuadraticos(const vector<double> &x,
 										 const double &a0,
 										 const double &a1,
-										 vector<double> &yEstimada);
+										 vector<double> &yEstimada,
+										 double &r2);
 
 double determinanteDe2(const double ** &matriz);
 double determinanteDe3(const double ** &matriz);

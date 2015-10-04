@@ -126,7 +126,7 @@ int main(int argc, char ** argv){
 
      if(mflag==1){
       //Cargamos la mascara para aplicarla
-      mascara = cv::imread(nombreMascara, -1);
+      mascara = cv::imread(nombreMascara, 0);
         if(mascara.empty()){
           cout << "No se ha podido cargar la mascara" << endl;
           exit(-1);

@@ -17,10 +17,10 @@ void calculaEstadisticos(const cv::Mat &matriz){
 						aux = matriz.at<uchar>(i,j);
 						est.media += aux;
 						est.sumaCuadrados += pow(aux, 2);
-							if(aux<est.menor){
+							if(aux<=est.menor){
 								est.menor = aux;
 							}
-							if(aux>est.mayor){
+							if(aux>=est.mayor){
 								est.mayor = aux;
 							}
 							if(aux == 0){
@@ -46,12 +46,12 @@ void calculaEstadisticos(const cv::Mat &matriz){
 	
 	desviacion = sqrt(est.varianza);
 
-	double cosa=0.0;
+	double suma=0.0;
 	for(int i=0; i<matriz.rows; i++){
 		for(int j=0; j<matriz.cols;j++){
-			aux = matriz.at<uchar>(i,j);
-			cosa = aux -est.media;
-			sumaMediaCubo = sumaMediaCubo + pow(cosa,3);	
+			suma = matriz.at<uchar>(i,j);
+			suma = aux -est.media;
+			sumaMediaCubo = sumaMediaCubo + pow(suma,3);	
 
 		}
 	}
@@ -65,43 +65,42 @@ void calculaEstadisticos(const cv::Mat &matriz){
 void calculaEstadisticosMascara(const cv::Mat &matriz, const cv::Mat &mascara){
 
 
+
 	estadisticos est;
 
-	double aux = matriz.at<uchar>(0,0);//Donde almacenaremos el pixel de la matriz para recorrerlo
-	double desviacion;
-	double sumaMediaCubo=0;
-	est.menor=aux;
-	est.mayor=aux;
-	double contador=0.0;
+	double aux;
+	double desviacion= 0.0;
+	double sumaMediaCubo= 0.0;
+	est.menor= 256.0;
+	est.mayor= 0.0;
+	double contador= 0.0;
 
 		for(int i=0; i<matriz.rows;i++){
 			for(int j=0; j<matriz.cols; j++){
-						if(mascara.at<uchar>(i,j)==255.0){
-						
-							aux = matriz.at<uchar>(i,j);
-							est.media += aux;
-							est.sumaCuadrados += pow(aux, 2);
-								if(aux<est.menor){
-									est.menor = aux;
-								}
-								if(aux>est.mayor){
-									est.mayor = aux;
-								}
-								if(aux == 0){
-									est.numCeros+=1;
-								}
-								if(aux >0.0){
-									est.numPos+=1;
-									est.areaPos += aux;
-								}
-								if(aux <0.0){
-									est.numNeg++;
-									est.areaNeg += aux;
-								}
-								contador++;
+					if(mascara.at<uchar>(i,j)==255.0){
+						aux = matriz.at<uchar>(i,j);
+						est.media += aux;
+						est.sumaCuadrados += pow(aux, 2);
+						contador++;
+							if(aux<=est.menor){
+								est.menor = aux;
+							}
+							if(aux>=est.mayor){
+								est.mayor = aux;
+							}
+							if(aux == 0){
+								est.numCeros+=1;
+							}
+							if(aux >0.0){
+								est.numPos+=1;
+								est.areaPos += aux;
+							}
+							if(aux <0.0){
+								est.numNeg++;
+								est.areaNeg += aux;
+							}
+							
 						}
-
-
 			}
 
 		}
@@ -111,22 +110,23 @@ void calculaEstadisticosMascara(const cv::Mat &matriz, const cv::Mat &mascara){
 	est.varianza = (est.sumaCuadrados/contador)-pow(est.media,2);
 	
 	desviacion = sqrt(est.varianza);
-	
-	double cosa=0.0;
+
+	double suma=0.0;
 	for(int i=0; i<matriz.rows; i++){
 		for(int j=0; j<matriz.cols;j++){
 			if(mascara.at<uchar>(i,j)==255.0){
 				aux = matriz.at<uchar>(i,j);
-				cosa = aux -est.media;
-				sumaMediaCubo = sumaMediaCubo + pow(cosa,3);
+				suma = aux -est.media;
+				sumaMediaCubo = sumaMediaCubo + pow(suma,3);	
 			}
-
 		}
 	}
 
 	est.asimetria = sumaMediaCubo/(pow(desviacion,3)*(contador));
 
 	muestraEstadisticos(est);
+
+	
 }
 
 
@@ -160,7 +160,7 @@ void help(){
 
 }
 
-void calculaEstadisticosDef(cv::Mat const &imagen, cv::Mat const &mascara, cv::Mat const &subImagen, cv::Mat const subMascara, int wflag, int iflag, int mflag){
+void calculaEstadisticosDef(cv::Mat &imagen, cv::Mat const &mascara, cv::Mat const &subImagen, cv::Mat const subMascara, int wflag, int iflag, int mflag){
 
 	//En esta funcion lo que haremos sera comprobar que clase de cosa debemos hacer
 

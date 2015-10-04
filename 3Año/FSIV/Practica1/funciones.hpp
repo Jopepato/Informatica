@@ -51,7 +51,7 @@ struct estadisticos{
 void calculaEstadisticos(const cv::Mat &matriz);
 void calculaEstadisticosMascara(const cv::Mat &matriz, const cv::Mat &mascara);
 void muestraEstadisticos(const struct estadisticos &est);
-void calculaEstadisticosDef(cv::Mat const &imagen, cv::Mat const &mascara, cv::Mat const &subImagen, cv::Mat const subMascara, int wflag, int iflag, int mflag);
+void calculaEstadisticosDef(cv::Mat &imagen, cv::Mat const &mascara, cv::Mat const &subImagen, cv::Mat const subMascara, int wflag, int iflag, int mflag);
 void help();
 
 
