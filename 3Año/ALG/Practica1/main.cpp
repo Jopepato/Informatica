@@ -25,6 +25,7 @@ int main(int argc, char ** argv){
   vector <double> tiempoMedioCuadratico;
   vector <double> muestra;
   double mediaLineal=0, mediaCuadratica=0;
+  double a0Lineal, a1Lineal, a0Pol, a1Pol, a2Pol;
   int contador;
   Clock relojLineal, relojCuadratico;
 
@@ -73,8 +74,19 @@ int main(int argc, char ** argv){
 
   }
 
-muestraVector(tiempoMedioLineal);
-muestraVector(tiempoMedioCuadratico);
-muestraVector(muestra);
+  muestraVector(tiempoMedioLineal);
+  muestraVector(tiempoMedioCuadratico);
+  muestraVector(muestra);
+
+  calcularAjusteLineal(muestra, tiempoMedioLineal, a0Lineal, a1Lineal);
+  calcularAjustePolinomico(muestra, tiempoMedioCuadratico, a0Pol, a1Pol, a2Pol);
+
+  cout << "Lineal: " << endl;
+  cout << "a0: " << a0Lineal << "\n" << "a1: " << a1Lineal << endl;
+  cout << "Polinomico: " << endl;
+  cout << "a0: " << a0Pol << "\n" << "a1: " << a1Pol << "\n" << "a2: " << a2Pol << endl;
+
+    
+
 
 }

@@ -113,10 +113,23 @@ void quickSortIterative (vector<double> &arr, int l, int h)
 
 void calcularAjusteLineal(const vector<double> &x, const vector<double> &y, double &a0, double &a1){
 
-  double A[2][2], B[2][2], C[2][2];
+  double **A, **B, **C;
   double sumax=0, sumay=0;
   double sumaxy=0, sumax2=0;
   double aux;
+
+  //Reservamos memoria dinamica
+
+  A = (double**)malloc(3*sizeof(double*));
+  B = (double**)malloc(3*sizeof(double*));
+  C = (double**)malloc(3*sizeof(double*));
+
+  for(int i=0; i<3; i++){
+    A[i] = (double*)malloc(3*sizeof(double));
+    B[i] = (double*)malloc(3*sizeof(double));
+    C[i] = (double*)malloc(3*sizeof(double));
+  }
+
   for(int i=0; i<x.size();i++){
     aux = x[i]*log(x[i]);
     sumax += aux;
@@ -127,7 +140,7 @@ void calcularAjusteLineal(const vector<double> &x, const vector<double> &y, doub
 
   //Rellenamos las matrices
   //A sera la matriz de la izq
-  A[0][0] = x.size()*log(x.size());
+  A[0][0] = x.size();
   A[0][1] = sumax;
   A[1][0] = sumax;
   A[1][1] = sumax2;
@@ -141,7 +154,7 @@ void calcularAjusteLineal(const vector<double> &x, const vector<double> &y, doub
 
   //C es el numero de a1
 
-  C[0][0] = x.size()*log(x.size());
+  C[0][0] = x.size();
   C[0][1] = sumay;
   C[1][0] = sumax;
   C[1][1] = sumaxy;
@@ -154,13 +167,30 @@ void calcularAjusteLineal(const vector<double> &x, const vector<double> &y, doub
 
 void calcularAjustePolinomico(const vector<double> &x, const vector<double> &y, double &a0, double &a1, double &a2){
 
-  double A[3][3], B[3][3], C[3][3], D[3][3];
+  double **A;
+  double **B;
+  double **C;
+  double **D;
   double sumax = 0;
   double sumax2 = 0;
   double sumax3 = 0;
   double sumax4 = 0;
   double sumaxy = 0;
   double sumax2y = 0;
+  double sumay = 0;
+
+
+  //Reservamos memoria dinamica
+  A = (double**)malloc(3*sizeof(double*));
+  B = (double**)malloc(3*sizeof(double*));
+  C = (double**)malloc(3*sizeof(double*));
+  D = (double**)malloc(3*sizeof(double*));
+  for(int i=0; i<3; i++){
+    A[i] = (double*)malloc(3*sizeof(double));
+    B[i] = (double*)malloc(3*sizeof(double));
+    C[i] = (double*)malloc(3*sizeof(double));
+    D[i] = (double*)malloc(3*sizeof(double));
+  }
 
   //Recorremos el vector para ir rellenando los sumatorios
   for(int i =0; i<x.size(); i++){
@@ -245,7 +275,7 @@ void calcularTiemposEstimadosCuadraticos(const vector<double> &x, const double &
 }
 
 
-double determinanteDe2(const double ** &matriz){
+double determinanteDe2(double * matriz[]){
 
   double resultado;
 
@@ -255,7 +285,7 @@ double determinanteDe2(const double ** &matriz){
 
 }
 
-double determinanteDe3(double ** &matriz){
+double determinanteDe3(double * matriz[]){
 
   double resultado;
 
@@ -266,7 +296,7 @@ double determinanteDe3(double ** &matriz){
 
 
   resultado = resultado - (matriz[2][0]*matriz[1][1]*matriz[0][2] +
-                           matriz[2][1]*matriz[1][1]*matriz[0][0] +
+                           matriz[0][0]*matriz[1][2]*matriz[2][1] +
                            matriz[1][0]*matriz[0][1]*matriz[2][2]);
 
   return resultado;
