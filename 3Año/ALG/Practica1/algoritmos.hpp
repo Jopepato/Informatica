@@ -27,14 +27,17 @@ void calcularAjustePolinomico(const vector<double> &x,
 							 double &a0, double &a1, double &a2);
 
 void calcularTiemposEstimadosLineales(const vector<double> &x,
+									  const vector<double> &y,
 									  const double &a0,
 									  const double &a1,
 									  vector<double> &yEstimada,
 									  double &r2);
 
 void calcularTiemposEstimadosCuadraticos(const vector<double> &x,
+										 const vector<double> &y,
 										 const double &a0,
 										 const double &a1,
+										 const double &a2,
 										 vector<double> &yEstimada,
 										 double &r2);
 

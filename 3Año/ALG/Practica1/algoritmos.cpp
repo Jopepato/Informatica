@@ -28,7 +28,7 @@ void ordenacionBurbuja(vector <double> &v){
 
 void muestraVector(vector<double> &v){
 
-  for(int i=0; i<v.size(); i++){
+  for(unsigned int i=0; i<v.size(); i++){
     cout << v[i] << " ";
   }
 
@@ -36,7 +36,7 @@ void muestraVector(vector<double> &v){
 }
 
 bool estaOrdenado(vector<double> &v){
-  for(int i=0; i<v.size()-1; i++){
+  for(unsigned int i=0; i<v.size()-1; i++){
     assert(v[i]<=v[i+1]);
   }
   return(true);
@@ -130,7 +130,7 @@ void calcularAjusteLineal(const vector<double> &x, const vector<double> &y, doub
     C[i] = (double*)malloc(2*sizeof(double));
   }
 
-  for(int i=0; i<x.size();i++){
+  for(unsigned int i=0; i<x.size();i++){
     aux = x[i]*log(x[i]);
     sumax += aux;
     sumay += y[i];
@@ -190,7 +190,7 @@ void calcularAjustePolinomico(const vector<double> &x, const vector<double> &y, 
   }
 
   //Recorremos el vector para ir rellenando los sumatorios
-  for(int i =0; i<x.size(); i++){
+  for(unsigned int i =0; i<x.size(); i++){
     sumax += x[i];
     sumax2 += pow(x[i],2);
     sumax3 += pow(x[i],3);
@@ -260,14 +260,68 @@ void calcularAjustePolinomico(const vector<double> &x, const vector<double> &y, 
 }
 
 
-void calcularTiemposEstimadosLineales(const vector<double> &x, const double &a0, const double &a1, vector<double> &yEstimada, double &r2){
+void calcularTiemposEstimadosLineales(const vector<double> &x, const vector<double> &y, const double &a0, const double &a1, vector<double> &yEstimada, double &r2){
 
+  //Primero rellenaremos el vector de la yEstimada
+  double aux = 0.0;
+  double sumaCuadradosy = 0.0, sumaCuadradosyEst=0.0;
+  double mediay=0.0, mediayEst;
+  double varianzay=0.0, varianzayEst=0.0;
+
+  //Recorremos el vector de medidas
+  for(unsigned int i=0; i<x.size(); i++){
+    aux = a0 + a1*x[i]*log(x[i]);
+    yEstimada.push_back(aux);
+  }
+
+  //Una vez relleno el vector de yEstimadas calcularemos las varianzas
+
+  for(unsigned int i=0; i<x.size(); i++){
+    mediay = mediay + y[i];
+    mediayEst = mediayEst + yEstimada[i];
+    sumaCuadradosy = sumaCuadradosy + pow(y[i],2);
+    sumaCuadradosyEst = sumaCuadradosyEst + pow(yEstimada[i], 2);
+  }
+
+  //Calculamos la varianza de ambas
+  varianzay = (sumaCuadradosy/x.size())- pow(mediay,2);
+  varianzayEst = (sumaCuadradosyEst/x.size())-pow(mediayEst,2);
+
+  //Ahora calculamos la regresión lineal
+  r2 = varianzayEst/varianzay;
 
 }
 
 
-void calcularTiemposEstimadosCuadraticos(const vector<double> &x, const double &a0, const double &a1, vector<double> &yEstimada, double &r2){
+void calcularTiemposEstimadosCuadraticos(const vector<double> &x, const vector<double>&y, const double &a0, const double &a1, const double &a2, vector<double> &yEstimada, double &r2){
 
+  //Primero rellenaremos el vector de la yEstimada
+  double aux = 0.0;
+  double sumaCuadradosy = 0.0, sumaCuadradosyEst=0.0;
+  double mediay=0.0, mediayEst;
+  double varianzay=0.0, varianzayEst=0.0;
+
+  //Recorremos el vector de medidas
+  for(unsigned int i=0; i<x.size(); i++){
+    aux = a0 + a1*x[i] + a2*pow(x[i],2);
+    yEstimada.push_back(aux);
+  }
+
+  //Una vez relleno el vector de yEstimadas calcularemos las varianzas
+
+  for(unsigned int i=0; i<x.size(); i++){
+    mediay = mediay + y[i];
+    mediayEst = mediayEst + yEstimada[i];
+    sumaCuadradosy = sumaCuadradosy + pow(y[i],2);
+    sumaCuadradosyEst = sumaCuadradosyEst + pow(yEstimada[i], 2);
+  }
+
+  //Calculamos la varianza de ambas
+  varianzay = (sumaCuadradosy/x.size())- pow(mediay,2);
+  varianzayEst = (sumaCuadradosyEst/x.size())-pow(mediayEst,2);
+
+  //Ahora calculamos la regresión lineal
+  r2 = varianzayEst/varianzay;
 
 }
 

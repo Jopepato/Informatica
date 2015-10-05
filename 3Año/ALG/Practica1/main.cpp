@@ -21,12 +21,12 @@ int main(int argc, char ** argv){
   int repeticion;
   double tiempoLineal, tiempoCuadratico;
   vector<double> v, x;
-  vector <double> tiempoMedioLineal;
-  vector <double> tiempoMedioCuadratico;
+  vector <double> tiempoMedioLineal, tiempoMedioLinealEst;
+  vector <double> tiempoMedioCuadratico, tiempoMedioCuadraticoEst;
   vector <double> muestra;
   double mediaLineal=0, mediaCuadratica=0;
   double a0Lineal, a1Lineal, a0Pol, a1Pol, a2Pol;
-  int contador;
+  double r2Lineal, r2Pol;
   Clock relojLineal, relojCuadratico;
 
   //Declaramos la semilla de la aleatoriedad
@@ -88,6 +88,21 @@ int main(int argc, char ** argv){
   cout << "a0: " << a0Lineal << "\n" << "a1: " << a1Lineal << endl;
   cout << "Polinomico: " << endl;
   cout << "a0: " << a0Pol << "\n" << "a1: " << a1Pol << "\n" << "a2: " << a2Pol << endl;
+
+  //Llamamos a las otras funciones para terminar
+  calcularTiemposEstimadosLineales(x, tiempoMedioLineal, a0Lineal, a1Lineal,tiempoMedioLinealEst, r2Lineal);
+  calcularTiemposEstimadosCuadraticos(x, tiempoMedioCuadratico, a0Pol, a1Pol, a2Pol, tiempoMedioCuadraticoEst, r2Pol);
+
+  //Mostamos las cosas por pantalla
+
+  cout << "Tiempos estimados del algoritmo lineal: " << endl;
+  muestraVector(tiempoMedioLinealEst);
+  cout << "Tiempos estimados del algoritmo polinomico: " << endl;
+  muestraVector(tiempoMedioCuadraticoEst);
+
+  cout << "Coeficiente de determinacion lineal: " << r2Lineal << endl;
+  cout << "Coeficiente de determinacion polinomico: " << r2Pol << endl;
+
 
     
 
