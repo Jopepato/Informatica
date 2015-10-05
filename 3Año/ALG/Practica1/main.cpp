@@ -74,8 +74,11 @@ int main(int argc, char ** argv){
 
   }
 
+  cout << "Vector de tiempos del algoritmo lineal: " << endl;
   muestraVector(tiempoMedioLineal);
+  cout << "Vector de tiempos del algoritmo cuadratico: " << endl;
   muestraVector(tiempoMedioCuadratico);
+  cout << "Vector de muestras: " << endl;
   muestraVector(muestra);
 
   calcularAjusteLineal(muestra, tiempoMedioLineal, a0Lineal, a1Lineal);

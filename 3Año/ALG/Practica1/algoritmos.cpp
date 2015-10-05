@@ -114,20 +114,20 @@ void quickSortIterative (vector<double> &arr, int l, int h)
 void calcularAjusteLineal(const vector<double> &x, const vector<double> &y, double &a0, double &a1){
 
   double **A, **B, **C;
-  double sumax=0, sumay=0;
-  double sumaxy=0, sumax2=0;
+  double sumax=0.0, sumay=0.0;
+  double sumaxy=0.0, sumax2=0.0;
   double aux;
 
   //Reservamos memoria dinamica
 
-  A = (double**)malloc(3*sizeof(double*));
-  B = (double**)malloc(3*sizeof(double*));
-  C = (double**)malloc(3*sizeof(double*));
+  A = (double**)malloc(2*sizeof(double*));
+  B = (double**)malloc(2*sizeof(double*));
+  C = (double**)malloc(2*sizeof(double*));
 
   for(int i=0; i<3; i++){
-    A[i] = (double*)malloc(3*sizeof(double));
-    B[i] = (double*)malloc(3*sizeof(double));
-    C[i] = (double*)malloc(3*sizeof(double));
+    A[i] = (double*)malloc(2*sizeof(double));
+    B[i] = (double*)malloc(2*sizeof(double));
+    C[i] = (double*)malloc(2*sizeof(double));
   }
 
   for(int i=0; i<x.size();i++){
@@ -167,17 +167,14 @@ void calcularAjusteLineal(const vector<double> &x, const vector<double> &y, doub
 
 void calcularAjustePolinomico(const vector<double> &x, const vector<double> &y, double &a0, double &a1, double &a2){
 
-  double **A;
-  double **B;
-  double **C;
-  double **D;
-  double sumax = 0;
-  double sumax2 = 0;
-  double sumax3 = 0;
-  double sumax4 = 0;
-  double sumaxy = 0;
-  double sumax2y = 0;
-  double sumay = 0;
+  double **A, **B, **C, **D;
+  double sumax = 0.0;
+  double sumax2 = 0.0;
+  double sumax3 = 0.0;
+  double sumax4 = 0.0;
+  double sumaxy = 0.0;
+  double sumax2y = 0.0;
+  double sumay = 0.0;
 
 
   //Reservamos memoria dinamica
@@ -209,10 +206,10 @@ void calcularAjustePolinomico(const vector<double> &x, const vector<double> &y, 
   //A sera el denominador comun a todas ellas
   A[0][0] = x.size();
   A[0][1] = sumax;
-  A[0][2] = sumay;
+  A[0][2] = sumax2;
   A[1][0] = sumax;
   A[1][1] = sumax2;
-  A[1][2] = sumaxy;
+  A[1][2] = sumax3;
   A[2][0] = sumax2;
   A[2][1] = sumax3;
   A[2][2] = sumax4;
@@ -275,7 +272,7 @@ void calcularTiemposEstimadosCuadraticos(const vector<double> &x, const double &
 }
 
 
-double determinanteDe2(double * matriz[]){
+double determinanteDe2(double ** matriz){
 
   double resultado;
 
