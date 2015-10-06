@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>Practica PW</title>	
+	</style>
+
+
+	</head>
+
+
+	<body>
+		<header>
+			<h1>Practica PW</h1>
+		</header>
+		<nav>
+			<ul>
+				<li><a href="http://www.google.com">Google</a></li>
+
+				<li><a href="http://www.amazon.com">Amazon</a></li>
+
+		</nav>
+
+	<section>
+		<h2>Inicio de la seccion</h2>
+
+		<article>
+			<h3>Lista Ordenada y no ordenada</h3>
+			<ol type="I">
+				<li>Primer elemento </li>
+				<li>
+					<ul>
+						<li>jijjij</li>
+						<li>wjwjwj</li>
+					</ul>
+				</li>
+				<li> jajja </li>
+			</ol>
+		</article>
+
+		<article>
+			<h3>Tabla</h3>
+			<table border="1" style="width:100%">
+				<caption>Leyenda de tabla</caption>
+				<tr>
+					<th>Hola1s</th>
+					<th>Hola2s</th>
+				</tr>
+				<tr>
+					<td>hola1</td>
+					<td>hola2</td>
+				</tr>
+				<tr>
+					<td>hola3</td>
+					<td>hola4</td>
+				</tr>
+				<tr>
+					<td colspan="2">jejeje</td>
+				</tr>
+
+			</table>
+			
+		</article>
+
+		<article>
+			<h3>Imagen</h3>
+			<!-- Aqui vamos a poner una imagen -->
+			<img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTAhd-Pl-cUWfqRILdb8v6K_g0KVNUxd7yammfAqTfHJQ7TR57bviNm7yM" >
+		</article>
+
+		<article>
+			<h3>Audio</h3>
+			<audio controls>
+				<source src="jdt.mp3"type="audio/mpeg">
+			</audio>
+		</article>
+
+		<article>
+			<h3>Formulario</h3>
+			<form>
+				To:<br>
+				<input type="text" name:"to">
+				<br>
+				From:<br>
+				<input type="text" name="from">				
+			</form>
+		</article>
+
+		<article>
+			<h3>Canvas</h3>
+			 <canvas id="myCanvas" width="400" height="200" style="border:1px solid #000000;">
+			</canvas>
+			<script>
+			var c = document.getElementById("myCanvas");
+			var ctx = c.getContext("2d");
+			ctx.moveTo(0,0);
+			ctx.lineTo(400,100);
+			ctx.lineTo(100, 200);
+			ctx.stroke();
+			</script>
+		</article>
+
+
+	</section>
+		<footer>
+			<p>All rights reserved to PW</p>
+		</footer>
+	</body>
