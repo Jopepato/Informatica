@@ -152,7 +152,7 @@ void muestraEstadisticos(const struct estadisticos &est){
 void help(){
 
 	std::cout << "Ayuda con los comandos: " << std::endl;
-	std::cout << "-h : Muestra la ayuda del programa" << std::endl;
+	std::cout << "-h: Muestra la ayuda del programa" << std::endl;
 	std::cout << "-v nombreImagen: Imagen que se va a cargar para el programa" << std::endl;
 	std::cout << "-m nombreMascara: Nombre de la mascara a usar" << std::endl;
 	std::cout << "-w x,y,w,h: Parametros para obtener la submatriz" << std::endl;

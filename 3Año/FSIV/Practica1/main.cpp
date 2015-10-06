@@ -35,6 +35,8 @@ int main(int argc, char ** argv){
       case 'i':
         if(wflag==0){
           iflag=1;
+          cout << "Funcion -i no implementada." << endl;
+          exit(-1);
         }else{
           std::cout << "No se puede usar -i y -w a la vez" << std::endl;
         }
@@ -138,16 +140,22 @@ int main(int argc, char ** argv){
      if(wflag==1){
       //Hacemos el roi manual
       //Y creamos las subimagenes
-      cv::Rect roi1(x,y,w,h);
-      subImagen = imagen(roi1);
-      cv::namedWindow("roi", CV_WINDOW_AUTOSIZE);
-      cv::imshow("roi", subImagen);
-      cv::waitKey(0);
-        if(mflag==1){
-          cv::Rect roi2(x,y,w,h);
-          subMascara = mascara(roi2);
-        }
-      
+      if(x<0 || y<0 || w <0 || h<0 || x>imagen.cols || y>imagen.rows || w>x+imagen.cols || h>y+imagen.rows){
+
+        cout << "Valores para el roi invalidos" << endl;
+        exit(-1);
+      }else{
+        cv::Rect roi1(x,y,w,h);
+        subImagen = imagen(roi1);
+        cv::namedWindow("roi", CV_WINDOW_AUTOSIZE);
+        cv::imshow("roi", subImagen);
+        cv::waitKey(0);
+          if(mflag==1){
+            cv::Rect roi2(x,y,w,h);
+            subMascara = mascara(roi2);
+          }
+      }
+
      }
 
      calculaEstadisticosDef(imagen,mascara,subImagen,subMascara,wflag,iflag,mflag);
