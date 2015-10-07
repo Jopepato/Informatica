@@ -2,9 +2,9 @@
 
 cat << _end_ | gnuplot
 set terminal postscript eps color
-set output "grafico.eps"
+set output "grafica.eps"
 set key right bottom
-set xlabel "Etiqueta eje X"
-set ylabel "Etiqueta Eje Y"
-plot 'Datos.txt' using 1:2 t "Datos columna 2 frente a 1" w l, 'Datos.txt' using 1:3 t "Datos columna 3 frente a 1" w l, 'Datos.txt' using 1:5 t "Datos columna 5 frente a 1" w l, 'Datos.txt' using 1:6 t "Datos columna 6 frente a 1" w l 
+set xlabel "Numero de elementos"
+set ylabel "Tiempos (microsegundos)"
+plot 'Datos.txt' using 1:2 t "Tiempo Medio Burbuja" w l, 'Datos.txt' using 1:3 t "Tiempo Estimado Burbuja" w l, 'Datos.txt' using 1:4 t "Tiempo Medio Qsort Interact." w l, 'Datos.txt' using 1:5 t "Tiempo Estimado Qsort Interact." w l
 _end_

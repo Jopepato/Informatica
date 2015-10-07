@@ -85,11 +85,12 @@ int main(int argc, char ** argv){
   calcularAjusteLineal(muestra, tiempoMedioLineal, a0Lineal, a1Lineal);
   calcularAjustePolinomico(muestra, tiempoMedioCuadratico, a0Pol, a1Pol, a2Pol);
 
+/*
   cout << "Lineal: " << endl;
   cout << "a0: " << a0Lineal << "\n" << "a1: " << a1Lineal << endl;
   cout << "Cuadratico: " << endl;
   cout << "a0: " << a0Pol << "\n" << "a1: " << a1Pol << "\n" << "a2: " << a2Pol << endl;
-
+*/
   //Llamamos a las otras funciones para terminar
   calcularTiemposEstimadosLineales(muestra, tiempoMedioLineal, a0Lineal, a1Lineal,tiempoMedioLinealEst, r2Lineal);
   calcularTiemposEstimadosCuadraticos(muestra, tiempoMedioCuadratico, a0Pol, a1Pol, a2Pol, tiempoMedioCuadraticoEst, r2Pol);
@@ -98,8 +99,10 @@ int main(int argc, char ** argv){
 
   cout << "Tiempos estimados del algoritmo lineal: " << endl;
   muestraVector(tiempoMedioLinealEst);
+  cout << endl;
   cout << "Tiempos estimados del algoritmo polinomico: " << endl;
   muestraVector(tiempoMedioCuadraticoEst);
+  cout << endl;
 
   cout << "Ecuacion Lineal: " << endl;
   cout << a0Lineal << " + " << a1Lineal << "*n*log(n)" << endl;
@@ -108,11 +111,11 @@ int main(int argc, char ** argv){
   cout << a0Pol << " + " << a1Pol << "*n + " << a2Pol << "*n^2" << endl;
   cout << "Coeficiente de determinacion cuadratico: " << r2Pol << endl;
 
-  cout << "Introduce el nombre del fichero donde se almacenaran los datos: ";
-  cin >> nombreFichero;
+  //cout << "Introduce el nombre del fichero donde se almacenaran los datos: ";
+  //cin >> nombreFichero;
 
 
-  guardarTiempos(muestra, tiempoMedioCuadratico, tiempoMedioCuadraticoEst, tiempoMedioLineal, tiempoMedioLinealEst, nombreFichero);
+  guardarTiempos(muestra, tiempoMedioCuadratico, tiempoMedioCuadraticoEst, tiempoMedioLineal, tiempoMedioLinealEst, "Datos.txt");
 
   cout << "Fichero creado" << endl;
 

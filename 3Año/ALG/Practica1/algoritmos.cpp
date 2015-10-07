@@ -305,7 +305,7 @@ void calcularTiemposEstimadosCuadraticos(const vector<double> &x, const vector<d
 
   //Primero rellenaremos el vector de la yEstimada
   double aux = 0.0;
-  double sumaCuadradosy = 0.0, sumaCuadradosyEst=0.0;
+  //double sumaCuadradosy = 0.0, sumaCuadradosyEst=0.0;
   double mediay=0.0, mediayEst=0.0;
   double varianzay=0.0, varianzayEst=0.0;
 
@@ -320,19 +320,21 @@ void calcularTiemposEstimadosCuadraticos(const vector<double> &x, const vector<d
   for(unsigned int i=0; i<x.size(); i++){
     mediay = mediay + y[i];
     mediayEst = mediayEst + yEstimada[i];
-    sumaCuadradosy = sumaCuadradosy + pow(y[i],2);
-    sumaCuadradosyEst = sumaCuadradosyEst + pow(yEstimada[i], 2);
   }
 
   //Calculamos la varianza de ambas
   mediay = mediay/x.size();
   mediayEst = mediayEst/x.size();
-  varianzay = (sumaCuadradosy/x.size())- pow(mediay,2);
-  varianzayEst = (sumaCuadradosyEst/x.size())-pow(mediayEst,2);
 
+  for(unsigned int i=0; i<x.size(); i++){
+    varianzay += pow(y[i]-mediay,2);
+    varianzayEst += pow(yEstimada[i]-mediayEst,2);
+  }
+
+  varianzay = varianzay/x.size();
+  varianzayEst = varianzayEst/x.size();
   //Ahora calculamos la regresión lineal
   r2 = varianzayEst/varianzay;
-  r2 = pow(r2, 2);
 
 }
 
@@ -360,12 +362,13 @@ void calculaTiempoEnDias(const int &n, const double &a0Lineal, const double &a1L
 
   //En esta funcion calcularemos el tiempo en dias tanto para el lineal como para el polinomico y lo mostraremos
   double diasLineal = 0.0, diasPol = 0.0;
-  double pasaSDias = 1000000*3600*24;
 
   diasLineal = a0Lineal + a1Lineal*n*log(n);
-  diasLineal = diasLineal/pasaSDias;
+  diasLineal = diasLineal/1000000;
+  diasLineal = diasLineal/3600*24;
   diasPol = a0Pol + a1Pol*n + a2Pol*pow(n,2);
-  diasPol = diasPol/pasaSDias;
+  diasPol = diasPol/1000000;
+  diasPol = diasPol/3600*24;
 
   cout << "Dias estimados para el lineal: " << diasLineal << endl;
   cout << "Dias estimados para el polinomico: " << diasPol << endl;
