@@ -156,7 +156,7 @@ void help(){
 	std::cout << "-v nombreImagen: Imagen que se va a cargar para el programa" << std::endl;
 	std::cout << "-m nombreMascara: Nombre de la mascara a usar" << std::endl;
 	std::cout << "-w x,y,w,h: Parametros para obtener la submatriz" << std::endl;
-	std::cout << "-i: Modo interactivo para obtener la submatriz" << std::endl;
+	std::cout << "-i (No implementado): Modo interactivo para obtener la submatriz" << std::endl;
 
 }
 
@@ -183,7 +183,7 @@ void calculaEstadisticosDef(cv::Mat &imagen, cv::Mat const &mascara, cv::Mat con
 		std::cout << "Columnas: " << subImagen.cols << std::endl;
 
 		for(int i=0; i<subImagen.channels(); i++){
-			std::cout << "Canal: " << i << std::endl;
+			std::cout << "Canal: " << i << std::endl << std::endl;
 			if(mflag==1){
 				//Con mascara
 				calculaEstadisticosMascara(canal[i], subMascara);
