@@ -8,6 +8,7 @@
 #include <cassert>
 #include <stack>
 #include <cmath>
+#include <fstream>
 using namespace std;
 
 
@@ -40,6 +41,12 @@ void calcularTiemposEstimadosCuadraticos(const vector<double> &x,
 										 const double &a2,
 										 vector<double> &yEstimada,
 										 double &r2);
+
+void guardarTiempos(const vector<double> n, const vector<double> &tNS, const vector<double> &tNSE,
+					const vector<double> &tS, const vector<double> &tSE, string fichero);
+
+void calculaTiempoEnDias(const int &n, const double &a0Lineal, const double &a1Lineal,
+						 const double &a0Pol, const double &a1Pol, const double &a2Pol);
 
 double determinanteDe2(double ** matriz);
 double determinanteDe3(double ** matriz);

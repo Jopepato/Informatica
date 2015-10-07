@@ -28,6 +28,7 @@ int main(int argc, char ** argv){
   double a0Lineal, a1Lineal, a0Pol, a1Pol, a2Pol;
   double r2Lineal, r2Pol;
   Clock relojLineal, relojCuadratico;
+  string nombreFichero;
 
   //Declaramos la semilla de la aleatoriedad
   srand(time(NULL));
@@ -86,9 +87,8 @@ int main(int argc, char ** argv){
 
   cout << "Lineal: " << endl;
   cout << "a0: " << a0Lineal << "\n" << "a1: " << a1Lineal << endl;
-  cout << "Polinomico: " << endl;
+  cout << "Cuadratico: " << endl;
   cout << "a0: " << a0Pol << "\n" << "a1: " << a1Pol << "\n" << "a2: " << a2Pol << endl;
-  cout << muestra.size() << endl;
 
   //Llamamos a las otras funciones para terminar
   calcularTiemposEstimadosLineales(muestra, tiempoMedioLineal, a0Lineal, a1Lineal,tiempoMedioLinealEst, r2Lineal);
@@ -101,11 +101,37 @@ int main(int argc, char ** argv){
   cout << "Tiempos estimados del algoritmo polinomico: " << endl;
   muestraVector(tiempoMedioCuadraticoEst);
 
+  cout << "Ecuacion Lineal: " << endl;
+  cout << a0Lineal << " + " << a1Lineal << "*n*log(n)" << endl;
   cout << "Coeficiente de determinacion lineal: " << r2Lineal << endl;
-  cout << "Coeficiente de determinacion polinomico: " << r2Pol << endl;
+  cout << "Ecuacion cuadratica: " << endl;
+  cout << a0Pol << " + " << a1Pol << "*n + " << a2Pol << "*n^2" << endl;
+  cout << "Coeficiente de determinacion cuadratico: " << r2Pol << endl;
+
+  cout << "Introduce el nombre del fichero donde se almacenaran los datos: ";
+  cin >> nombreFichero;
 
 
+  guardarTiempos(muestra, tiempoMedioCuadratico, tiempoMedioCuadraticoEst, tiempoMedioLineal, tiempoMedioLinealEst, nombreFichero);
+
+  cout << "Fichero creado" << endl;
+
+
+  //Ahora le pediremos numeros al usuario hasta que ponga un 0 para salirnos
+  int n;
+  while(1){
+    cout << "Introduce el numero de elementos para calcular el tiempo aproximado (0 para salir): ";
+    cin >> n;
+
+    if(n!=0){
+      calculaTiempoEnDias(n, a0Lineal, a1Lineal, a0Pol, a1Pol, a2Pol);
+    }else{
+      return 0;
+    }
+
+
+  }
     
-
+  return 0;
 
 }

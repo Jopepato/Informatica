@@ -265,8 +265,9 @@ void calcularTiemposEstimadosLineales(const vector<double> &x, const vector<doub
   //Primero rellenaremos el vector de la yEstimada
   double aux = 0.0;
   double sumaCuadradosy = 0.0, sumaCuadradosyEst=0.0;
-  double mediay=0.0, mediayEst;
+  double mediay=0.0, mediayEst=0.0;
   double varianzay=0.0, varianzayEst=0.0;
+  double covarianza=0.0;
 
   //Recorremos el vector de medidas
   for(unsigned int i=0; i<x.size(); i++){
@@ -275,20 +276,27 @@ void calcularTiemposEstimadosLineales(const vector<double> &x, const vector<doub
   }
 
   //Una vez relleno el vector de yEstimadas calcularemos las varianzas
+  //Para el lineal hacemos la covarianza
 
   for(unsigned int i=0; i<x.size(); i++){
-    mediay = mediay + y[i];
-    mediayEst = mediayEst + yEstimada[i];
+    //Calculamos las dos medias
+    mediay += y[i];
+    mediayEst += yEstimada[i];
     sumaCuadradosy = sumaCuadradosy + pow(y[i],2);
     sumaCuadradosyEst = sumaCuadradosyEst + pow(yEstimada[i], 2);
   }
+  mediay = mediay/x.size();
+  mediayEst = mediayEst/x.size();
 
-  //Calculamos la varianza de ambas
+  //Ahora hacemos la covarianza
+  for(unsigned int i=0; i<x.size(); i++){
+    covarianza += (y[i]-mediay)*(yEstimada[i]-mediayEst);
+  }
+  covarianza = covarianza/x.size();
+  covarianza = pow(covarianza,2);
   varianzay = (sumaCuadradosy/x.size())- pow(mediay,2);
   varianzayEst = (sumaCuadradosyEst/x.size())-pow(mediayEst,2);
-
-  //Ahora calculamos la regresión lineal
-  r2 = varianzayEst/varianzay;
+  r2 = covarianza/(varianzay*varianzayEst);
 
 }
 
@@ -298,7 +306,7 @@ void calcularTiemposEstimadosCuadraticos(const vector<double> &x, const vector<d
   //Primero rellenaremos el vector de la yEstimada
   double aux = 0.0;
   double sumaCuadradosy = 0.0, sumaCuadradosyEst=0.0;
-  double mediay=0.0, mediayEst;
+  double mediay=0.0, mediayEst=0.0;
   double varianzay=0.0, varianzayEst=0.0;
 
   //Recorremos el vector de medidas
@@ -317,13 +325,53 @@ void calcularTiemposEstimadosCuadraticos(const vector<double> &x, const vector<d
   }
 
   //Calculamos la varianza de ambas
+  mediay = mediay/x.size();
+  mediayEst = mediayEst/x.size();
   varianzay = (sumaCuadradosy/x.size())- pow(mediay,2);
   varianzayEst = (sumaCuadradosyEst/x.size())-pow(mediayEst,2);
 
   //Ahora calculamos la regresión lineal
   r2 = varianzayEst/varianzay;
+  r2 = pow(r2, 2);
 
 }
+
+void guardarTiempos(const vector<double> n, const vector<double> &tNS, const vector<double> &tNSE,
+          const vector<double> &tS, const vector<double> &tSE, string fichero){
+
+  ofstream file;
+
+  file.open(fichero.c_str());
+
+  //Recorremos el vector n y vamos metiendo los datos
+
+  for(unsigned int i=0; i<n.size(); i++){
+    file << n[i] << " " << tNS[i] << " " << tNSE[i] << " " << tS[i] << " " << tSE[i] << "\n";
+  }
+
+
+
+  file.close();
+
+}
+
+void calculaTiempoEnDias(const int &n, const double &a0Lineal, const double &a1Lineal,
+             const double &a0Pol, const double &a1Pol, const double &a2Pol){
+
+  //En esta funcion calcularemos el tiempo en dias tanto para el lineal como para el polinomico y lo mostraremos
+  double diasLineal = 0.0, diasPol = 0.0;
+  double pasaSDias = 1000000*3600*24;
+
+  diasLineal = a0Lineal + a1Lineal*n*log(n);
+  diasLineal = diasLineal/pasaSDias;
+  diasPol = a0Pol + a1Pol*n + a2Pol*pow(n,2);
+  diasPol = diasPol/pasaSDias;
+
+  cout << "Dias estimados para el lineal: " << diasLineal << endl;
+  cout << "Dias estimados para el polinomico: " << diasPol << endl;
+
+}
+
 
 
 double determinanteDe2(double ** matriz){
@@ -352,3 +400,4 @@ double determinanteDe3(double * matriz[]){
 
   return resultado;
 }
+
