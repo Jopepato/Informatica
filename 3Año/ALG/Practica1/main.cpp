@@ -88,10 +88,11 @@ int main(int argc, char ** argv){
   cout << "a0: " << a0Lineal << "\n" << "a1: " << a1Lineal << endl;
   cout << "Polinomico: " << endl;
   cout << "a0: " << a0Pol << "\n" << "a1: " << a1Pol << "\n" << "a2: " << a2Pol << endl;
+  cout << muestra.size() << endl;
 
   //Llamamos a las otras funciones para terminar
-  calcularTiemposEstimadosLineales(x, tiempoMedioLineal, a0Lineal, a1Lineal,tiempoMedioLinealEst, r2Lineal);
-  calcularTiemposEstimadosCuadraticos(x, tiempoMedioCuadratico, a0Pol, a1Pol, a2Pol, tiempoMedioCuadraticoEst, r2Pol);
+  calcularTiemposEstimadosLineales(muestra, tiempoMedioLineal, a0Lineal, a1Lineal,tiempoMedioLinealEst, r2Lineal);
+  calcularTiemposEstimadosCuadraticos(muestra, tiempoMedioCuadratico, a0Pol, a1Pol, a2Pol, tiempoMedioCuadraticoEst, r2Pol);
 
   //Mostamos las cosas por pantalla
 

@@ -140,7 +140,7 @@ int main(int argc, char ** argv){
      if(wflag==1){
       //Hacemos el roi manual
       //Y creamos las subimagenes
-      if(x<0 || y<0 || w <0 || h<0 || x>imagen.cols || y>imagen.rows || w>x+imagen.cols || h>y+imagen.rows){
+      if(x<0 || y<0 || w <0 || h<0 || x>imagen.cols || y>imagen.rows || w+x>imagen.cols || h+y>imagen.rows){
 
         cout << "Valores para el roi invalidos" << endl;
         exit(-1);
