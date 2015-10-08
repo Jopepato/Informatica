@@ -257,6 +257,8 @@ void calcularAjustePolinomico(const vector<double> &x, const vector<double> &y, 
   a1 = determinanteDe3(C)/determinanteDe3(A);
   a2 = determinanteDe3(D)/determinanteDe3(A);
 
+
+
 }
 
 
