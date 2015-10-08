@@ -38,6 +38,11 @@ int main(int argc, char ** argv){
   incremento = atoi(argv[3]);
   repeticion = atoi(argv[4]);
 
+  //Comprobamos que los valores dados no tienen errores
+  if(maxEle<minEle || incremento<=0 || repeticion <=0){
+    cout << "Los datos proporcionados no son validos" << endl;
+    exit(-1);
+  }
   //Ahora tenemos que coger los tiempos para mostrarlos despues
 
   for(int i = minEle; i<= maxEle; i+=incremento){
@@ -46,7 +51,7 @@ int main(int argc, char ** argv){
       rellenaVector(v, i);
       rellenaVector(x, i);
 
-      //Aqui cogemos el tiempo y mostramos el tiempo por pantalla
+      //Aqui cogemos el tiempo
       //Cogemos el tiempo del lineal
       relojLineal.start();
       quickSortIterative(v, 0, v.size());
@@ -71,16 +76,26 @@ int main(int argc, char ** argv){
     mediaCuadratica = mediaCuadratica/repeticion;
     tiempoMedioLineal.push_back(mediaLineal);
     tiempoMedioCuadratico.push_back(mediaCuadratica);
+    //Vamos a mostrar cada tiempo
+    cout << "Burbuja ---> " << i << " : " << mediaCuadratica << endl;
+    cout << "Qsort----> " << i << " : " << mediaLineal << endl<< endl;
+
+
+    mediaLineal = 0.0;
+    mediaCuadratica = 0.0;
     muestra.push_back(i);
 
   }
 
+  //Mostramos los vectores de tiempos
+  /*
   cout << "Vector de tiempos del algoritmo lineal: " << endl;
   muestraVector(tiempoMedioLineal);
   cout << "Vector de tiempos del algoritmo cuadratico: " << endl;
   muestraVector(tiempoMedioCuadratico);
   cout << "Vector de muestras: " << endl;
   muestraVector(muestra);
+  */
 
   calcularAjusteLineal(muestra, tiempoMedioLineal, a0Lineal, a1Lineal);
   calcularAjustePolinomico(muestra, tiempoMedioCuadratico, a0Pol, a1Pol, a2Pol);
@@ -100,16 +115,16 @@ int main(int argc, char ** argv){
   cout << "Tiempos estimados del algoritmo lineal: " << endl;
   muestraVector(tiempoMedioLinealEst);
   cout << endl;
-  cout << "Tiempos estimados del algoritmo polinomico: " << endl;
+  cout << "Tiempos estimados del algoritmo cuadratico: " << endl;
   muestraVector(tiempoMedioCuadraticoEst);
   cout << endl;
 
   cout << "Ecuacion Lineal: " << endl;
   cout << a0Lineal << " + " << a1Lineal << "*n*log(n)" << endl;
-  cout << "Coeficiente de determinacion lineal: " << r2Lineal << endl;
+  cout << "Coeficiente de determinacion lineal: " << r2Lineal << endl << endl;
   cout << "Ecuacion cuadratica: " << endl;
   cout << a0Pol << " + " << a1Pol << "*n + " << a2Pol << "*n^2" << endl;
-  cout << "Coeficiente de determinacion cuadratico: " << r2Pol << endl;
+  cout << "Coeficiente de determinacion cuadratico: " << r2Pol << endl << endl;
 
   //cout << "Introduce el nombre del fichero donde se almacenaran los datos: ";
   //cin >> nombreFichero;
@@ -117,7 +132,7 @@ int main(int argc, char ** argv){
 
   guardarTiempos(muestra, tiempoMedioCuadratico, tiempoMedioCuadraticoEst, tiempoMedioLineal, tiempoMedioLinealEst, "Datos.txt");
 
-  cout << "Fichero creado" << endl;
+  cout << "Fichero creado" << endl << endl;
 
 
   //Ahora le pediremos numeros al usuario hasta que ponga un 0 para salirnos

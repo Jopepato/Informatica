@@ -282,8 +282,8 @@ void calcularTiemposEstimadosLineales(const vector<double> &x, const vector<doub
     //Calculamos las dos medias
     mediay += y[i];
     mediayEst += yEstimada[i];
-    sumaCuadradosy = sumaCuadradosy + pow(y[i],2);
-    sumaCuadradosyEst = sumaCuadradosyEst + pow(yEstimada[i], 2);
+    //sumaCuadradosy = sumaCuadradosy + pow(y[i],2);
+    //sumaCuadradosyEst = sumaCuadradosyEst + pow(yEstimada[i], 2);
   }
   mediay = mediay/x.size();
   mediayEst = mediayEst/x.size();
@@ -291,11 +291,15 @@ void calcularTiemposEstimadosLineales(const vector<double> &x, const vector<doub
   //Ahora hacemos la covarianza
   for(unsigned int i=0; i<x.size(); i++){
     covarianza += (y[i]-mediay)*(yEstimada[i]-mediayEst);
+    varianzay += pow(y[i]-mediay,2);
+    varianzayEst+= pow(yEstimada[i]-mediayEst,2);
   }
   covarianza = covarianza/x.size();
   covarianza = pow(covarianza,2);
-  varianzay = (sumaCuadradosy/x.size())- pow(mediay,2);
-  varianzayEst = (sumaCuadradosyEst/x.size())-pow(mediayEst,2);
+  //varianzay = (sumaCuadradosy/x.size())- pow(mediay,2);
+  //varianzayEst = (sumaCuadradosyEst/x.size())-pow(mediayEst,2);
+  varianzay = varianzay/x.size();
+  varianzayEst = varianzayEst/x.size();
   r2 = covarianza/(varianzay*varianzayEst);
 
 }
