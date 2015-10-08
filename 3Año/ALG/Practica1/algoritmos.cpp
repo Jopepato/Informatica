@@ -264,7 +264,7 @@ void calcularTiemposEstimadosLineales(const vector<double> &x, const vector<doub
 
   //Primero rellenaremos el vector de la yEstimada
   double aux = 0.0;
-  double sumaCuadradosy = 0.0, sumaCuadradosyEst=0.0;
+  //double sumaCuadradosy = 0.0, sumaCuadradosyEst=0.0;
   double mediay=0.0, mediayEst=0.0;
   double varianzay=0.0, varianzayEst=0.0;
   double covarianza=0.0;
