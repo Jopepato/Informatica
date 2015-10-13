@@ -3,11 +3,14 @@
 
 #include <cmath>
 #include <cstdio>
-
+#include <ctime>
+#include <cstdlib>
+#include "matriz.hpp"
 using namespace std;
 
 
 
-void rellenaMatriz();
+void rellenaMatriz(Matriz<T> &m, int f, int c, int a, int b);
+void muestraMatriz(Matriz<T> &m);
 
-#define
+#endif
