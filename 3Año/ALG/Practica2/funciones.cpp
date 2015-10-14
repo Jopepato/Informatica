@@ -1,7 +1,6 @@
 #include "funciones.hpp"
 
-
-
+template <class T>
 void rellenaMatriz(Matriz<T> &m, int c, int f, int a, int b){
 	//Rellenaremos la matriz con numeros aleatorios comprendidos entre a y b
 	srand(time(NULL));
@@ -15,6 +14,7 @@ void rellenaMatriz(Matriz<T> &m, int c, int f, int a, int b){
 	//Con esto ya tenemos la matriz rellena de numeros aleatorios entre a y b
 }
 
+template <class T>
 void muestraMatriz(Matriz<T> &m){
 	//Aqui mostraremos la matriz
 	for(int i=0; i<m.filas(); i++){

@@ -8,9 +8,9 @@
 #include "matriz.hpp"
 using namespace std;
 
-
-
+template <class T>
 void rellenaMatriz(Matriz<T> &m, int f, int c, int a, int b);
+template <class T>
 void muestraMatriz(Matriz<T> &m);
 
 #endif
