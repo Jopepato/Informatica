@@ -4,6 +4,13 @@
 
 //Aqui haremos lo de las matrices recursivas e iterativas
 int main(int argc, char ** argv){
+
+	//Comprobamos que se han introducido todos los parametros pedido
+	if(argc!=5){
+		cout << "Numero de parametros introducidos incorrectos" << endl;
+		exit(-1);
+	}
+
 	int minNivel, maxNivel, incremento, repeticion;
 	int n,a,b;
 	double det;
@@ -30,11 +37,12 @@ int main(int argc, char ** argv){
 	cin >> b;
 
 	//Hacemos el bucle con las repeticiones
-	for(int i=minNivel; i<maxNivel; i=i+incremento){
+	for(int i=minNivel; i<maxNivel; i+=incremento){
 		Matriz<int> auxM(i,i);
 		for(int j=0; j<repeticion; j++){
 			//Comprobamos por recursivo
 			rellenaMatriz(auxM,i,i,a,b);
+
 			detRecur.start();
 			determRecursivo(auxM,i);
 			detRecur.stop();
