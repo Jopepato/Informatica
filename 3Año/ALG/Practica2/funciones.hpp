@@ -5,6 +5,7 @@
 #include <cstdio>
 #include <ctime>
 #include <cstdlib>
+#include <vector>
 #include "matriz.hpp"
 using namespace std;
 
@@ -30,35 +31,46 @@ void reservaMemoria(int **&m, int n){
 }
 template <class T>
 double determRecursivo(Matriz<T> m,int n) {
-  int det=0, p, h, k, i, j;
+  double det=0, p=0, h=0, k=0, i=0, j=0;
   Matriz<T> temp(n,n);
 
   if(n==1) {
-    return m.elemento(0+1,0+1);
+    return m.elemento(1,1);
   } else if(n==2) {
-    det=(m.elemento(0+1,0+1)*m.elemento(1+1,1+1)-m.elemento(0+1,1+1)*m.elemento(1+1,0+1));
+    det=(m.elemento(1,1)*m.elemento(2,2)-m.elemento(1,2)*m.elemento(2,1));
     return det;
   } else {
-    for(p=0;p<n;p++) {
-      h = 0;
-      k = 0;
-      for(i=1;i<n;i++) {
-        for( j=0;j<n;j++) {
+    for(p=1;p<=n;p++) {
+      h = 1;
+      k = 1;
+      for(i=2;i<=n;i++) {
+        for( j=1;j<=n;j++) {
           if(j==p) {
             continue;
           }
-          temp.elemento(h+1,k+1,m.elemento(i+1,j+1)+1);
+          temp.elemento(h,k,m.elemento(i,j));
           k++;
-          if(k==n-1) {
+          if(k==n) {
             h++;
-            k = 0;
+            k = 1;
           }
         }
       }
-      det=det+m.elemento(0+1,p+1)*pow(-1,p)*determRecursivo(temp,n-1);
+      det=det+m.elemento(1,p)*pow(-1,p)*determRecursivo(temp,n-1);
     }
-    return det;
+    return (-1)*det;
   }
+}
+
+template <class T>
+double mediaVector(vector<T> &v){
+	//Hace la media de un vector V
+	double total=0.0, media=0.0;
+	for(int i=0; i<v.size(); i++){
+		total = total+v[i];
+	}
+	media = total/v.size();
+	return media;
 }
 
 #endif

@@ -3,15 +3,25 @@
 #include "ClaseTiempo.hpp"
 
 //Aqui haremos lo de las matrices recursivas e iterativas
-int main(){
+int main(int argc, char ** argv){
+	int minNivel, maxNivel, incremento, repeticion;
 	int n,a,b;
 	double det;
+	vector<int> vectRecur;
+	vector<int> vectIterat;
+	vector<int> auxV;
+	double tiempo=0;
+	//double tiempoTotalRecur=0.0;
 
 	Clock detIterat;
 	Clock detRecur;
 	
-	cout << "Introduce la dimension de la matriz: ";
-	cin >> n;
+	//Pasamos los parametros de comandos a las variables
+	minNivel = atoi(argv[1]);
+	maxNivel = atoi(argv[2]);
+	incremento = atoi(argv[3]);
+	repeticion = atoi(argv[4]);
+
 	//Declaramos la matriz
 	Matriz<int> m(n,n);
 	cout << "Introduce el numero minimo del aleatorio: ";
@@ -19,13 +29,27 @@ int main(){
 	cout << "Introduce el numero maximo del aleatorio: ";
 	cin >> b;
 
-	rellenaMatriz(m,n,n,a,b);
-	m.verMatriz();
-
+	//Hacemos el bucle con las repeticiones
+	for(int i=minNivel; i<maxNivel; i=i+incremento){
+		Matriz<int> auxM(i,i);
+		for(int j=0; j<repeticion; j++){
+			//Comprobamos por recursivo
+			rellenaMatriz(auxM,i,i,a,b);
+			detRecur.start();
+			determRecursivo(auxM,i);
+			detRecur.stop();
+			tiempo = detRecur.elapsed();
+			auxV.push_back(tiempo);
+			//Cogemos el tiempo del iterativo
+		}
+		vectRecur.push_back(mediaVector(auxV));
+		auxV.clear();
+	}
 	//Calculamos el determinante recursivo
 	det = determRecursivo(m, n);
 
 	cout << "El determinante es: " << det << endl;
+
 
 return 0;
 }
