@@ -1,21 +1,31 @@
 #include "funciones.hpp"
-
+#include "matriz.hpp"
+#include "ClaseTiempo.hpp"
 
 //Aqui haremos lo de las matrices recursivas e iterativas
 int main(){
-	int f,c,a,b;
-	cout << "Introduce el numero de filas: ";
-	cin >> f;
-	cout << "Introduce el numero de columnas: ";
-	cin >> c;
+	int n,a,b;
+	double det;
+
+	Clock detIterat;
+	Clock detRecur;
+	
+	cout << "Introduce la dimension de la matriz: ";
+	cin >> n;
+	//Declaramos la matriz
+	Matriz<int> m(n,n);
 	cout << "Introduce el numero minimo del aleatorio: ";
 	cin >> a;
 	cout << "Introduce el numero maximo del aleatorio: ";
 	cin >> b;
 
-	Matriz<int> matriz(f,c);
+	rellenaMatriz(m,n,n,a,b);
+	m.verMatriz();
 
-	rellenaMatriz(matriz,c,f,a,b);
-	muestraMatriz(matriz);
+	//Calculamos el determinante recursivo
+	det = determRecursivo(m, n);
 
+	cout << "El determinante es: " << det << endl;
+
+return 0;
 }
