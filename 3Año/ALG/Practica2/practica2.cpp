@@ -1,6 +1,7 @@
 #include "funciones.hpp"
 #include "matriz.hpp"
 #include "ClaseTiempo.hpp"
+#include "estimaciones.hpp"
 
 //Aqui haremos lo de las matrices recursivas e iterativas
 int main(int argc, char ** argv){
@@ -14,14 +15,15 @@ int main(int argc, char ** argv){
 	int minNivel, maxNivel, incremento, repeticion;
 	int n,a,b;
 	double det;
-	vector<int> vectRecur;
-	vector<int> vectIterat;
-	vector<int> auxV;
+	vector<int> vectTiempoMedRecur;
+	vector<int> vectTiempoMedIterat;
+	vector<int> auxVRecur, auxVIter;
+	vector<int> muestras;
 	double tiempo=0;
 	//double tiempoTotalRecur=0.0;
 
-	Clock detIterat;
-	Clock detRecur;
+	Clock relojIterat;
+	Clock relojRecur;
 	
 	//Pasamos los parametros de comandos a las variables
 	minNivel = atoi(argv[1]);
@@ -29,34 +31,44 @@ int main(int argc, char ** argv){
 	incremento = atoi(argv[3]);
 	repeticion = atoi(argv[4]);
 
-	//Declaramos la matriz
-	Matriz<int> m(n,n);
 	cout << "Introduce el numero minimo del aleatorio: ";
 	cin >> a;
 	cout << "Introduce el numero maximo del aleatorio: ";
 	cin >> b;
 
 	//Hacemos el bucle con las repeticiones
-	for(int i=minNivel; i<maxNivel; i+=incremento){
+	for(int i=minNivel; i<=maxNivel; i+=incremento){
 		Matriz<int> auxM(i,i);
 		for(int j=0; j<repeticion; j++){
 			//Comprobamos por recursivo
 			rellenaMatriz(auxM,i,i,a,b);
+			auxM.verMatriz();
 
-			detRecur.start();
+			relojRecur.start();
 			determRecursivo(auxM,i);
-			detRecur.stop();
-			tiempo = detRecur.elapsed();
-			auxV.push_back(tiempo);
+			relojRecur.stop();
+			tiempo = relojRecur.elapsed();
+			auxVRecur.push_back(tiempo);
+			
 			//Cogemos el tiempo del iterativo
+
+			relojIterat.start();
+			determIterativo(auxM, i);
+			relojIterat.stop();
+			tiempo = relojIterat.elapsed();
+			auxVIter.push_back(tiempo);
 		}
-		vectRecur.push_back(mediaVector(auxV));
-		auxV.clear();
+		vectTiempoMedRecur.push_back(mediaVector(auxVRecur));
+		vectTiempoMedIterat.push_back(mediaVector(auxVIter));
+		auxVRecur.clear();
+		auxVIter.clear();
+		muestras.push_back(i);
 	}
 	//Calculamos el determinante recursivo
-	det = determRecursivo(m, n);
-
-	cout << "El determinante es: " << det << endl;
+	//Mostramos el vector de tiempos, junto con el vector de muestras
+	muestraVector(muestras);
+	muestraVector(vectTiempoMedRecur);
+	muestraVector(vectTiempoMedIterat);
 
 
 return 0;
