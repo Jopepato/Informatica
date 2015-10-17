@@ -20,6 +20,7 @@ int main(int argc, char ** argv){
 	vector<int> auxVRecur, auxVIter;
 	vector<int> muestras;
 	double tiempo=0;
+	double fact;
 	//double tiempoTotalRecur=0.0;
 
 	Clock relojIterat;
@@ -42,7 +43,7 @@ int main(int argc, char ** argv){
 		for(int j=0; j<repeticion; j++){
 			//Comprobamos por recursivo
 			rellenaMatriz(auxM,i,i,a,b);
-			auxM.verMatriz();
+			//auxM.verMatriz();
 
 			relojRecur.start();
 			determRecursivo(auxM,i);
@@ -63,9 +64,11 @@ int main(int argc, char ** argv){
 		auxVRecur.clear();
 		auxVIter.clear();
 		muestras.push_back(i);
+		cout << i << endl;
 	}
 	//Calculamos el determinante recursivo
 	//Mostramos el vector de tiempos, junto con el vector de muestras
+	cout << "Hola" << endl;
 	muestraVector(muestras);
 	muestraVector(vectTiempoMedRecur);
 	muestraVector(vectTiempoMedIterat);

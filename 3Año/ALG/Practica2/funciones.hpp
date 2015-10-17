@@ -216,5 +216,21 @@ double sumatoriox3yVector(const vector<T> &x,const vector<T> &y){
 	return sumax3y;
 }
 
+template <class T>
+void vectorAFactorial(vector<T> &x, vector<T> &y){
+	//Recorremos el vector y pasamos a otro sus
+	for(int i=0; i<x.size(); i++){
+		y.push_back(factorial(x[i]));
+	}
+}
+
+
+double factorial(double num){
+	double factorial=1;
+	for(int i=num; i>0; i--){
+		factorial = factorial*i;
+	}
+	return factorial;
+}
 
 #endif
