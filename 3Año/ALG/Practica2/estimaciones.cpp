@@ -61,10 +61,10 @@ void calcularAjusteIterativo(const vector<double> &x, const vector<double> &y, d
 
 
   //Y ahora calculamos a0 a1 a2 y a3
-  a0 = determIterativo(B)/determIterativo(A);
-  a1 = determIterativo(C)/determIterativo(A);
-  a2 = determIterativo(D)/determIterativo(A);
-  a3 = determIterativo(E)/determIterativo(A);
+  a0 = determIterativo(B, 4)/determIterativo(A, 4);
+  a1 = determIterativo(C, 4)/determIterativo(A, 4);
+  a2 = determIterativo(D, 4)/determIterativo(A, 4);
+  a3 = determIterativo(E, 4)/determIterativo(A, 4);
 
 
 	
@@ -93,8 +93,8 @@ void calcularAjusteRecursivo(const vector<double> &x, const vector<double> &y, d
   C.elemento(1,2, sumatorioVector(y));
   C.elemento(2,2, sumatorioxyVector(x,y));
 
-  a0 = determIterativo(B)/determIterativo(A);
-  a1 = determIterativo(C)/determIterativo(A);
+  a0 = determIterativo(B, 2)/determIterativo(A, 2);
+  a1 = determIterativo(C, 2)/determIterativo(A, 2);
 
 
 }
@@ -105,7 +105,7 @@ void calcularTiemposEstimadosIterativo(const vector<double> &x, const vector<dou
   //El tiempo estimado iterativo es polinomico, lo iremos guardando en yEstimada
   //Ademas calcularemos r2
   double aux=0.0;
-  for(int i=0; i<x.size(); i++){
+  for(unsigned int i=0; i<x.size(); i++){
     aux = a0 + a1*x[i] + a2*pow(x[i],2) + a3*pow(x[i],3);
     yEst.push_back(aux);
   }
@@ -116,11 +116,11 @@ void calcularTiemposEstimadosIterativo(const vector<double> &x, const vector<dou
 
 }
 
-void calcularTiemposEstimadosRecursivo(const vector<double> &x, const vector<double> &y, vector<double> yEst, double &a0, double &b){
+void calcularTiemposEstimadosRecursivo(const vector<double> &x, const vector<double> &y, vector<double> yEst, double &a0, double &a1, double &r2){
 
   //Nos pasan el vector con los factoriales
   double aux=0.0;
-  for(int i=0; i<x.size(); i++){
+  for(unsigned int i=0; i<x.size(); i++){
     aux = a0 + a1*x[i];
     yEst.push_back(aux);
   }

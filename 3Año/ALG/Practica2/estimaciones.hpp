@@ -2,6 +2,7 @@
 #define ESTIMACIONES_HPP_
 
 #include "funciones.hpp"
+#include <fstream>
 
 
 void calcularAjusteIterativo(const vector<double> &x, const vector<double> &y, double &a0, double &a1, double &a2, double &a3);

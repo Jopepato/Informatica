@@ -1,2 +1,2 @@
 all:
-	g++ -Wall practica2.cpp -o main
+	g++ -Wall practica2.cpp estimaciones.cpp -o main
