@@ -1,0 +1,8 @@
+10 20.2 -nan 1.77859e+06 -nan
+9 16 -nan 180056 -nan
+8 14.6 -nan 21095.4 -nan
+7 19.4 -nan 2383.6 -nan
+6 8 -nan 420.2 -nan
+5 6 -nan 67.6 -nan
+4 5.2 -nan 14 -nan
+3 4.6 -nan 4 -nan

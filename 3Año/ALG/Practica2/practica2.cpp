@@ -20,7 +20,7 @@ int main(int argc, char ** argv){
 
 	int minNivel, maxNivel, incremento, repeticion;
 	int n,a,b;
-	double detR, detIt;
+	double detR=0.0, detIt=0.0;
 	vector<double> vectTiempoMedRecur;
 	vector<double> vectTiempoMedIterat;
 	vector<double> auxVRecur, auxVIter;
@@ -50,10 +50,48 @@ int main(int argc, char ** argv){
 	//Establecemos la semilla
 	srand(time(NULL));
 
+	cout << "hola" << endl;
+	//Vamos a probar a ir tirando para atras y vamos quitando fila y columna
+	Matriz<double> mat(maxNivel, maxNivel);
+	rellenaMatriz(mat,maxNivel,maxNivel,a,b);
+	//Hacemos un doble for
+	for(int i=maxNivel; i>=minNivel; i=i-incremento){
+
+		for(int j=0; j<repeticion; j++){
+
+			//Para el tiempo recursivo
+			relojRecur.start();
+			detR = determRecursivo(mat,i);
+			relojRecur.stop();
+			cout << detR << endl;
+			tiempo = relojRecur.elapsed();
+			auxVRecur.push_back(tiempo);
+
+			//Para el tiempo iterativo
+			relojIterat.start();
+			detIt = determIterativo(mat, i);
+			relojIterat.stop();
+			cout << detIt << endl;
+			tiempo = relojIterat.elapsed();
+			auxVIter.push_back(tiempo);
+
+		}
+		vectTiempoMedRecur.push_back(mediaVector(auxVRecur));
+		vectTiempoMedIterat.push_back(mediaVector(auxVIter));
+		auxVRecur.clear();
+		auxVIter.clear();
+		mat.eliminarFilaColumna(i,i);
+		muestras.push_back(i);
+
+	}
+
+/*
+
 	//Hacemos el bucle con las repeticiones
 	for(int i=minNivel; i<=maxNivel; i+=incremento){
 		
 		for(int j=0; j<repeticion; j++){
+			cout << "adios" << endl;
 			Matriz<int> auxM(i,i);
 			//Comprobamos por recursivo
 			rellenaMatriz(auxM,i,i,a,b);
@@ -67,13 +105,13 @@ int main(int argc, char ** argv){
 			auxVRecur.push_back(tiempo);
 			
 			//Cogemos el tiempo del iterativo
-			/*
+			
 			relojIterat.start();
 			detIt = determIterativo(auxM, i);
 			relojIterat.stop();
 			tiempo = relojIterat.elapsed();
 			auxVIter.push_back(tiempo);
-			*/
+			
 			
 
 		}
@@ -82,14 +120,17 @@ int main(int argc, char ** argv){
 		auxVRecur.clear();
 		auxVIter.clear();
 		muestras.push_back(i);
-		
-
 	}
+	*/
+
+
+
 	//Calculamos el determinante recursivo
 	//Mostramos el vector de tiempos, junto con el vector de muestras
 	muestraVector(muestras);
 	muestraVector(vectTiempoMedRecur);
-	//muestraVector(vectTiempoMedIterat);
+	muestraVector(vectTiempoMedIterat);
+
 
 	vectorAFactorial(muestras, muestrasFactorial);
 
@@ -115,6 +156,7 @@ int main(int argc, char ** argv){
 	cout << "Vectorres estimados: " << endl;
 	cout << "Recursvo: " << endl;
 	muestraVector(tiempoEstimadoRecur);
+	muestraVector(tiempoEstimadoIt);
 
 
 

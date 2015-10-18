@@ -62,9 +62,34 @@ T determIterativo(Matriz <T> mat, const int n) {
 			// Algoritmo para la eliminación simple de Gauss
 
 		    double det,aux;
-		    T factor;
+		    //T factor;
 		    Matriz<T> a(mat);
-		 
+		    for(int i=1;i<=n;i++)
+			{
+				if(a.elemento(i,i)!=0)
+				{
+					aux = 1/a.elemento(i,i);
+					for(int j=1;j<=n+1;j++)
+					{
+						aux = aux*a.elemento(i,j);
+						a.elemento(i,j, aux);
+					}
+ 
+					for(int j=1;j<=n;j++)
+					{
+						if(j!=i)
+						{
+							aux = (-1)*a.elemento(j,i);
+							for(int k=1;k<=n+1;k++)
+							{
+								aux = a.elemento(j,k)+aux*a.elemento(i,k);
+								a.elemento(j,k,aux);
+							}
+						}
+					}
+				}
+			}
+		 /*
 		    for (int k = 1; k < n ; k++) {
 		        for (int i = k+1; i <= n;  i++) {
 		            factor = a.elemento(i,k)/a.elemento(k,k);
@@ -74,6 +99,7 @@ T determIterativo(Matriz <T> mat, const int n) {
 		            }
 		        }
 		    }
+		  */
 
 		// Cálculo del determinante
 		    det = 1.0;
