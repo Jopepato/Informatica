@@ -1,8 +1,13 @@
-
-#include "funciones.hpp"
+#include <cmath>
+#include <cstdio>
+#include <ctime>
+#include <cstdlib>
+#include <vector>
+#include "estimaciones.hpp"
 #include "matriz.hpp"
 #include "ClaseTiempo.hpp"
-#include "estimaciones.hpp"
+
+
 
 //Aqui haremos lo de las matrices recursivas e iterativas
 int main(int argc, char ** argv){
@@ -15,14 +20,18 @@ int main(int argc, char ** argv){
 
 	int minNivel, maxNivel, incremento, repeticion;
 	int n,a,b;
-	double det;
-	vector<int> vectTiempoMedRecur;
-	vector<int> vectTiempoMedIterat;
-	vector<int> auxVRecur, auxVIter;
-	vector<int> muestras;
+	double detR, detIt;
+	vector<double> vectTiempoMedRecur;
+	vector<double> vectTiempoMedIterat;
+	vector<double> auxVRecur, auxVIter;
+	vector<double> muestras, muestrasFactorial;
 	double tiempo=0;
-	double fact;
-	//double tiempoTotalRecur=0.0;
+
+	//Declaramos las variables de los ajustes
+	double a0Recur, a1Recur, r2Recur;
+	double a0It, a1It, a2It, a3It, r2It;
+
+	vector<double> tiempoEstimadoRecur, tiempoEstimadoIt;
 
 	Clock relojIterat;
 	Clock relojRecur;
@@ -38,41 +47,81 @@ int main(int argc, char ** argv){
 	cout << "Introduce el numero maximo del aleatorio: ";
 	cin >> b;
 
+	//Establecemos la semilla
+	srand(time(NULL));
+
 	//Hacemos el bucle con las repeticiones
 	for(int i=minNivel; i<=maxNivel; i+=incremento){
-		Matriz<int> auxM(i,i);
+		
 		for(int j=0; j<repeticion; j++){
+			Matriz<int> auxM(i,i);
 			//Comprobamos por recursivo
 			rellenaMatriz(auxM,i,i,a,b);
-			//auxM.verMatriz();
+			
+			Matriz<int> auxM2(auxM);
 
 			relojRecur.start();
-			determRecursivo(auxM,i);
+			detR = determRecursivo(auxM,i);
 			relojRecur.stop();
 			tiempo = relojRecur.elapsed();
 			auxVRecur.push_back(tiempo);
 			
 			//Cogemos el tiempo del iterativo
-
+			/*
 			relojIterat.start();
-			determIterativo(auxM, i);
+			detIt = determIterativo(auxM, i);
 			relojIterat.stop();
 			tiempo = relojIterat.elapsed();
 			auxVIter.push_back(tiempo);
+			*/
+			
+
 		}
 		vectTiempoMedRecur.push_back(mediaVector(auxVRecur));
-		vectTiempoMedIterat.push_back(mediaVector(auxVIter));
+		//vectTiempoMedIterat.push_back(mediaVector(auxVIter));
 		auxVRecur.clear();
 		auxVIter.clear();
 		muestras.push_back(i);
-		cout << i << endl;
+		
+
 	}
 	//Calculamos el determinante recursivo
 	//Mostramos el vector de tiempos, junto con el vector de muestras
-	cout << "Hola" << endl;
 	muestraVector(muestras);
 	muestraVector(vectTiempoMedRecur);
-	muestraVector(vectTiempoMedIterat);
+	//muestraVector(vectTiempoMedIterat);
+
+	vectorAFactorial(muestras, muestrasFactorial);
+
+
+
+	//Una vez tenemos los vectores con los tiempos y el vector de muestras podemos calcular los ajustes
+
+
+	calcularAjusteRecursivo(muestrasFactorial, vectTiempoMedRecur, a0Recur, a1Recur);
+	calcularAjusteIterativo(muestras, vectTiempoMedIterat, a0It, a1It, a2It, a3It);
+
+
+
+	//Calculamos los tiempos estimados y el r2
+	calcularTiemposEstimadosRecursivo(muestrasFactorial, vectTiempoMedRecur, tiempoEstimadoRecur, a0Recur, a1Recur, r2Recur);
+	calcularTiemposEstimadosIterativo(muestras, vectTiempoMedIterat, tiempoEstimadoIt, a0It, a1It, a2It, a3It, r2It);
+
+	//Mostramos la ecuacion
+	cout << "Ecuacion para el recursivo: " << endl;
+	cout << a1Recur << "x! + " << a0Recur << endl;
+	cout << "Coeficiente de asimetria: " << r2Recur << endl;
+
+	cout << "Vectorres estimados: " << endl;
+	cout << "Recursvo: " << endl;
+	muestraVector(tiempoEstimadoRecur);
+
+
+
+
+	//Guardamos las cosas en un fichero
+
+	guardarTiempos(muestras, vectTiempoMedIterat, tiempoEstimadoIt, vectTiempoMedRecur, tiempoEstimadoRecur, "Datos.txt");
 
 
 return 0;

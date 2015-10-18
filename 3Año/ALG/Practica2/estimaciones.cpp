@@ -100,7 +100,7 @@ void calcularAjusteRecursivo(const vector<double> &x, const vector<double> &y, d
 }
 
 
-void calcularTiemposEstimadosIterativo(const vector<double> &x, const vector<double> &y, vector<double> yEst, double &a0, double &a1, double &a2, double &a3, double &r2){
+void calcularTiemposEstimadosIterativo(const vector<double> &x, const vector<double> &y, vector<double> &yEst, double &a0, double &a1, double &a2, double &a3, double &r2){
 
   //El tiempo estimado iterativo es polinomico, lo iremos guardando en yEstimada
   //Ademas calcularemos r2
@@ -116,7 +116,7 @@ void calcularTiemposEstimadosIterativo(const vector<double> &x, const vector<dou
 
 }
 
-void calcularTiemposEstimadosRecursivo(const vector<double> &x, const vector<double> &y, vector<double> yEst, double &a0, double &a1, double &r2){
+void calcularTiemposEstimadosRecursivo(const vector<double> &x, const vector<double> &y, vector<double> &yEst, double &a0, double &a1, double &r2){
 
   //Nos pasan el vector con los factoriales
   double aux=0.0;

@@ -12,7 +12,6 @@ using namespace std;
 template <class T>
 inline void rellenaMatriz(Matriz<T> &m, int f, int c, int a, int b){
 		//Rellenaremos la matriz con numeros aleatorios comprendidos entre a y b
-	srand(time(NULL));
 	for(int i=1; i<=c; i++){
 		for(int j=1; j<=f; j++){
 			int aux = rand()%(b-a);
@@ -25,7 +24,7 @@ inline void rellenaMatriz(Matriz<T> &m, int f, int c, int a, int b){
 
 
 template <class T>
-double determRecursivo(Matriz<T> m,int n) {
+double determRecursivo(Matriz<T> m, int n) {
   double det=0, p=0, h=0, k=0, i=0, j=0;
   Matriz<T> temp(n,n);
 
@@ -58,18 +57,18 @@ double determRecursivo(Matriz<T> m,int n) {
 }
 
 template <class T>
-double determIterativo(Matriz <T> &a, const int &n) {
+T determIterativo(Matriz <T> mat, const int n) {
 
 			// Algoritmo para la eliminación simple de Gauss
 
-		    double det;
-		    T aux;
+		    double det,aux;
 		    T factor;
+		    Matriz<T> a(mat);
 		 
 		    for (int k = 1; k < n ; k++) {
 		        for (int i = k+1; i <= n;  i++) {
 		            factor = a.elemento(i,k)/a.elemento(k,k);
-		            for (int j = k+1; j < n+1 ; j++) {
+		            for (int j = k+1; j <= n ; j++) {
 		            	aux=a.elemento(i,j) - factor * a.elemento(k,j);
 		                a.elemento(i,j, aux);
 		            }
@@ -77,7 +76,7 @@ double determIterativo(Matriz <T> &a, const int &n) {
 		    }
 
 		// Cálculo del determinante
-		    det = 1;
+		    det = 1.0;
 		    for (int i = 1; i <= n; i++) {
 		        det = det * a.elemento(i,i);
 		    }
@@ -216,6 +215,18 @@ double sumatoriox3yVector(const vector<T> &x,const vector<T> &y){
 	return sumax3y;
 }
 
+template <class T>
+void vectorAFactorial(const vector<T> &x, vector<T> &y){
+	//Pasa los datos de un vector a otro que tendra los factoriales de este
+	double fact = 1.0;
+	for(int i=0; i<x.size(); i++){
+		for(int j=1; j<=x[i]; j++){
+			fact = fact * i;
+		}
+		y.push_back(fact);
+		fact = 1.0;
+	}
 
+}
 
 #endif
