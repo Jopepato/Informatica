@@ -25,7 +25,7 @@ int main(int argc, char ** argv){
 	vector<double> vectTiempoMedIterat;
 	vector<double> auxVRecur, auxVIter;
 	vector<double> muestras, muestrasFactorial;
-	double tiempo=0;
+	double tiempo=0.0;
 
 	//Declaramos las variables de los ajustes
 	double a0Recur, a1Recur, r2Recur;
@@ -50,6 +50,7 @@ int main(int argc, char ** argv){
 	//Establecemos la semilla
 	srand(time(NULL));
 
+/*
 	cout << "hola" << endl;
 	//Vamos a probar a ir tirando para atras y vamos quitando fila y columna
 	Matriz<double> mat(maxNivel, maxNivel);
@@ -63,7 +64,6 @@ int main(int argc, char ** argv){
 			relojRecur.start();
 			detR = determRecursivo(mat,i);
 			relojRecur.stop();
-			cout << detR << endl;
 			tiempo = relojRecur.elapsed();
 			auxVRecur.push_back(tiempo);
 
@@ -71,7 +71,6 @@ int main(int argc, char ** argv){
 			relojIterat.start();
 			detIt = determIterativo(mat, i);
 			relojIterat.stop();
-			cout << detIt << endl;
 			tiempo = relojIterat.elapsed();
 			auxVIter.push_back(tiempo);
 
@@ -84,14 +83,14 @@ int main(int argc, char ** argv){
 		muestras.push_back(i);
 
 	}
+*/
 
-/*
 
 	//Hacemos el bucle con las repeticiones
 	for(int i=minNivel; i<=maxNivel; i+=incremento){
 		
 		for(int j=0; j<repeticion; j++){
-			cout << "adios" << endl;
+
 			Matriz<int> auxM(i,i);
 			//Comprobamos por recursivo
 			rellenaMatriz(auxM,i,i,a,b);
@@ -107,7 +106,7 @@ int main(int argc, char ** argv){
 			//Cogemos el tiempo del iterativo
 			
 			relojIterat.start();
-			detIt = determIterativo(auxM, i);
+			detIt = determIterativo(auxM2, i);
 			relojIterat.stop();
 			tiempo = relojIterat.elapsed();
 			auxVIter.push_back(tiempo);
@@ -116,24 +115,23 @@ int main(int argc, char ** argv){
 
 		}
 		vectTiempoMedRecur.push_back(mediaVector(auxVRecur));
-		//vectTiempoMedIterat.push_back(mediaVector(auxVIter));
+		vectTiempoMedIterat.push_back(mediaVector(auxVIter));
 		auxVRecur.clear();
 		auxVIter.clear();
 		muestras.push_back(i);
 	}
-	*/
+	
 
-
-
-	//Calculamos el determinante recursivo
 	//Mostramos el vector de tiempos, junto con el vector de muestras
+	cout << "Vector de muestras: " << endl;
 	muestraVector(muestras);
+	cout << "Vector de tiempos medios recursivos: " << endl;
 	muestraVector(vectTiempoMedRecur);
+	cout << "Vector de tiempos medios iterativos: " << endl;
 	muestraVector(vectTiempoMedIterat);
 
 
 	vectorAFactorial(muestras, muestrasFactorial);
-
 
 
 	//Una vez tenemos los vectores con los tiempos y el vector de muestras podemos calcular los ajustes
@@ -151,18 +149,28 @@ int main(int argc, char ** argv){
 	//Mostramos la ecuacion
 	cout << "Ecuacion para el recursivo: " << endl;
 	cout << a1Recur << "x! + " << a0Recur << endl;
-	cout << "Coeficiente de asimetria: " << r2Recur << endl;
+	cout << "Coeficiente de asimetria: " << r2Recur << endl << endl;
 
-	cout << "Vectorres estimados: " << endl;
-	cout << "Recursvo: " << endl;
+
+	cout << "Ecuacion para el itearativo: " << endl;
+	cout << a3It << "x³ + " << a2It <<"x² + " << a1It << "x + " << a0It <<endl;
+	cout << "Coeficiente de asimetria: " << r2It << endl << endl;
+
+	cout << "Vectores estimados: " << endl;
+	cout << "Recursivo: " << endl;
 	muestraVector(tiempoEstimadoRecur);
+	cout << "Iterativo: " << endl;
 	muestraVector(tiempoEstimadoIt);
+
+	cout << endl << endl;
 
 
 
 
 	//Guardamos las cosas en un fichero
 
+
+	cout << "Guardamos los tiempos en fichero" << endl;
 	guardarTiempos(muestras, vectTiempoMedIterat, tiempoEstimadoIt, vectTiempoMedRecur, tiempoEstimadoRecur, "Datos.txt");
 
 

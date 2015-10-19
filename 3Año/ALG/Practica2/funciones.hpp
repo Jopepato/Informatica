@@ -50,9 +50,9 @@ double determRecursivo(Matriz<T> m, int n) {
           }
         }
       }
-      det=det+m.elemento(1,p)*pow(-1,p)*determRecursivo(temp,n-1);
+      det=det+m.elemento(1,p)*pow(-1,p+1)*determRecursivo(temp,n-1);
     }
-    return (-1)*det;
+    return det;
   }
 }
 
@@ -89,6 +89,7 @@ T determIterativo(Matriz <T> mat, const int n) {
 					}
 				}
 			}
+
 		 /*
 		    for (int k = 1; k < n ; k++) {
 		        for (int i = k+1; i <= n;  i++) {
