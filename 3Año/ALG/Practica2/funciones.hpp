@@ -24,7 +24,7 @@ inline void rellenaMatriz(Matriz<T> &m, int f, int c, int a, int b){
 
 
 template <class T>
-double determRecursivo(Matriz<T> m, int n) {
+double determRecursivo(const Matriz<T> &m, int n) {
   double det=0, p=0, h=0, k=0, i=0, j=0;
   Matriz<T> temp(n,n);
 
@@ -57,13 +57,57 @@ double determRecursivo(Matriz<T> m, int n) {
 }
 
 template <class T>
-T determIterativo(Matriz <T> mat, const int n) {
+T determIterativo(const Matriz <T> &mat, const int n) {
 
 			// Algoritmo para la eliminación simple de Gauss
 
-		    double det,aux;
+		    //double det,aux;
 		    //T factor;
-		    Matriz<T> a(mat);
+		   // Matriz<T> a(mat);
+
+
+	Matriz <T> mAux = mat;
+	
+  	int NoCero,A,NoReg = 0,Perm=0;/*permutaciones*/
+  	double Pivote,V1,Det=1.0;
+  	for(int i=1 ; i <= n ; i++){
+    	NoCero=0;A=i;
+      
+      	while((NoCero==0)&&(A<=n)){
+        	if((mAux.elemento(A,i)>0.0000001)||((mAux.elemento(A,i)<-0.0000001))){  // Si m[A][i]!=0
+          		NoCero=1;
+       	 	}
+        	else A++;
+      	}
+      	if (A>n) NoReg=1;
+      	if (A!=i) Perm++;
+
+      	if (A>n){
+        	cout << "Esta matriz no tiene determinante." << endl;
+        	return 0;
+      	} 
+      	Pivote=mAux.elemento(A,i);
+      
+      	for(int j=1 ; j <= n ; j++){
+        	V1 = mAux.elemento(A,j);
+        	mAux.elemento(A, j, mAux.elemento(i, j));
+        	mAux.elemento(i, j, V1);
+      	}
+      	for(int k = i+1 ; k <= n ; k++){
+      		V1 = mAux.elemento(k,i);
+      		for(int j = i ; j <= n ; j++){
+          		mAux.elemento(k,j, mAux.elemento(k,j)-((V1/Pivote)*mAux.elemento(i,j)));
+        	}
+     	}
+  	}
+  	for(int k = 1 ; k <= n ; k++) Det=Det*mAux.elemento(k,k);
+  		
+  	A=Perm;
+  	if ((A%2)==1) Det=-Det; /*Caso de permutaciones impares*/
+  	if (NoReg==1) Det=0;
+  	return Det;
+		    
+		  /*
 		    for(int i=1;i<=n;i++)
 			{
 				if(a.elemento(i,i)!=0)
@@ -88,7 +132,7 @@ T determIterativo(Matriz <T> mat, const int n) {
 						}
 					}
 				}
-			}
+			}*/
 
 		 /*
 		    for (int k = 1; k < n ; k++) {
@@ -100,7 +144,7 @@ T determIterativo(Matriz <T> mat, const int n) {
 		            }
 		        }
 		    }
-		  */
+		  
 
 		// Cálculo del determinante
 		    det = 1.0;
@@ -109,7 +153,9 @@ T determIterativo(Matriz <T> mat, const int n) {
 		    }
 
 		    return det;
-		}
+
+		*/
+}
 
 
 //Funciones genericas
@@ -133,7 +179,7 @@ double varianzaVector(const vector<T> &v,const T &media){
 		varianza = varianza + pow(v[i]-media,2);
 	}
 
-	//Dividimos entre el numero de elementos
+	//Divinos entre el numero de elementos
 	varianza = varianza/v.size();
 	return varianza;
 }

@@ -85,33 +85,38 @@ int main(int argc, char ** argv){
 	}
 */
 
-
+	
+	
 	//Hacemos el bucle con las repeticiones
 	for(int i=minNivel; i<=maxNivel; i+=incremento){
 		
+		cout << i << endl << endl;
 		for(int j=0; j<repeticion; j++){
-
-			Matriz<int> auxM(i,i);
+			Matriz<double> auxM(i,i);
+			
 			//Comprobamos por recursivo
 			rellenaMatriz(auxM,i,i,a,b);
+
+			Matriz<double> aux2(auxM);
 			
-			Matriz<int> auxM2(auxM);
+			
 
 			relojRecur.start();
 			detR = determRecursivo(auxM,i);
 			relojRecur.stop();
+			cout << "Determinante recursivo: " << detR << endl;
 			tiempo = relojRecur.elapsed();
 			auxVRecur.push_back(tiempo);
 			
 			//Cogemos el tiempo del iterativo
 			
 			relojIterat.start();
-			detIt = determIterativo(auxM2, i);
+			detIt = determIterativo(aux2, i);
 			relojIterat.stop();
+			cout << "Determinante iterativo: " << detIt << endl;
 			tiempo = relojIterat.elapsed();
 			auxVIter.push_back(tiempo);
-			
-			
+
 
 		}
 		vectTiempoMedRecur.push_back(mediaVector(auxVRecur));
