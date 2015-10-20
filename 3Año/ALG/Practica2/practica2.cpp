@@ -19,8 +19,7 @@ int main(int argc, char ** argv){
 	}
 
 	int minNivel, maxNivel, incremento, repeticion;
-	int n,a,b;
-	double detR=0.0, detIt=0.0;
+	int a,b;
 	vector<double> vectTiempoMedRecur;
 	vector<double> vectTiempoMedIterat;
 	vector<double> auxVRecur, auxVIter;
@@ -102,18 +101,16 @@ int main(int argc, char ** argv){
 			
 
 			relojRecur.start();
-			detR = determRecursivo(auxM,i);
+			determRecursivo(auxM,i);
 			relojRecur.stop();
-			cout << "Determinante recursivo: " << detR << endl;
 			tiempo = relojRecur.elapsed();
 			auxVRecur.push_back(tiempo);
 			
 			//Cogemos el tiempo del iterativo
 			
 			relojIterat.start();
-			detIt = determIterativo(aux2, i);
+			determIterativo(aux2, i);
 			relojIterat.stop();
-			cout << "Determinante iterativo: " << detIt << endl;
 			tiempo = relojIterat.elapsed();
 			auxVIter.push_back(tiempo);
 
@@ -121,6 +118,10 @@ int main(int argc, char ** argv){
 		}
 		vectTiempoMedRecur.push_back(mediaVector(auxVRecur));
 		vectTiempoMedIterat.push_back(mediaVector(auxVIter));
+		//Mostramos el tiempo medio junto con el nivel
+		cout << "Tiempo medio recursivo: " << mediaVector(auxVRecur) << endl;
+		cout << "Tiempo medio iterativo: " << mediaVector(auxVIter) << endl;
+
 		auxVRecur.clear();
 		auxVIter.clear();
 		muestras.push_back(i);
