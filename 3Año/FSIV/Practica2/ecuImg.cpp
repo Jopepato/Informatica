@@ -3,10 +3,11 @@
 int main(int argc, char ** argv){
 
   int opcion;
-  int mflag=0,iflag=0;  //Flags para el getopt
+  int mflag=0,iflag=0, rflag=0;  //Flags para el getopt
   //Parametros que vamos a recoger
   string nombreImagen;
   string nombreMascara;
+  string nombreOutput = "output.png";
   vector<Mat> canales;
   int r=0; //Para la r
   cv::Mat imagen;
@@ -17,7 +18,7 @@ int main(int argc, char ** argv){
   cv::Mat subMascara;
   vector<double> histograma;
 
-  while((opcion=getopt(argc, argv, "i:m:r:h")) !=-1 ){
+  while((opcion=getopt(argc, argv, "i:m:r:ho:")) !=-1 ){
 
     switch(opcion){
 
@@ -28,7 +29,12 @@ int main(int argc, char ** argv){
 
       case 'r':
           //Guardamos el radio
+      	  rflag=1;
           r = atoi(optarg);
+          if(r<0){
+          	cout << "Parametro 'r' introducido no valido" << endl;
+          	exit(-1);
+          }
 
         break;
 
@@ -42,6 +48,10 @@ int main(int argc, char ** argv){
         iflag = 1;
         nombreImagen = optarg;
         break;
+      
+      case 'o':
+      	nombreOutput = optarg;
+      	break;
 
       case '?':
         //Algo ha ido mal
@@ -66,6 +76,14 @@ int main(int argc, char ** argv){
    	if(imagen.empty()){
    		cout << "Imagen introducida invalida." << endl;
    		exit(-1);
+   	}
+
+   	//Tenemos que comprobar que la r no sea mayor que la mitad del ancho y alto
+   	if(rflag==1){
+   		if(r>imagen.rows/2 || r>imagen.cols/2){
+   			cout << "Parametro 'r' introducido no valido" << endl;
+   			exit(-1);
+   		}
    	}
 
    	//Mostramos la imagen
@@ -106,33 +124,29 @@ int main(int argc, char ** argv){
 	   		//Tenemos mascara
 	   		calcHistogramaMascara(imagen, mascara, histograma, r);
 	   		vectorAcumulado(histograma);
-	   		normalizaVector(histograma);
-	   		
-	   		
+	   		normalizaVector(histograma);   		
 	   		//ecualizarMascara(imagen, mascara, histograma, r);
 	   		ecualizarMascara(imagen,mascara, histograma, r);
 
-	   		cout << "Imagen ecualizada!" << endl;
-		   	//Mostramos la imagen ecualizada:
-		   	namedWindow("Ecualizacion", CV_WINDOW_AUTOSIZE);
-		   	imshow("Ecualizacion", imagen);
-		   	waitKey(0);
+	   		
 
 	   	}else{
 	   		//Sin mascara
 		   	calcHistograma(imagen, histograma, r);
 		   	vectorAcumulado(histograma);
-		   	normalizaVector(histograma);
-		   	
-		   	
+		   	normalizaVector(histograma);		   	
 		   	ecualizar(imagen, histograma, r);
+	   	}
 
-		   	cout << "Imagen ecualizada!" << endl;
+
+	   	cout << "Imagen ecualizada!" << endl;
 		   	//Mostramos la imagen ecualizada:
 		   	namedWindow("Ecualizacion", CV_WINDOW_AUTOSIZE);
 		   	imshow("Ecualizacion", imagen);
 		   	waitKey(0);
-	   	}
+		   	imwrite(nombreOutput, imagen);
+
+		   	cout << "Imagen pasada a fichero con exito!" << endl;
    	
    }else{
 	   	//HSV, pasamos el V
@@ -181,7 +195,11 @@ int main(int argc, char ** argv){
 		namedWindow("Ecualizacion", CV_WINDOW_AUTOSIZE);
 		imshow("Ecualizacion", imagenMerge);
 		waitKey(0);
+		destroyWindow("Ecualizacion");
+		//Ahora guardamos la imagen
+		imwrite(nombreOutput, imagenMerge);
 
+		cout << "Imagen pasada a fichero con exito" << endl;
 	}
 
 }

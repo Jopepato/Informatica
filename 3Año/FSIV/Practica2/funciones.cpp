@@ -4,11 +4,12 @@
 
 void help(){
 
-	std::cout << "Ayuda con los comandos: " << std::endl;
-	std::cout << "-h: Muestra la ayuda del programa" << std::endl;
-	std::cout << "-i nombreImagen: Imagen que se va a cargar para el programa" << std::endl;
-	std::cout << "-m nombreMascara: Nombre de la mascara a usar" << std::endl;
-	std::cout << "-r radio: Radio que vamos a usar" << std::endl;
+	cout << "Ayuda con los comandos: " << endl;
+	cout << "-h: Muestra la ayuda del programa" << endl;
+	cout << "-i nombreImagen: Imagen que se va a cargar para el programa" << endl;
+	cout << "-m nombreMascara: Nombre de la mascara a usar" << endl;
+	cout << "-r radio: Radio que vamos a usar" << endl;
+	cout << "-o nombreImagen Salida: Nombre del fichero donde se guardará la imagen de salida" << endl;
 
 }
 
