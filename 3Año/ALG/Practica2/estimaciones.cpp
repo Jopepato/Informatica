@@ -31,7 +31,7 @@ void calcularAjusteIterativo(const vector<double> &x, const vector<double> &y, d
   A.elemento(4,4, sumatorio6Vector(x));
 
   //Para las demas matrices solo tendremos que cambiar una columna
-  B =A;
+  B=A;
   //Cambiamos la columna 1
   B.elemento(1,1, sumatorioVector(y));
   B.elemento(2,1, sumatorioxyVector(x,y));
@@ -144,9 +144,7 @@ void guardarTiempos(const vector<double> n, const vector<double> &tNS, const vec
   for(unsigned int i=0; i<n.size(); i++){
     file << n[i] << " " << tNS[i] << " " << tNSE[i] << " " << tS[i] << " " << tSE[i] << "\n";
   }
-
-
-
+  //Cerramos el fichero
   file.close();
 
 }

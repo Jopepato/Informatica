@@ -32,8 +32,7 @@ int main(int argc, char ** argv){
 
 	vector<double> tiempoEstimadoRecur, tiempoEstimadoIt;
 
-	Clock relojIterat;
-	Clock relojRecur;
+	Clock reloj;
 	
 	//Pasamos los parametros de comandos a las variables
 	minNivel = atoi(argv[1]);
@@ -48,48 +47,12 @@ int main(int argc, char ** argv){
 
 	//Establecemos la semilla
 	srand(time(NULL));
-
-/*
-	cout << "hola" << endl;
-	//Vamos a probar a ir tirando para atras y vamos quitando fila y columna
-	Matriz<double> mat(maxNivel, maxNivel);
-	rellenaMatriz(mat,maxNivel,maxNivel,a,b);
-	//Hacemos un doble for
-	for(int i=maxNivel; i>=minNivel; i=i-incremento){
-
-		for(int j=0; j<repeticion; j++){
-
-			//Para el tiempo recursivo
-			relojRecur.start();
-			detR = determRecursivo(mat,i);
-			relojRecur.stop();
-			tiempo = relojRecur.elapsed();
-			auxVRecur.push_back(tiempo);
-
-			//Para el tiempo iterativo
-			relojIterat.start();
-			detIt = determIterativo(mat, i);
-			relojIterat.stop();
-			tiempo = relojIterat.elapsed();
-			auxVIter.push_back(tiempo);
-
-		}
-		vectTiempoMedRecur.push_back(mediaVector(auxVRecur));
-		vectTiempoMedIterat.push_back(mediaVector(auxVIter));
-		auxVRecur.clear();
-		auxVIter.clear();
-		mat.eliminarFilaColumna(i,i);
-		muestras.push_back(i);
-
-	}
-*/
-
 	
 	
 	//Hacemos el bucle con las repeticiones
 	for(int i=minNivel; i<=maxNivel; i+=incremento){
 		
-		cout << i << endl << endl;
+		cout << "Profundidad: " <<  i << endl << endl;
 		for(int j=0; j<repeticion; j++){
 			Matriz<double> auxM(i,i);
 			
@@ -98,20 +61,18 @@ int main(int argc, char ** argv){
 
 			Matriz<double> aux2(auxM);
 			
-			
-
-			relojRecur.start();
+			reloj.start();
 			determRecursivo(auxM,i);
-			relojRecur.stop();
-			tiempo = relojRecur.elapsed();
+			reloj.stop();
+			tiempo = reloj.elapsed();
 			auxVRecur.push_back(tiempo);
 			
 			//Cogemos el tiempo del iterativo
 			
-			relojIterat.start();
+			reloj.start();
 			determIterativo(aux2, i);
-			relojIterat.stop();
-			tiempo = relojIterat.elapsed();
+			reloj.stop();
+			tiempo = reloj.elapsed();
 			auxVIter.push_back(tiempo);
 
 
@@ -125,6 +86,7 @@ int main(int argc, char ** argv){
 		auxVRecur.clear();
 		auxVIter.clear();
 		muestras.push_back(i);
+		cout << endl;
 	}
 	
 

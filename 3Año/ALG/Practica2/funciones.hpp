@@ -59,16 +59,9 @@ double determRecursivo(const Matriz<T> &m, int n) {
 template <class T>
 T determIterativo(const Matriz <T> &mat, const int n) {
 
-			// Algoritmo para la eliminación simple de Gauss
-
-		    //double det,aux;
-		    //T factor;
-		   // Matriz<T> a(mat);
-
-
 	Matriz <T> mAux = mat;
 	
-  	int NoCero,A,NoReg = 0,Perm=0;/*permutaciones*/
+  	int NoCero,A,NoReg = 0,Perm=0;//permutaciones
   	double Pivote,V1,Det=1.0;
   	for(int i=1 ; i <= n ; i++){
     	NoCero=0;A=i;
@@ -77,10 +70,13 @@ T determIterativo(const Matriz <T> &mat, const int n) {
         	if((mAux.elemento(A,i)>0.0000001)||((mAux.elemento(A,i)<-0.0000001))){  // Si m[A][i]!=0
           		NoCero=1;
        	 	}
-        	else A++;
+        	else{ A++;
+        	}
       	}
-      	if (A>n) NoReg=1;
-      	if (A!=i) Perm++;
+      	if (A>n)
+      		 NoReg=1;
+      	if (A!=i)
+      		 Perm++;
 
       	if (A>n){
         	cout << "Esta matriz no tiene determinante." << endl;
@@ -103,58 +99,9 @@ T determIterativo(const Matriz <T> &mat, const int n) {
   	for(int k = 1 ; k <= n ; k++) Det=Det*mAux.elemento(k,k);
   		
   	A=Perm;
-  	if ((A%2)==1) Det=-Det; /*Caso de permutaciones impares*/
+  	if ((A%2)==1) Det=-Det; //Caso de permutaciones impares
   	if (NoReg==1) Det=0;
   	return Det;
-		    
-		  /*
-		    for(int i=1;i<=n;i++)
-			{
-				if(a.elemento(i,i)!=0)
-				{
-					aux = 1/a.elemento(i,i);
-					for(int j=1;j<=n+1;j++)
-					{
-						aux = aux*a.elemento(i,j);
-						a.elemento(i,j, aux);
-					}
- 
-					for(int j=1;j<=n;j++)
-					{
-						if(j!=i)
-						{
-							aux = (-1)*a.elemento(j,i);
-							for(int k=1;k<=n+1;k++)
-							{
-								aux = a.elemento(j,k)+aux*a.elemento(i,k);
-								a.elemento(j,k,aux);
-							}
-						}
-					}
-				}
-			}*/
-
-		 /*
-		    for (int k = 1; k < n ; k++) {
-		        for (int i = k+1; i <= n;  i++) {
-		            factor = a.elemento(i,k)/a.elemento(k,k);
-		            for (int j = k+1; j <= n ; j++) {
-		            	aux=a.elemento(i,j) - factor * a.elemento(k,j);
-		                a.elemento(i,j, aux);
-		            }
-		        }
-		    }
-		  
-
-		// Cálculo del determinante
-		    det = 1.0;
-		    for (int i = 1; i <= n; i++) {
-		        det = det * a.elemento(i,i);
-		    }
-
-		    return det;
-
-		*/
 }
 
 
@@ -291,10 +238,10 @@ double sumatoriox3yVector(const vector<T> &x,const vector<T> &y){
 template <class T>
 void vectorAFactorial(const vector<T> &x, vector<T> &y){
 	//Pasa los datos de un vector a otro que tendra los factoriales de este
-	double fact = 1.0;
+	double fact=1.0;
 	for(int i=0; i<x.size(); i++){
-		for(int j=1; j<=x[i]; j++){
-			fact = fact * i;
+		for(int j=1; j<x[i]; j++){
+			fact = fact*j;
 		}
 		y.push_back(fact);
 		fact = 1.0;
