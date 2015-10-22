@@ -25,6 +25,7 @@ int main(int argc, char ** argv){
 	vector<double> auxVRecur, auxVIter;
 	vector<double> muestras, muestrasFactorial;
 	double tiempo=0.0;
+	//double detR=0.0, detI=0.0;
 
 	//Declaramos las variables de los ajustes
 	double a0Recur, a1Recur, r2Recur;
@@ -52,7 +53,7 @@ int main(int argc, char ** argv){
 	//Hacemos el bucle con las repeticiones
 	for(int i=minNivel; i<=maxNivel; i+=incremento){
 		
-		cout << "Profundidad: " <<  i << endl << endl;
+		cout << "Orden: " <<  i << endl << endl;
 		for(int j=0; j<repeticion; j++){
 			Matriz<double> auxM(i,i);
 			
@@ -62,7 +63,7 @@ int main(int argc, char ** argv){
 			Matriz<double> aux2(auxM);
 			
 			reloj.start();
-			determRecursivo(auxM,i);
+			determRecursivo(auxM);
 			reloj.stop();
 			tiempo = reloj.elapsed();
 			auxVRecur.push_back(tiempo);
@@ -70,7 +71,7 @@ int main(int argc, char ** argv){
 			//Cogemos el tiempo del iterativo
 			
 			reloj.start();
-			determIterativo(aux2, i);
+			determIterativo(aux2);
 			reloj.stop();
 			tiempo = reloj.elapsed();
 			auxVIter.push_back(tiempo);

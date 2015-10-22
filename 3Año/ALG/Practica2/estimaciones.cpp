@@ -61,11 +61,10 @@ void calcularAjusteIterativo(const vector<double> &x, const vector<double> &y, d
 
 
   //Y ahora calculamos a0 a1 a2 y a3
-  a0 = determRecursivo(B, 4)/determRecursivo(A, 4);
-  a1 = determRecursivo(C, 4)/determRecursivo(A, 4);
-  a2 = determRecursivo(D, 4)/determRecursivo(A, 4);
-  a3 = determRecursivo(E, 4)/determRecursivo(A, 4);
-
+  a0 = determIterativo(B)/determIterativo(A);
+  a1 = determIterativo(C)/determIterativo(A);
+  a2 = determIterativo(D)/determIterativo(A);
+  a3 = determIterativo(E)/determIterativo(A);
 
 	
 }
@@ -93,8 +92,8 @@ void calcularAjusteRecursivo(const vector<double> &x, const vector<double> &y, d
   C.elemento(1,2, sumatorioVector(y));
   C.elemento(2,2, sumatorioxyVector(x,y));
 
-  a0 = determRecursivo(B, 2)/determRecursivo(A, 2);
-  a1 = determRecursivo(C, 2)/determRecursivo(A, 2);
+  a0 = determIterativo(B)/determIterativo(A);
+  a1 = determIterativo(C)/determIterativo(A);
 
 
 }

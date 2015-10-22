@@ -24,8 +24,9 @@ inline void rellenaMatriz(Matriz<T> &m, int f, int c, int a, int b){
 
 
 template <class T>
-double determRecursivo(const Matriz<T> &m, int n) {
+double determRecursivo(const Matriz<T> &m) {
   double det=0, p=0, h=0, k=0, i=0, j=0;
+  double n = m.filas();
   Matriz<T> temp(n,n);
 
   if(n==1) {
@@ -49,18 +50,19 @@ double determRecursivo(const Matriz<T> &m, int n) {
             k = 1;
           }
         }
-      }
-      det=det+m.elemento(1,p)*pow(-1,p+1)*determRecursivo(temp,n-1);
+      }    
+      det=det+m.elemento(1,p)*pow(-1,p+1)*determRecursivo(temp.eliminarFilaColumna(n,n));
     }
     return det;
   }
+
 }
 
 template <class T>
-T determIterativo(const Matriz <T> &mat, const int n) {
+T determIterativo(const Matriz <T> &mat) {
 
 	Matriz <T> mAux = mat;
-	
+  	double n = mAux.filas();
   	int NoCero,A,NoReg = 0,Perm=0;//permutaciones
   	double Pivote,V1,Det=1.0;
   	for(int i=1 ; i <= n ; i++){
@@ -102,6 +104,7 @@ T determIterativo(const Matriz <T> &mat, const int n) {
   	if ((A%2)==1) Det=-Det; //Caso de permutaciones impares
   	if (NoReg==1) Det=0;
   	return Det;
+
 }
 
 
