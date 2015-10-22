@@ -139,7 +139,7 @@ int main(int argc, char ** argv){
 	//Guardamos las cosas en un fichero
 
 
-	cout << "Guardamos los tiempos en fichero" << endl;
+	cout << "Tiempos guardados en fichero" << endl;
 	guardarTiempos(muestras, vectTiempoMedIterat, tiempoEstimadoIt, vectTiempoMedRecur, tiempoEstimadoRecur, "Datos.txt");
 
 
