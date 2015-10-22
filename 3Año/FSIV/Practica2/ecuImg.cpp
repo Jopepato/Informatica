@@ -119,25 +119,56 @@ int main(int argc, char ** argv){
 	   	//Monocromatica mas fasi
 	   	//Hacemos la ecualizacion y esas cosas
 
-	   	//Miramos si tenemos mascara o no :>
-	   	if(mflag==1){
-	   		//Tenemos mascara
-	   		calcHistogramaMascara(imagen, mascara, histograma, r);
-	   		vectorAcumulado(histograma);
-	   		normalizaVector(histograma);   		
-	   		//ecualizarMascara(imagen, mascara, histograma, r);
-	   		ecualizarMascara(imagen,mascara, histograma, r);
+    //Miramos si tenemos radio o no
 
-	   		
+      if(r==0){
+          	   	//Miramos si tenemos mascara o no :>
+          	   	if(mflag==1){
+          	   		//Tenemos mascara
+          	   		calcHistogramaMascara(imagen, mascara, histograma);
+          	   		vectorAcumulado(histograma);
+          	   		normalizaVector(histograma);   		
+          	   		//ecualizarMascara(imagen, mascara, histograma, r);
+          	   		ecualizarMascara(imagen,mascara, histograma);
 
-	   	}else{
-	   		//Sin mascara
-		   	calcHistograma(imagen, histograma, r);
-		   	vectorAcumulado(histograma);
-		   	normalizaVector(histograma);		   	
-		   	ecualizar(imagen, histograma, r);
-	   	}
+          	   		
 
+          	   	}else{
+          	   		//Sin mascara
+          		   	calcHistograma(imagen, histograma);
+          		   	vectorAcumulado(histograma);
+          		   	normalizaVector(histograma);		   	
+          		   	ecualizar(imagen, histograma);
+          	   	}
+      }else{
+
+        cout << "Ecualizando..." << endl;
+        
+        for(int x=r; x<imagen.rows-r; x++){
+          for(int y=r; y<imagen.cols-r; y++){
+
+            Mat ventana(imagen,Rect(x-r,y-r,2*r+1,2*r+1));
+
+            if(mflag==1){
+              Mat ventMask(mascara,Rect(x-r,y-r,2*r+1,2*r+1));
+
+              calcHistogramaMascara(ventana, ventMask, histograma);
+              vectorAcumulado(histograma);
+              normalizaVector(histograma);
+
+              ecualizarMascaraRadio(imagen,mascara, histograma, x,y);
+
+            }else{
+
+              calcHistograma(ventana, histograma);
+              vectorAcumulado(histograma);
+              normalizaVector(histograma);
+              ecualizarRadio(imagen, histograma, x,y);
+
+            }
+          }
+        }
+      }
 
 	   	cout << "Imagen ecualizada!" << endl;
 		   	//Mostramos la imagen ecualizada:
@@ -147,7 +178,15 @@ int main(int argc, char ** argv){
 		   	imwrite(nombreOutput, imagen);
 
 		   	cout << "Imagen pasada a fichero con exito!" << endl;
-   	
+
+
+
+        //Terminado si es monocromatica
+
+
+
+
+	
    }else{
 	   	//HSV, pasamos el V
 	   	//Pasamos la imagen de RGB a hsv
@@ -160,25 +199,54 @@ int main(int argc, char ** argv){
 
 	   //Spliteamos en canales
 	   split(imagenHSV,canales);
+    if(r==0){
+      	   //Miramos si hay mascara
+      	   if(mflag==1){
 
-	   //Miramos si hay mascara
-	   if(mflag==1){
+      		   	calcHistogramaMascara(canales[2], mascara, histograma);
+      		   	vectorAcumulado(histograma);
+      		   	normalizaVector(histograma);
+      		   	
+      		   	ecualizarMascara(canales[2], mascara, histograma);
 
-		   	calcHistogramaMascara(canales[2], mascara, histograma, r);
-		   	vectorAcumulado(histograma);
-		   	normalizaVector(histograma);
-		   	
-		   	ecualizarMascara(canales[2], mascara, histograma, r);
+      	   }else{
 
-	   }else{
+      		   calcHistograma(canales[2],histograma);
+      		   vectorAcumulado(histograma);
+      		   normalizaVector(histograma);
+      		   
+      		   ecualizar(canales[2], histograma);
 
-		   calcHistograma(canales[2],histograma, r);
-		   vectorAcumulado(histograma);
-		   normalizaVector(histograma);
-		   
-		   ecualizar(canales[2], histograma, r);
+      	   }
+       }else{
 
-	   }
+        cout << "Ecualizando..." << endl;
+
+        for(int x=r; x<canales[2].rows-r; x++){
+          for(int y=r; y<canales[2].cols-r; y++){
+
+            Mat ventana(canales[2],Rect(y-r,x-r,2*r+1,2*r+1));
+
+            if(mflag==1){
+              Mat ventMask(mascara,Rect(y-r,x-r,2*r+1,2*r+1));
+
+              calcHistogramaMascara(ventana, ventMask, histograma);
+              vectorAcumulado(histograma);
+              normalizaVector(histograma);
+              ecualizarMascaraRadio(canales[2],mascara, histograma, x,y);
+
+            }else{
+
+              calcHistograma(ventana, histograma);
+              vectorAcumulado(histograma);
+              normalizaVector(histograma);
+              ecualizarRadio(canales[2], histograma, x,y);
+            }
+
+          }
+        }
+
+       }
 
 	   //Hacemos un merge de los canales
 
