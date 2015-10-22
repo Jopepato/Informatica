@@ -2,8 +2,8 @@
 
 
 int main(){
-	int maximo=0;
-	int minimo=99999;
+	int maximo;
+	int minimo;
 	int nEle;
 	int llamadas=0;
 	vector<int> v;
@@ -11,9 +11,11 @@ int main(){
 	cout << "Introduce el numero de elementos: ";
 	cin >> nEle;
 
+	srand(time(NULL));
+
 	rellenaVector(v, nEle);
 	muestraVector(v);
-	minimoMaximo(v, nEle, 1, nEle, maximo, minimo, llamadas);
+	minimoMaximo(v, nEle-1, 0, nEle-1, maximo, minimo, llamadas);
 
 	cout << endl << "El maximo es: " << maximo << endl;
 	cout << "El minimo es: " << minimo << endl;

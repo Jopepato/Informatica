@@ -25,6 +25,7 @@ void muestraVector(const vector<T> &v){
 	for(int i=0; i<v.size(); i++){
 		cout << v[i] << " ";
 	}
+	cout << endl;
 }
 
 template <class T>
@@ -72,8 +73,11 @@ void minimoMaximo(vector<T> &v, int n, int i, int j, int &max, int &min, int &ll
 	if(i==j){
 		max = v[i];
 		min = v[i];
+		cout << "Caso base" << endl;
+		cout << "max "<< max<<endl;
+		cout <<" min "<< min <<endl;
 	}else{
-		if(i ==j-1){
+		if(i ==(j-1)){
 			if(v[i]<v[j]){
 				max = v[j];
 				min = v[i];
@@ -81,12 +85,17 @@ void minimoMaximo(vector<T> &v, int n, int i, int j, int &max, int &min, int &ll
 				max = v[i];
 				min = v[j];
 			}
+
+		cout << "Caso genereal" << endl;
+		cout << "max "<< max<<endl;
+		cout <<" min "<< min <<endl;
 		}else{
 			mitad = (i+j)/2;
 			llamadas++;
 			minimoMaximo(v,n,i,mitad,maximo1,minimo1, llamadas);
 			llamadas++;
 			minimoMaximo(v,n,mitad+1,j,maximo2, minimo2, llamadas);
+			//muestraVector(v);
 			max = Maximo(maximo1, maximo2);
 			min = Minimo(minimo1, minimo2);
 
