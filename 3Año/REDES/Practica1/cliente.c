@@ -11,8 +11,8 @@ int main(){
   struct sockaddr_in servidor;
   int descriptor;
   int envio, recibido;
-  char * mensajeRec;
-  char * mensaje = "Holo server";
+  char mensajeRec[100];
+  char mensaje[100];
 
   //Le asignamos los datos al sockaddr
   servidor.sin_family = AF_INET;
@@ -26,6 +26,8 @@ int main(){
     printf ("No se puede abrir socket servidor\n");
     return (-1);
   }
+  printf("Introduce la opcion: ");
+  scanf("%s", mensaje);
 
 
   //Vamos a enviarle un mensaje al servidor
@@ -39,7 +41,7 @@ int main(){
     recibido = recvfrom(descriptor, (char*)&mensajeRec, sizeof(mensajeRec), 0, (struct sockaddr*) &servidor, &longitud_Servidor);
 
     if(recibido>0){
-      printf("Mensaje de vuelta Ü\n");
+      printf("%s\n", mensajeRec);
     }else{
       printf("Ningun mensaje de vuelta\n");
     }

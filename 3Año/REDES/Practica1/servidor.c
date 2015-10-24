@@ -4,20 +4,25 @@
 #include <netinet/in.h>
 #include <netdb.h>
 #include <string.h>
+#include <time.h>
+#include <stdlib.h>
 //Includes de las librerias para que funcione el cliente servidor
 
 int main(){
 
   struct sockaddr_in servidor;
   struct sockaddr_in cliente;
-  char * buffer;
-  char * mensaje;
+  char buffer[100];
+  char *mensaje;
+  mensaje = (char*)malloc(100*sizeof(char));
   int recibido;
+  time_t tiempo;
+  struct tm *stTm;
 
   int longitud_cliente = sizeof(cliente);
   int descriptor;
 
-
+  stTm = localtime(&tiempo);
 
   descriptor = socket(AF_INET, SOCK_DGRAM, 0);
   if (descriptor == -1)
@@ -47,8 +52,24 @@ int main(){
 
     if(recibido > 0){
 
+        if(strcmp(buffer, "DAY") == 0){
+
+              strftime(buffer,100,"%A, %d of %B of %Y", stTm);
+
+         }else if(strcmp(buffer, "DAYTIME") == 0){
+
+               strftime(buffer,80,"%A, %d of %B of %Y; %H:%M:%S", stTm);
+
+         }else if(strcmp(buffer, "TIME") == 0){
+
+                strftime(buffer,80,"%H:%M:%S", stTm);
+
+        }else{
+          strcpy(buffer, "No coincide");
+        }
+
       //Aqui le enviaremos un mensaje al cliente si el servidor ha recibido algo
-      sendto (descriptor, &mensaje, sizeof(mensaje), 0, (struct sockaddr *) &cliente, longitud_cliente);
+      sendto (descriptor, &buffer, sizeof(buffer), 0, (struct sockaddr *) &cliente, longitud_cliente);
       printf("Mensaje recibido\n");
     }
 
