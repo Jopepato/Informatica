@@ -15,9 +15,14 @@
 #include <sstream>
 
 using namespace std;
+using namespace cv;
 
 void help();
 
+void unsharp(Mat &imagen, Mat &imagenPasoBaja, float g);
+void unsharp(Mat &image, Mat &imagenPasoBaja, Mat &mascara, float g);
+void butterworth(Mat &imagenPasoBaja, int r, int n);
+void butterworthMascara(Mat &imagenPasoBaja, Mat &mascara, int r, int n);
 
 
 

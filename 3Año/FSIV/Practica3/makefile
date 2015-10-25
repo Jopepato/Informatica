@@ -1,2 +1,2 @@
 all:
-	g++ -Wall ithreshold.cpp funciones.cpp -o ithreshold `pkg-config opencv --cflags --libs`
+	g++ unsharp.cpp funciones.cpp -o unsharp `pkg-config opencv --cflags --libs`
