@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.contrib import admin
 # Create your models here.
 
 class Autor(models.Model):
@@ -13,7 +13,11 @@ class Seccion(models.Model):
 
 class Noticia(models.Model):
 	name = models.CharField(max_length=100)
-	subtitle = models.CharField(max_lenght=100)
+	subtitle = models.CharField(max_length=100)
 	autor = models.ForeignKey(Autor)
 	seccion = models.ForeignKey(Seccion)
 
+
+admin.site.register(Autor)
+admin.site.register(Seccion)
+admin.site.register(Noticia)
