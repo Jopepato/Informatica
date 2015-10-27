@@ -1,15 +1,7 @@
-#include <stdio.h>
-#include <sys/types.h>
-#include <sys/socket.h>
-#include <netinet/in.h>
-#include <netdb.h>
-#include <stdlib.h>
-#include <string.h>
+#include "funciones.h"
 
+int main(int argc, char ** argv){
 
-
-main ( )
-{
   
 	/*---------------------------------------------------- 
 		Descriptor del socket y buffer de datos                
@@ -112,5 +104,5 @@ main ( )
 		
     close(sd);
 		
-}
 
+}

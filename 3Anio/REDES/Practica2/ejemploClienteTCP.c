@@ -26,7 +26,7 @@ main ( )
 	if (sd == -1)
 	{
 		perror("No se puede abrir el socket cliente\n");
-    		exit (1);	
+		exit (1);
 	}
 
 	

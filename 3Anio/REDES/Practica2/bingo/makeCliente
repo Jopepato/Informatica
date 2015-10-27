@@ -1,0 +1,2 @@
+all:
+	gcc cliente.c funciones.c -o cliente
