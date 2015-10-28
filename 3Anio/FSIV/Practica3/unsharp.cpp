@@ -127,7 +127,9 @@ int main(int argc, char **argv){
 
       cout << "Hola1" << endl;
       dft(imagen, fourier);
-      //Aplicamos el filtro butterworth
+      
+
+//Aplicamos el filtro butterworth
       cout << "Hola2" << endl;
       namedWindow("Transformada", CV_WINDOW_AUTOSIZE);
       imshow("Transformada", fourier);
