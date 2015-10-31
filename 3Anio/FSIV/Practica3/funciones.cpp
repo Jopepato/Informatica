@@ -12,32 +12,15 @@ void help(){
 	cout << "g [0.0, 5.0]: Ganancia del realce" << endl;
 }
 
-void unsharp(Mat &imagen, Mat &imagenPasoBaja, float g){
-
-	//Recorremos la imagen y la vamos cambiando
+void unsharp(Mat imagenPasoBaja, Mat imagen, Mat &output, float g){
 	for(int i=0; i<imagen.rows; i++){
 		for(int j=0; j<imagen.cols; j++){
-			imagen.at<uchar>(i,j) = (g+1)*imagen.at<uchar>(i,j)-(g*imagenPasoBaja.at<uchar>(i,j));
+			output.at<uchar>(i,j) = (g+1)*imagen.at<uchar>(i,j) - g*imagenPasoBaja.at<uchar>(i,j);
 		}
 	}
-	//Con esto ya tendremos el unsharp
 }
 
-void unsharp(Mat &imagen, Mat &imagenPasoBaja, Mat &mascara, float g){
-
-//Recorremos la imagen y la vamos cambiando
-	for(int i=0; i<imagen.rows; i++){
-		for(int j=0; j<imagen.cols; j++){
-			//Comprobamos la mascara
-			if(mascara.at<uchar>(i,j)!=0){
-				imagen.at<uchar>(i,j) = (g+1)*imagen.at<uchar>(i,j)-(g*imagenPasoBaja.at<uchar>(i,j));
-			}
-		}
-	}
-	//Con esto ya tendremos el unsharp
-}
-
-void butterworth(Mat &imagenPasoBaja, int r, int n){
+void butterworth(Mat &imagenPasoBaja, float r, int n){
 
 	for(int i=0; i<imagenPasoBaja.rows; i++){
 		for(int j=0; j<imagenPasoBaja.cols; j++){
@@ -47,7 +30,7 @@ void butterworth(Mat &imagenPasoBaja, int r, int n){
 	//Ya tenemos la imagen con paso bajo
 }
 
-void butterworthMascara(Mat &imagenPasoBaja, Mat &mascara, int r, int n){
+void butterworthMascara(Mat &imagenPasoBaja, Mat &mascara, float r, int n){
 
 	for(int i=0; i<imagenPasoBaja.rows; i++){
 		for(int j=0; j<imagenPasoBaja.cols; j++){
