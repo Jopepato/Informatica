@@ -10,7 +10,7 @@ float g=1.0;
       cout << "Imagen especificada invalida" << endl;
       exit(-1);
     }else{
-     /* Mat padded;
+     Mat padded;
       int m = getOptimalDFTSize(imagen.rows);
       int n = getOptimalDFTSize(imagen.cols);
       copyMakeBorder(imagen, padded, 0, m - imagen.rows, 0, n - imagen.cols, BORDER_CONSTANT, Scalar::all(0));
@@ -62,16 +62,10 @@ float g=1.0;
    	//imshow("Final", output);
     waitKey();
 
-    //Hacemos la inversa
-    idft(magI, magI);
 
-      imshow("Final", magI);
-      waitKey(0);
-
-*/
 
       //Imagen
-      imshow("Imagen", imagen);
+    /*  imshow("Imagen", imagen);
       waitKey(0);
       Mat fImage;
       imagen.convertTo(fImage, CV_32F);
@@ -98,7 +92,7 @@ float g=1.0;
 
       imshow("Final", output);
       waitKey(0);
-
+*/
 
 
 return 0;

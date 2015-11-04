@@ -22,6 +22,8 @@ int main(){
   int longitud_cliente = sizeof(cliente);
   int descriptor;
 
+tiempo = time(NULL);
+
   stTm = localtime(&tiempo);
 
   descriptor = socket(AF_INET, SOCK_DGRAM, 0);
@@ -52,17 +54,17 @@ int main(){
 
     if(recibido > 0){
 
-        if(strcmp(buffer, "DAY") == 0){
+	   if(strcmp(buffer, "DAY") == 0){
 
               strftime(buffer,100,"%A, %d of %B of %Y", stTm);
 
          }else if(strcmp(buffer, "DAYTIME") == 0){
 
-               strftime(buffer,80,"%A, %d of %B of %Y; %H:%M:%S", stTm);
+               strftime(buffer,100,"%A, %d of %B of %Y; %H:%M:%S", stTm);
 
          }else if(strcmp(buffer, "TIME") == 0){
 
-                strftime(buffer,80,"%H:%M:%S", stTm);
+                strftime(buffer,100,"%H:%M:%S", stTm);
 
         }else{
           strcpy(buffer, "No coincide");

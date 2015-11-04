@@ -7,6 +7,11 @@
 //Includes de las librerias para que funcione el cliente servidor
 
 int main(int argc, char ** argv){
+	
+	if(argc!=3){
+		printf("Hay que introducir la IP y el timeout\n");
+		return(-1);
+	}
 
   struct sockaddr_in servidor;
   int descriptor;
