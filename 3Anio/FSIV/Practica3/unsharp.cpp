@@ -108,7 +108,9 @@ int main(int argc, char **argv){
     if(mascara.empty()){
       cout << "Mascara especificada invalida" << endl;
       exit(-1);
-    }
+    }else{
+	cout << "Mascara cargada con exito" << endl;
+	}
    }
 
 
