@@ -17,9 +17,9 @@ int main(){
 
 	rellenaVector(v, nEle);
 	cout << "Vector generado." << endl;
-	cout << "¿Desea mostrar el vector? (S/n): ";
+	cout << "¿Desea mostrar el vector? (s/n): ";
 	cin >> opcion;
-	if(opcion== 'S'){
+	if(opcion == 's' || opcion == 'S'){
 		cout << endl;
 		muestraVector(v);
 	}
@@ -27,7 +27,7 @@ int main(){
 
 	cout << endl << "El maximo es: " << maximo << endl;
 	cout << "El minimo es: " << minimo << endl;
-	cout << "El numero de llamadas del recusivo: " << llamadas << endl;
+	cout << "El numero de llamadas recursivas: " << llamadas << endl;
 
 	return 0;
 }

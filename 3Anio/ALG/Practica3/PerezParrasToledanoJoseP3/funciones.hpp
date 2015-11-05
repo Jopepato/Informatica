@@ -10,7 +10,6 @@
 using namespace std;
 template <class T>
 void rellenaVector(vector <T> &v, int nEle){
-  //Colocamos la semilla con el tiempo actual
   //Limpiamos el vector por si ya estaba relleno
   v.clear();
   for(int i=0; i<nEle; i++){
@@ -22,10 +21,11 @@ void rellenaVector(vector <T> &v, int nEle){
 template <class T>
 void muestraVector(const vector<T> &v){
 	//Mostramos el vector
-	for(int i=0; i<v.size(); i++){
+	cout << "[ ";
+	for(unsigned int i=0; i<v.size(); i++){
 		cout << v[i] << " ";
 	}
-	cout << endl;
+	cout << "]" << endl;
 }
 
 template <class T>
@@ -69,6 +69,7 @@ void minimoMaximo(vector<T> &v, int n, int i, int j, int &max, int &min, int &ll
 
 			minimoMaximo(v,n,i,mitad,maximo1,minimo1, llamadas);
 			minimoMaximo(v,n,mitad+1,j,maximo2, minimo2, llamadas);
+			//Una vez tenemos los maximos y minimos de las dos mitades, calculamos el maximo y minimo total
 			max = maximo(maximo1, maximo2);
 			min = minimo(minimo1, minimo2);
 		}
