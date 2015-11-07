@@ -1,5 +1,5 @@
 #include "funciones.hpp"
-#include "cambio.hpp"
+#include "moneda.hpp"
 
 int main(){
 
@@ -15,6 +15,7 @@ vector<int> solucion;
 c1.leerFichero(nombreFichero);
 
 //Mostramos el vector de monedas
+cout << "Sistema monetario: " << endl;
 c1.muestraMonedas();
 
 

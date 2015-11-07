@@ -12,29 +12,20 @@
 using namespace std;
 
 
-class cambio{
+class moneda{
 
 	private:
 		vector<int> monedas;
-		vector<int> solucion;
-		int dinero;
 
 	public:
-		inline cambio(){
+		inline moneda(){
 			monedas.clear();
-			solucion.clear();
-			dinero = 0;
 		};
-		void getMonedas();
-		void getSolucion();
-		inline int getDinero(){
-			return dinero;
-		};
-		inline void setDinero(const int &din){
-			dinero = din;
+		void muestraMonedas();
+		inline vector<int> getMonedas(){
+			return monedas;
 		};
 		void leerFichero(const string &nombreFichero);
-		bool encuentraSolucion();
 		void ordenaMonedas();
 
 };
