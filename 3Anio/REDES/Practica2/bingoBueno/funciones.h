@@ -11,6 +11,7 @@
 #include <time.h>
 
 struct cliente{
+	int descriptor;
 	char usuario[50];
 	char password[50];
 	int carton[3][9];
@@ -22,13 +23,16 @@ struct cliente{
 struct partida{
 	struct cliente clientes[4];
 	int bolas[100];
+	int numClientes;
 };
 
 int compruebaElementoVector(int * vector, int elem,int nelem);
 int compruebaElementoMatriz(int ** matriz, int elem);
 int ** generaCarton();
 void muestraCarton(int ** carton);
-
+int registroUsuario(char usuario[50], char password[50]);// 1 si registrado, 0 si nombre ya repetido
+int compruebaUsuario(char usuario[50]);// 1 si verdad, 0 si falso
+int compruebaUsuarioPassword(char usuario[50], char password[50]);//1 si verdad, 0 si falso
 
 
 #endif

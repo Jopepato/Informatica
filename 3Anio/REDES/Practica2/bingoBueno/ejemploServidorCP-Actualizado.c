@@ -69,6 +69,7 @@ main ( )
 	sockname.sin_port = htons(2000);
 	sockname.sin_addr.s_addr =  INADDR_ANY;
 
+    //Asocia el socket con el puerto
 	if (bind (sd, (struct sockaddr *) &sockname, sizeof (sockname)) == -1)
 	{
 		perror("Error en la operación bind");
@@ -118,7 +119,7 @@ main ( )
                     //Buscamos el socket por el que se ha establecido la comunicación
                     if(FD_ISSET(i, &auxfds)) {
                         
-                        if( i == sd){
+                        if(i == sd){
                             
                             if((new_sd = accept(sd, (struct sockaddr *)&from, &from_len)) == -1){
                                 perror("Error aceptando peticiones");
@@ -153,6 +154,7 @@ main ( )
                             
                             
                         }
+                        //La lectura 
                         else if (i == 0){
                             //Se ha introducido información de teclado
                             bzero(buffer, sizeof(buffer));

@@ -52,13 +52,14 @@ int ** generaCarton(){
 
 	for(i=0; i<3; i++){
 		for(j=0; j<9; j++){
-			//Hacemos un if por cada columna para pasarle el numero que le corresponde
 			aux = (rand()%10) +j*10;
 			if(j==8){
 				aux = (rand()%11) +j*10;
 			}
 			if(aux==0){
-				aux=1;
+				while(aux==0){
+					aux=rand()%10;
+				}
 			}
 			if(!compruebaElementoMatriz(carton, aux)){
 				carton[i][j] = aux;
@@ -107,4 +108,88 @@ void muestraCarton(int ** carton){
 		printf("\n");
 	}
 
+}
+
+
+int registroUsuario(char usuario[50], char password[50]){
+	FILE * fichero;
+	char buffer[512];
+	char * usu;
+	char cadena[120];
+	int valido=1;
+
+	fichero = fopen("usuarios.txt", "r");
+
+	valido = compruebaUsuario(usuario);
+
+	//Ahora si valido sigue estando a 1, escribimos
+	if(valido==0){
+		//Escribimos en el fichero
+		fclose(fichero);
+		fichero = fopen("usuarios.txt", "a");
+		strcpy(cadena, usuario);
+		strcat(cadena, " ");
+		strcat(cadena, password);
+		fputs(cadena, fichero);
+		fputs("\n", fichero);
+		//Cerramos fichero
+		fclose(fichero);
+		return 1;
+
+	}else{
+		fclose(fichero);
+		//Devolvemos 0
+		return 0;
+	}
+
+}
+
+int compruebaUsuario(char usuario[50]){
+	FILE * fichero;
+	char buffer[512];
+	int vuelta=0;
+	char * usu;
+
+	fichero = fopen("usuarios.txt", "r");
+
+	while((fgets(buffer,512,fichero))!=NULL){
+		usu = strtok(buffer, " ");
+		if(strcmp(usu, usuario)==0){
+			vuelta=1;// El usuario ya existe en el fichero	
+		}
+	}
+
+	return vuelta;
+}
+
+int compruebaUsuarioPassword(char usuario[50], char password[50]){
+	FILE * fichero;
+	char buffer[512];
+	int vuelta=0;
+	char * usu;
+	char * pass;
+	char aux[50];
+
+	fichero = fopen("usuarios.txt", "r");
+
+	while((fgets(buffer, 512, fichero))!=NULL){
+		usu = strtok(buffer, " ");
+
+		if(strcmp(usu, usuario)==0){
+			//Comprobamos la contraseña
+			strncpy(aux, buffer+strlen(usu)+1, 50);
+			
+			pass = strtok(aux, "\n");
+			//Y ahora comparamos la pass dada con la de ese usuario
+			if(strcmp(pass, password)==0){
+				vuelta=1;
+			}
+
+		}
+
+	}
+
+	fclose(fichero);
+
+	return vuelta;
 }
