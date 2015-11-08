@@ -9,6 +9,10 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+#include <signal.h>
+
+#define MAX_CLIENTES 40
+#define MSG_SIZE 512
 
 struct cliente{
 	int descriptor;

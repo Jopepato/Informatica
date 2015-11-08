@@ -1,27 +1,14 @@
-#include <stdio.h>
-#include <sys/types.h>
-#include <sys/socket.h>
-#include <netinet/in.h>
-#include <netdb.h>
-#include <stdlib.h>
-#include <string.h>
-#include <signal.h>
+#include "funciones.h"
 
 
-#define MSG_SIZE 250
-#define MAX_CLIENTS 50
-
-
-/*
- * El servidor ofrece el servicio de un chat
- */
 
 void manejador(int signum);
 void salirCliente(int socket, fd_set * readfds, int * numClientes, int arrayClientes[]);
 
 
 
-main ( )
+
+void main ( )
 {
   
 	/*---------------------------------------------------- 
@@ -30,11 +17,18 @@ main ( )
 	int sd, new_sd;
 	struct sockaddr_in sockname, from;
 	char buffer[MSG_SIZE];
+	char buffer2[MSG_SIZE];
 	socklen_t from_len;
     fd_set readfds, auxfds;
     int salida;
-    int arrayClientes[MAX_CLIENTS];
+    struct cliente arrayClientes[MAX_CLIENTES];
     int numClientes = 0;
+    char * opcion;
+    char * aux;
+    char * aux2;
+    char usuario[50];
+    char password[50];
+    int comprueba;
     //contadores
     int i,j,k;
 	int recibidos;
@@ -126,21 +120,17 @@ main ( )
                             }
                             else
                             {
-                                if(numClientes < MAX_CLIENTS){
-                                    arrayClientes[numClientes] = new_sd;
+                                if(numClientes < MAX_CLIENTES){
+                                    arrayClientes[numClientes].descriptor = new_sd;
                                     numClientes++;
-                                    FD_SET(new_sd,&readfds);
-                                
-                                    strcpy(buffer, "Bienvenido al chat\n");
-                                
+                                    FD_SET(new_sd, &readfds);
+                                	bzero(buffer,sizeof(buffer));
+
+                                    sprintf(buffer, "Bienvenido al bingo, tu descriptor es: %d\n", new_sd);
+
                                     send(new_sd,buffer,strlen(buffer),0);
                                 
-                                    for(j=0; j<(numClientes-1);j++){
                                     
-                                        bzero(buffer,sizeof(buffer));
-                                        sprintf(buffer, "Nuevo Cliente conectado: %d\n",new_sd);
-                                        send(arrayClientes[j],buffer,strlen(buffer),0);
-                                    }
                                 }
                                 else
                                 {
@@ -164,9 +154,9 @@ main ( )
                             if(strcmp(buffer,"SALIR\n") == 0){
                              
                                 for (j = 0; j < numClientes; j++){
-                                    send(arrayClientes[j], "Desconexion servidor\n", strlen("Desconexion servidor\n"),0);
+                                    send(arrayClientes[j].descriptor, "Desconexion servidor\n", strlen("Desconexion servidor\n"),0);
                                     close(arrayClientes[j]);
-                                    FD_CLR(arrayClientes[j],&readfds);
+                                    FD_CLR(arrayClientes[j].descriptor,&readfds);
                                 }
                                     close(sd);
                                     exit(-1);
@@ -182,23 +172,50 @@ main ( )
                             recibidos = recv(i,buffer,sizeof(buffer),0);
                             
                             if(recibidos > 0){
-                                
-                                if(strcmp(buffer,"SALIR\n") == 0){
-                                    
-                                    salirCliente(i,&readfds,&numClientes,arrayClientes);
-                                    
-                                }
-                                else{
-                                    
-                                    sprintf(identificador,"%d: %s",i,buffer);
-                                    bzero(buffer,sizeof(buffer));
-                                    strcpy(buffer,identificador);
-                                    
-                                    for(j=0; j<numClientes; j++)
-                                        if(arrayClientes[j] != i)
-                                            send(arrayClientes[j],buffer,strlen(buffer),0);
 
+                            	printf("%s", buffer);
+                            	strcpy(buffer2, buffer);
+                            	printf("%s", buffer2);
+                            	opcion = strtok(buffer2, " ");
+                            	printf("%s\n", opcion);
+                            	fflush(stdout);
+                            	//Aqui miramos todas las opciones para ver que hacer
+                                
+                                if(strcmp(opcion,"SALIR") == 0){
+                                	//Opcion SALIR
                                     
+                                    //salirCliente(i,&readfds,&numClientes,arrayClientes);
+                                    
+                                }else if(strcmp(opcion, "REGISTER")==0){
+                                	//-u USUARIO -p PASSWORD
+                                	strncpy(aux, buffer+strlen(opcion)+4, 100);
+                                	aux2 = strtok(aux, " ");
+                                	printf("Se supone que el user\n%s\n", aux2);
+                                	fflush(stdout);
+                                	//Ya tenemos el nombre del usuario
+                                	strcpy(usuario, aux2);
+                                	printf("%s", usuario);
+                                	//Ahora cogemos la contraseña
+                                	strncpy(aux, buffer+strlen(opcion)+4+strlen(usuario)+4, 512);
+                                	aux2 = strtok(aux, "\n");
+                                	strcpy(password, aux2);
+                                	if(registroUsuario(usuario, password)==1){
+                                		//Ha salido bien
+                                		send(i, "+Ok, usuario registrado\n", strlen("+Ok, usuario registrado\n"),0 );
+                                	}else{
+                                		//Ha salido mal
+                                		send(i, "-ERR, usuario ya existente\n", strlen("-ERR, usuario ya existente\n"),0 );
+                                	}
+
+
+                                }else if(strcmp(opcion, "USUARIO")==0){
+                                	//OPCION USUARIO
+
+                                }else if(strcmp(opcion, "PASSWORD")==0){
+                                	//OPCION PASSWORD
+
+                                }else{
+                                	send(i, "Cosa rara\n", strlen("Cosa rara\n"), 0);
                                 }
                                                                 
                                 
@@ -208,7 +225,7 @@ main ( )
                             {
                                 printf("El socket %d, ha introducido ctrl+c\n", i);
                                 //Eliminar ese socket
-                                salirCliente(i,&readfds,&numClientes,arrayClientes);
+                                //salirCliente(i,&readfds,&numClientes,arrayClientes);
                             }
                         }
                     }
@@ -219,6 +236,7 @@ main ( )
 		close(sd);
 	
 }
+
 
 void salirCliente(int socket, fd_set * readfds, int * numClientes, int arrayClientes[]){
   
