@@ -1,0 +1,16 @@
+<html>
+<head> </head>
+
+<body>
+{% if lista %}
+	<ul>
+		{% for x in lista %}
+			<li><a href="/noticias/{{x.id}}/">{{x.name}}</a></li>
+		{% endfor %}
+	</ul>
+{% else %}
+	<h2>No news available</h2>
+{% endif %}
+</body>
+
+</html>
