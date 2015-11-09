@@ -12,32 +12,20 @@ void help(){
 	cout << "g [0.0, 5.0]: Ganancia del realce" << endl;
 }
 
-void unsharp(Mat imagenPasoBaja, Mat imagen, Mat &output, float g){
-	for(int i=0; i<imagen.rows; i++){
-		for(int j=0; j<imagen.cols; j++){
-			output.at<uchar>(i,j) = (g+1)*imagen.at<uchar>(i,j) - g*imagenPasoBaja.at<uchar>(i,j);
+void butterworth(Mat &filtro, float r, float n){
+	Mat aux = Mat(filtro.rows, filtro.cols, CV_32F);
+
+	Point centro = Point(filtro.rows/2, filtro.cols/2);
+	double radio;
+
+	for(int i=0; i<filtro.rows; i++){
+		for(int j=0; j<filtro.cols; j++){
+			radio = (double)sqrt(pow(i-centro.x, 2.0) + pow(j-centro.y, 2.0));
+			aux.at<float>(i,j) = (float)(1/(1+pow(radio/r, 2*n)));
 		}
 	}
-}
 
-void butterworth(Mat &imagenPasoBaja, float r, int n){
+	Mat toMerge[] = {tmp, tmp};
 
-	for(int i=0; i<imagenPasoBaja.rows; i++){
-		for(int j=0; j<imagenPasoBaja.cols; j++){
-			imagenPasoBaja.at<uchar>(i,j) = imagenPasoBaja.at<uchar>(i,j) * 1/(1+pow((1+r),2*n));
-		}
-	}
-	//Ya tenemos la imagen con paso bajo
-}
-
-void butterworthMascara(Mat &imagenPasoBaja, Mat &mascara, float r, int n){
-
-	for(int i=0; i<imagenPasoBaja.rows; i++){
-		for(int j=0; j<imagenPasoBaja.cols; j++){
-			//Comprobamos la mascara
-			if(mascara.at<uchar>(i,j)!=0){
-				imagenPasoBaja.at<uchar>(i,j) = 1/(1+pow((1+r),2*n));
-			}
-		}
-	}
+	merge(toMerge, 2, filtro);
 }

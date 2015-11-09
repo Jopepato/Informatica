@@ -193,3 +193,18 @@ int compruebaUsuarioPassword(char usuario[50], char password[50]){
 
 	return vuelta;
 }
+
+//Devuelve la posicion en la que se encuentra el cliente segundo el descriptor dado
+int devuelvePosicion(struct cliente arrayClientes[MAX_CLIENTES], int descriptor, int numClientes){
+
+	//Recorremos el array, buscando 
+	int i;
+
+	for(i=0; i<numClientes; i++){
+		if(arrayClientes[i].descriptor == descriptor){
+			return i;
+		}
+	}
+
+	return -1;
+}

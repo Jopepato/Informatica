@@ -24,7 +24,7 @@ void main ( )
     struct cliente arrayClientes[MAX_CLIENTES];
     int numClientes = 0;
     char * opcion;
-    char * aux;
+    char aux[MSG_SIZE];
     char * aux2;
     char usuario[50];
     char password[50];
@@ -122,6 +122,7 @@ void main ( )
                             {
                                 if(numClientes < MAX_CLIENTES){
                                     arrayClientes[numClientes].descriptor = new_sd;
+                                    arrayClientes[numClientes].estado = 0;
                                     numClientes++;
                                     FD_SET(new_sd, &readfds);
                                 	bzero(buffer,sizeof(buffer));
@@ -173,12 +174,8 @@ void main ( )
                             
                             if(recibidos > 0){
 
-                            	printf("%s", buffer);
                             	strcpy(buffer2, buffer);
-                            	printf("%s", buffer2);
                             	opcion = strtok(buffer2, " ");
-                            	printf("%s\n", opcion);
-                            	fflush(stdout);
                             	//Aqui miramos todas las opciones para ver que hacer
                                 
                                 if(strcmp(opcion,"SALIR") == 0){
@@ -190,12 +187,11 @@ void main ( )
                                 	//-u USUARIO -p PASSWORD
                                 	strncpy(aux, buffer+strlen(opcion)+4, 100);
                                 	aux2 = strtok(aux, " ");
-                                	printf("Se supone que el user\n%s\n", aux2);
                                 	fflush(stdout);
                                 	//Ya tenemos el nombre del usuario
                                 	strcpy(usuario, aux2);
-                                	printf("%s", usuario);
                                 	//Ahora cogemos la contraseña
+                                	bzero(aux, sizeof(aux));
                                 	strncpy(aux, buffer+strlen(opcion)+4+strlen(usuario)+4, 512);
                                 	aux2 = strtok(aux, "\n");
                                 	strcpy(password, aux2);
@@ -210,9 +206,11 @@ void main ( )
 
                                 }else if(strcmp(opcion, "USUARIO")==0){
                                 	//OPCION USUARIO
+                                	send(i, "Holi\n", sizeof("Holi\n"), 0);
 
                                 }else if(strcmp(opcion, "PASSWORD")==0){
                                 	//OPCION PASSWORD
+                                	send(i, "Holo\n", sizeof("Holo\n"), 0);
 
                                 }else{
                                 	send(i, "Cosa rara\n", strlen("Cosa rara\n"), 0);

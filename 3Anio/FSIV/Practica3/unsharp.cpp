@@ -127,30 +127,6 @@ int main(int argc, char **argv){
     }else{
       //Sin mascara
 
-      cout << "Hola1" << endl;
-      dft(imagen, fourier);
-      
-
-//Aplicamos el filtro butterworth
-      cout << "Hola2" << endl;
-      namedWindow("Transformada", CV_WINDOW_AUTOSIZE);
-      imshow("Transformada", fourier);
-      waitKey(0);
-
-
-      //Y hacemos la inversa de fourier
-      dft(fourier, imagenPasoBaja, DFT_INVERSE);
-
-
-      //Hacemos unsharp
-      output = (g+1)*imagen - g*imagenPasoBaja;
-
-      //Ahora la mostramos
-      namedWindow("Terminao", CV_WINDOW_AUTOSIZE);
-      imshow("Terminao", output);
-      waitKey(0);
-    }
-
 
    }else{
     //Imagen a color, pasamos a HSV

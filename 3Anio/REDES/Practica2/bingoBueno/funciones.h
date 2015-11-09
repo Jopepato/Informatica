@@ -20,8 +20,9 @@ struct cliente{
 	char password[50];
 	int carton[3][9];
 	int estado; //0 acaba de llegar
-				//1 login
-				//2 registro
+				//1 login con usuario correcto
+				//2 usuario y pass correcta, tenia que tener un 1
+				//3 ha pedido partida, tenia que tener un 2
 };
 
 struct partida{
@@ -37,6 +38,7 @@ void muestraCarton(int ** carton);
 int registroUsuario(char usuario[50], char password[50]);// 1 si registrado, 0 si nombre ya repetido
 int compruebaUsuario(char usuario[50]);// 1 si verdad, 0 si falso
 int compruebaUsuarioPassword(char usuario[50], char password[50]);//1 si verdad, 0 si falso
+int devuelvePosicion(struct cliente arrayClientes[MAX_CLIENTES], int descriptor, int numClientes);
 
 
 #endif

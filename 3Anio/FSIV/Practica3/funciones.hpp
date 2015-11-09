@@ -19,7 +19,7 @@ using namespace cv;
 
 void help();
 
-void butterworth(Mat &imagenPasoBaja, float r, int n);
+void butterworth(Mat &filtro, float r, int n);
 void butterworthMascara(Mat &imagenPasoBaja, Mat &mascara, int r, int n);
 void unsharp(Mat imagenPasoBaja, Mat imagen, Mat &output, float g);
 
