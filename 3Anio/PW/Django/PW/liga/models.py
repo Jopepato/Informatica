@@ -6,7 +6,7 @@ from django.contrib import admin
 class Team(models.Model):
 	name = models.CharField(max_length=50, null=False)
 	city = models.CharField(max_length=50)
-	birth_date = models.DateField(auto_now=False, null=False)
+	birth_date = models.DateField(auto_now=False, null=True)
 	trainer_name = models.CharField(max_length=100, null=False)
 	description = models.CharField(max_length=300)
 	def __unicode__(self):
