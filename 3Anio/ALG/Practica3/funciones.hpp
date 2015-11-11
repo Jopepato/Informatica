@@ -66,7 +66,7 @@ void minimoMaximo(vector<T> &v, int n, int i, int j, int &max, int &min, int &ll
 			}
 		}else{
 			mitad = (i+j)/2;
-
+			
 			minimoMaximo(v,n,i,mitad,maximo1,minimo1, llamadas);
 			minimoMaximo(v,n,mitad+1,j,maximo2, minimo2, llamadas);
 			max = maximo(maximo1, maximo2);
