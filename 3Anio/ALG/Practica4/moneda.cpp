@@ -3,8 +3,8 @@
 void moneda::muestraMonedas(){
 
 	//Mostramos el vector de monedas
-	for(unsigned int i=0; i<monedas.size(); i++){
-		cout << monedas[i] << " ";
+	for(unsigned int i=0; i<monedas_.size(); i++){
+		cout << monedas_[i] << " ";
 	}
 	cout << endl;
 };
@@ -12,21 +12,23 @@ void moneda::muestraMonedas(){
 
 void moneda::leerFichero(const string &nombreFichero){
 
-	monedas.clear();
+	monedas_.clear();
 	fstream fichero;
 	fichero.open(nombreFichero.c_str(), fstream::in);
 	int aux;
 
 	while(!fichero.eof()){
 		fichero >> aux;
-		monedas.push_back(aux);
+		monedas_.push_back(aux);
 	}
-	monedas.pop_back();
+	monedas_.pop_back();
 	fichero.close();
 
 	//Ordenamos el vector
 	//Primero vemos si necesitamos ordenar
+	if(!estaOrdenadoDec(monedas_)){
 		ordenaMonedas();
+	}
 	
 
 };
@@ -34,12 +36,12 @@ void moneda::leerFichero(const string &nombreFichero){
 void moneda::ordenaMonedas(){
 	//Si el fichero que leemos no esta ordenado de mayor a menor lo ordenamos
   int aux;
-  for(unsigned int i=0; i<=monedas.size(); i++){
-    for(unsigned int j=0; j<monedas.size(); j++){
-      if(monedas[j]<monedas[j+1]){
-        aux = monedas[j];
-        monedas[j] = monedas[j+1];
-        monedas[j+1] = aux;
+  for(unsigned int i=0; i<=monedas_.size(); i++){
+    for(unsigned int j=0; j<monedas_.size(); j++){
+      if(monedas_[j]<monedas_[j+1]){
+        aux = monedas_[j];
+        monedas_[j] = monedas_[j+1];
+        monedas_[j+1] = aux;
       }//finsi
     }//finpara J
   }//finpara I

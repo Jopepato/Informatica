@@ -13,6 +13,6 @@ using namespace std;
 
 bool estaOrdenadoDec(vector<int> v);
 void muestraSolucion(vector<int> monedas, vector<int> solucion);
-bool encuentraSolucion(vector<int> monedas, vector<int> &solucion,const int &dinero);
+bool encuentraCambio(vector<int> monedas, vector<int> &solucion,const int &dinero);
 
 #endif

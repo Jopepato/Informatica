@@ -29,7 +29,7 @@ dinero = euros+centimos;
 //Metemos el dinero en centimos en el cambio
 
 //Suponemos que el vector de monedas esta ordenado de forma decreciente
-	if(encuentraSolucion(c1.getMonedas(), solucion, dinero)){
+	if(encuentraCambio(c1.getMonedas(), solucion, dinero)){
 		cout << "Se ha encontrado una solucion: " << endl;
 	}else{
 		cout << "No se ha encontrado una solucion" << endl;

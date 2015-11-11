@@ -2,6 +2,7 @@
 
 
 bool estaOrdenadoDec(vector<int> v){
+	//Para comprobar si el vector esta ordenado de mayor a menor
 	for(unsigned int i=0; i<v.size(); i++){
 		if(v[i]<v[i+1])
 			return false;
@@ -42,7 +43,7 @@ void muestraSolucion(vector<int> monedas, vector<int> solucion){
 }
 
 
-bool encuentraSolucion(vector<int> monedas, vector<int> &solucion,const int &dinero){
+bool encuentraCambio(vector<int> monedas, vector<int> &solucion,const int &dinero){
 
 //Limpiamos el vector solucion
 //El vector monedas tiene que estar ordenado de menor a mayor

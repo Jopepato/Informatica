@@ -15,16 +15,24 @@ using namespace std;
 class moneda{
 
 	private:
-		vector<int> monedas;
+		vector<int> monedas_;
 
 	public:
+		//Constructor
 		inline moneda(){
-			monedas.clear();
+			monedas_.clear();
 		};
-		void muestraMonedas();
+		//Observador
 		inline vector<int> getMonedas(){
-			return monedas;
+			return monedas_;
 		};
+		//Modificador
+		inline void setMonedas(const vector<int> &monedas){
+			monedas_ = monedas;
+		};
+
+		//Funciones
+		void muestraMonedas();
 		void leerFichero(const string &nombreFichero);
 		void ordenaMonedas();
 
