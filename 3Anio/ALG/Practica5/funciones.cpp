@@ -12,14 +12,6 @@ bool estaOrdenadoDec(vector<int> v){
 
 void muestraSolucion(vector<int> monedas, vector<int> solucion){
 
-	/*
-	//Mostramos el vector solucion
-	for(unsigned int i=0; i<solucion.size(); i++){
-		cout << solucion[i] << " ";
-	}
-	cout << endl;
-	*/
-
 	int contador=0;
 	cout << endl;
 	//Recorremos el vector de monedas y vamos mostrando las ocurrencias de cada uno en el otro vector
@@ -78,25 +70,30 @@ unsigned int i;
 
 bool encuentraCambioDinamico(vector<int> monedas, int &dinero, int ** matrizSolucion){
 
+	int aux;
 	//Comenzamos el algoritmo
-	for(int i=0; i<monedas.size(); i++){
+	for(unsigned int i=0; i<monedas.size(); i++){
 		matrizSolucion[i][0] = 0;
 	}
 
-	for(int i=1; i<monedas.size(); i++){
+	for(unsigned int i=0; i<monedas.size(); i++){
 		for(int j=0; j<dinero; j++){
-			if(i==j && j<monedas[i]){
-				matrizSolucion[i][j] = INFINITY;
+			if(i==0 && j<monedas[i]){
+				matrizSolucion[i][j] = numeric_limits<int>::infinity();
 			}else{
-
-			}if(j<monedas[i]){
-				matrizSolucion[i][j] = matrizSolucion[i-1][j];
-			}else{
-				matrizSolucion[i][j] = minimo(matrizSolucion[i-1][j], matrizSolucion[i][j-monedas[i]]);
+				if(i==0){
+				matrizSolucion[i][j] = 1 + matrizSolucion[i][j-monedas[0]];
+				}else{
+					if(j<monedas[i]){
+						matrizSolucion[i][j] = matrizSolucion[i-1][j];
+					}else{
+						aux = minimo(matrizSolucion[i-1][j], 1+matrizSolucion[i][j-monedas[i]]);
+						matrizSolucion[i][j] = aux;
+					}
+				}
 			}
 		}
 	}
-
 	return true;
 }
 
@@ -108,3 +105,44 @@ int minimo(int a1, int a2){
 		return a2;
 	}
 }
+
+void muestraMatriz(int ** matriz,vector<int> monedas, int fil, int col){
+	for(int i=0; i<fil; i++){
+		cout << monedas[i] << " ------>   ";
+		for(int j=0; j<col; j++){
+			cout << matriz[i][j] << " ";
+		}
+			cout << endl;
+	}
+}
+
+bool rellenaSolucionDinamica(int ** matriz, int fil, int col, vector<int> monedas, vector<int> &solucion){
+
+	//Aqui vamos a rellenar el vector de soluciones
+	int i=fil-1, j=col-1;
+	while(j!=0 && i>-1){
+		if(i!=0){
+			if(matriz[i][j] == matriz[i-1][j]){
+				i--;
+			}else{
+				if(matriz[i][j-monedas[i]]+1 == matriz[i][j]){
+					solucion.push_back(monedas[i]);
+					j = j-monedas[i];
+				}
+			}
+		}else{
+			if(matriz[i][j-monedas[i]]+1 == matriz[i][j]){
+				solucion.push_back(monedas[i]);
+				j = j-monedas[i];
+			}else{
+				//Aqui entra cuando no hay nada mas para comparar ya que no encuentra la solucion optima
+				//Sin este apartado se quedaria en un bucle infinito
+				return false;
+			}
+		}
+		
+	}
+
+	return true;
+
+};

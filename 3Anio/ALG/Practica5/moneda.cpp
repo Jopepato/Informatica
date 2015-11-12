@@ -27,13 +27,13 @@ void moneda::leerFichero(const string &nombreFichero){
 	//Ordenamos el vector
 	//Primero vemos si necesitamos ordenar
 	if(!estaOrdenadoDec(monedas_)){
-		ordenaMonedas();
+		ordenaMonedasDesc();
 	}
 	
 
 };
 
-void moneda::ordenaMonedas(){
+void moneda::ordenaMonedasDesc(){
 	//Si el fichero que leemos no esta ordenado de mayor a menor lo ordenamos
   int aux;
   for(unsigned int i=0; i<=monedas_.size(); i++){
@@ -46,6 +46,19 @@ void moneda::ordenaMonedas(){
     }//finpara J
   }//finpara I
 
+};
+
+void moneda::ordenaMonedasAsc(){
+  int aux;
+  for(unsigned int i=0; i<=monedas_.size(); i++){
+    for(unsigned int j=0; j<monedas_.size()-1; j++){
+      if(monedas_[j]>monedas_[j+1]){
+        aux = monedas_[j];
+        monedas_[j] = monedas_[j+1];
+        monedas_[j+1] = aux;
+      }//finsi
+    }//finpara J
+  }//finpara I
 };
 
 

@@ -42,7 +42,8 @@ class moneda{
 		//Funciones
 		void muestraMonedas();
 		void leerFichero(const string &nombreFichero);
-		void ordenaMonedas();
+		void ordenaMonedasDesc();
+		void ordenaMonedasAsc();
 
 };
 
