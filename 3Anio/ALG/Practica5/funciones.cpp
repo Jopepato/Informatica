@@ -43,7 +43,7 @@ void muestraSolucion(vector<int> monedas, vector<int> solucion){
 }
 
 
-bool encuentraCambio(vector<int> monedas, vector<int> &solucion,const int &dinero){
+bool encuentraCambioVoraz(vector<int> monedas, vector<int> &solucion,const int &dinero){
 
 //Limpiamos el vector solucion
 //El vector monedas tiene que estar ordenado de menor a mayor
@@ -75,3 +75,36 @@ unsigned int i;
 	return true;
 }
 
+
+bool encuentraCambioDinamico(vector<int> monedas, int &dinero, int ** matrizSolucion){
+
+	//Comenzamos el algoritmo
+	for(int i=0; i<monedas.size(); i++){
+		matrizSolucion[i][0] = 0;
+	}
+
+	for(int i=1; i<monedas.size(); i++){
+		for(int j=0; j<dinero; j++){
+			if(i==j && j<monedas[i]){
+				matrizSolucion[i][j] = INFINITY;
+			}else{
+
+			}if(j<monedas[i]){
+				matrizSolucion[i][j] = matrizSolucion[i-1][j];
+			}else{
+				matrizSolucion[i][j] = minimo(matrizSolucion[i-1][j], matrizSolucion[i][j-monedas[i]]);
+			}
+		}
+	}
+
+	return true;
+}
+
+
+int minimo(int a1, int a2){
+	if(a1<a2){
+		return a1;
+	}else{
+		return a2;
+	}
+}
