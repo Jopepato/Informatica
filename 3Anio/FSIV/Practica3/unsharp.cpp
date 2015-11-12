@@ -10,7 +10,9 @@ int main(int argc, char **argv){
   string nombreImagen;
   string nombreMascara;
   string nombreSalida = "output.png";
-  Mat imagen;
+  Mat imagen, padded, complexImg, filter, filterAux, imagenSalida, filterSalida, imagenFrecuencias, imagenFrecuenciasSinOrden;
+  Mat salida;
+  Mat imagenPasoBaja;
   Mat mascara;
   vector<Mat> canales;
 
@@ -81,6 +83,8 @@ int main(int argc, char **argv){
 
    //Primero cargaremos la imagen
 
+
+
    if(iflag==1){
     imagen = imread(nombreImagen, CV_LOAD_IMAGE_ANYDEPTH);
     if(imagen.empty()){
@@ -100,6 +104,12 @@ int main(int argc, char **argv){
      exit(-1);
    }
 
+   //Calculamos r
+   //r=(r)*(sqrt(pow((imagen.rows),2.0)+pow((imagen.cols),2.0))/2);
+
+   int M = getOptimalDFTSize(imagen.rows);
+   int N = getOptimalDFTSize(imagen.cols);
+
 
    //Miramos si tiene mascara para cargarla
    if(mflag==1){
@@ -118,39 +128,139 @@ int main(int argc, char **argv){
 
    if(imagen.channels()==1){
     //Imagen monocromatica
-    Mat imagenPasoBaja = imagen;
-    Mat output;
-    Mat fourier;
+    imagenPasoBaja = imagen;
+    Mat complexAux;
+    salida = imagen;
+
+    imagen.convertTo(imagenPasoBaja,CV_32F, 1.0/255.0);
+    copyMakeBorder(imagenPasoBaja, padded, 0, M-imagenPasoBaja.rows, 0, N - imagenPasoBaja.cols, BORDER_CONSTANT, Scalar::all(0));
+    Mat planes[] = {Mat_<float>(padded), Mat::zeros(padded.size(), CV_32F)};
+    merge(planes, 2, complexImg);
+
+    dft(complexImg, complexImg);
+    filter = complexImg;
+    filterAux = complexImg;
+    complexAux = complexImg;
+    shiftDFT(complexImg);
+    shiftDFT(complexAux);
+
+    butterworth(filter, r, n);
+    butterworth(filterAux, r, 0);
+    mulSpectrums(complexImg, filter, complexImg, 0);
+    mulSpectrums(complexAux, filterAux, complexAux, 0);
+    shiftDFT(complexImg);
+    shiftDFT(complexAux);
+
+    //Falta hacer lo de poder mostrarla
+    imagenFrecuencias = create_spectrum(complexImg);
+    imagenFrecuenciasSinOrden = create_spectrum(complexAux);
+
+    //Hacemos la inversa
+    idft(complexImg, complexImg, DFT_SCALE);
+    split(complexImg, planes);
+    normalize(planes[0], imagenSalida, 0, 1, CV_MINMAX);
+    split(filter, planes);
+    normalize(planes[0], filterSalida, 0, 1, CV_MINMAX);
 
     if(mflag==1){
-      //Con mascara
+      //Con mascara procesaremos pixel por pixel
+      //Recorremos la imagen
+      for(int i=0; i<salida.rows; i++){
+        for(int j=0; j<salida.cols;j++){
+          if(mascara.at<uchar>(i,j)!=0){
+            salida.at<float>(i,j) = (g+1)*imagen.at<float>(i,j) - g*imagenSalida.at<float>(i,j);
+          }
+        }
+      }
     }else{
-      //Sin mascara
+      //Sin mascara lo haremos de forma inmediata
+      for(int i=0; i<salida.rows; i++){
+        for(int j=0; j<salida.cols;j++){
+            salida.at<float>(i,j) = (g+1)*imagen.at<float>(i,j) - g*imagenSalida.at<float>(i,j);
+        }
+      }
+    }
 
+    salida.convertTo(salida, CV_8U, 255.0, 0.0);
+    if(vflag==1){
+      imshow("Imagen final", salida);
+      imshow("Filtro Butterworth", filterSalida);
+      imshow("Espectro", imagenFrecuencias);
+      imshow("Espectro de imagen sin orden", imagenFrecuenciasSinOrden);
+      waitKey(0);
+    }
 
    }else{
-    //Imagen a color, pasamos a HSV
-    cvtColor(imagen, imagen, CV_BGR2HSV);
     //Spliteamos la imagen en canales
-    split(imagen, canales);
+    Mat imagenHSV;
+    cvtColor(imagen, imagenHSV, CV_BGR2HSV);
+    split(imagenHSV, canales);
 
-    Mat fourier;
+    imagenPasoBaja = canales[2];
+    Mat aux = canales[2];
 
-    dft(canales[2], fourier, DFT_REAL_OUTPUT);
+    imagen.convertTo(imagenPasoBaja,CV_32F, 1.0/255.0);
+    copyMakeBorder(imagenPasoBaja, padded, 0, M-imagenPasoBaja.rows, 0, N - imagenPasoBaja.cols, BORDER_CONSTANT, Scalar::all(0));
+    Mat planes[] = {Mat_<float>(padded), Mat::zeros(padded.size(), CV_32F)};
+    merge(planes, 2, complexImg);
 
-    namedWindow("Transformada", CV_WINDOW_AUTOSIZE);
-    imshow("Transformada", fourier);
-    waitKey(0);
+    dft(complexImg, complexImg);
+
+    filter = complexImg.clone();
+
+    shiftDFT(complexImg);
+
+    butterworth(filter, r, n);
+    mulSpectrums(complexImg, filter, complexImg, 0);
+    shiftDFT(complexImg);
+
+    //Falta hacer lo de poder mostrarla
+    imagenFrecuencias = create_spectrum(complexImg);
+
+    //Hacemos la inversa
+    idft(complexImg, complexImg, DFT_SCALE);
+    split(complexImg, planes);
+    normalize(planes[0], imagenSalida, 0, 1, CV_MINMAX);
+    split(filter, planes);
+    normalize(planes[0], filterSalida, 0, 1, CV_MINMAX);
+
+
     if(mflag==1){
       //Con mascara
+      for(int i=0; i<canales[2].rows; i++){
+        for(int j=0; j<canales[2].cols;j++){
+          if(mascara.at<uchar>(i,j)!=0){
+            canales[2].at<float>(i,j) = (g+1)*aux.at<float>(i,j) - g*imagenSalida.at<float>(i,j);
+          }
+        }
+      }
     }else{
       //Sin mascara
+      for(int i=0; i<canales[2].rows; i++){
+        for(int j=0; j<canales[2].cols;j++){
+            canales[2].at<float>(i,j) = (g+1)*aux.at<float>(i,j) - g*imagenSalida.at<float>(i,j);
+        }
+      }
     }
+
+    canales[2].convertTo(canales[2], CV_8U, 255.0, 0.0);
+    merge(canales, salida);
+    cvtColor(salida, salida, CV_HSV2BGR);
+
+    salida.convertTo(salida, CV_8U, 255.0, 0.0);
+    if(vflag==1){
+      imshow("Imagen final", salida);
+      imshow("Filtro Butterworth", filterSalida);
+      imshow("Espectro", imagenFrecuencias);
+      imshow("Espectro de imagen sin orden", imagenFrecuenciasSinOrden);
+      waitKey(0);
+    }
+
 
    }
 
-
-
+   //Y escribimos la imagen a fichero
+   imwrite(nombreSalida, salida);
 return 0;
 
 }

@@ -21,6 +21,8 @@ void help();
 
 //Creacion filtro butterworth
 void butterworth(Mat &filtro, float r, int n);
+void shiftDFT(Mat &fImage);
+Mat create_spectrum(Mat &complexImg);
 
 
 
