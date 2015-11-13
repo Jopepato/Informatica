@@ -9,8 +9,10 @@
 #include <cassert>
 #include <fstream>
 #include <limits>
+#include <ctime>
 #include "matriz.hpp"
 #include "moneda.hpp"
+#include "ClaseTiempo.hpp"
 
 using namespace std;
 
