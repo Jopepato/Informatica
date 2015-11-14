@@ -3,3 +3,5 @@ ruano josito
 ruben josito
 user pass
 yisus 1234
+usuario password
+pepe pepito

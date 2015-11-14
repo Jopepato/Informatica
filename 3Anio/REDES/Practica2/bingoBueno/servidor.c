@@ -33,7 +33,8 @@ void main ( )
     int i,j,k;
 	int recibidos;
     char identificador[MSG_SIZE];
-    
+    struct timeval timeout;
+    int mandabola;
     int on, ret;
 
     
@@ -93,6 +94,8 @@ void main ( )
    	
     //Capturamos la señal SIGINT (Ctrl+c)
     signal(SIGINT,manejador);
+    timeout.tv_sec = 5;
+    timeout.tv_usec = 0;
     
 	/*-----------------------------------------------------------------------
 		El servidor acepta una petición
@@ -103,10 +106,10 @@ void main ( )
             
             auxfds = readfds;
             
-            salida = select(FD_SETSIZE,&auxfds,NULL,NULL,NULL);
+            salida = select(FD_SETSIZE,&auxfds,NULL,NULL,&timeout);
             
             if(salida > 0){
-                
+                //Ha pasado algo en el selecte de que ha leido algo
                 
                 for(i=0; i<FD_SETSIZE; i++){
                     
@@ -121,6 +124,7 @@ void main ( )
                             else
                             {
                                 if(numClientes < MAX_CLIENTES){
+                                    //Metemos al nuevo cliente en el array
                                     arrayClientes[numClientes].descriptor = new_sd;
                                     arrayClientes[numClientes].estado = 0;
                                     numClientes++;
@@ -132,9 +136,8 @@ void main ( )
                                     send(new_sd,buffer,strlen(buffer),0);
                                 
                                     
-                                }
-                                else
-                                {
+                                }//Cierre if de aceptacion clientes
+                                else{
                                     bzero(buffer,sizeof(buffer));
                                     strcpy(buffer,"Demasiados clientes conectados\n");
                                     send(new_sd,buffer,strlen(buffer),0);
@@ -156,7 +159,7 @@ void main ( )
                              
                                 for (j = 0; j < numClientes; j++){
                                     send(arrayClientes[j].descriptor, "Desconexion servidor\n", strlen("Desconexion servidor\n"),0);
-                                    close(arrayClientes[j]);
+                                    close(arrayClientes[j].descriptor);
                                     FD_CLR(arrayClientes[j].descriptor,&readfds);
                                 }
                                     close(sd);
@@ -168,11 +171,12 @@ void main ( )
                             
                         } 
                         else{
+                            //Lo que hemos recibido es por el teclado de los clientes
                             bzero(buffer,sizeof(buffer));
                             
                             recibidos = recv(i,buffer,sizeof(buffer),0);
                             
-                            if(recibidos > 0){
+                            if(recibidos > 0){//Han introducido algo por teclado
 
                             	strcpy(buffer2, buffer);
                             	opcion = strtok(buffer2, " ");
@@ -182,7 +186,8 @@ void main ( )
                                 	//Opcion SALIR
                                     
                                     //salirCliente(i,&readfds,&numClientes,arrayClientes);
-                                    
+
+                                //Cierre if SALIR
                                 }else if(strcmp(opcion, "REGISTER")==0){
                                 	//-u USUARIO -p PASSWORD
                                 	strncpy(aux, buffer+strlen(opcion)+4, 100);
@@ -202,16 +207,15 @@ void main ( )
                                 		//Ha salido mal
                                 		send(i, "-ERR, usuario ya existente\n", strlen("-ERR, usuario ya existente\n"),0 );
                                 	}
-
-
+                                //Cierre if register
                                 }else if(strcmp(opcion, "USUARIO")==0){
                                 	//OPCION USUARIO
                                 	send(i, "Holi\n", sizeof("Holi\n"), 0);
-
+                                //Cierre if USUARIO
                                 }else if(strcmp(opcion, "PASSWORD")==0){
                                 	//OPCION PASSWORD
                                 	send(i, "Holo\n", sizeof("Holo\n"), 0);
-
+                                //Cierre if password
                                 }else{
                                 	send(i, "Cosa rara\n", strlen("Cosa rara\n"), 0);
                                 }
@@ -219,14 +223,29 @@ void main ( )
                                 
                             }
                             //Si el cliente introdujo ctrl+c
-                            if(recibidos== 0)
-                            {
+                            if(recibidos== 0){
                                 printf("El socket %d, ha introducido ctrl+c\n", i);
                                 //Eliminar ese socket
                                 //salirCliente(i,&readfds,&numClientes,arrayClientes);
-                            }
+                                break;
+                            }//Cierre if de recibidos==0
                         }
                     }
+                }
+            }//Cierre del if (salida>0)
+            else{
+                if(salida==0){
+                    timeout.tv_sec = 5;
+                    timeout.tv_usec = 0;
+                    //Valo esta esta preparado para las bolas
+                    //Esto es que se ha agotado el tiempo del servidor
+                    //Vamos a mandar mensaje a todos los clientes
+                    //Recorremos el vector de clientes que tenemos y vamos mandando a su descriptor
+                    for(mandabola=0; mandabola<numClientes; mandabola++){
+                        send(arrayClientes[mandabola].descriptor, "Tiempo Agotado\n", sizeof("Tiempo Agotado\n"), 0);
+                    }
+                    printf("Tiempo agotado\n");
+                    fflush(stdout);
                 }
             }
 		}
