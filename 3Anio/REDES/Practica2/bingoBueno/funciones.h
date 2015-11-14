@@ -12,6 +12,7 @@
 #include <signal.h>
 
 #define MAX_CLIENTES 40
+#define MAX_PARTIDAS 10
 #define MSG_SIZE 512
 
 struct cliente{
@@ -22,16 +23,23 @@ struct cliente{
 	int estado; //0 acaba de llegar
 				//1 login con usuario correcto
 				//2 usuario y pass correcta, tenia que tener un 1
-				//3 ha pedido partida, tenia que tener un 2
+				//3 buscando partida, tendria que tener un 2
+				//4 en partida
 };
 
 struct partida{
 	struct cliente clientes[4];
 	int bolas[100];
 	int numClientes;
+	int numBolas;
+	int estado; // 0 Aun no ha empezado
+				// 1 Ha empezado
+				// 2 Han cantado linea
+				// 3 Han cantado 2lineas
+				// 4 han cantado bingo, por lo que se dejaria vacia la partida
 };
 
-int compruebaElementoVector(int * vector, int elem,int nelem);
+int compruebaElementoVector(int * vector, int elem, int nelem);
 int compruebaElementoMatriz(int ** matriz, int elem);
 int ** generaCarton();
 void muestraCarton(int ** carton);

@@ -3,7 +3,7 @@
 
 
 void manejador(int signum);
-void salirCliente(int socket, fd_set * readfds, int * numClientes, int arrayClientes[]);
+void salirCliente(int socket, fd_set * readfds, int * numClientes, struct cliente arrayClientes[]);
 
 
 
@@ -22,7 +22,9 @@ void main ( )
     fd_set readfds, auxfds;
     int salida;
     struct cliente arrayClientes[MAX_CLIENTES];
+    struct partida arrayPartidas[MAX_PARTIDAS];
     int numClientes = 0;
+    int numPartidas = 0;
     char * opcion;
     char aux[MSG_SIZE];
     char * aux2;
@@ -36,6 +38,7 @@ void main ( )
     struct timeval timeout;
     int mandabola;
     int on, ret;
+    int posicion;
 
     
     
@@ -107,7 +110,14 @@ void main ( )
             auxfds = readfds;
             
             salida = select(FD_SETSIZE,&auxfds,NULL,NULL,&timeout);
-            
+          /*  bzero(buffer, sizeof(buffer));
+            bzero(aux, sizeof(aux));
+            bzero(aux2, sizeof(aux2));
+            bzero(usuario, sizeof(usuario));
+            bzero(buffer2, sizeof(buffer2));
+            bzero(password, sizeof(password));
+            bzero(opcion, sizeof(opcion));
+            */
             if(salida > 0){
                 //Ha pasado algo en el selecte de que ha leido algo
                 
@@ -175,6 +185,9 @@ void main ( )
                             bzero(buffer,sizeof(buffer));
                             
                             recibidos = recv(i,buffer,sizeof(buffer),0);
+
+                            //Pillamos la posicion del cliente en el array
+                            posicion = devuelvePosicion(arrayClientes, i, numClientes);
                             
                             if(recibidos > 0){//Han introducido algo por teclado
 
@@ -185,7 +198,9 @@ void main ( )
                                 if(strcmp(opcion,"SALIR") == 0){
                                 	//Opcion SALIR
                                     
-                                    //salirCliente(i,&readfds,&numClientes,arrayClientes);
+                                    salirCliente(i,&readfds,&numClientes,arrayClientes);
+                                    printf("El cliente %d se fue\n", i);
+                                    fflush(stdout);
 
                                 //Cierre if SALIR
                                 }else if(strcmp(opcion, "REGISTER")==0){
@@ -210,11 +225,33 @@ void main ( )
                                 //Cierre if register
                                 }else if(strcmp(opcion, "USUARIO")==0){
                                 	//OPCION USUARIO
-                                	send(i, "Holi\n", sizeof("Holi\n"), 0);
+                                	if(arrayClientes[posicion].estado==0){
+                                        //Podemos ver si el usuario es correcto
+                                        //Ahora pillamos lo que ha puesto por teclado
+                                        strncpy(aux, buffer+strlen(opcion)+1, 50);
+                                        aux2 = strtok(aux, "\n");
+                                        strcpy(usuario, aux2);
+                                        //con esto tenemos el nombre en aux2
+                                        if(compruebaUsuario(usuario)==1){
+                                            arrayClientes[posicion].estado = 1;
+                                            strcpy(arrayClientes[posicion].usuario, usuario);
+                                            send(i, "+Ok, usuario correcto\n", strlen("+Ok, usuario correcto\n"),0 );
+                                        }else{
+                                            send(i, "-ERR, usuario no existente\n", strlen("-ERR, usuario no existente\n"),0 );
+                                        }
+                                    }else{
+                                        //A este usuario no le corresponde este estado
+                                        send(i, "-ERR, ya has introducido nombre de usuario\n", strlen("-ERR, ya has introducido nombre de usuario\n"), 0);
+                                    }
                                 //Cierre if USUARIO
                                 }else if(strcmp(opcion, "PASSWORD")==0){
                                 	//OPCION PASSWORD
-                                	send(i, "Holo\n", sizeof("Holo\n"), 0);
+                                    if(arrayClientes[posicion].estado==1){
+                                        //Puede pedir esto, puesto que ya ha introducido el usuario
+                                        send(i, "jiji\n", sizeof("jiji\n"), 0);
+                                    }else{
+                                	       send(i, "Primero introduce el usuario\n", sizeof("Primero introduce el usuario\n"), 0);
+                                    }
                                 //Cierre if password
                                 }else{
                                 	send(i, "Cosa rara\n", strlen("Cosa rara\n"), 0);
@@ -224,11 +261,12 @@ void main ( )
                             }
                             //Si el cliente introdujo ctrl+c
                             if(recibidos== 0){
-                                printf("El socket %d, ha introducido ctrl+c\n", i);
-                                //Eliminar ese socket
-                                //salirCliente(i,&readfds,&numClientes,arrayClientes);
-                                break;
+
+                                salirCliente(i,&readfds,&numClientes,arrayClientes);
+                                printf("El cliente %d se fue\n", i);
+                                fflush(stdout);
                             }//Cierre if de recibidos==0
+                            
                         }
                     }
                 }
@@ -241,11 +279,12 @@ void main ( )
                     //Esto es que se ha agotado el tiempo del servidor
                     //Vamos a mandar mensaje a todos los clientes
                     //Recorremos el vector de clientes que tenemos y vamos mandando a su descriptor
-                    for(mandabola=0; mandabola<numClientes; mandabola++){
+                   /* for(mandabola=0; mandabola<numClientes; mandabola++){
                         send(arrayClientes[mandabola].descriptor, "Tiempo Agotado\n", sizeof("Tiempo Agotado\n"), 0);
                     }
                     printf("Tiempo agotado\n");
                     fflush(stdout);
+                    */
                 }
             }
 		}
@@ -255,7 +294,7 @@ void main ( )
 }
 
 
-void salirCliente(int socket, fd_set * readfds, int * numClientes, int arrayClientes[]){
+void salirCliente(int socket, fd_set * readfds, int * numClientes, struct cliente arrayClientes[]){
   
     char buffer[250];
     int j;
@@ -265,20 +304,15 @@ void salirCliente(int socket, fd_set * readfds, int * numClientes, int arrayClie
     
     //Re-estructurar el array de clientes
     for (j = 0; j < (*numClientes) - 1; j++)
-        if (arrayClientes[j] == socket)
+        if (arrayClientes[j].descriptor == socket)
             break;
     for (; j < (*numClientes) - 1; j++)
-        (arrayClientes[j] = arrayClientes[j+1]);
+        (arrayClientes[j].descriptor = arrayClientes[j+1].descriptor);
     
     (*numClientes)--;
     
     bzero(buffer,sizeof(buffer));
     sprintf(buffer,"Desconexión del cliente: %d\n",socket);
-    
-    for(j=0; j<(*numClientes); j++)
-        if(arrayClientes[j] != socket)
-            send(arrayClientes[j],buffer,strlen(buffer),0);
-
 
 }
 

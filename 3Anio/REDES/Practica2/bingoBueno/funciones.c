@@ -158,6 +158,7 @@ int compruebaUsuario(char usuario[50]){
 			vuelta=1;// El usuario ya existe en el fichero	
 		}
 	}
+	fclose(fichero);
 
 	return vuelta;
 }
