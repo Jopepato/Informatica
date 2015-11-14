@@ -94,11 +94,11 @@ main ( )
                 
                 fgets(buffer,sizeof(buffer),stdin);
                 
-                /*if(strcmp(buffer,"SALIR\n") == 0){
+                if(strcmp(buffer,"SALIR\n") == 0){
                         fin = 1;
                 
                 }
-                */
+                
                 send(sd,buffer,sizeof(buffer),0);
                 
             }

@@ -47,6 +47,6 @@ int registroUsuario(char usuario[50], char password[50]);// 1 si registrado, 0 s
 int compruebaUsuario(char usuario[50]);// 1 si verdad, 0 si falso
 int compruebaUsuarioPassword(char usuario[50], char password[50]);//1 si verdad, 0 si falso
 int devuelvePosicion(struct cliente arrayClientes[MAX_CLIENTES], int descriptor, int numClientes);
-
+void passAsteriscos(char password[50], char * asteriscos);
 
 #endif

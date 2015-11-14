@@ -141,7 +141,7 @@ void main ( )
                                     FD_SET(new_sd, &readfds);
                                 	bzero(buffer,sizeof(buffer));
 
-                                    sprintf(buffer, "Bienvenido al bingo, tu descriptor es: %d\n", new_sd);
+                                    sprintf(buffer, "Bienvenido al puto bingo de los Peaky Blinders, tu descriptor es: %d\n", new_sd);
 
                                     send(new_sd,buffer,strlen(buffer),0);
                                 
@@ -195,7 +195,7 @@ void main ( )
                             	opcion = strtok(buffer2, " ");
                             	//Aqui miramos todas las opciones para ver que hacer
                                 
-                                if(strcmp(opcion,"SALIR") == 0){
+                                if(strcmp(buffer,"SALIR\n") == 0){
                                 	//Opcion SALIR
                                     
                                     salirCliente(i,&readfds,&numClientes,arrayClientes);
@@ -248,13 +248,42 @@ void main ( )
                                 	//OPCION PASSWORD
                                     if(arrayClientes[posicion].estado==1){
                                         //Puede pedir esto, puesto que ya ha introducido el usuario
-                                        send(i, "jiji\n", sizeof("jiji\n"), 0);
+                                        strncpy(aux, buffer+strlen(opcion)+1, 50);
+                                        aux2 = strtok(aux, "\n");
+                                        strcpy(password, aux2);
+                                        if(compruebaUsuarioPassword(arrayClientes[posicion].usuario, password)==1){
+                                            //Password introducido correcto
+                                            arrayClientes[posicion].estado = 2;
+                                            strcpy(arrayClientes[posicion].password, password);
+                                            //Mandamos que todo correcto
+                                            send(i, "+Ok, password correcto\n", strlen("+Ok, password correcto\n"),0 );
+                                        }else{
+                                            //Password no coincide con usuario
+                                            send(i, "-ERR, password incorrecto\n", strlen("-ERR, password incorrecto\n"),0 );
+                                        }
                                     }else{
+                                        //Aun no se ha logeado como usuario
                                 	       send(i, "Primero introduce el usuario\n", sizeof("Primero introduce el usuario\n"), 0);
                                     }
                                 //Cierre if password
+                                }else if(strcmp(buffer, "INICIAR-PARTIDA\n")==0){
+                                	send(i, "Holi\n", sizeof("Holi\n"), 0);
+                                    //Cierre if iniciar-partida
+                                }else if(strcmp(buffer, "UNA-LINEA\n")==0){
+
+                                    //Cierre if una-linea
+                                }else if(strcmp(buffer, "DOS-LINEAS\n")==0){
+
+                                    //Cierre if dos-lineas
+                                }else if(strcmp(buffer, "BINGO\n")==0){
+
+                                    //Cierre if bingo
+                                }else if(strcmp(buffer, "SALIR-PARTIDA\n")==0){
+
+                                    //Cierre if salir-partida
                                 }else{
-                                	send(i, "Cosa rara\n", strlen("Cosa rara\n"), 0);
+                                    //Opcion no valida
+                                    send(i, "-ERR\n", strlen("-ERR\n"), 0);
                                 }
                                                                 
                                 
@@ -282,9 +311,10 @@ void main ( )
                    /* for(mandabola=0; mandabola<numClientes; mandabola++){
                         send(arrayClientes[mandabola].descriptor, "Tiempo Agotado\n", sizeof("Tiempo Agotado\n"), 0);
                     }
+                    */
                     printf("Tiempo agotado\n");
                     fflush(stdout);
-                    */
+                    
                 }
             }
 		}
