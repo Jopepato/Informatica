@@ -5,3 +5,6 @@ user pass
 yisus 1234
 usuario password
 pepe pepito
+isabel 1234
+tommy blinder
+1 1

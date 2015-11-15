@@ -48,5 +48,7 @@ int compruebaUsuario(char usuario[50]);// 1 si verdad, 0 si falso
 int compruebaUsuarioPassword(char usuario[50], char password[50]);//1 si verdad, 0 si falso
 int devuelvePosicion(struct cliente arrayClientes[MAX_CLIENTES], int descriptor, int numClientes);
 void passAsteriscos(char password[50], char * asteriscos);
+void estadoPartidasA0(struct partida arrayPartidas[10]);
+int getBola(int arrayBolas[]);
 
 #endif

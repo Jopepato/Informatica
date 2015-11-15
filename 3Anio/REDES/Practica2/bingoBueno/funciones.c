@@ -209,3 +209,27 @@ int devuelvePosicion(struct cliente arrayClientes[MAX_CLIENTES], int descriptor,
 
 	return -1;
 }
+
+void estadoPartidasA0(struct partida arrayPartidas[10]){
+	int i;
+	for(i=0; i<10; i++){
+		arrayPartidas[i].estado=0;
+		arrayPartidas[i].numClientes=0;
+		arrayPartidas[i].numBolas=0;
+	}
+}
+
+int getBola(int arrayBolas[]){
+	//Devuelve una bola
+	int bola=0;
+	int salir=0;
+
+	while(bola==0 || salir==0){
+		bola = rand()%91;
+		if(!compruebaElementoVector(arrayBolas, bola, 90)){
+			salir =1;
+		}
+	}
+
+	return bola;
+}

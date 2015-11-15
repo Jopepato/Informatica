@@ -18,6 +18,7 @@ void main ( )
 	struct sockaddr_in sockname, from;
 	char buffer[MSG_SIZE];
 	char buffer2[MSG_SIZE];
+    char bufferBolas[MSG_SIZE];
 	socklen_t from_len;
     fd_set readfds, auxfds;
     int salida;
@@ -32,16 +33,19 @@ void main ( )
     char password[50];
     int comprueba;
     //contadores
-    int i,j,k;
+    int i,j,k, w, x, y;
 	int recibidos;
+    int cuentaPartidas;
     char identificador[MSG_SIZE];
     struct timeval timeout;
     int mandabola;
     int on, ret;
     int posicion;
-
+    int bola;
     
-    
+    estadoPartidasA0(arrayPartidas);
+    //Inicializamos el tiempo a null
+    srand(time(NULL));
 	/* --------------------------------------------------
 		Se abre el socket 
 	---------------------------------------------------*/
@@ -200,6 +204,7 @@ void main ( )
                                     
                                     salirCliente(i,&readfds,&numClientes,arrayClientes);
                                     printf("El cliente %d se fue\n", i);
+                                    numClientes--;
                                     fflush(stdout);
 
                                 //Cierre if SALIR
@@ -263,11 +268,51 @@ void main ( )
                                         }
                                     }else{
                                         //Aun no se ha logeado como usuario
-                                	       send(i, "Primero introduce el usuario\n", sizeof("Primero introduce el usuario\n"), 0);
+                                	       send(i, "Primero introduce el usuario\n", strlen("Primero introduce el usuario\n"), 0);
                                     }
                                 //Cierre if password
                                 }else if(strcmp(buffer, "INICIAR-PARTIDA\n")==0){
-                                	send(i, "Holi\n", sizeof("Holi\n"), 0);
+                                    //Primero miramos que el estado de cliente debe ser correcto
+                                    if(arrayClientes[posicion].estado==2){
+                                        if(numPartidas>10){
+                                            send(i, "-ERR, espere unos minutos\n", strlen("-ERR, espere unos minutos\n"), 0);
+                                            //Y te sales del bucle
+                                        }else{
+                                       	   for(cuentaPartidas=0; i<10; i++){
+                                                //Pilla la primera partida libre
+                                                if(arrayPartidas[cuentaPartidas].estado==0){
+                                                    //Ahora miramos que hay menos de cuatro jugadores esperando
+                                                    if(arrayPartidas[cuentaPartidas].numClientes < 3){
+                                                        //Añadimos uno al numero de clientes
+                                                        
+                                                        arrayPartidas[cuentaPartidas].clientes[numClientes] = arrayClientes[posicion];
+                                                        arrayPartidas[cuentaPartidas].numClientes++;
+                                                        send(i, "+Ok, esperando partida\n", strlen("+Ok, esperando partida\n"), 0);
+                                                        printf("%d\n", arrayPartidas[cuentaPartidas].numClientes);
+                                                        //Y se sale del bucle
+                                                        break;
+                                                    }else if(arrayPartidas[cuentaPartidas].numClientes == 3){
+                                                        //Se esta listo para iniciar la partida
+                                                        
+                                                        arrayPartidas[cuentaPartidas].clientes[numClientes] = arrayClientes[posicion];
+                                                        arrayPartidas[cuentaPartidas].numClientes++;
+                                                        //Aumentamos el numero de partidas
+                                                        numPartidas++;
+                                                        //Iniciamos la partida
+                                                        //Mandariamos a todos los de la partida que empieza la partida
+                                                        for(w=0; w<=numClientes; w++){
+                                                            send(arrayPartidas[cuentaPartidas].clientes[w].descriptor, "+Ok, empieza la partida\n", strlen("+Ok, empieza la partida\n"), 0);
+                                                        }
+                                                        //Y se sale del bucle
+                                                        arrayPartidas[cuentaPartidas].estado = 1;
+                                                        break;
+                                                    }//Cierre if numClientes==3
+                                                }//Cierre if partida.estado==0
+                                            }//Cierre for partidas
+                                        }//Cierre else
+                                    }else{
+                                        send(i, "-ERR, no puedes pedir partida aun\n", strlen("-ERR, no puedes pedir partida aun\n"), 0);
+                                    }
                                     //Cierre if iniciar-partida
                                 }else if(strcmp(buffer, "UNA-LINEA\n")==0){
 
@@ -302,20 +347,37 @@ void main ( )
             }//Cierre del if (salida>0)
             else{
                 if(salida==0){
+                    bzero(bufferBolas, sizeof(bufferBolas));
                     timeout.tv_sec = 5;
                     timeout.tv_usec = 0;
                     //Valo esta esta preparado para las bolas
                     //Esto es que se ha agotado el tiempo del servidor
                     //Vamos a mandar mensaje a todos los clientes
                     //Recorremos el vector de clientes que tenemos y vamos mandando a su descriptor
-                   /* for(mandabola=0; mandabola<numClientes; mandabola++){
-                        send(arrayClientes[mandabola].descriptor, "Tiempo Agotado\n", sizeof("Tiempo Agotado\n"), 0);
-                    }
-                    */
-                    printf("Tiempo agotado\n");
-                    fflush(stdout);
-                    
-                }
+                    if(numPartidas>0){
+                        //Hay partidas activas, asi que las tenemos que ir recorriendo y mandar bolas
+                        for(x=0; x<10; x++){
+                            if(arrayPartidas[x].estado>0){
+                                //Se mandan bolas a esta partida
+                                if(arrayPartidas[x].numBolas < 90){
+                                    //Mandamos la bola
+                                    bola = getBola(arrayPartidas[x].bolas);
+                                    arrayPartidas[x].bolas[arrayPartidas[x].numBolas] = bola;
+                                    arrayPartidas[x].numBolas++;
+                                    //Y mandamos la bola
+                                    sprintf(bufferBolas,"NUMERO OBTENIDO: %d",bola);
+                                    //Y ahora tenemos que mandarlo a los clientes de las partidas
+                                    for(y=0; y<=arrayPartidas[x].numClientes +1; y++){
+                                        send(arrayPartidas[x].clientes[y].descriptor, bufferBolas, strlen(bufferBolas), 0);
+                                        printf("%d\n", y);
+                                        fflush(stdout);
+                                    }
+                                    bzero(bufferBolas, sizeof(bufferBolas));
+                                }//Cierre if estado
+                            }
+                        }//Cierre for
+                    }//Cierre if numPartidas
+                }//Cierre if salida==0
             }
 		}
 

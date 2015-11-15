@@ -10,7 +10,8 @@ int main(int argc, char **argv){
   string nombreImagen;
   string nombreMascara;
   string nombreSalida = "output.png";
-  Mat imagen, padded, complexImg, filter, filterAux, imagenSalida, filterSalida, imagenFrecuencias, imagenFrecuenciasSinOrden;
+  Mat imagen, padded, complexImg, filter, filterAux, imagenSalida, filterSalida, imagenFrecuencias, imagenFrecuenciasSinOrden, imagenHSV;
+  Mat complexAux;
   Mat salida;
   Mat imagenPasoBaja;
   Mat mascara;
@@ -99,9 +100,9 @@ int main(int argc, char **argv){
         destroyWindow("Imagen");
       }
     }
-    }else{
-     cout << "La imagen es necesaria" << endl;
-     exit(-1);
+  }else{
+    cout << "La imagen es necesaria" << endl;
+    exit(-1);
    }
 
    //Calculamos r
@@ -129,7 +130,7 @@ int main(int argc, char **argv){
    if(imagen.channels()==1){
     //Imagen monocromatica
     imagenPasoBaja = imagen;
-    Mat complexAux;
+
     salida = imagen;
 
     imagen.convertTo(imagenPasoBaja,CV_32F, 1.0/255.0);
@@ -182,6 +183,7 @@ int main(int argc, char **argv){
     }
 
     salida.convertTo(salida, CV_8U, 255.0, 0.0);
+
     if(vflag==1){
       imshow("Imagen final", salida);
       imshow("Filtro Butterworth", filterSalida);
@@ -192,7 +194,6 @@ int main(int argc, char **argv){
 
    }else{
     //Spliteamos la imagen en canales
-    Mat imagenHSV;
     cvtColor(imagen, imagenHSV, CV_BGR2HSV);
     split(imagenHSV, canales);
 
@@ -248,6 +249,7 @@ int main(int argc, char **argv){
     cvtColor(salida, salida, CV_HSV2BGR);
 
     salida.convertTo(salida, CV_8U, 255.0, 0.0);
+
     if(vflag==1){
       imshow("Imagen final", salida);
       imshow("Filtro Butterworth", filterSalida);
@@ -258,9 +260,10 @@ int main(int argc, char **argv){
 
 
    }
-
+   cout << "Hola" << endl;
    //Y escribimos la imagen a fichero
    imwrite(nombreSalida, salida);
+
 return 0;
 
 }
