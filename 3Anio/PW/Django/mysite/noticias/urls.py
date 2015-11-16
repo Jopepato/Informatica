@@ -6,4 +6,5 @@ urlpatterns = patterns('',
 
 		url(r'^$', views.index, name='index'),
 		url(r'noticias^$', include('noticias.urls')),
+		url(r'formulario^$', include('noticias.urls')),
 )

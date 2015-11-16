@@ -19,3 +19,18 @@ def index(request):
 def detail(request, Noticia_id):
 	aux = Noticia.objects.get(id=Noticia_id)
 	return HttpResponse("You're looking at noticia %s " %aux)
+
+def formulario(request):
+	form = NoticiaForm()
+	return render(request, 'noticias/formulario.html', {'form': form})
+
+
+
+def noticia_new(request):
+	if(request.method = 'POST':
+		form = NoticiaForm(request.FORM, request.FILES)
+		if form.is_valid()
+			form.save()
+			return redirect(reverse_lazy())
+	else:
+		
