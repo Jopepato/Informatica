@@ -58,7 +58,7 @@ Mat create_spectrum(Mat &complexImg){
 	split(complexImg, planes);
 	magnitude(planes[0], planes[1], planes[0]);
 
-	Mat magI = planes[0];
+	Mat magI = (planes[0]).clone();
 	magI +=Scalar::all(1);
 	log(magI, magI);
 

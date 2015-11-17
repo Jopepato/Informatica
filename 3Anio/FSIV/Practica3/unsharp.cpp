@@ -106,14 +106,14 @@ int main(int argc, char **argv){
    }
 
    //Calculamos r
-   //r=(r)*(sqrt(pow((imagen.rows),2.0)+pow((imagen.cols),2.0))/2);
+   r=(r)*(sqrt(pow((imagen.rows),2.0)+pow((imagen.cols),2.0))/2);
 
    int M = getOptimalDFTSize(imagen.rows);
    int N = getOptimalDFTSize(imagen.cols);
 
 
    //Miramos si tiene mascara para cargarla
-   if(mflag==1){
+  if(mflag==1){
     //Cargamos la mascara
     mascara = imread(nombreMascara, 0);
     if(mascara.empty()){
@@ -121,8 +121,8 @@ int main(int argc, char **argv){
       exit(-1);
     }else{
 	cout << "Mascara cargada con exito" << endl;
-	}
-   }
+	   }
+  }
 
 
    //Ahora miramos los canales para hacer cosas distintas dependiendo
