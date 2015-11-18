@@ -2,13 +2,13 @@
 
 cat << _end_ | gnuplot
 set terminal postscript eps color
-set output "DosAlgoritmoP1.eps"
+set output "AmbosDeterminantes.eps"
 set key right bottom
-set xlabel "Numero de elementos"
+set xlabel "Cambio (centimos)"
 set ylabel "Tiempos (microsegundos)"
-plot 'Datos.txt' using 1:2 t "Tiempo Medio Burbuja" w l, 'Datos.txt' using 1:3 t "Tiempo Estimado Burbuja" w l, 'Datos.txt' using 1:4 t "Tiempo Medio Qsort Iterat." w l, 'Datos.txt' using 1:5 t "Tiempo Estimado Qsort Iterat." w l
-set output "BurbujaP1.eps"
-plot 'Datos.txt' using 1:2 t "Tiempo Medio Burbuja" w l, 'Datos.txt' using 1:3 t "Tiempo Estimado Burbuja" w l
-set output "QsortP1.eps"
-plot 'Datos.txt' using 1:4 t "Tiempo Medio Qsort Iterat." w l, 'Datos.txt' using 1:5 t "Tiempo Estimado Qsort Iterat." w l
+plot 'tiempos.txt' using 1:2 t "Tiempo Medio Voraz" w l, 'tiempos.txt' using 1:3 t "Tiempo Medio Dinamico" w l
+set output "Voraz.eps"
+plot 'tiempos.txt' using 1:2 t "Tiempo Medio Voraz" w l
+set output "Dinamico.eps"
+plot 'tiempos.txt' using 1:3 t "Tiempo Medio Dinamico" w l
 _end_

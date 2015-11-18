@@ -1,7 +1,7 @@
 #include "funciones.hpp"
 
 
-bool estaOrdenadoDec(vector<int> v){
+bool estaOrdenadoDesc(vector<int> v){
 	//Para comprobar si el vector esta ordenado de mayor a menor
 	for(unsigned int i=0; i<v.size(); i++){
 		if(v[i]<v[i+1])
@@ -68,6 +68,7 @@ unsigned int i;
 }
 
 
+//Rellena la matriz solucion con el cambio dinamico
 bool encuentraCambioDinamico(vector<int> monedas, int &dinero, int ** matrizSolucion){
 
 	int aux;
@@ -116,6 +117,8 @@ void muestraMatriz(int ** matriz,vector<int> monedas, int fil, int col){
 	}
 }
 
+
+//Rellenamos el vector solucion a partir de la matriz para mostrarla posteriormente
 bool rellenaSolucionDinamica(int ** matriz, int fil, int col, vector<int> monedas, vector<int> &solucion){
 
 	//Aqui vamos a rellenar el vector de soluciones
@@ -145,4 +148,18 @@ bool rellenaSolucionDinamica(int ** matriz, int fil, int col, vector<int> moneda
 
 	return true;
 
-};
+}
+
+void guardaTiempos(const vector<int> muestras, const vector<double> tiempoVoraz, const vector<double> tiempoDinamico, string nombreFichero){
+  ofstream file;
+
+  file.open(nombreFichero.c_str());
+
+  //Recorremos el vector n y vamos metiendo los datos
+
+  for(unsigned int i=0; i<muestras.size(); i++){
+    file << muestras[i] << " " << tiempoVoraz[i] << " " << tiempoDinamico[i] << "\n";
+  }
+  //Cerramos el fichero
+  file.close();
+}

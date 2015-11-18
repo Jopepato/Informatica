@@ -26,7 +26,7 @@ void moneda::leerFichero(const string &nombreFichero){
 
 	//Ordenamos el vector
 	//Primero vemos si necesitamos ordenar
-	if(!estaOrdenadoDec(monedas_)){
+	if(!estaOrdenadoDesc(monedas_)){
 		ordenaMonedasDesc();
 	}
 	
