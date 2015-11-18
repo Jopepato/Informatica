@@ -10,7 +10,6 @@
 #include <fstream>
 #include <limits>
 #include <ctime>
-#include "matriz.hpp"
 #include "moneda.hpp"
 #include "ClaseTiempo.hpp"
 

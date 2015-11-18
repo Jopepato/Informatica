@@ -7,6 +7,7 @@
 #include <cmath>
 #include <cassert>
 #include <fstream>
+#include <algorithm>
 #include "funciones.hpp"
 
 using namespace std;
