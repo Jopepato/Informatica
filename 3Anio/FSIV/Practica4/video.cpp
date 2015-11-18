@@ -21,7 +21,6 @@ string nombreVideo = argv[1];
 int t = atoi(argv[2]);
 VideoCapture cap(nombreVideo);
 VideoCapture cap2(nombreVideo);
-pMOG2;
 int contador=0;
 int key;
 string salida;
@@ -32,6 +31,7 @@ int empieza=0;
 Mat frame, edges;
 Mat frame2, edges2;
 Mat foreground;
+stringstream ss;
 
 if(!cap.isOpened()){
 	cout << "Video especificado invalido" << endl;
@@ -45,8 +45,9 @@ if(!cap.isOpened()){
         cap >> frame; // get a new frame from camera
 
         cvtColor(frame, edges, CV_BGR2GRAY);
-        pMOG2->apply(frame, frame2);
-/*
+        //pMOG2->apply(frame, frame2);
+        ss << cap.get(CV_CAP_PROP_POS_FRAMES);
+
         if(empieza=1){
             //Empieza un fotograma despues
             
@@ -63,10 +64,10 @@ if(!cap.isOpened()){
                         edges2.at<float>(i,j) = 0;
                     }
                 }
-            }
+            }*/
             
         }
-*/
+
         imshow("frames", frame);
         imshow("gris", edges);
         imshow("foreground", frame2);
@@ -77,10 +78,15 @@ if(!cap.isOpened()){
             //Ha pulsado escape asi que nos salimos
             break;
         }
+        if(key==32){
+            salida = sal + ss.str() + png;
+            imwrite("holi.png", frame);
+        }
 
     }
 
 cap.release();
+cap2.release();
 
 return 0;
 
@@ -95,6 +101,7 @@ return 0;
             COSAS QUE INCLUIR
 ****************************************/
 
+//http://stackoverflow.com/questions/19404245/opencv-videocapture-set-cv-cap-prop-pos-frames-not-working
 
 
 
