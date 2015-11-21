@@ -28,8 +28,8 @@ struct cliente{
 };
 
 struct partida{
-	struct cliente clientes[4];
-	int bolas[100];
+	struct cliente clientes[5];
+	int bolas[90];
 	int numClientes;
 	int numBolas;
 	int estado; // 0 Aun no ha empezado
@@ -58,5 +58,6 @@ void salirCliente(int socket, fd_set * readfds, int * numClientes, struct client
 void salirPartida(int descriptor, int numPartida, struct partida arrayPartidas[]);
 void cartonABuffer(char * buffer, int ** carton);
 void muestraBufferCartonBonito(char * buffer);
+void limpiaPartida(struct partida arrayPartidas[], int numPartida);
 
 #endif

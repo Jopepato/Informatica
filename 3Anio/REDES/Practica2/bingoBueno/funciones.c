@@ -33,7 +33,6 @@ int ** generaCarton(){
 	int aux;
 	int quita;
 	int quitados[4];
-	int siguiente;
 	//reservamos memoria
 	
 	carton = (int **)malloc(3*sizeof(int*));
@@ -75,7 +74,6 @@ int ** generaCarton(){
 
 	//Ahora deberemos quitar 4 numeros por fila
 	for(i=0; i<3;i++){
-		siguiente=1;
 		while(k!=4){
 			quita = rand()%9;
 			if(!compruebaElementoVector(quitados, quita, 4)){
@@ -125,7 +123,6 @@ void salirServidor(struct cliente arrayClientes[], int sd, int numClientes, fd_s
 int registroUsuario(char usuario[50], char password[50]){
 	FILE * fichero;
 	char buffer[512];
-	char * usu;
 	char cadena[120];
 	int valido=1;
 
@@ -134,7 +131,6 @@ int registroUsuario(char usuario[50], char password[50]){
 	//Ahora si valido sigue estando a 1, escribimos
 	if(valido==0){
 		//Escribimos en el fichero
-		fclose(fichero);
 		fichero = fopen("usuarios.txt", "a");
 		strcpy(cadena, usuario);
 		strcat(cadena, " ");
@@ -146,7 +142,6 @@ int registroUsuario(char usuario[50], char password[50]){
 		return 1;
 
 	}else{
-		fclose(fichero);
 		//Devolvemos 0
 		return 0;
 	}
@@ -220,11 +215,15 @@ int devuelvePosicion(struct cliente arrayClientes[MAX_CLIENTES], int descriptor,
 }
 
 void estadoPartidasA0(struct partida arrayPartidas[10]){
-	int i;
+	int i, j;
 	for(i=0; i<10; i++){
 		arrayPartidas[i].estado=0;
 		arrayPartidas[i].numClientes=0;
 		arrayPartidas[i].numBolas=0;
+		//Llenamos el array de bolas a 0
+		for(j=0; j<90; j++){
+			arrayPartidas[i].bolas[j]=0;
+		}
 	}
 }
 
@@ -359,6 +358,13 @@ void salirPartida(int descriptor, int numPartida, struct partida arrayPartidas[]
 	}
 
 	arrayPartidas[numPartida].numClientes -=1;
+
+	if(arrayPartidas[numPartida].numClientes==0){
+		//Se han ido todos asi que limpiamos la partida
+		limpiaPartida(arrayPartidas, numPartida);
+		printf("Partida %d terminada por abandono de clientes\n", numPartida);
+		fflush(stdout);
+	}
 }
 
 void cartonABuffer(char * buffer, int ** carton){
@@ -396,7 +402,6 @@ void cartonABuffer(char * buffer, int ** carton){
 void muestraBufferCartonBonito(char * buffer){
 	//Reservamos memoria para el carton
 	int i=0,j=0;
-	char aux[50];
 	char bufferDef[500];
 
 	strncpy(bufferDef, buffer+5, 500);
@@ -424,4 +429,15 @@ void muestraBufferCartonBonito(char * buffer){
   	}
   	printf("\e[0m");
 	
+}
+
+void limpiaPartida(struct partida arrayPartidas[], int numPartida){
+
+	int i;
+	arrayPartidas[numPartida].estado = 0;
+	arrayPartidas[numPartida].numClientes=0;
+	arrayPartidas[numPartida].numBolas=0;
+	for(i=0; i<90; i++){
+		arrayPartidas[numPartida].bolas[i]=0;
+	}
 }

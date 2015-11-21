@@ -6,7 +6,7 @@ void manejador(int signum);
 
 
 
-void main ( )
+int main ()
 {
   
 	/*---------------------------------------------------- 
@@ -31,6 +31,7 @@ void main ( )
     char usuario[50];
     char password[50];
     char bufferCarton[MSG_SIZE];
+    char bufferSalir[MSG_SIZE];
     int comprueba;
     //contadores
     int i,j,k, w, x, y, z;
@@ -116,14 +117,6 @@ void main ( )
             auxfds = readfds;
             
             salida = select(FD_SETSIZE,&auxfds,NULL,NULL,&timeout);
-          /*  bzero(buffer, sizeof(buffer));
-            bzero(aux, sizeof(aux));
-            bzero(aux2, sizeof(aux2));
-            bzero(usuario, sizeof(usuario));
-            bzero(buffer2, sizeof(buffer2));
-            bzero(password, sizeof(password));
-            bzero(opcion, sizeof(opcion));
-            */
             if(salida > 0){
                 //Ha pasado algo en el selecte de que ha leido algo
                 
@@ -199,11 +192,16 @@ void main ( )
                                 
                                 if(strcmp(buffer,"SALIR\n") == 0){
                                 	//Opcion SALIR
-                                    
-                                    salirCliente(i,&readfds,&numClientes,arrayClientes);
-                                    printf("El cliente %d se fue\n", i);
-                                    numClientes--;
-                                    fflush(stdout);
+                                    if(arrayClientes[posicion].estado<=2){
+                                        //No esta en partida ni buscando una
+                                        salirCliente(i,&readfds,&numClientes,arrayClientes);
+                                        printf("El cliente %d se fue\n", i);
+                                        numClientes--;
+                                        fflush(stdout);
+                                    }else{
+                                        //Esta en partida o buscando una
+                                        send(i, "-ERR, para salir, primer debes de salir de partida\n", strlen("-ERR, para salir, primer debes de salir de partida\n"), 0);
+                                    }
 
                                 //Cierre if SALIR
                                 }else if(strcmp(opcion, "REGISTER")==0){
@@ -383,6 +381,34 @@ void main ( )
 
                                     //Cierre if bingo
                                 }else if(strcmp(buffer, "SALIR-PARTIDA\n")==0){
+                                    //A ver como se da
+                                    if(arrayClientes[posicion].estado>2){
+                                        //Esta en partida asi que puede hacer el salir-partida
+                                        posicionPartida = getPartida(arrayPartidas, i);
+                                        salirPartida(i, posicionPartida, arrayPartidas);
+                                        printf("El cliente %d ha hecho un salir Partida\n", i);
+                                        fflush(stdout);
+                                        send(i, "+Ok, has salido de partida\n", strlen("+Ok, has salido de partida\n"), 0);
+                                        
+                                        if(arrayClientes[posicion].estado==4){
+                                            //Estaba en partida a si que avisamos a sus compañeros de que un cliente ha abandonado la partida
+                                            bzero(bufferSalir, sizeof(bufferSalir));
+                                            sprintf(bufferSalir, "El cliente %s ha abandonado la partida\n", arrayClientes[posicion].usuario);
+                                            for(k=0; k<arrayPartidas[posicionPartida].numClientes;k++){
+                                                send(arrayPartidas[posicionPartida].clientes[k].descriptor, bufferSalir, strlen(bufferSalir), 0);
+                                            }
+                                        }
+                                        //Comprobamos si todos han abandonado la partida
+                                        if(arrayPartidas[posicionPartida].numClientes==0){
+                                            numPartidas--;
+                                        }
+                                        //Y le volvemos a poner el estado 2
+                                        arrayClientes[posicion].estado=2;
+                                    //Cierre if estado>2
+                                    }else{
+                                        //No esta en partida
+                                        send(i, "-ERR, no estas en partida\n", strlen("-ERR, no estas en partida\n"), 0);
+                                    }
 
                                     //Cierre if salir-partida
                                 }else{
@@ -440,6 +466,7 @@ void main ( )
 
 		close(sd);
 	
+    return 1;
 }
 
 
