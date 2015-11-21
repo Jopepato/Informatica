@@ -110,6 +110,17 @@ void muestraCarton(int ** carton){
 
 }
 
+void salirServidor(struct cliente arrayClientes[], int sd, int numClientes, fd_set * readfds){
+	//Para el cierre del servidor
+    int j;
+    for (j = 0; j < numClientes; j++){
+        send(arrayClientes[j].descriptor, "Desconexion servidor\n", strlen("Desconexion servidor\n"),0);
+        close(arrayClientes[j].descriptor);
+        FD_CLR(arrayClientes[j].descriptor, readfds);
+    }
+    close(sd);	
+}
+
 
 int registroUsuario(char usuario[50], char password[50]){
 	FILE * fichero;
@@ -117,8 +128,6 @@ int registroUsuario(char usuario[50], char password[50]){
 	char * usu;
 	char cadena[120];
 	int valido=1;
-
-	fichero = fopen("usuarios.txt", "r");
 
 	valido = compruebaUsuario(usuario);
 
@@ -232,4 +241,187 @@ int getBola(int arrayBolas[]){
 	}
 
 	return bola;
+}
+
+int getPartida(struct partida arrayPartidas[], int descriptor){
+	//Lo que haremos será recorrer el array de partidas buscando a nuestro cliente
+	int i, j;
+
+	for(i=0; i<10; i++){
+
+		//Y tenemos que buscar dentro de las partidas
+		for(j=0; j<4; j++){
+			if(arrayPartidas[i].clientes[j].descriptor==descriptor){
+				return i;
+			}
+		}
+	}
+
+	return -1;
+}
+
+int compruebaLinea(int ** carton, int bolas[], int numBolas){
+	int i,j;
+	int contador=0;
+	for(i=0; i<3; i++){
+		for(j=0; j<9; j++){
+			if(compruebaElementoVector(bolas, carton[i][j], numBolas)){
+				contador++;
+			}
+
+		}
+		if(contador==5){
+			return 1;
+		}
+		contador=0;
+	}
+
+	return 0;
+}
+
+int compruebaDosLineas(int ** carton, int bolas[], int numBolas){
+	int i,j;
+	int contador=0, contadorLineas=0;
+
+	for(i=0; i<3; i++){
+		for(j=0; j<9; j++){
+			if(compruebaElementoVector(bolas, carton[i][j], numBolas)){
+				contador++;
+			}
+		}
+		if(contador==5){
+			contadorLineas++;
+		}
+		contador=0;
+	}
+
+	if(contadorLineas==2){
+		return 1;
+	}else{
+		return 0;
+	}
+}
+
+int compruebaBingo(int ** carton, int bolas[], int numBolas){
+	int i,j;
+	int contador=0, contadorLineas=0;
+
+	for(i=0; i<3; i++){
+		for(j=0; j<9; j++){
+			if(compruebaElementoVector(bolas, carton[i][j], numBolas)){
+				contador++;
+			}
+		}
+		if(contador==5){
+			contadorLineas++;
+		}
+		contador=0;
+	}
+
+	if(contadorLineas==3){
+		return 1; //BINGO
+	}else{
+		return 0;
+	}
+}
+
+void salirCliente(int socket, fd_set * readfds, int * numClientes, struct cliente arrayClientes[]){
+  
+    char buffer[250];
+    int j;
+    
+    close(socket);
+    FD_CLR(socket,readfds);
+    
+    //Re-estructurar el array de clientes
+    for (j = 0; j < (*numClientes) - 1; j++)
+        if (arrayClientes[j].descriptor == socket)
+            break;
+    for (; j < (*numClientes) - 1; j++)
+        (arrayClientes[j].descriptor = arrayClientes[j+1].descriptor);
+    
+    (*numClientes)--;
+    
+    bzero(buffer,sizeof(buffer));
+    sprintf(buffer,"Desconexión del cliente: %d\n",socket);
+
+}
+
+void salirPartida(int descriptor, int numPartida, struct partida arrayPartidas[]){
+
+	//Tenemos que redimensionar el vector de clientes de la partida y quitar 1 al numClientes
+	int i;
+	for(i=0; i<arrayPartidas[numPartida].numClientes; i++)
+		if(arrayPartidas[numPartida].clientes[i].descriptor == descriptor)
+			break;
+	for(; i<arrayPartidas[numPartida].numClientes; i++){
+		(arrayPartidas[numPartida].clientes[i] = arrayPartidas[numPartida].clientes[i+1]);
+	}
+
+	arrayPartidas[numPartida].numClientes -=1;
+}
+
+void cartonABuffer(char * buffer, int ** carton){
+	int i,j;
+	char aux[20];
+	bzero(buffer, sizeof(buffer));
+	sprintf(buffer, "CARTON|");
+
+	//Ahora tenemos que recorrer la matriz añadiendo los numeros al buffer
+
+	for(i=0; i<3; i++){
+		for(j=0; j<9; j++){
+			if(carton[i][j]!=0){
+				sprintf(aux, "%d", carton[i][j]);
+			}else{
+				sprintf(aux, "X");
+			}
+
+			if(j<8){
+				strcat(aux, ",");
+			}
+
+			strcat(buffer, aux);
+			bzero(aux, sizeof(aux));
+		}
+		if(i<2){
+			strcat(buffer, ";");
+		}
+	}
+
+	strcat(buffer, "|");
+	strcat(buffer, "\n");
+}
+
+void muestraBufferCartonBonito(char * buffer){
+	//Reservamos memoria para el carton
+	int i=0,j=0;
+	char aux[50];
+	char bufferDef[500];
+
+	strncpy(bufferDef, buffer+5, 500);
+  	char * pch;
+  	pch = strtok (bufferDef,"|,;");
+  	while (pch != NULL){
+   		
+   		pch = strtok (NULL, "|,;");
+   		if(strcmp(pch, "X")==0){
+   			printf("\033[31m%s\t", pch);
+   		}else{
+   			printf("\033[32m%s\t",pch);
+   		}
+   		j++;
+   		if(j==9){
+   			printf("\n");
+   			i++;
+   			j=0;
+   		}
+   		if(i==3 && j==0){
+   			//Aqui ya ha terminado de rellenar la matriz
+   			break;
+   		}
+
+  	}
+  	printf("\e[0m");
+	
 }

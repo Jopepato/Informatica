@@ -3,8 +3,6 @@
 
 
 void manejador(int signum);
-void salirCliente(int socket, fd_set * readfds, int * numClientes, struct cliente arrayClientes[]);
-
 
 
 
@@ -19,6 +17,7 @@ void main ( )
 	char buffer[MSG_SIZE];
 	char buffer2[MSG_SIZE];
     char bufferBolas[MSG_SIZE];
+    char bufferPartidas[MSG_SIZE];
 	socklen_t from_len;
     fd_set readfds, auxfds;
     int salida;
@@ -31,9 +30,10 @@ void main ( )
     char * aux2;
     char usuario[50];
     char password[50];
+    char bufferCarton[MSG_SIZE];
     int comprueba;
     //contadores
-    int i,j,k, w, x, y;
+    int i,j,k, w, x, y, z;
 	int recibidos;
     int cuentaPartidas;
     char identificador[MSG_SIZE];
@@ -42,6 +42,8 @@ void main ( )
     int on, ret;
     int posicion;
     int bola;
+    int posicionPartida;
+    int posicionAux;
     
     estadoPartidasA0(arrayPartidas);
     //Inicializamos el tiempo a null
@@ -145,9 +147,10 @@ void main ( )
                                     FD_SET(new_sd, &readfds);
                                 	bzero(buffer,sizeof(buffer));
 
-                                    sprintf(buffer, "Bienvenido al puto bingo de los Peaky Blinders, tu descriptor es: %d\n", new_sd);
+                                    sprintf(buffer, "Bienvenido al bingo, tu descriptor es: %d\n", new_sd);
 
                                     send(new_sd,buffer,strlen(buffer),0);
+                                    printf("Cliente %d conectado\n", new_sd);
                                 
                                     
                                 }//Cierre if de aceptacion clientes
@@ -171,12 +174,7 @@ void main ( )
                             //Controlar si se ha introducido "SALIR", cerrando todos los sockets y finalmente saliendo del servidor. (implementar)
                             if(strcmp(buffer,"SALIR\n") == 0){
                              
-                                for (j = 0; j < numClientes; j++){
-                                    send(arrayClientes[j].descriptor, "Desconexion servidor\n", strlen("Desconexion servidor\n"),0);
-                                    close(arrayClientes[j].descriptor);
-                                    FD_CLR(arrayClientes[j].descriptor,&readfds);
-                                }
-                                    close(sd);
+                                    salirServidor(arrayClientes, sd, numClientes, &readfds);
                                     exit(-1);
                                 
                                 
@@ -212,7 +210,6 @@ void main ( )
                                 	//-u USUARIO -p PASSWORD
                                 	strncpy(aux, buffer+strlen(opcion)+4, 100);
                                 	aux2 = strtok(aux, " ");
-                                	fflush(stdout);
                                 	//Ya tenemos el nombre del usuario
                                 	strcpy(usuario, aux2);
                                 	//Ahora cogemos la contraseña
@@ -223,9 +220,13 @@ void main ( )
                                 	if(registroUsuario(usuario, password)==1){
                                 		//Ha salido bien
                                 		send(i, "+Ok, usuario registrado\n", strlen("+Ok, usuario registrado\n"),0 );
+                                        printf("Usuario registrado %s y password %s\n", usuario, password);
+                                        fflush(stdout);
                                 	}else{
                                 		//Ha salido mal
                                 		send(i, "-ERR, usuario ya existente\n", strlen("-ERR, usuario ya existente\n"),0 );
+                                        printf("Intento de registro de usuario %s, pero ya existente", usuario);
+                                        fflush(stdout);
                                 	}
                                 //Cierre if register
                                 }else if(strcmp(opcion, "USUARIO")==0){
@@ -278,32 +279,49 @@ void main ( )
                                             send(i, "-ERR, espere unos minutos\n", strlen("-ERR, espere unos minutos\n"), 0);
                                             //Y te sales del bucle
                                         }else{
-                                       	   for(cuentaPartidas=0; i<10; i++){
+                                       	   for(cuentaPartidas=0; cuentaPartidas<10; cuentaPartidas++){
                                                 //Pilla la primera partida libre
                                                 if(arrayPartidas[cuentaPartidas].estado==0){
                                                     //Ahora miramos que hay menos de cuatro jugadores esperando
                                                     if(arrayPartidas[cuentaPartidas].numClientes < 3){
                                                         //Añadimos uno al numero de clientes
-                                                        
-                                                        arrayPartidas[cuentaPartidas].clientes[numClientes] = arrayClientes[posicion];
-                                                        arrayPartidas[cuentaPartidas].numClientes++;
+                                                        arrayClientes[posicion].estado=3;
+                                                        arrayPartidas[cuentaPartidas].clientes[arrayPartidas[cuentaPartidas].numClientes] = arrayClientes[posicion];
+                                                        arrayPartidas[cuentaPartidas].numClientes+=1;
                                                         send(i, "+Ok, esperando partida\n", strlen("+Ok, esperando partida\n"), 0);
-                                                        printf("%d\n", arrayPartidas[cuentaPartidas].numClientes);
                                                         //Y se sale del bucle
                                                         break;
-                                                    }else if(arrayPartidas[cuentaPartidas].numClientes == 3){
+                                                    }
+                                                    if(arrayPartidas[cuentaPartidas].numClientes == 3){
                                                         //Se esta listo para iniciar la partida
-                                                        
-                                                        arrayPartidas[cuentaPartidas].clientes[numClientes] = arrayClientes[posicion];
-                                                        arrayPartidas[cuentaPartidas].numClientes++;
+                                                        arrayClientes[posicion].estado=4;
+                                                        arrayPartidas[cuentaPartidas].clientes[arrayPartidas[cuentaPartidas].numClientes] = arrayClientes[posicion];
+                                                        arrayPartidas[cuentaPartidas].numClientes+=1;
                                                         //Aumentamos el numero de partidas
                                                         numPartidas++;
                                                         //Iniciamos la partida
                                                         //Mandariamos a todos los de la partida que empieza la partida
-                                                        for(w=0; w<=numClientes; w++){
+                                                        for(w=0; w<=arrayPartidas[cuentaPartidas].numClientes; w++){
+                                                            //Rellenamos los cartones de los jugadores y se los mandamos
+                                                            arrayPartidas[cuentaPartidas].clientes[w].estado=4;
+                                                            posicionAux= devuelvePosicion(arrayClientes, arrayPartidas[cuentaPartidas].clientes[w].descriptor, numClientes);
+                                                            arrayClientes[posicionAux].estado=4;
+                                                            arrayPartidas[cuentaPartidas].clientes[w].carton = generaCarton();
+                                                            //Pasamos el carton a un buffer
+                                                            cartonABuffer(bufferCarton, arrayPartidas[cuentaPartidas].clientes[w].carton);
                                                             send(arrayPartidas[cuentaPartidas].clientes[w].descriptor, "+Ok, empieza la partida\n", strlen("+Ok, empieza la partida\n"), 0);
+                                                            //Y mandamos de paso el carton
+                                                            usleep(5);
+                                                            send(arrayPartidas[cuentaPartidas].clientes[w].descriptor, bufferCarton, strlen(bufferCarton), 0);
+                                                            bzero(bufferCarton, sizeof(bufferCarton));
+                                                            //Ponemos los estados de los jugadores a 4
+                                                            arrayPartidas[cuentaPartidas].clientes[w].estado=4;
+                                                            posicionAux= devuelvePosicion(arrayClientes, arrayPartidas[cuentaPartidas].clientes[w].descriptor, numClientes);
+                                                            arrayClientes[posicionAux].estado=4;
                                                         }
                                                         //Y se sale del bucle
+                                                        printf("Inicio de la partida %d\n", cuentaPartidas);
+                                                        fflush(stdout);
                                                         arrayPartidas[cuentaPartidas].estado = 1;
                                                         break;
                                                     }//Cierre if numClientes==3
@@ -315,6 +333,47 @@ void main ( )
                                     }
                                     //Cierre if iniciar-partida
                                 }else if(strcmp(buffer, "UNA-LINEA\n")==0){
+                                    if(arrayClientes[posicion].estado==4){
+                                        printf("Intentan cantar linea\n");
+                                        fflush(stdout);
+                                        //Esta en partida asi que puede hacer esto
+                                        //Comprobamos su carton y las bolas de la partida para ver si tiene linea
+                                        posicionPartida = getPartida(arrayPartidas, arrayClientes[posicion].descriptor);
+                                        //Comprobamos que no han cantado linea antes
+                                        if(arrayPartidas[posicionPartida].estado==1){
+                                            //Comprobamos que es linea
+                                            if(compruebaLinea(arrayPartidas[posicionPartida].clientes[w].carton, arrayPartidas[posicionPartida].bolas, arrayPartidas[posicionPartida].numBolas)){
+                                                //La linea es correcta actualizamos el estado de la partida y avisamos a todos los jugadores
+                                                arrayPartidas[posicionPartida].estado = 2;
+                                                //Se lo decimos a los demas jugadores
+                                                for(z=0; z<arrayPartidas[posicionPartida].numClientes; z++){
+                                                    //Al que ha cantado linea le decimos otra cosa
+                                                    if(arrayPartidas[posicionPartida].clientes[z].descriptor!=i){
+                                                        //Los jugadores que no han cantado linea
+                                                        bzero(bufferPartidas, sizeof(bufferPartidas));
+                                                        sprintf(bufferPartidas, "+Ok, el jugador %s ha cantado linea\n", arrayPartidas[posicionPartida].clientes[z].usuario);
+                                                        send(arrayPartidas[posicionPartida].clientes[z].descriptor, bufferPartidas, strlen(bufferPartidas), 0);
+                                                    }else{
+                                                        //El que ha cantado linea
+                                                        send(i, "+Ok, enhorabuena has cantado linea\n", strlen("+Ok, enhorabuena has cantado linea\n"), 0);
+                                                    }//Cierre for envio de mensajes
+                                                }
+                                            //Cierre if comprueba-linea
+                                            }else{
+                                                //La linea es correcta
+                                                printf("Linea incorrecta en partida %d", posicionPartida);
+                                                fflush(stdout);
+                                                send(i, "-ERR, su carton no contiene linea\n", strlen("-ERR, su carton no contiene linea\n"), 0);
+                                            }//Cierre else comprueba linea
+                                        //Cierre if estadoPartida==1
+                                        }else{
+                                            send(i, "-ERR, ya han cantado linea\n", strlen("-ERR, ya han cantado linea\n"), 0);
+                                        }
+                                    //Cierre if estadoJugador==4
+                                    }else{
+                                        //Aun no esta en partida, no puede usar este comando
+                                        send(i, "-ERR, no estas en partida aun\n", strlen("-ERR, no estas en partida aun\n"), 0);
+                                    }
 
                                     //Cierre if una-linea
                                 }else if(strcmp(buffer, "DOS-LINEAS\n")==0){
@@ -367,10 +426,8 @@ void main ( )
                                     //Y mandamos la bola
                                     sprintf(bufferBolas,"NUMERO OBTENIDO: %d",bola);
                                     //Y ahora tenemos que mandarlo a los clientes de las partidas
-                                    for(y=0; y<=arrayPartidas[x].numClientes +1; y++){
+                                    for(y=0; y<arrayPartidas[x].numClientes; y++){
                                         send(arrayPartidas[x].clientes[y].descriptor, bufferBolas, strlen(bufferBolas), 0);
-                                        printf("%d\n", y);
-                                        fflush(stdout);
                                     }
                                     bzero(bufferBolas, sizeof(bufferBolas));
                                 }//Cierre if estado
@@ -383,29 +440,6 @@ void main ( )
 
 		close(sd);
 	
-}
-
-
-void salirCliente(int socket, fd_set * readfds, int * numClientes, struct cliente arrayClientes[]){
-  
-    char buffer[250];
-    int j;
-    
-    close(socket);
-    FD_CLR(socket,readfds);
-    
-    //Re-estructurar el array de clientes
-    for (j = 0; j < (*numClientes) - 1; j++)
-        if (arrayClientes[j].descriptor == socket)
-            break;
-    for (; j < (*numClientes) - 1; j++)
-        (arrayClientes[j].descriptor = arrayClientes[j+1].descriptor);
-    
-    (*numClientes)--;
-    
-    bzero(buffer,sizeof(buffer));
-    sprintf(buffer,"Desconexión del cliente: %d\n",socket);
-
 }
 
 
