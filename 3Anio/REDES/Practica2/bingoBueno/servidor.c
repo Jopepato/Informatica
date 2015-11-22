@@ -301,10 +301,10 @@ int main ()
                                                         //Mandariamos a todos los de la partida que empieza la partida
                                                         for(w=0; w<=arrayPartidas[cuentaPartidas].numClientes; w++){
                                                             //Rellenamos los cartones de los jugadores y se los mandamos
-                                                            arrayPartidas[cuentaPartidas].clientes[w].estado=4;
                                                             posicionAux= devuelvePosicion(arrayClientes, arrayPartidas[cuentaPartidas].clientes[w].descriptor, numClientes);
                                                             arrayClientes[posicionAux].estado=4;
-                                                            arrayPartidas[cuentaPartidas].clientes[w].carton = generaCarton();
+                                                            arrayClientes[posicionAux].carton = generaCarton();
+                                                            arrayPartidas[cuentaPartidas].clientes[w] = arrayClientes[posicionAux];
                                                             //Pasamos el carton a un buffer
                                                             cartonABuffer(bufferCarton, arrayPartidas[cuentaPartidas].clientes[w].carton);
                                                             send(arrayPartidas[cuentaPartidas].clientes[w].descriptor, "+Ok, empieza la partida\n", strlen("+Ok, empieza la partida\n"), 0);
@@ -312,10 +312,6 @@ int main ()
                                                             usleep(5);
                                                             send(arrayPartidas[cuentaPartidas].clientes[w].descriptor, bufferCarton, strlen(bufferCarton), 0);
                                                             bzero(bufferCarton, sizeof(bufferCarton));
-                                                            //Ponemos los estados de los jugadores a 4
-                                                            arrayPartidas[cuentaPartidas].clientes[w].estado=4;
-                                                            posicionAux= devuelvePosicion(arrayClientes, arrayPartidas[cuentaPartidas].clientes[w].descriptor, numClientes);
-                                                            arrayClientes[posicionAux].estado=4;
                                                         }
                                                         //Y se sale del bucle
                                                         printf("Inicio de la partida %d\n", cuentaPartidas);
@@ -340,7 +336,7 @@ int main ()
                                         //Comprobamos que no han cantado linea antes
                                         if(arrayPartidas[posicionPartida].estado==1){
                                             //Comprobamos que es linea
-                                            if(compruebaLinea(arrayPartidas[posicionPartida].clientes[w].carton, arrayPartidas[posicionPartida].bolas, arrayPartidas[posicionPartida].numBolas)){
+                                            if(compruebaLinea(arrayClientes[posicion].carton, arrayPartidas[posicionPartida].bolas, arrayPartidas[posicionPartida].numBolas)){
                                                 //La linea es correcta actualizamos el estado de la partida y avisamos a todos los jugadores
                                                 arrayPartidas[posicionPartida].estado = 2;
                                                 //Se lo decimos a los demas jugadores
@@ -351,15 +347,18 @@ int main ()
                                                         bzero(bufferPartidas, sizeof(bufferPartidas));
                                                         sprintf(bufferPartidas, "+Ok, el jugador %s ha cantado linea\n", arrayPartidas[posicionPartida].clientes[z].usuario);
                                                         send(arrayPartidas[posicionPartida].clientes[z].descriptor, bufferPartidas, strlen(bufferPartidas), 0);
+                                                        
                                                     }else{
                                                         //El que ha cantado linea
                                                         send(i, "+Ok, enhorabuena has cantado linea\n", strlen("+Ok, enhorabuena has cantado linea\n"), 0);
                                                     }//Cierre for envio de mensajes
+                                                    printf("El jugador %s ha cantado linea en la partida %d\n", arrayClientes[posicion].usuario, posicionPartida);
+                                                    fflush(stdout);
                                                 }
                                             //Cierre if comprueba-linea
                                             }else{
-                                                //La linea es correcta
-                                                printf("Linea incorrecta en partida %d", posicionPartida);
+                                                //La linea es incorrecta
+                                                printf("Linea incorrecta en partida %d\n", posicionPartida);
                                                 fflush(stdout);
                                                 send(i, "-ERR, su carton no contiene linea\n", strlen("-ERR, su carton no contiene linea\n"), 0);
                                             }//Cierre else comprueba linea
@@ -375,6 +374,44 @@ int main ()
 
                                     //Cierre if una-linea
                                 }else if(strcmp(buffer, "DOS-LINEAS\n")==0){
+                                    if(arrayClientes[posicion].estado==4){
+                                        printf("Intentan cantar 2 lineas\n");
+                                        fflush(stdout);
+                                        //Ahora tenemos que comprobar que la partida esta lista para 2 lineas
+                                        posicionPartida = getPartida(arrayPartidas, arrayClientes[posicion].descriptor);
+                                        if(arrayPartidas[posicionPartida].estado==1 || arrayPartidas[posicionPartida].estado == 2){
+                                            //Ahora tenemos que comprobar si su carton tiene 2 lineas
+                                            if(compruebaDosLineas(arrayClientes[posicion].carton, arrayPartidas[posicionPartida].bolas, arrayPartidas[posicionPartida].numBolas)){
+                                                //Dos lineas es correcta asi que actualizamos el estado de la partida y avisamos a los jugadores
+                                                arrayPartidas[posicionPartida].estado=3;
+                                                //Se lo decimos a los demas jugadores
+                                                for(z=0; z<arrayPartidas[posicionPartida].numClientes; z++){
+                                                    if(arrayPartidas[posicionPartida].clientes[z].descriptor != i){
+                                                        bzero(bufferPartidas, sizeof(bufferPartidas));
+                                                        sprintf(bufferPartidas, "+Ok, el jugador %s ha cantado dos lineas\n", arrayPartidas[posicionPartida].clientes[z].usuario);
+                                                        send(arrayPartidas[posicionPartida].clientes[z].descriptor, bufferPartidas, strlen(bufferPartidas), 0);
+                                                        
+                                                    }else{
+                                                        //El que ha cantado 2 lineas
+                                                        send(i, "+Ok, enhorabuena has cantado 2 lineas!\n", strlen("+Ok, enhorabuena has cantado 2 lineas!\n"),0);
+                                                    }   
+                                                }
+                                                printf("El jugador %s ha cantado dos lineas en la partida %d\n", arrayClientes[posicion].usuario, posicionPartida);
+                                                fflush(stdout);
+                                            }else{
+                                                //El carton de este jugador no tiene 2 lineas
+                                                printf("Dos lineas incorrecta en partida %d\n", posicionPartida);
+                                                fflush(stdout);
+                                                send(i, "-ERR, su carton no contiene 2 lineas\n", strlen("-ERR, su carton no contiene 2 lineas\n"), 0);
+                                            }
+                                        }else{
+                                            //Ya han cantado 2 lineas
+                                            send(i, "-ERR, ya han cantado dos lineas\n", strlen("-ERR, ya han cantado dos lineas\n"), 0);
+                                        }
+                                    }else{
+                                        //El cliente no está en partida
+                                        send(i, "-ERR, no estas en partida aun\n", strlen("-ERR, no estas en partida aun\n"), 0);
+                                    }
 
                                     //Cierre if dos-lineas
                                 }else if(strcmp(buffer, "BINGO\n")==0){
@@ -473,6 +510,4 @@ int main ()
 void manejador (int signum){
     printf("\nSe ha recibido la señal sigint\n");
     signal(SIGINT,manejador);
-    
-    //Implementar lo que se desee realizar cuando ocurra la excepción de ctrl+c en el servidor
 }

@@ -264,10 +264,10 @@ int compruebaLinea(int ** carton, int bolas[], int numBolas){
 	int contador=0;
 	for(i=0; i<3; i++){
 		for(j=0; j<9; j++){
+			
 			if(compruebaElementoVector(bolas, carton[i][j], numBolas)){
 				contador++;
 			}
-
 		}
 		if(contador==5){
 			return 1;
