@@ -2,7 +2,7 @@
 
 
 
-void manejador(int signum);
+
 
 
 
@@ -168,12 +168,8 @@ int main ()
                             if(strcmp(buffer,"SALIR\n") == 0){
                              
                                     salirServidor(arrayClientes, sd, numClientes, &readfds);
-                                    exit(-1);
-                                
-                                
+                                    exit(-1);  
                             }
-                            //Mensajes que se quieran mandar a los clientes (implementar)
-                            
                         } 
                         else{
                             //Lo que hemos recibido es por el teclado de los clientes
@@ -195,12 +191,9 @@ int main ()
                                     if(arrayClientes[posicion].estado<=2){
                                         //No esta en partida ni buscando una
                                         salirCliente(i,&readfds,&numClientes,arrayClientes);
-                                        printf("El cliente %d se fue\n", i);
-                                        numClientes--;
-                                        fflush(stdout);
                                     }else{
                                         //Esta en partida o buscando una, asi que le hacemos un salir-partida
-                                        
+                                        send(i, "-Err, primero debes salir de la partida\n", strlen("-Err, primero debes de salir de la partida\n"), 0);
                                        
                                     }
 
@@ -502,7 +495,6 @@ int main ()
                             }
                             //Si el cliente introdujo ctrl+c
                             if(recibidos== 0){
-
                                 salirCliente(i,&readfds,&numClientes,arrayClientes);
                                 printf("El cliente %d se fue\n", i);
                                 fflush(stdout);
@@ -549,10 +541,4 @@ int main ()
 		close(sd);
 	
     return 1;
-}
-
-
-void manejador (int signum){
-    printf("\nSe ha recibido la señal sigint\n");
-    signal(SIGINT,manejador);
 }

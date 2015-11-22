@@ -60,5 +60,6 @@ void cartonABuffer(char * buffer, int ** carton);
 void muestraBufferCartonBonito(char * buffer);
 void limpiaPartida(struct partida arrayPartidas[], int numPartida);
 void limpiaCartonCliente(struct cliente arrayClientes[], int numCliente);
+void manejador(int signum);
 
 #endif

@@ -329,9 +329,6 @@ void salirCliente(int socket, fd_set * readfds, int * numClientes, struct client
     char buffer[250];
     int j;
     
-    close(socket);
-    FD_CLR(socket,readfds);
-    
     //Re-estructurar el array de clientes
     for (j = 0; j < (*numClientes) - 1; j++)
         if (arrayClientes[j].descriptor == socket)
@@ -341,8 +338,11 @@ void salirCliente(int socket, fd_set * readfds, int * numClientes, struct client
     
     (*numClientes)--;
     
-    bzero(buffer,sizeof(buffer));
-    sprintf(buffer,"Desconexión del cliente: %d\n",socket);
+    printf("Desconexión del cliente: %d\n",socket);
+    fflush(stdout);
+    send(socket, "Desconexion cliente\n", strlen("Desconexion cliente\n"), 0);
+    close(socket);
+    FD_CLR(socket, readfds);
 
 }
 
@@ -449,4 +449,10 @@ void limpiaCartonCliente(struct cliente arrayClientes[], int numCliente){
 		free(arrayClientes[numCliente].carton[i]);
 	}
 	free(arrayClientes[numCliente].carton);
+}
+
+void manejador (int signum){
+    printf("Para salir, introduzca: 'SALIR'\n");
+    fflush(stdout);
+    signal(SIGINT,manejador);
 }

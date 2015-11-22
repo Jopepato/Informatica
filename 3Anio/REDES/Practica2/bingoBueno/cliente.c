@@ -64,7 +64,6 @@ int main ()
     
     FD_SET(0,&readfds);
     FD_SET(sd,&readfds);
-
     
 	/* ------------------------------------------------------------------
 		Se transmite la información
@@ -88,13 +87,15 @@ int main ()
 
             }else{
 
-            printf("\n%s\n",buffer);
+            printf("%s",buffer);
             
             if(strcmp(buffer,"Demasiados clientes conectados\n") == 0)
                 fin =1;
             
             if(strcmp(buffer,"Desconexion servidor\n") == 0)
                 fin =1;
+            if(strcmp(buffer, "Desconexion cliente\n")==0)
+            	fin=1;
       	  }//Cierre else carton
             
         }
@@ -106,11 +107,6 @@ int main ()
                 bzero(buffer,sizeof(buffer));
                 
                 fgets(buffer,sizeof(buffer),stdin);
-                
-                if(strcmp(buffer,"SALIR\n") == 0){
-                        fin = 1;
-                
-                }
                 
                 send(sd,buffer,sizeof(buffer),0);
                 
