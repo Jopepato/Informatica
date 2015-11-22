@@ -200,26 +200,46 @@ int main ()
                                 //Cierre if SALIR
                                 }else if(strcmp(opcion, "REGISTER")==0){
                                 	//-u USUARIO -p PASSWORD
-                                	strncpy(aux, buffer+strlen(opcion)+4, 100);
-                                	aux2 = strtok(aux, " ");
-                                	//Ya tenemos el nombre del usuario
-                                	strcpy(usuario, aux2);
-                                	//Ahora cogemos la contraseña
-                                	bzero(aux, sizeof(aux));
-                                	strncpy(aux, buffer+strlen(opcion)+4+strlen(usuario)+4, 512);
-                                	aux2 = strtok(aux, "\n");
-                                	strcpy(password, aux2);
-                                	if(registroUsuario(usuario, password)==1){
-                                		//Ha salido bien
-                                		send(i, "+Ok, usuario registrado\n", strlen("+Ok, usuario registrado\n"),0 );
-                                        printf("Usuario registrado %s y password %s\n", usuario, password);
-                                        fflush(stdout);
-                                	}else{
-                                		//Ha salido mal
-                                		send(i, "-ERR, usuario ya existente\n", strlen("-ERR, usuario ya existente\n"),0 );
-                                        printf("Intento de registro de usuario %s, pero ya existente", usuario);
-                                        fflush(stdout);
-                                	}
+                                    if(arrayClientes[posicion].estado<=2){
+                                	   strncpy(aux, buffer+strlen(opcion), 100);
+                                	   aux2 = strtok(aux, " ");
+                                        if(strcmp(aux2, "-u")==0){
+                                    	   //Ahora cogemos el nombre de usuario
+                                            bzero(aux, sizeof(aux));
+                                            strncpy(aux, buffer+strlen(opcion)+4, 100);
+                                            aux2 = strtok(aux, " ");
+                                            strcpy(usuario, aux2);
+                                            //Ahora vemos si el segundo parametro es -p
+                                            bzero(aux, sizeof(aux));
+                                            strncpy(aux, buffer+strlen(opcion)+4+strlen(usuario), 100);
+                                            aux2 = strtok(aux, " ");
+                                            //En aux2 tendriamos el -p
+                                            if(strcmp(aux2, "-p")==0){
+                                            	//Ahora cogemos la contraseña
+                                            	bzero(aux, sizeof(aux));
+                                            	strncpy(aux, buffer+strlen(opcion)+4+strlen(usuario)+4, 512);
+                                            	aux2 = strtok(aux, "\n");
+                                            	strcpy(password, aux2);
+                                            	if(registroUsuario(usuario, password)==1){
+                                            		//Ha salido bien
+                                            		send(i, "+Ok, usuario registrado\n", strlen("+Ok, usuario registrado\n"),0 );
+                                                    printf("Usuario registrado %s y password %s\n", usuario, password);
+                                                    fflush(stdout);
+                                            	}else{
+                                            		//Ha salido mal
+                                            		send(i, "-ERR, usuario ya existente\n", strlen("-ERR, usuario ya existente\n"),0 );
+                                                    printf("Intento de registro de usuario %s, pero ya existente", usuario);
+                                                    fflush(stdout);
+                                            	}
+                                            }else{
+                                                send(i, "-ERR, USUARIO -u user -p pass\n", strlen("-ERR, USUARIO -u user -p pass\n"), 0);
+                                            }
+                                        }else{
+                                            send(i, "-ERR, USUARIO -u user -p pass\n", strlen("-ERR, USUARIO -u user -p pass\n"), 0);
+                                        }
+                                }else{
+                                    send(i, "-ERR, no puedes registrarte estando en partida\n", strlen("-ERR, no puedes registrarte estando en partida\n"), 0);
+                                }
                                 //Cierre if register
                                 }else if(strcmp(opcion, "USUARIO")==0){
                                 	//OPCION USUARIO
@@ -509,7 +529,6 @@ int main ()
                     bzero(bufferBolas, sizeof(bufferBolas));
                     timeout.tv_sec = 5;
                     timeout.tv_usec = 0;
-                    //Valo esta esta preparado para las bolas
                     //Esto es que se ha agotado el tiempo del servidor
                     //Vamos a mandar mensaje a todos los clientes
                     //Recorremos el vector de clientes que tenemos y vamos mandando a su descriptor
