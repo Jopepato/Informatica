@@ -441,3 +441,12 @@ void limpiaPartida(struct partida arrayPartidas[], int numPartida){
 		arrayPartidas[numPartida].bolas[i]=0;
 	}
 }
+
+void limpiaCartonCliente(struct cliente arrayClientes[], int numCliente){
+	int i;
+	//Liberamos el carton del cliente
+	for(i=0; i<3; i++){
+		free(arrayClientes[numCliente].carton[i]);
+	}
+	free(arrayClientes[numCliente].carton);
+}

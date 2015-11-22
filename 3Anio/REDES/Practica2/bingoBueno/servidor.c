@@ -199,8 +199,9 @@ int main ()
                                         numClientes--;
                                         fflush(stdout);
                                     }else{
-                                        //Esta en partida o buscando una
-                                        send(i, "-ERR, para salir, primer debes de salir de partida\n", strlen("-ERR, para salir, primer debes de salir de partida\n"), 0);
+                                        //Esta en partida o buscando una, asi que le hacemos un salir-partida
+                                        
+                                       
                                     }
 
                                 //Cierre if SALIR
@@ -415,6 +416,50 @@ int main ()
 
                                     //Cierre if dos-lineas
                                 }else if(strcmp(buffer, "BINGO\n")==0){
+                                    //Vamos con el BINGO C:
+                                    if(arrayClientes[posicion].estado==4){
+                                        //El cliente esta en partida
+                                        printf("Intentan cantar bingo\n");
+                                        fflush(stdout);
+                                        posicionPartida = getPartida(arrayPartidas, arrayClientes[posicion].descriptor);
+                                        if(arrayPartidas[posicionPartida].estado>=1){
+                                            //Ahora comprobamos si de verdad es bingo
+                                            if(compruebaBingo(arrayClientes[posicion].carton,  arrayPartidas[posicionPartida].bolas, arrayPartidas[posicionPartida].numBolas)){
+                                                //Es bingo
+                                                //Avisamos a todos los clientes y limpiamos la partida
+                                                for(z=0; z<arrayPartidas[posicionPartida].numClientes; z++){
+                                                    if(arrayPartidas[posicionPartida].clientes[z].descriptor != i){
+                                                        //Son los que no han cantado bingo
+                                                        bzero(bufferPartidas, sizeof(bufferPartidas));
+                                                        sprintf(bufferPartidas, "+Ok, lo sentimos pero el jugador %s ha cantado bingo\n", arrayPartidas[posicionPartida].clientes[z].usuario);
+                                                        send(arrayPartidas[posicionPartida].clientes[z].descriptor, bufferPartidas, strlen(bufferPartidas), 0);
+                                                    }else{
+                                                        //El que ha cantado bingo
+                                                        send(i, "+OK, ¡Enhorabuena! Has ganado la partida\n", strlen("+OK, ¡Enhorabuena! Has ganado la partida\n"), 0);
+                                                    }
+                                                    //Ahora tenemos que actualizar su estado a 2 limpiar su carton
+                                                    posicionAux = devuelvePosicion(arrayClientes, arrayPartidas[posicionPartida].clientes[z].descriptor, numClientes);
+                                                    arrayClientes[posicionAux].estado = 2;
+                                                    limpiaCartonCliente(arrayClientes, posicionAux);
+
+                                                }
+                                                printf("El cliente %s ha cantado bingo en la partida %d\n", arrayClientes[posicion].usuario, posicionPartida);
+                                                fflush(stdout);
+                                                //Cerramos la partida
+                                                limpiaPartida(arrayPartidas, posicionPartida);
+                                            }else{
+                                                //No es bingo
+                                                printf("Bingo incorrecto en partida %d\n", posicionPartida);
+                                                fflush(stdout);
+                                                send(i, "-ERR, su carton no contiene bingo\n", strlen("-ERR, su carton no contiene bingo\n"), 0);
+                                            }
+                                        }//Cierre if estadoPartida>=1
+
+                                    //Cierre if estado==4
+                                    }else{
+                                        //El cliente no esta en partida
+                                        send(i, "-ERR, no estas en partida aun\n", strlen("-ERR, no estas en partida aun\n"), 0);
+                                    }//Cierre else estado==4
 
                                     //Cierre if bingo
                                 }else if(strcmp(buffer, "SALIR-PARTIDA\n")==0){

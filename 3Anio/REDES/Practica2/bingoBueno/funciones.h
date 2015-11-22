@@ -59,5 +59,6 @@ void salirPartida(int descriptor, int numPartida, struct partida arrayPartidas[]
 void cartonABuffer(char * buffer, int ** carton);
 void muestraBufferCartonBonito(char * buffer);
 void limpiaPartida(struct partida arrayPartidas[], int numPartida);
+void limpiaCartonCliente(struct cliente arrayClientes[], int numCliente);
 
 #endif
