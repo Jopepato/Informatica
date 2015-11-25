@@ -155,7 +155,9 @@ int compruebaUsuario(char usuario[50]){
 	char * usu;
 
 	fichero = fopen("usuarios.txt", "r");
-
+	if(!fichero){
+		return 0;
+	}
 	while((fgets(buffer,512,fichero))!=NULL){
 		usu = strtok(buffer, " ");
 		if(strcmp(usu, usuario)==0){
@@ -176,6 +178,9 @@ int compruebaUsuarioPassword(char usuario[50], char password[50]){
 	char aux[50];
 
 	fichero = fopen("usuarios.txt", "r");
+	if(!fichero){
+		return 0;
+	}
 
 	while((fgets(buffer, 512, fichero))!=NULL){
 		usu = strtok(buffer, " ");

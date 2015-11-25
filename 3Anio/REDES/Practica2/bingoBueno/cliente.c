@@ -88,6 +88,7 @@ int main ()
             }else{
 
             printf("%s",buffer);
+            fflush(stdout);
             
             if(strcmp(buffer,"Demasiados clientes conectados\n") == 0)
                 fin =1;

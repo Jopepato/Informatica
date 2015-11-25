@@ -543,7 +543,7 @@ int main ()
                                     arrayPartidas[x].bolas[arrayPartidas[x].numBolas] = bola;
                                     arrayPartidas[x].numBolas++;
                                     //Y mandamos la bola
-                                    sprintf(bufferBolas,"NUMERO OBTENIDO: %d",bola);
+                                    sprintf(bufferBolas,"NUMERO OBTENIDO: %d\n",bola);
                                     //Y ahora tenemos que mandarlo a los clientes de las partidas
                                     for(y=0; y<arrayPartidas[x].numClientes; y++){
                                         send(arrayPartidas[x].clientes[y].descriptor, bufferBolas, strlen(bufferBolas), 0);

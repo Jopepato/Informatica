@@ -161,10 +161,6 @@ int main(int argc, char **argv){
     normalize(planes[0], filterSalida, 0, 1, CV_MINMAX);
 
    salida = imagenPasoBaja.clone();
-   /* imshow("Salida", salida);
-    imshow("ImagenSalida", imagenSalida);
-    waitKey(0);
-*/
     if(mflag==1){
       //Con mascara procesaremos pixel por pixel
       //Recorremos la imagen
