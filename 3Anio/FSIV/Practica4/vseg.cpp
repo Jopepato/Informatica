@@ -85,10 +85,20 @@ while((opcion=getopt(argc, argv, "i:t:o:h")) !=-1 ){
         exit(-1);
     }
 
-
     if(!cap.isOpened()){
 	cout << "Video especificado invalido" << endl;
 	exit(-1);
+    }
+
+    //Ahora abriremos el videoWriter, pero para ello necesitamos varias cosas
+    int ex = static_cast<int>(cap.get(CV_CAP_PROP_FOURCC));
+    Size S = Size((int) cap.get(CV_CAP_PROP_FRAME_WIDTH), (int) cap.get(CV_CAP_PROP_FRAME_HEIGHT));
+    VideoWriter outputVideo;
+    outputVideo.open(nombreVideoSalida, ex, 30, S, true);
+
+    if(!outputVideo.isOpened()){
+        cout << "Error con el video de salida" << endl;
+        exit(-1);
     }
 
     //Creamos la ventana con la imagen principal y la barra
@@ -104,7 +114,12 @@ while((opcion=getopt(argc, argv, "i:t:o:h")) !=-1 ){
         cvtColor(frame1, edges1, CV_BGR2GRAY);
         
 
-        cap.read(frame2); //Nuevo frame
+        cap >> frame2; //Nuevo frame
+
+        if(frame2.empty()){
+            //Ya hemos terminado el video
+            break;
+        }
             
         
         cvtColor(frame2, edges2, CV_BGR2GRAY);
@@ -123,9 +138,8 @@ while((opcion=getopt(argc, argv, "i:t:o:h")) !=-1 ){
                 }
             }
         }
-        imshow("Video", frame2);
-        imshow("gris", frame1);
-        imshow("foreground", foreground);
+        imshow("Video", foreground);
+        imshow("video original", frame2);
         
         key = waitKey(30);
         empieza=1;
@@ -143,6 +157,7 @@ while((opcion=getopt(argc, argv, "i:t:o:h")) !=-1 ){
         //Nos lleva el numero de frames
         contador++;
         frame1 = frame2.clone(); //Con esto vamos un frame atrasados
+        outputVideo << foreground;
 
     }
 

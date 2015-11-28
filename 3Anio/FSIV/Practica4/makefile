@@ -1,2 +1,2 @@
 all:
-	g++ video.cpp funciones.cpp -o video `pkg-config opencv --cflags --libs`
+	g++ vseg.cpp funciones.cpp -o vseg `pkg-config opencv --cflags --libs`
