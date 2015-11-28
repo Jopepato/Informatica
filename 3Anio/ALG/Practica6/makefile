@@ -1,2 +1,2 @@
 all:
-	g++ -Wall main.cpp funciones.cpp -o main
+	g++ -Wall main.cpp funciones.cpp tablero.cpp -o main
