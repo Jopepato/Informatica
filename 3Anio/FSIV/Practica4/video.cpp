@@ -11,116 +11,143 @@
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
 #include <sstream>
+#include "funciones.hpp"
 
 using namespace cv;
 using namespace std;
 
 int main(int argc, char ** argv){
 
-string nombreVideo = argv[1];
-int t = atoi(argv[2]);
-VideoCapture cap(nombreVideo);
-VideoCapture cap2(nombreVideo);
+string nombreVideo;
+string nombreVideoSalida = "salida.avi";
+VideoCapture cap;
+int t=5;
+int iflag, tflag, oflag;
 int contador=0;
 int key;
+char fotograma[21];
 string salida;
 string sal = "sal_";
 string png = ".png";
-ostringstream convert;
 int empieza=0;
-Mat frame, edges;
+Mat frame1, edges1;
 Mat frame2, edges2;
 Mat foreground;
-stringstream ss;
+Mat absDiff;
+int opcion;
 
-if(!cap.isOpened()){
+while((opcion=getopt(argc, argv, "i:t:o:h")) !=-1 ){
+
+    switch(opcion){
+
+      case 'h':
+          help();
+          exit(EXIT_SUCCESS);
+        break;
+
+      case 'i':
+        //Nombre del video dado por el usuario
+        iflag=1;
+        nombreVideo = optarg;
+        break;
+
+      case 't':
+        tflag=1;
+        t = atoi(optarg);
+
+        break;
+
+      case 'o':
+        oflag = 1;
+        //Para el nombre del video de salida
+        nombreVideoSalida = optarg;
+        break;
+
+      case '?':
+        //Algo ha ido mal
+        help();
+        exit(-1);
+        break;
+
+      default:
+        help();
+        exit(-1);
+        break;
+      }
+  }
+
+    if(iflag==1){
+        cap.open(nombreVideo);
+    }else{
+        //Nombre del video necesario
+        cout << "Nombre del video de entrada necesario" << endl;
+        help();
+        exit(-1);
+    }
+
+
+    if(!cap.isOpened()){
 	cout << "Video especificado invalido" << endl;
 	exit(-1);
-}
+    }
 
-    //namedWindow("edges",1);
+    //Creamos la ventana con la imagen principal y la barra
+    namedWindow("Video", CV_WINDOW_AUTOSIZE);
+    createTrackbar("Valor de t", "Video", &t, 250);
+
+    cap >> frame1; //Primer frame
+    
+
     while(true){
         
+        //Esto va un fotograma atrasado
+        cvtColor(frame1, edges1, CV_BGR2GRAY);
         
-        cap >> frame; // get a new frame from camera
 
-        cvtColor(frame, edges, CV_BGR2GRAY);
-        //pMOG2->apply(frame, frame2);
-        ss << cap.get(CV_CAP_PROP_POS_FRAMES);
-
-        if(empieza=1){
-            //Empieza un fotograma despues
+        cap.read(frame2); //Nuevo frame
             
-            cap2 >> frame2;
-            //Esto va un fotograma atrasado
-            cvtColor(frame2, edges2, CV_BGR2GRAY);
+        
+        cvtColor(frame2, edges2, CV_BGR2GRAY);
+        foreground = edges2.clone();
 
-            //Ahora comparamos ambas imagenes y vemos que es lo que queremos mostrar
-            //Para mostrar solamente el foreground
-            /*for(int i=0; i<edges.rows; i++){
-                for(int j=0; j<edges.cols; j++){
-                    //Comparamos ambos pixeles
-                    if(abs(edges.at<float>(i,j)-edges2.at<float>(i,j))<t){
-                        edges2.at<float>(i,j) = 0;
-                    }
+        absdiff(edges2, edges1, absDiff);
+        //Ahora comparamos ambas imagenes y vemos que es lo que queremos mostrar
+        //Para mostrar solamente el foreground
+        for(int i=0; i<frame2.rows; i++){
+            for(int j=0; j<frame2.cols; j++){
+
+                if(absDiff.at<uchar>(i,j) > t){
+                    foreground.at<uchar>(i,j) = 255;
+                }else{
+                    foreground.at<uchar>(i,j) = 0;
                 }
-            }*/
-            
+            }
         }
-
-        imshow("frames", frame);
-        imshow("gris", edges);
-        imshow("foreground", frame2);
-        key = waitKey(25);
+        imshow("Video", frame2);
+        imshow("gris", frame1);
+        imshow("foreground", foreground);
+        
+        key = waitKey(30);
         empieza=1;
-
         if(key==27){
             //Ha pulsado escape asi que nos salimos
             break;
         }
         if(key==32){
-            salida = sal + ss.str() + png;
-            imwrite("holi.png", frame);
+            sprintf(fotograma, "%d", contador);
+            salida = sal + fotograma + png;
+            imwrite(salida.c_str(), frame1);
+            bzero(fotograma, sizeof(fotograma));
+            cout << "Imagen tomada" << endl;
         }
+        //Nos lleva el numero de frames
+        contador++;
+        frame1 = frame2.clone(); //Con esto vamos un frame atrasados
 
     }
 
 cap.release();
-cap2.release();
 
 return 0;
 
 }
-
-
-/****************************************
-            COSAS QUE INCLUIR
-****************************************/
-
-//http://stackoverflow.com/questions/19404245/opencv-videocapture-set-cv-cap-prop-pos-frames-not-working
-
-
-
-//Para coger el numero de frame que estamos viendo
-//Lo metemos en un stringstream
-//stringstream ss
-// ss << capture.get(CAP_PROP_POS_FRAMES)
-
-//Esto es para lo de guardar una imagen y parar el video y eso
-
-        /*salida.clear();
-        convert << contador;
-        salida = sal + convert.str() + png;
-        key = waitKey(25);
-        //Ahora miramos la tecla que ha pulsado
-        if(key==32){
-            //Guardamos la imagen
-            imwrite(salida.c_str(), frame);
-        }
-
-        if(key==27){
-            //Ha pulsado escape asi que nos salimos
-            break;
-        }
-        contador++;
-        */
