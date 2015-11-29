@@ -35,6 +35,10 @@ Mat frame2, edges2;
 Mat foreground;
 Mat absDiff;
 int opcion;
+vector<Mat> canales;
+Mat imagenMerge;
+Mat imagenHSV;
+Mat imagenFinal;
 
 while((opcion=getopt(argc, argv, "i:t:o:h")) !=-1 ){
 
@@ -84,6 +88,7 @@ while((opcion=getopt(argc, argv, "i:t:o:h")) !=-1 ){
         help();
         exit(-1);
     }
+
 
     if(!cap.isOpened()){
 	cout << "Video especificado invalido" << endl;
@@ -138,8 +143,23 @@ while((opcion=getopt(argc, argv, "i:t:o:h")) !=-1 ){
                 }
             }
         }
-        imshow("Video", foreground);
-        imshow("video original", frame2);
+        //Ahora le tenemos que quitar el fondo a la que queremos
+        split(frame2, canales);
+        for(int i=0; i<3; i++){
+            for(int j=0; j<canales[i].rows; j++){
+                for(int k=0; k<canales[i].cols; k++){
+                    if(foreground.at<uchar>(j,k)!=255){
+                        canales[i].at<uchar>(j,k) = 255;
+                    }
+                        //canales[i] = canales[i] & foreground;
+                }
+            }
+        }
+
+        merge(canales, imagenFinal);
+        imshow("Foreground", foreground);
+        imshow("Video Original", frame2);
+        imshow("Fondo blanco", imagenFinal);
         
         key = waitKey(30);
         empieza=1;
@@ -150,14 +170,14 @@ while((opcion=getopt(argc, argv, "i:t:o:h")) !=-1 ){
         if(key==32){
             sprintf(fotograma, "%d", contador);
             salida = sal + fotograma + png;
-            imwrite(salida.c_str(), frame1);
+            imwrite(salida.c_str(), imagenFinal);
             bzero(fotograma, sizeof(fotograma));
             cout << "Imagen tomada" << endl;
         }
         //Nos lleva el numero de frames
         contador++;
         frame1 = frame2.clone(); //Con esto vamos un frame atrasados
-        outputVideo << foreground;
+        outputVideo << imagenFinal;
 
     }
 
