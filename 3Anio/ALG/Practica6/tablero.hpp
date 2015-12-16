@@ -24,7 +24,6 @@ class tablero{
 				tablero_.clear();
 				reinas_ = reinas;
 				soluciones_ = soluciones;
-
 			};
 
 			void leeFichero(const string &nombreFichero);

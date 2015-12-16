@@ -83,6 +83,7 @@ bool encuentraCambioDinamico(vector<int> monedas, int &dinero, int ** matrizSolu
 				matrizSolucion[i][j] = numeric_limits<int>::infinity();
 			}else{
 				if(i==0){
+					//Porque lo de arriba es infinito
 				matrizSolucion[i][j] = 1 + matrizSolucion[i][j-monedas[0]];
 				}else{
 					if(j<monedas[i]){

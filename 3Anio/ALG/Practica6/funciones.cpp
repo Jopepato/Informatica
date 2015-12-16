@@ -18,12 +18,10 @@ void nReinas(int n, int &contador){
 	int k=1;
 
 	while(k>0){
-		//cout << k << endl;
 		solucion[k] = solucion[k]+1;
 		while(solucion[k]<=n && lugar(k, solucion)==false){
 			solucion[k] = solucion[k]+1;
 		}
-		//cout << solucion[k] << endl;
 		if(solucion[k]<=n){
 			if(k==(n)){
 				//Tenemos la solucion
@@ -37,9 +35,8 @@ void nReinas(int n, int &contador){
 			k = k-1;
 		}
 	}
-
-
 }
+
 
 void escribirSolucion(int* x, int n){
 	//Guarda la solucion en un fichero
