@@ -58,4 +58,25 @@ void calculaParametros(struct parametros &params, const vector<Point> &contorno)
 	params.rectanguloBasico = minAreaRect(contorno);
 
 	params.ocupacion = boundingRect(contorno);
+
+	params.rotatedRectangle.angulo = params.rectanguloBasico.angle;
+	params.rotatedRectangle.centro = params.rectanguloBasico.center;
+}
+
+
+void muestraParametros(struct parametros params){
+	//Funcion para mostrar los parametros por pantalla
+
+	cout << "Longitud: \t" << params.longitud << endl;
+	cout << "Diametro: \t" << "--" << endl;
+	cout << "Area: \t" << params.area << endl;
+	cout << "Rect. basico: \t" << "----" << endl;
+	cout << "Excentricidad: \t" << "----" << endl;
+	cout << "Bounding box: \t" << "---" << endl;
+	cout << "Ocupacion: \t" << "----" << endl;
+	cout << "Ocup. Convexa: \t" << "---" << endl;
+	cout << "Solidez: \t" << "----" << endl;
+	cout << "Descriptores de fourier" << "-----" << endl;
+
+
 }

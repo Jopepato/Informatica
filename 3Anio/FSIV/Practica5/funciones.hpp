@@ -18,7 +18,13 @@
 using namespace std;
 using namespace cv;
 
-struct parametrosRectangulo{
+struct parametrosRotatedRectangle{
+	float angulo;
+	Point2f centro;
+	Size2f size;
+};
+
+struct parametrosBoundingBox{
 
 };
 
@@ -33,6 +39,8 @@ struct parametros{
 	double compacidad;
 	double ocupaConvex;
 	double solidez;
+	struct parametrosRotatedRectangel rotatedRectangle;
+	struct parametrosBoundingBox boundingBox;
 
 };
 
@@ -43,6 +51,8 @@ void contornoAFichero(const vector<Point> &contorno, const string &nombreFichero
 void seleccionaMayorContorno(const vector<vector<Point> >&contours, vector<Point> &contorno);
 
 void calculaParametros(struct parametros &params, const vector<Point> &contorno);
+
+void muestraParametros(struct parametros params);
 
 
 #endif

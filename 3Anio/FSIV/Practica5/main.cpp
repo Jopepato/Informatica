@@ -76,12 +76,10 @@ while((opcion=getopt(argc, argv, "i:o:n:h")) !=-1 ){
     colors[1] = cv::Scalar(0, 255, 0);
     colors[2] = cv::Scalar(0, 0, 255);
     */
+
     for (size_t idx = 0; idx < contours.size(); idx++) {
         cv::drawContours(contourImage, contours, idx, Scalar(255, 255, 255));
     }
-    cv::imshow("Contours", contourImage);
-    cvMoveWindow("Contours", 200, 0);
-    cv::waitKey(0);
 
     seleccionaMayorContorno(contours, contorno);
 
@@ -89,9 +87,16 @@ while((opcion=getopt(argc, argv, "i:o:n:h")) !=-1 ){
 
     calculaParametros(params, contorno);
 
-    //Los mostramos:
+    //Ponemos el rectangulo en la imagen
+    rectangle(contourImage, params.ocupacion, Scalar(255,0,0));
+    cv::imshow("Contours", contourImage);
+    cvMoveWindow("Contours", 200, 0);
+    
 
-    cout << "Longitud: " << params.longitud << endl;
+
+    muestraParametros(params);
+
+    cv::waitKey(0);
 
 
 }
