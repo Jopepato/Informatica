@@ -39,8 +39,8 @@ void seleccionaMayorContorno(const vector<vector<Point > >&contours, vector<Poin
 
 	for(int i=0; i<contours.size(); i++){
 		//Recorremos todos los contornos y nos quedamos con el mayor
-		if(contours[i].size() > max){
-			max = max;
+		if(contourArea(contours[i], false) > max){
+			max = contourArea(contours[i], false);
 			k=i;
 		}
 
@@ -51,16 +51,30 @@ void seleccionaMayorContorno(const vector<vector<Point > >&contours, vector<Poin
 
 void calculaParametros(struct parametros &params, const vector<Point> &contorno){
 	//Aqui calcularemos los parametros del contorno
+	vector<Point> hull;
 	params.longitud = arcLength(contorno, true);
 	params.area = contourArea(contorno, false);
+	convexHull(contorno, hull);
+	params.solidez = (double)(params.area)/(double)(contourArea(hull,false));
 
 	//Nos da el rectangulo básico
 	params.rectanguloBasico = minAreaRect(contorno);
 
-	params.ocupacion = boundingRect(contorno);
+	params.boundingBox = boundingRect(contorno);
 
-	params.rotatedRectangle.angulo = params.rectanguloBasico.angle;
-	params.rotatedRectangle.centro = params.rectanguloBasico.center;
+	//Ahora calculamos la excentricidad
+	if(params.boundingBox.width > params.boundingBox.height){
+		params.excentricidad = (double)params.boundingBox.width/(double)params.boundingBox.height;
+	}else{
+		params.excentricidad = (double)params.boundingBox.height/(double)params.boundingBox.width;
+	}
+
+	calculaDiametro(params, contorno);
+
+	params.ocupacion = params.area/((double)params.boundingBox.width * (double)params.boundingBox.height);
+	params.ocupaConvex = (double)(contourArea(hull,false))/((double)params.boundingBox.width * (double)params.boundingBox.height);
+
+	params.compacidad = params.area/(double)pow(params.longitud, 2);
 }
 
 
@@ -68,15 +82,48 @@ void muestraParametros(struct parametros params){
 	//Funcion para mostrar los parametros por pantalla
 
 	cout << "Longitud: \t" << params.longitud << endl;
-	cout << "Diametro: \t" << "--" << endl;
-	cout << "Area: \t" << params.area << endl;
-	cout << "Rect. basico: \t" << "----" << endl;
-	cout << "Excentricidad: \t" << "----" << endl;
-	cout << "Bounding box: \t" << "---" << endl;
-	cout << "Ocupacion: \t" << "----" << endl;
-	cout << "Ocup. Convexa: \t" << "---" << endl;
-	cout << "Solidez: \t" << "----" << endl;
+	cout << "Diametro: \t" << params.diametro << endl;
+	cout << "Area: \t\t" << params.area << endl;
+
+	cout << "Rect. basico: \t" << "angulo: " << params.rectanguloBasico.angle
+	 << " centro: " << params.rectanguloBasico.center.x << ", "
+	 << params.rectanguloBasico.center.y << " lados: " << params.rectanguloBasico.size.height << ", "
+	  << params.rectanguloBasico.size.width << endl;
+	  //Fin del rectangulo
+
+	cout << "Excentricidad: \t" << params.excentricidad << endl;
+	cout << "Bounding box: \t[" << params.boundingBox.width << " x " << params.boundingBox.height
+	<< "] from (" <<params.boundingBox.x << ", " << params.boundingBox.y << ")"  << endl;
+	cout << "Ocupacion: \t" << params.ocupacion << endl;
+	cout << "Compacidad: \t" << params.compacidad << endl;
+	cout << "Ocup. Convexa: \t" << params.ocupaConvex << endl;
+	cout << "Solidez: \t" << params.solidez << endl;
 	cout << "Descriptores de fourier" << "-----" << endl;
+}
 
+void calculaDiametro(struct parametros &params, const vector<Point> &contorno){
 
+	double distancia = 0;
+	double maxDistancia=0;
+
+	for(int i=0; i<contorno.size(); i++){
+		for(int j=i+1; j<contorno.size(); j++){
+			//Ahora vamos calculando las distancias entre puntos
+			distancia = sqrt(pow(contorno[i].x - contorno[j].x, 2) + pow(contorno[i].y - contorno[j].y,2));
+			if(distancia> maxDistancia){
+				maxDistancia = distancia;
+			}
+		}
+	}
+
+	//La maxima distancia será el parametro
+	params.diametro = maxDistancia;
+}
+
+void calculaFourier(struct parametros &params, const vector<Point> &contorno){
+	int aux = getOptimalDFTSize(contorno.size());
+
+	vector<Point2f> vecAux;
+
+	
 }

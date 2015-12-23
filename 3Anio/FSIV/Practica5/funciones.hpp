@@ -18,16 +18,6 @@
 using namespace std;
 using namespace cv;
 
-struct parametrosRotatedRectangle{
-	float angulo;
-	Point2f centro;
-	Size2f size;
-};
-
-struct parametrosBoundingBox{
-
-};
-
 
 struct parametros{
 	double longitud;
@@ -35,13 +25,13 @@ struct parametros{
 	RotatedRect rectanguloBasico;
 	double excentricidad;
 	double area;
-	Rect ocupacion;
+	Rect boundingBox;
+	double ocupacion;
 	double compacidad;
 	double ocupaConvex;
 	double solidez;
-	struct parametrosRotatedRectangel rotatedRectangle;
-	struct parametrosBoundingBox boundingBox;
-
+	int n;
+	vector<double> fourier;
 };
 
 
@@ -53,6 +43,7 @@ void seleccionaMayorContorno(const vector<vector<Point> >&contours, vector<Point
 void calculaParametros(struct parametros &params, const vector<Point> &contorno);
 
 void muestraParametros(struct parametros params);
+void calculaDiametro(struct parametros &params, const vector<Point> &contorno);
 
 
 #endif

@@ -33,6 +33,7 @@ while((opcion=getopt(argc, argv, "i:o:n:h")) !=-1 ){
       case 'n':
       	//Para la n
       	n = atoi(optarg);
+      	params.n = n;
       	break;
       case '?':
         //Algo ha ido mal
@@ -71,11 +72,6 @@ while((opcion=getopt(argc, argv, "i:o:n:h")) !=-1 ){
 
     //Draw the contours
     cv::Mat contourImage(imagen.size(), CV_8UC3, cv::Scalar(0,0,0));
-    /*cv::Scalar colors[3];
-    colors[0] = cv::Scalar(255, 0, 0);
-    colors[1] = cv::Scalar(0, 255, 0);
-    colors[2] = cv::Scalar(0, 0, 255);
-    */
 
     for (size_t idx = 0; idx < contours.size(); idx++) {
         cv::drawContours(contourImage, contours, idx, Scalar(255, 255, 255));
@@ -88,7 +84,7 @@ while((opcion=getopt(argc, argv, "i:o:n:h")) !=-1 ){
     calculaParametros(params, contorno);
 
     //Ponemos el rectangulo en la imagen
-    rectangle(contourImage, params.ocupacion, Scalar(255,0,0));
+    rectangle(contourImage, params.boundingBox, Scalar(255,0,0));
     cv::imshow("Contours", contourImage);
     cvMoveWindow("Contours", 200, 0);
     
