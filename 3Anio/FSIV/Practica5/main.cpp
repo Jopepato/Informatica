@@ -33,8 +33,8 @@ while((opcion=getopt(argc, argv, "i:o:n:h")) !=-1 ){
       case 'n':
       	//Para la n
       	n = atoi(optarg);
-      	params.n = n;
       	break;
+
       case '?':
         //Algo ha ido mal
         help();
@@ -47,6 +47,8 @@ while((opcion=getopt(argc, argv, "i:o:n:h")) !=-1 ){
         break;
       }
   }
+
+  params.n = n;
 
   //Seguimos con el main para bingo 
 

@@ -98,7 +98,11 @@ void muestraParametros(struct parametros params){
 	cout << "Compacidad: \t" << params.compacidad << endl;
 	cout << "Ocup. Convexa: \t" << params.ocupaConvex << endl;
 	cout << "Solidez: \t" << params.solidez << endl;
-	cout << "Descriptores de fourier" << "-----" << endl;
+	cout << "Descriptores de fourier [ ";
+		for(int i=0; i<params.n; i++){
+			cout << params.fourier[i] << " , ";
+		}
+	cout << "]" << endl;
 }
 
 void calculaDiametro(struct parametros &params, const vector<Point> &contorno){
@@ -118,12 +122,39 @@ void calculaDiametro(struct parametros &params, const vector<Point> &contorno){
 
 	//La maxima distancia será el parametro
 	params.diametro = maxDistancia;
+
+	calculaFourier(params, contorno);
 }
 
 void calculaFourier(struct parametros &params, const vector<Point> &contorno){
-	int aux = getOptimalDFTSize(contorno.size());
 
+	int optimalSize = getOptimalDFTSize(contorno.size());
 	vector<Point2f> vecAux;
+	double maximo=0;
+	vector<double> fourier;
+
+	for(int i=0; i<optimalSize; i++){
+		vecAux.push_back(contorno[i%contorno.size()]);
+	}
+
+	dft(vecAux, vecAux);
+
+	for(int i=0; i<vecAux.size(); i++){
+		fourier.push_back(sqrt(pow(vecAux[i].x,2) + pow(vecAux[i].y,2)));
+		if(fourier[i]>maximo){
+			maximo = fourier[i];
+		}
+	}
+
+	//Lo normalizamos
+	for(int i=0; i<fourier.size(); i++){
+		fourier[i] = fourier[i]/maximo;
+	}
+
+	//Y metemos los n primeros
+	for(int i=0; i<params.n; i++){
+		params.fourier.push_back(fourier[i+1]);
+	}
 
 	
 }

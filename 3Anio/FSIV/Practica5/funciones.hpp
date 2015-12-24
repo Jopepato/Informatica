@@ -44,6 +44,7 @@ void calculaParametros(struct parametros &params, const vector<Point> &contorno)
 
 void muestraParametros(struct parametros params);
 void calculaDiametro(struct parametros &params, const vector<Point> &contorno);
+void calculaFourier(struct parametros &params, const vector<Point> &contorno);
 
 
 #endif
