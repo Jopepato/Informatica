@@ -35,6 +35,7 @@ linea			[\n]
 			//Opcion de usuario mas fecha
 			//Copiamos el usuario para mirar despues la fecha
 			strcpy(userAux, yytext);
+			
 		}}
 
 {fichero}	{;}
@@ -50,6 +51,7 @@ linea			[\n]
 				}
 			}
 		}}
+{hora}	{;}
 .|\n		{;}
 %%
 
