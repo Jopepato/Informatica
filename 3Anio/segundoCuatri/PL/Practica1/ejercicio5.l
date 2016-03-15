@@ -6,24 +6,26 @@
    */
 
 	//Declaramos las variables globales que vamos a usar
-	#include <stdio.h>
-	#include <string.h>
-	char * palabraABuscar;
-	char * palabraSustituir;
+#include <stdio.h>
+#include <string.h>
+char * palabraABuscar;
+char * palabraSustituir;
 %}
+
 espacio		[ \t]
 espacios		{espacio}+
 caracter		[a-zA-Z0-9]
 palabra		{caracter}+
 linea			[\n]
+
 %%
 
 {palabra} {if(strcmp(yytext, palabraABuscar)==0){
-			fprintf(yyout, "%s", palabraSustituir);
+			fprintf(yyin, "%s", palabraSustituir);
 		}else{
-			fprintf(yyout, "%s", yytext);		
+			fprintf(yyin, "%s", yytext);		
 		}}
-.|\t|\n	{fprintf(yyout, "%s", yytext);}
+.|\t|\n	{fprintf(yyin, "%s", yytext);}
 %%
 
 extern FILE *yyin, *yyout;
@@ -37,7 +39,7 @@ int main(int argc, char ** argv){
 		yylex();
 		
 	}else{
-		printf("Numero de argumentos introducido incorrectos");
+		printf("Numero de argumentos introducido incorrectos\n");
 	}
 
 return 0;
