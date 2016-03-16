@@ -12,8 +12,9 @@
 #include "ejercicio7.h"   /* declaracion de los componentes lexicos o tokens */
 %}
 
+espacios	[ \t]
 inicio ([iI][nN][iI][cC][iI][oO])
-fin	([fF][iI][nN])
+fin		([fF][iI][nN])
 __mod	(__[mM][oO][dD])
 __o	(__[oO])
 __y	(__[yY])
@@ -36,17 +37,33 @@ paso		([pP][aA][sS][oO])
 fin_para	([fF][iI][nN]_[pP][aA][rR][aA])
 digito	[0-9]
 numero	{digito}+(\.{digito}+)?(E[+\-]?{digito}+)?
+letra	[a-zA-Z]
+caracter	[0-9a-zA-Z]
+identificador	^{letra}{caracter}*(_{caracter}{caracter}*)*
+comentario_una_linea	^\#.*
 
+
+
+%x ESTADO_COMENTARIO
+%x ESTADO_CADENA
 /* Definiciones regulares */
 
 %%
-
+{espacios}	{;}
 {inicio}	{fprintf(yyout, "\x1b[35m\n Palabra reservada:\x1b[0m %s --> token %d\n", yytext,INICIO);}
 {fin}	{fprintf(yyout, "\x1b[35m\n Palabra reservada:\x1b[0m %s --> token %d\n", yytext,FIN);}
-{__mod}	{fprintf(yyout, "\x1b[35m\n Palabra reservada:\x1b[0m %s --> token %d\n", yytext,__MOD);}
-{__o}	{fprintf(yyout, "\x1b[35m\n Palabra reservada:\x1b[0m %s --> token %d\n", yytext,__O);}
-{__y}	{fprintf(yyout, "\x1b[35m\n Palabra reservada:\x1b[0m %s --> token %d\n", yytext,__Y);}
-{__no}	{fprintf(yyout, "\x1b[35m\n Palabra reservada:\x1b[0m %s --> token %d\n", yytext,__NO);}
+{__mod}	{fprintf(yyout, "\x1b[35m\n Palabra reservada:\x1b[0m %s --> token %d\n", yytext,__MOD);
+		fprintf(yyout, "\x1b[32m\n Operador aritmético: \x1b[0m%s --> token %d\n", yytext, MODULO);}
+
+{__o}	{fprintf(yyout, "\x1b[35m\n Palabra reservada:\x1b[0m %s --> token %d\n", yytext,__O);
+		fprintf(yyout, "\x1b[32m\n Operador lógico: \x1b[0m %s --> token %d\n", yytext, __O);}
+
+{__y}	{fprintf(yyout, "\x1b[35m\n Palabra reservada:\x1b[0m %s --> token %d\n", yytext,__Y);
+		fprintf(yyout, "\x1b[32m\n Operador lógico: \x1b[0m %s --> token %d\n", yytext, __Y);}
+
+{__no}	{fprintf(yyout, "\x1b[35m\n Palabra reservada:\x1b[0m %s --> token %d\n", yytext,__NO);
+		fprintf(yyout, "\x1b[32m\n Operador lógico: \x1b[0m %s --> token %d\n", yytext, __NO);}
+
 {leer}	{fprintf(yyout, "\x1b[35m\n Palabra reservada:\x1b[0m %s --> token %d\n", yytext,LEER);}
 {escribir}	{fprintf(yyout, "\x1b[35m\n Palabra reservada:\x1b[0m %s --> token %d\n", yytext,ESCRIBIR);}
 {si}	{fprintf(yyout, "\x1b[35m\n Palabra reservada:\x1b[0m %s --> token %d\n", yytext,SI);}
@@ -63,6 +80,53 @@ numero	{digito}+(\.{digito}+)?(E[+\-]?{digito}+)?
 {hasta}	{fprintf(yyout, "\x1b[35m\n Palabra reservada:\x1b[0m %s --> token %d\n", yytext,HASTA);}
 {paso}	{fprintf(yyout, "\x1b[35m\n Palabra reservada:\x1b[0m %s --> token %d\n", yytext,PASO);}
 {fin_para}	{fprintf(yyout, "\x1b[35m\n Palabra reservada:\x1b[0m %s --> token %d\n", yytext,FIN_PARA);}
-{numero}     {fprintf(yyout, "\x1b[32m\n Numero: \x1b[0m%s --> token %d\n", yytext,NUMERO);}
+{numero}     {fprintf(yyout, "\x1b[32m\n Numero: \x1b[0m %s --> token %d\n", yytext,NUMERO);}
+{identificador} {fprintf(yyout, "\x1b[32m\n Identificador: \x1b[0m %s --> token %d\n", yytext, IDENTIFICADOR);}
+
+":="	{fprintf(yyout, "\x1b[32m\n Operador de asignación: \x1b[0m %s --> token %d\n", yytext, ASIGNACION);}
+"+"		{fprintf(yyout, "\x1b[32m\n Operador aritmético: \x1b[0m %s --> token %d\n", yytext, SUMA);}
+"-"		{fprintf(yyout, "\x1b[32m\n Operador aritmético: \x1b[0m %s --> token %d\n", yytext, RESTA);}
+"*"		{fprintf(yyout, "\x1b[32m\n Operador aritmético: \x1b[0m %s --> token %d\n", yytext, PRODUCTO);}
+"/"		{fprintf(yyout, "\x1b[32m\n Operador aritmético: \x1b[0m %s --> token %d\n", yytext, DIVISION);}
+"**"	{fprintf(yyout, "\x1b[32m\n Operador aritmético: \x1b[0m %s --> token %d\n", yytext, POTENCIA);}
+"||"	{fprintf(yyout, "\x1b[32m\n Operador alfanumérico: \x1b[0m %s --> token %d\n", yytext, CONCATENACION);}
+
+"<"		{fprintf(yyout, "\x1b[32m\n Operador relacional: \x1b[0m %s --> token %d\n", yytext, MENOR_QUE);}
+"<="	{fprintf(yyout, "\x1b[32m\n Operador relacional: \x1b[0m %s --> token %d\n", yytext, MENOR_IGUAL_QUE);}
+">"		{fprintf(yyout, "\x1b[32m\n Operador relacional: \x1b[0m %s --> token %d\n", yytext, MAYOR_QUE);}
+">="	{fprintf(yyout, "\x1b[32m\n Operador relacional: \x1b[0m %s --> token %d\n", yytext, MAYOR_IGUAL_QUE);}
+"=="	{fprintf(yyout, "\x1b[32m\n Operador relacional: \x1b[0m %s --> token %d\n", yytext, IGUAL);}
+"<>"	{fprintf(yyout, "\x1b[32m\n Operador relacional: \x1b[0m %s --> token %d\n", yytext, DISTINTO);}
+";"		{fprintf(yyout, "\x1b[32m\n Componente léxico: \x1b[0m%s --> token %d\n", yytext, FIN_SENTENCIA);}
+"("		{fprintf(yyout, "\x1b[32m\n Componente léxico: \x1b[0m%s --> token %d\n", yytext, PARENTESIS_IZQ);}
+")"		{fprintf(yyout, "\x1b[32m\n Componente léxico: \x1b[0m%s --> token %d\n", yytext, PARENTESIS_DER);}
+
+{comentario_una_linea} 	{fprintf(yyout, "\x1b[32m\n Comentario de una linea: \x1b[0m%s --> token %d\n", yytext, COMENTARIO_UNA_LINEA);}
+
+"(*"	{BEGIN ESTADO_COMENTARIO;
+		yymore();}
+<ESTADO_COMENTARIO>(.|\n)	yymore();
+<ESTADO_COMENTARIO>"(*" {fprintf(yyout, "\x1b[31m\n Error, no se pueden anidar comentarios\x1b[0m\n");}
+<ESTADO_COMENTARIO>"*)"	{BEGIN 0;
+						//Se ha acabado el comentario
+						fprintf(yyout, "\x1b[32m\n Comentario: \x1b[0m%s --> token %d\n", yytext, COMENTARIO);}
+
+
+"'"	                  {
+			    /* Se activa el reconocimiento de la cadena */
+			    BEGIN ESTADO_CADENA; 
+			  }
+
+
+<ESTADO_CADENA>"'"        { /* Fin de la cadena: se vuelve al estado por defecto */
+			    BEGIN 0; 
+			    yytext[yyleng-1]='\0';
+			    fprintf(yyout, "\x1b[32m\n Cadena: \x1b[0m%s --> token %d\n", yytext, CADENA);
+			  }      
+<ESTADO_CADENA>"\\\'"     {yymore();}
+<ESTADO_CADENA>.          {yymore();}
+<ESTADO_CADENA>\n         {yymore();}
+
+
 %%
 

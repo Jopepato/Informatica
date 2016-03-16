@@ -23,7 +23,7 @@ linea			[\n]
 
 {espacio}		{caracteres++;}
 {palabra}		{palabras++;
-				caracteres = caracteres + strlen(yytext);			
+				caracteres = caracteres + strlen(yytext);
 			}
 {linea}		{lineas++; caracteres++;}
 
@@ -31,7 +31,7 @@ linea			[\n]
 
 extern FILE *yyin;
 int main(int argc, char ** argv){
-	
+
 	if(argc==2){
 		//Nos ha pasado el nombre de fichero
 		yyin=fopen(argv[1],"r");
@@ -40,11 +40,10 @@ int main(int argc, char ** argv){
 		printf("-Caracteres: %d\n", caracteres);
 		printf("-Palabras: %d\n", palabras);
 		printf("-Lineas: %d\n", lineas);
-			
+
 	}else{
 		printf("Numero de parametros introducicos incorrecto, necesito el nombre del fichero\n");
 	}
 return 0;
 
 }
-
