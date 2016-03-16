@@ -41,7 +41,8 @@ int main(int argc, char ** argv){
 		n2 = atoi(argv[4]);
 		yylex();
 	}else{
-		printf("Se necesita como parametros, fichero de entrada, de salida, n1 y n2\n");
+		printf("La forma de llamar a este programa es:\n");
+		printf("(Nombre de Programa) (Fichero de entrada) (Fichero de salida) (N1) (N2)\n");
 	}
 	
 return 0;	

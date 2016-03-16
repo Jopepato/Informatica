@@ -13,7 +13,7 @@
 %}
 
 espacios	[ \t]
-inicio ([iI][nN][iI][cC][iI][oO])
+inicio 	([iI][nN][iI][cC][iI][oO])
 fin		([fF][iI][nN])
 __mod	(__[mM][oO][dD])
 __o	(__[oO])
@@ -39,8 +39,11 @@ digito	[0-9]
 numero	{digito}+(\.{digito}+)?(E[+\-]?{digito}+)?
 letra	[a-zA-Z]
 caracter	[0-9a-zA-Z]
-identificador	^{letra}{caracter}*(_{caracter}{caracter}*)*
+identificador_Bueno	^{letra}{caracter}*(_{caracter}{caracter}*)*
+identificador_Malo	^{letra}({caracter}*|__+)*{caracter}*_*
+identificador_Malo2	^{numero}({caracter}*|_*|__+)*{caracter}*
 comentario_una_linea	^\#.*
+numero_Mal	(^{digito}+|\.+)({digito}+|_*|\.+)*{digito}*
 
 
 
@@ -50,6 +53,7 @@ comentario_una_linea	^\#.*
 
 %%
 {espacios}	{;}
+\n 			{;}
 {inicio}	{fprintf(yyout, "\x1b[35m\n Palabra reservada:\x1b[0m %s --> token %d\n", yytext,INICIO);}
 {fin}	{fprintf(yyout, "\x1b[35m\n Palabra reservada:\x1b[0m %s --> token %d\n", yytext,FIN);}
 {__mod}	{fprintf(yyout, "\x1b[35m\n Palabra reservada:\x1b[0m %s --> token %d\n", yytext,__MOD);
@@ -81,7 +85,7 @@ comentario_una_linea	^\#.*
 {paso}	{fprintf(yyout, "\x1b[35m\n Palabra reservada:\x1b[0m %s --> token %d\n", yytext,PASO);}
 {fin_para}	{fprintf(yyout, "\x1b[35m\n Palabra reservada:\x1b[0m %s --> token %d\n", yytext,FIN_PARA);}
 {numero}     {fprintf(yyout, "\x1b[32m\n Numero: \x1b[0m %s --> token %d\n", yytext,NUMERO);}
-{identificador} {fprintf(yyout, "\x1b[32m\n Identificador: \x1b[0m %s --> token %d\n", yytext, IDENTIFICADOR);}
+{numero_Mal}	{fprintf(yyout, "\x1b[31m\n Error, numero mal especificado\x1b[0m %s\n", yytext);}
 
 ":="	{fprintf(yyout, "\x1b[32m\n Operador de asignación: \x1b[0m %s --> token %d\n", yytext, ASIGNACION);}
 "+"		{fprintf(yyout, "\x1b[32m\n Operador aritmético: \x1b[0m %s --> token %d\n", yytext, SUMA);}
@@ -127,6 +131,34 @@ comentario_una_linea	^\#.*
 <ESTADO_CADENA>.          {yymore();}
 <ESTADO_CADENA>\n         {yymore();}
 
+{identificador_Bueno}		{fprintf(yyout, "\x1b[32m\n Identificador: \x1b[0m%s --> token %d\n", yytext, IDENTIFICADOR);}
+{identificador_Malo}		{fprintf(yyout, "\x1b[31m\n Error, Identificador mal escrito\x1b[0m %s\n", yytext);}
+{identificador_Malo2}		{fprintf(yyout, "\x1b[31m\n Error, Identificador mal escrito\x1b[0m %s\n", yytext);}
 
+.						{fprintf(yyout, "\x1b[31m\n Error, componente no reconocido\x1b[0m %s\n", yytext);}
 %%
 
+extern FILE *yyin, *yyout;
+int main(int argc, char ** argv){
+
+	if(argc==2||argc==3){
+		switch(argc){
+			case 2:
+				yyin=fopen(argv[1],"r");
+				yylex();
+				break;
+
+			case 3:
+				yyin=fopen(argv[1],"r");
+				yyout=fopen(argv[2], "w");
+				yylex();
+				break;
+		}
+	}else{
+		//El numero de parametros es incorrecto
+		printf("La forma de llamar a este programa es:\n");
+		printf("(Nombre de Programa) (Fichero de entrada) (Fichero de salida)*Opcional*\n");
+	}
+
+return 0;
+}

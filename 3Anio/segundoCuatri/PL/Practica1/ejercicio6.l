@@ -59,28 +59,32 @@ extern FILE *yyin;
 int main(int argc, char ** argv){
 
 	//Hay dos modos de uso, unicamente con el usuario o usuario mas dia
-	switch(argc){
+	if(argc==3 || argc==4){
+		switch(argc){
 
-		case 3:
-			//Fichero mas usuario
-			yyin=fopen(argv[1],"r");
-			usuario = argv[2];
-			opcion = 1;
-			yylex();
-			printf("Los ficheros impresos por el usuario %s son: %d\n", usuario, contadorUsuario);
-			break;
+			case 3:
+				//Fichero mas usuario
+				yyin=fopen(argv[1],"r");
+				usuario = argv[2];
+				opcion = 1;
+				yylex();
+				printf("Los ficheros impresos por el usuario %s son: %d\n", usuario, contadorUsuario);
+				break;
 
 
-		case 4:
-			//Fichero mas usuario mas dia
-			yyin=fopen(argv[1],"r");
-			usuario = argv[2];
-			dia = argv[3];
-			opcion = 2;
-			yylex();
-			printf("Los ficheros impresos por el usuario %s el dia %s son: %d\n", usuario, dia, contadorFecha);
-			break;
-
+			case 4:
+				//Fichero mas usuario mas dia
+				yyin=fopen(argv[1],"r");
+				usuario = argv[2];
+				dia = argv[3];
+				opcion = 2;
+				yylex();
+				printf("Los ficheros impresos por el usuario %s el dia %s son: %d\n", usuario, dia, contadorFecha);
+				break;
+		}
+	}else{
+		printf("La forma de llamar a este programa es:\n");
+		printf("(Nombre de Programa) (Fichero de entrada) (Nombre de usuario) (Dia a buscar) *Opcional*\n");
 	}
 
 return 0;

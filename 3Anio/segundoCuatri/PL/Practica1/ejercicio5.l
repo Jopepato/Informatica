@@ -39,7 +39,8 @@ int main(int argc, char ** argv){
 		yylex();
 		
 	}else{
-		printf("Numero de argumentos introducido incorrectos\n");
+		printf("La forma de llamar a este programa es:\n");
+		printf("(Nombre de Programa) (Fichero de entrada) (Fichero de salida) (Palabra a buscar) (Palabra por la que sustituir)\n");
 	}
 
 return 0;

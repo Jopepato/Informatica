@@ -35,7 +35,8 @@ int main(int argc, char ** argv){
 		printf("Numero de palabras coincidentes: %d\n", palabras);
 		
 	}else{
-		printf("Numero de argumentos introducido incorrectos");
+		printf("La forma de llamar a este programa es:\n");
+		printf("(Nombre de Programa) (Fichero de entrada) (Palabra a buscar)\n");
 	}
 
 return 0;

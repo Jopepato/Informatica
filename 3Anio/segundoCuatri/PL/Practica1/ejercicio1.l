@@ -44,6 +44,9 @@ int main(int argc, char ** argv){
 				break;
 		}
 		yylex();
+	}else{
+		printf("La forma de llamar a este programa es:\n");
+		printf("(Nombre de Programa) (Fichero de entrada) (Fichero de salida)*Opcional*\n");
 	}
 
 return 0;

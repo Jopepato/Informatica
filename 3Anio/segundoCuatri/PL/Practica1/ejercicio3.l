@@ -42,7 +42,8 @@ int main(int argc, char ** argv){
 		printf("-Lineas: %d\n", lineas);
 
 	}else{
-		printf("Numero de parametros introducicos incorrecto, necesito el nombre del fichero\n");
+		printf("La forma de llamar a este programa es:\n");
+		printf("(Nombre de Programa) (Fichero de entrada)\n");
 	}
 return 0;
 

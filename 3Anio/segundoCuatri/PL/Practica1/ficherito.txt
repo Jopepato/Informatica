@@ -1,3 +1,0 @@
-i32petoj ficher.txt 12/12/1995 12:24
-i32petoja ficher2.txt 12/12/1995 12:24
-i32petoj ficher3.txt 12/02/1995 12:24
