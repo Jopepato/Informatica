@@ -39,14 +39,14 @@ digito	[0-9]
 numero	{digito}+(\.{digito}+)?(E[+\-]?{digito}+)?
 letra	[a-zA-Z]
 caracter	[0-9a-zA-Z]
-identificador_Bueno	^{letra}{caracter}*(_{caracter}{caracter}*)*
-identificador_Malo	^{letra}({caracter}*|__+)*{caracter}*_*
-identificador_Malo2	^{numero}({caracter}*|_*|__+)*{caracter}*
-comentario_una_linea	^\#.*
+identificador_Bueno		{letra}{caracter}*(_{caracter}{caracter}*)*
+identificador_Malo	{letra}({caracter}*|__+)*{caracter}*_*
+identificador_Malo2	{numero}({caracter}*|_*|__+)*{caracter}*
 numero_Mal	(^{digito}+|\.+)({digito}+|_*|\.+)*{digito}*
 
 
 
+%x ESTADO_COMENTARIO_LINEAS
 %x ESTADO_COMENTARIO
 %x ESTADO_CADENA
 /* Definiciones regulares */
@@ -105,13 +105,19 @@ numero_Mal	(^{digito}+|\.+)({digito}+|_*|\.+)*{digito}*
 "("		{fprintf(yyout, "\x1b[32m\n Componente léxico: \x1b[0m%s --> token %d\n", yytext, PARENTESIS_IZQ);}
 ")"		{fprintf(yyout, "\x1b[32m\n Componente léxico: \x1b[0m%s --> token %d\n", yytext, PARENTESIS_DER);}
 
-{comentario_una_linea} 	{fprintf(yyout, "\x1b[32m\n Comentario de una linea: \x1b[0m%s --> token %d\n", yytext, COMENTARIO_UNA_LINEA);}
+"#"		{BEGIN ESTADO_COMENTARIO;}
+<ESTADO_COMENTARIO>.	{yymore();}
+<ESTADO_COMENTARIO>\n 	{//Se acabo el comentario
+						BEGIN 0;
+						yytext[yyleng-1]='\0';
+						fprintf(yyout, "\x1b[32m\n Comentario de una linea: \x1b[0m%s --> token %d\n", yytext, COMENTARIO_UNA_LINEA);
+						}
 
-"(*"	{BEGIN ESTADO_COMENTARIO;
+"(*"	{BEGIN ESTADO_COMENTARIO_LINEAS;
 		yymore();}
-<ESTADO_COMENTARIO>(.|\n)	yymore();
-<ESTADO_COMENTARIO>"(*" {fprintf(yyout, "\x1b[31m\n Error, no se pueden anidar comentarios\x1b[0m\n");}
-<ESTADO_COMENTARIO>"*)"	{BEGIN 0;
+<ESTADO_COMENTARIO_LINEAS>(.|\n)	yymore();
+<ESTADO_COMENTARIO_LINEAS>"(*" {fprintf(yyout, "\x1b[31m\n Error, no se pueden anidar comentarios\x1b[0m\n");}
+<ESTADO_COMENTARIO_LINEAS>"*)"	{BEGIN 0;
 						//Se ha acabado el comentario
 						fprintf(yyout, "\x1b[32m\n Comentario: \x1b[0m%s --> token %d\n", yytext, COMENTARIO);}
 
