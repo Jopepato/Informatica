@@ -21,11 +21,11 @@ linea			[\n]
 %%
 
 {palabra} {if(strcmp(yytext, palabraABuscar)==0){
-			fprintf(yyin, "%s", palabraSustituir);
+			fprintf(yyout, "%s", palabraSustituir);
 		}else{
-			fprintf(yyin, "%s", yytext);		
+			fprintf(yyout, "%s", yytext);		
 		}}
-.|\t|\n	{fprintf(yyin, "%s", yytext);}
+.|\t|\n	{fprintf(yyout, "%s", yytext);}
 %%
 
 extern FILE *yyin, *yyout;
