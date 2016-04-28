@@ -99,7 +99,7 @@ void assign() /* asignar el valor superior al siguiente valor */
 	     d1.sym->nombre);
   d1.sym->u.val=d2.val;   /* Asignar valor   */
   d1.sym->tipo=VAR;
-  push(d2);               /* Apilar variable */
+  push(d2);               /* Apilar el número */
 }
 
 void constpush()  /* meter una constante en la pila */
