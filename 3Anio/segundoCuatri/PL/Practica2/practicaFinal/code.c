@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include  <math.h>
 
-#include "ejemplo9.h"
-#include "ejemplo9.tab.h"
+#include "ejemplo.h"
+#include "ejemplo.tab.h"
 
 #include "macros.h"
 

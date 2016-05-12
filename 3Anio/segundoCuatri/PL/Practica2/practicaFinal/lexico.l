@@ -1,17 +1,43 @@
 %{
 #include "macros.h"
-#include "ejemplo9.h"
-#include "ejemplo9.tab.h"
+#include "ejemplo.h"
+#include "ejemplo.tab.h"
 extern char *progname;
 extern int lineno;
 %}
 /* definiciones regulares */
 numero        [0-9]
 letra         [a-zA-Z]
-identificador {letra}({letra}|{numero})*
+caracter		({letra}|{numero})
+identificador {letra}{caracter}*(_{caracter}{caracter}*)*
+para 		(?ipara)
+_mod		(?i_mod)
+_div		(?_div)
+_o			(?i_o)
+_y 			(?i_y)
+leer		(?ileer)
+leer_cadena		(?ileer_cadena)
+escribir		(?iescribir)
+si 			(?si)
+entonces	(?ientonces)
+si_no		(?isi_no)
+fin_si 		(?fin_si)
+mientras	(?imientras)
+hacer		(?imientras)
+fin_mientras	(?ifin_mientras)
+repetir		(?irepetir)
+hasta		(?ihasta)
+para 		(?ipara)
+desde		(?idesde)
+hasta		(?ihasta)
+paso		(?ipaso)
+fin_para	(?ifin_para)
+_borrar		(?_borrar)
+_lugar		(?i_lugar)
 
 %%
 [ \t] { ; } /* saltar los espacios y los tabuladores */
+/* Lo del ?i es para que no haga distinçión entre minusculas y mayusculas */
 
 {numero}+\.?|{numero}*\.{numero}+ {double d;  
                                    sscanf(yytext,"%lf",&d);
@@ -28,13 +54,15 @@ identificador {letra}({letra}|{numero})*
 ">="	{return MAYOR_IGUAL;}
 "<="	{return MENOR_IGUAL;}
 "=="	{return IGUAL;}
-"!="	{return DISTINTO;}
-">"	{return MAYOR_QUE;}
-"<"	{return MENOR_QUE;}
-"!"	{return NEGACION;}
-"||"	{return O_LOGICO;}
-"&&"	{return Y_LOGICO;}
+"<>"	{return DISTINTO;}
+">"		{return MAYOR_QUE;}
+"<"		{return MENOR_QUE;}
+"!"		{return NEGACION;}
+"||"	{return CONCATENACION;}
+o_logico	{return O_LOGICO;}
+y_logico	{return Y_LOGICO;}
 ":="      {return ASIGNACION;}
+";"		{return FIN_SENTENCIA;}
 ^#       { 
  	  BORRAR; 
 	  LUGAR(10,10);

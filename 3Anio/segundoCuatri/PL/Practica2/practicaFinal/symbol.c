@@ -1,8 +1,8 @@
 #include <string.h>
 #include <stdlib.h>
 
-#include "ejemplo9.h"
-#include "ejemplo9.tab.h" /* Se genera al ejecutar yacc -d hoc5.y */
+#include "ejemplo.h"
+#include "ejemplo.tab.h" /* Se genera al ejecutar yacc -d hoc5.y */
 
 /* Tabla de simbolos: lista simple encadenada */
 static Symbol *symlist=0; 

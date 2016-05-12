@@ -3,7 +3,7 @@
 #include <errno.h>
 
 
-#include "ejemplo9.h"
+#include "ejemplo.h"
 
 /*  Referencia a la variable global que indica los codigos 
    de los errores generados por las funciones matematicas */

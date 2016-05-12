@@ -1,5 +1,5 @@
-#ifndef EJEMPLO9_H
-#define EJEMPLO9_H
+#ifndef EJEMPLO_H_
+#define EJEMPLO_H_
 
  /* ejemplo9.h */
 
@@ -84,6 +84,7 @@ void distinto();
 void y_logico();
 void o_logico();
 void negacion();
+void concatenacion();
 
 void leervariable();
 
