@@ -18,7 +18,7 @@ typedef struct Symbol
             { /* elementos de la tabla de simbolos */
 	        char *nombre;
 	        short tipo; /* NUMBER,VAR,FUNCION,INDEFINIDA,CONSTANTE */ 
-	        union {
+	        struct {
 		       double val;      /* VAR, NUMBER, INDEFINIDA, CONSTANTE */
 		       double (*ptr)(); /* FUNCION  */
 		      } u;
@@ -27,7 +27,7 @@ typedef struct Symbol
 
 Symbol *install(), *lookup();
 
-typedef union Datum { /* tipo de la pila del interprete */ 
+typedef struct Datum { /* tipo de la pila del interprete */ 
                      double val;
                      Symbol *sym;
                     } Datum;
@@ -87,5 +87,11 @@ void negacion();
 void concatenacion();
 
 void leervariable();
+
+
+void pasaMinusculas();
+
+void fin_sentencia();
+
 
 #endif

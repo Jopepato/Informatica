@@ -45,27 +45,28 @@ list :    /* nada: epsilon produccion */
         | list error ';'   {yyerrok;} 
         ;
 
+/* Hay que quitar lo de smlist, porque nuestras sentencias no tienen las llaves
+Entonces hay que quitar tambien los smt*/
 stmt :    /* nada: epsilon produccion */  {$$=progp;}
         | asgn          {code(pop2);}
 	| PRINT expr    {code(escribir); $$ = $2;}
         | READ '(' VAR ')'    {code2(leervariable,(Inst)$3);}
-        | while cond stmt end  
+        | while cond stmtlist end  
                   {
                    ($1)[1]=(Inst)$3; /* cuerpo del bucle */
                    ($1)[2]=(Inst)$4; /* siguiente instruccion al bucle */
                   }
-        | if cond stmt end /* proposicion if sin parte else */
+        | if cond stmtlist end /* proposicion if sin parte else */
                   {
                    ($1)[1]=(Inst)$3; /* cuerpo del if */
                    ($1)[3]=(Inst)$4; /* siguiente instruccion al if */
                   }
-        | if cond stmt end ELSE stmt end /* proposicion if con parte else */
+        | if cond stmtlist end ELSE stmt end /* proposicion if con parte else */
                   {
                    ($1)[1]=(Inst)$3; /* cuerpo del if */
                    ($1)[2]=(Inst)$6; /* cuerpo del else */
                    ($1)[3]=(Inst)$7; /* siguiente instruccion al if-else */
                   }
-        | '{' stmtlist '}'  {$$ = $2;}
         ;
 
 

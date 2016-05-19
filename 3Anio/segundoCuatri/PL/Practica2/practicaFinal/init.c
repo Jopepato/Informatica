@@ -26,11 +26,12 @@ static struct{   /* palabras clave */
 	      int  kval;
 	      } keywords[] = {
                               "if",        IF,
-			      "else",      ELSE,
-			      "while",     WHILE,
-			      "print",     PRINT,
-                              "read",      READ,
-			      0,           0,
+			     			 "else",      ELSE,
+			    			  "while",     WHILE,
+			    			  "print",     PRINT,
+                              "leer",      READ,
+                              "leer_cadena",			LEER_CADENA,
+			    			  0,           0,
                              };
 
 static struct {    /* Nombres predefinidos de funciones */ 

@@ -492,3 +492,8 @@ void ifcode()
  pc= *((Inst **)(savepc+2));
 }
 
+
+
+void pasaMinusculas(){
+  
+}
