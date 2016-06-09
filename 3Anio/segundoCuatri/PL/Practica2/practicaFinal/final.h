@@ -2,7 +2,7 @@
 #define FINAL_H
 
  /* ejemplo9.h */
-
+#include <string.h>
 
 int yylex();
 
@@ -17,18 +17,22 @@ void init();
 typedef struct Symbol 
             { /* elementos de la tabla de simbolos */
 	        char *nombre;
-	        short tipo; /* NUMBER,VAR,FUNCION,INDEFINIDA,CONSTANTE */ 
+	        short tipo; /* NUMBER,VAR,FUNCION,INDEFINIDA,CONSTANTE, CADENA */ 
 	        union {
 		       double val;      /* VAR, NUMBER, INDEFINIDA, CONSTANTE */
+	           char * cadena;	/* CADENA*/
 		       double (*ptr)(); /* FUNCION  */
 		      } u;
                  struct Symbol *siguiente;
 	     } Symbol;
 
-Symbol *install(), *lookup();
+Symbol *install1(char *s, int t, double d);
+Symbol *install2(char *s, int t, char * c);
+Symbol *lookup();
 
 typedef union Datum { /* tipo de la pila del interprete */ 
                      double val;
+                     char * cadena;
                      Symbol *sym;
                     } Datum;
 
@@ -55,6 +59,7 @@ extern void assign();
 extern void constpush();
 void dividir();
 void escribir();
+void escribirCadena();
 void eval();
 
 void funcion();
@@ -90,5 +95,8 @@ void negacion();
 void dividir_entero();
 
 void leervariable();
+void leerCadena();
 
+
+char *emalloc(unsigned n);
 #endif

@@ -150,6 +150,15 @@ void escribir() /* sacar de la pila el valor superior y escribirlo */
  printf("\t ---> %.8g\n",d.val);
 }
 
+void escribirCadena()
+{
+   Datum d;
+ 
+ d=pop();  /* Obtener numero */
+ 
+ printf("\t ---> %s\n",d.cadena);
+}
+
 void eval() /* evaluar una variable en la pila */
 {
  Datum d;
@@ -160,7 +169,15 @@ void eval() /* evaluar una variable en la pila */
  if (d.sym->tipo == INDEFINIDA) 
      execerror (" Variable no definida ", d.sym->nombre);
  
- d.val=d.sym->u.val;  /* Sustituir variable por valor */
+
+  if(d.sym->tipo == CADENA){
+    d.cadena = emalloc(sizeof(d.sym->u.cadena)+1);
+    printf("%s\n", d.sym->u.cadena);
+    fflush(stdout);
+    strcpy(d.cadena, d.sym->u.cadena); /*Sustituir cadena por cadena*/
+  }else{
+     d.val=d.sym->u.val;  /* Sustituir variable por valor */
+  }
  push(d);             /* Apilar valor */
 }
 
@@ -337,7 +354,29 @@ void leervariable() /* Leer una variable numerica por teclado */
    }
  else
      execerror("No es una variable",variable->nombre);
-}           
+}
+
+void leerCadena() /* Leer una variable numerica por teclado */
+{
+ Symbol *variable;
+ char c;
+
+ variable = (Symbol *)(*pc); 
+
+ /* Se comprueba si el identificador es una variable */ 
+  if ((variable->tipo == INDEFINIDA) || (variable->tipo == VAR))
+    { 
+    printf("Valor--> ");
+    while((c=getchar())=='\n') ;
+    ungetc(c,stdin);
+    scanf("%lf",&variable->u.val);
+    variable->tipo=VAR;
+    pc++;
+
+   }
+ else
+     execerror("No es una variable",variable->nombre);
+}          
 
 
 void mayor_que()

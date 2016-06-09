@@ -2,6 +2,7 @@
 #include "macros.h"
 #include "final.h"
 #include "final.tab.h"
+#include <stdlib.h>
 extern char *progname;
 extern int lineno;
 %}
@@ -21,6 +22,7 @@ _lugar	(?i:_lugar)
 
 %x ESTADO_COMENTARIO_LINEAS
 %x ESTADO_COMENTARIO
+%x ESTADO_CADENA
 
 %%
 [ \t] { ; } /* saltar los espacios y los tabuladores */
@@ -28,19 +30,19 @@ _lugar	(?i:_lugar)
 {numero}+\.?|{numero}*\.{numero}+ {double d;  
                                    sscanf(yytext,"%lf",&d);
                                  /* Instala el numero en la tabla de simbolos */
-				   yylval.sym=install("",NUMBER,d); 
+				   yylval.sym=install1("",NUMBER,d); 
 				   return NUMBER;}
 
 {identificador} { Symbol *s;
                    if ((s=lookup(yytext)) == 0)
-                               s = install (yytext, INDEFINIDA, 0.0);
+                               s = install1(yytext, INDEFINIDA, 0.0);
                     yylval.sym = s;
                     return s->tipo == INDEFINIDA ? VAR : s->tipo;}
 
 ">="	{return MAYOR_IGUAL;}
 "<="	{return MENOR_IGUAL;}
-"=="	{return IGUAL;}
-"!="	{return DISTINTO;}
+"="	{return IGUAL;}
+"<>"	{return DISTINTO;}
 ">"	{return MAYOR_QUE;}
 "<"	{return MENOR_QUE;}
 "!"	{return NEGACION;}
@@ -63,6 +65,24 @@ _lugar	(?i:_lugar)
 <ESTADO_COMENTARIO_LINEAS>"#" 	{BEGIN 0; ;}	
 <ESTADO_COMENTARIO_LINEAS>.	{;}
 <ESTADO_COMENTARIO_LINEAS>\n 	{;}
+
+"'"	                  {
+			    /* Se activa el reconocimiento de la cadena */
+			    BEGIN ESTADO_CADENA; 
+			  }
+
+
+<ESTADO_CADENA>"'"        { /* Fin de la cadena: se vuelve al estado por defecto */
+			    BEGIN 0; 
+			    yytext[yyleng-1]='\0';
+			    Symbol *s;
+                	if ((s=lookup(yytext)) == 0)
+                    	s = install2("", CADENA, yytext);
+                return CADENA;}
+
+<ESTADO_CADENA>"\\\'"     {yymore();}
+<ESTADO_CADENA>.          {yymore();}
+<ESTADO_CADENA>\n 		  {yymore();}
 
 
 ^&      { 

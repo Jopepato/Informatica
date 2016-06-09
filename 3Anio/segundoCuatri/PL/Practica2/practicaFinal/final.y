@@ -28,7 +28,7 @@
        Inst *inst;     /* instruccion de maquina */
 }
 
-%token <sym> NUMBER VAR CONSTANTE FUNCION0_PREDEFINIDA FUNCION1_PREDEFINIDA FUNCION2_PREDEFINIDA INDEFINIDA PRINT WHILE IF ELSE READ _LUGAR
+%token <sym> NUMBER VAR CONSTANTE FUNCION0_PREDEFINIDA FUNCION1_PREDEFINIDA FUNCION2_PREDEFINIDA INDEFINIDA PRINT WHILE IF ELSE READ _LUGAR CADENA READ_CADENA PRINT_CADENA
 %type <inst> stmt asgn expr stmtlist cond while if end 
 %right ASIGNACION
 %left O_LOGICO
@@ -48,7 +48,9 @@ list :    /* nada: epsilon produccion */
 stmt :    /* nada: epsilon produccion */  {$$=progp;}
         | asgn          {code(pop2);}
 	      | PRINT expr    {code(escribir); $$ = $2;}
+        | PRINT_CADENA  '(' expr ')' {code(escribirCadena); $$ = $3;}
         | READ '(' VAR ')'    {code2(leervariable,(Inst)$3);}
+        | READ_CADENA '(' VAR ')' {code2(leerCadena, (Inst)$3);}
         | _LUGAR '(' expr ',' expr ')'   {$$=$3;code(lugar);}
         | while cond stmtlist end  
                   {
@@ -93,6 +95,7 @@ stmtlist:  /* nada: prodcuccion epsilon */ {$$=progp;}
 expr :    NUMBER     		{$$=code2(constpush,(Inst)$1);}
         | VAR        		{$$=code3(varpush,(Inst)$1,eval);} 
         | CONSTANTE      	{$$=code3(varpush,(Inst)$1,eval);}
+        | CADENA          {$$=code3(varpush,(Inst)$1,eval);}
         | asgn
         | FUNCION0_PREDEFINIDA '(' ')'      {code2(funcion0,(Inst)$1->u.ptr);}
         | FUNCION1_PREDEFINIDA '(' expr ')' {$$=$3;code2(funcion1,(Inst)$1->u.ptr);}

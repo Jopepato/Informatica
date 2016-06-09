@@ -44,7 +44,7 @@ Symbol *lookup (char *s)
 /**	Tipo:   real de doble precision "double"                       **/
 /**     Mision: suministra un valor inicial.                           **/
 /************************************************************************/
-Symbol *install(char *s, int t, double d)
+Symbol *install1(char *s, int t, double d)
 {
  Symbol *sp;
  char *emalloc();
@@ -54,6 +54,23 @@ Symbol *install(char *s, int t, double d)
  strcpy(sp->nombre,s);
  sp->tipo=t;
  sp->u.val=d;
+ sp->siguiente=symlist;
+ symlist=sp;
+ return sp;
+}
+
+//install para leer cadenas
+Symbol *install2(char *s, int t, char * c)
+{
+ Symbol *sp;
+ char *emalloc();
+
+ sp=(Symbol *) emalloc(sizeof(Symbol));
+ sp->nombre=emalloc(strlen(s)+1); /* +1 para el caracter nulo '\0' */
+ strcpy(sp->nombre,s);
+ sp->tipo=t;
+ sp->u.cadena=emalloc(strlen(c));
+ strcpy(sp->u.cadena, c);
  sp->siguiente=symlist;
  symlist=sp;
  return sp;
