@@ -33,7 +33,7 @@
 %right ASIGNACION
 %left O_LOGICO
 %left Y_LOGICO
-%left MAYOR_QUE MENOR_QUE MENOR_IGUAL MAYOR_IGUAL DISTINTO IGUAL DIV_ENTERA POTENCIA MODULO
+%left MAYOR_QUE MENOR_QUE MENOR_IGUAL MAYOR_IGUAL DISTINTO IGUAL DIV_ENTERA POTENCIA MODULO CONCATENACION
 %left '+' '-'
 %left '*' '/'
 %left UNARIO NEGACION
@@ -106,6 +106,7 @@ expr :    NUMBER     		{$$=code2(constpush,(Inst)$1);}
         | expr '-' expr 	{code(restar);}
         | expr '*' expr 	{code(multiplicar);}
         | expr '/' expr 	{code(dividir);}
+        | expr CONCATENACION expr {code(concatenacion)}
         | expr MODULO expr 	{code(modulo);}
         | expr POTENCIA expr 	{code(potencia);}
         |'-' expr %prec UNARIO 	{$$=$2; code(negativo);}

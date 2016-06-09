@@ -169,11 +169,7 @@ void eval() /* evaluar una variable en la pila */
  if (d.sym->tipo == INDEFINIDA) 
      execerror (" Variable no definida ", d.sym->nombre);
  
-
   if(d.sym->tipo == CADENA){
-    d.cadena = emalloc(sizeof(d.sym->u.cadena)+1);
-    printf("%s\n", d.sym->u.cadena);
-    fflush(stdout);
     strcpy(d.cadena, d.sym->u.cadena); /*Sustituir cadena por cadena*/
   }else{
      d.val=d.sym->u.val;  /* Sustituir variable por valor */
@@ -359,7 +355,7 @@ void leervariable() /* Leer una variable numerica por teclado */
 void leerCadena() /* Leer una variable numerica por teclado */
 {
  Symbol *variable;
- char c;
+ char *c;
 
  variable = (Symbol *)(*pc); 
 
@@ -367,10 +363,10 @@ void leerCadena() /* Leer una variable numerica por teclado */
   if ((variable->tipo == INDEFINIDA) || (variable->tipo == VAR))
     { 
     printf("Valor--> ");
-    while((c=getchar())=='\n') ;
-    ungetc(c,stdin);
-    scanf("%lf",&variable->u.val);
-    variable->tipo=VAR;
+    fgets(variable->u.cadena, 100, stdin);
+    variable->u.cadena[strlen(variable->u.cadena)-1] = '\0';
+    //Habria que hacer el bucle de comprobación rigurosa
+    variable->tipo=CADENA;
     pc++;
 
    }
@@ -519,6 +515,15 @@ void negacion()
  push(d1);   /* Apilar resultado */
 }
 
+void concatenacion(){
+  Datum d1, d2;
+  d2.pop();
+  d1.pop();
+
+  strcat(d1.cadena, d2.cadena);
+
+  push(d1);
+}
 
 void whilecode()
 {

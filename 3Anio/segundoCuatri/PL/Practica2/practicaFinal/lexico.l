@@ -2,7 +2,6 @@
 #include "macros.h"
 #include "final.h"
 #include "final.tab.h"
-#include <stdlib.h>
 extern char *progname;
 extern int lineno;
 %}
@@ -45,11 +44,12 @@ _lugar	(?i:_lugar)
 "<>"	{return DISTINTO;}
 ">"	{return MAYOR_QUE;}
 "<"	{return MENOR_QUE;}
-"!"	{return NEGACION;}
-"||"	{return O_LOGICO;}
-"&&"	{return Y_LOGICO;}
+_no	{return NEGACION;}
+_o	{return O_LOGICO;}
+_y	{return Y_LOGICO;}
 ":="      {return ASIGNACION;}
 "**"	{return POTENCIA;}
+"||" 	{return CONCATENACION;}
 {_div}	{return DIV_ENTERA;}
 {_mod}	{return MODULO;}
 
@@ -68,21 +68,48 @@ _lugar	(?i:_lugar)
 
 "'"	                  {
 			    /* Se activa el reconocimiento de la cadena */
-			    BEGIN ESTADO_CADENA; 
+			    BEGIN ESTADO_CADENA;
+			    yymore();
 			  }
 
 
 <ESTADO_CADENA>"'"        { /* Fin de la cadena: se vuelve al estado por defecto */
 			    BEGIN 0; 
-			    yytext[yyleng-1]='\0';
+			    char * c;
+			    yytext[yyleng-1] = '\0';
+			    c = (char*)malloc(yyleng+1);
+			    int i=1, j=0;
+			    strcpy(c, yytext);
+
+			    while(c[i]!='\0'){
+			    	if( '\\' != c[i]){
+			    		c[j] = c[i];
+			    	}else{
+			    		i++;
+			    	}if('t' != c[i] && 'n' != c[i]){
+			    		c[j] = c[i];
+			    	}else{
+			    		if('n' == c[i]){
+			    			c[j]='\n';
+			    		}else{
+			    			c[j] = '\t';
+			    		}
+			    	}
+			    	i++;
+			    	j++;
+			    }
+			    c[j]='\0';
 			    Symbol *s;
-                	if ((s=lookup(yytext)) == 0)
-                    	s = install2("", CADENA, yytext);
+                	if ((s=lookup(c)) == 0)
+                    	s = install2("", CADENA, c);
+          		yylval.sym = s;
                 return CADENA;}
 
 <ESTADO_CADENA>"\\\'"     {yymore();}
+<ESTADO_CADENA>\t 		  {yymore();}
 <ESTADO_CADENA>.          {yymore();}
 <ESTADO_CADENA>\n 		  {yymore();}
+
 
 
 ^&      { 

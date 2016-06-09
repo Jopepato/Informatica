@@ -20,7 +20,7 @@ typedef struct Symbol
 	        short tipo; /* NUMBER,VAR,FUNCION,INDEFINIDA,CONSTANTE, CADENA */ 
 	        union {
 		       double val;      /* VAR, NUMBER, INDEFINIDA, CONSTANTE */
-	           char * cadena;	/* CADENA*/
+	           char cadena[1000];	/* CADENA*/
 		       double (*ptr)(); /* FUNCION  */
 		      } u;
                  struct Symbol *siguiente;
@@ -32,7 +32,7 @@ Symbol *lookup();
 
 typedef union Datum { /* tipo de la pila del interprete */ 
                      double val;
-                     char * cadena;
+                     char cadena[1000];
                      Symbol *sym;
                     } Datum;
 
@@ -92,6 +92,7 @@ void distinto();
 void y_logico();
 void o_logico();
 void negacion();
+void concatenacion();
 void dividir_entero();
 
 void leervariable();

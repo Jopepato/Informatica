@@ -1,5 +1,6 @@
 #include <string.h>
 #include <stdlib.h>
+#include <stdio.h>
 
 #include "final.h"
 #include "final.tab.h" /* Se genera al ejecutar yacc -d hoc5.y */
@@ -69,7 +70,6 @@ Symbol *install2(char *s, int t, char * c)
  sp->nombre=emalloc(strlen(s)+1); /* +1 para el caracter nulo '\0' */
  strcpy(sp->nombre,s);
  sp->tipo=t;
- sp->u.cadena=emalloc(strlen(c));
  strcpy(sp->u.cadena, c);
  sp->siguiente=symlist;
  symlist=sp;
@@ -91,7 +91,7 @@ Symbol *install2(char *s, int t, char * c)
 char *emalloc(unsigned n)
 {
 	char *p;
-	p=malloc(n);
+	p=malloc(n*sizeof(char));
 	if (p==0) execerror("\nFalta memoria\n",(char *)0);
 	return p;
 }
