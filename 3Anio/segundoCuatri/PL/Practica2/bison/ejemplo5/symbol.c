@@ -74,7 +74,7 @@ Symbol *install(char *s, int t, double d)
 /** Tipo de resultado: Puntero a caracter  "char *"                    **/
 /** Parametros:                                                        **/ 
 /**  Nombre: n                                                         **/
-/**	Tipo:   entero sin signo "unsigned"                            **/
+/**	Tipo:   entero sin signo "unsigned"                            	   **/
 /**     Mision: indica la cantidad de bytes que se deben reservar      **/
 /************************************************************************/
 

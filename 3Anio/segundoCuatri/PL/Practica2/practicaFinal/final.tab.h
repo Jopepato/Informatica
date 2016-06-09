@@ -30,8 +30,8 @@
    This special exception was added by the Free Software Foundation in
    version 2.2 of Bison.  */
 
-#ifndef YY_YY_EJEMPLO8_TAB_H_INCLUDED
-# define YY_YY_EJEMPLO8_TAB_H_INCLUDED
+#ifndef YY_YY_FINAL_TAB_H_INCLUDED
+# define YY_YY_FINAL_TAB_H_INCLUDED
 /* Debug traces.  */
 #ifndef YYDEBUG
 # define YYDEBUG 0
@@ -45,16 +45,33 @@ extern int yydebug;
 # define YYTOKENTYPE
   enum yytokentype
   {
-    FIN = 258,
-    NUMBER = 259,
-    VAR = 260,
-    INDEFINIDA = 261,
-    FUNCION0_PREDEFINIDA = 262,
-    CONSTANTE = 263,
-    FUNCION1_PREDEFINIDA = 264,
-    FUNCION2_PREDEFINIDA = 265,
-    ASIGNACION = 266,
-    UNARIO = 267
+    NUMBER = 258,
+    VAR = 259,
+    CONSTANTE = 260,
+    FUNCION0_PREDEFINIDA = 261,
+    FUNCION1_PREDEFINIDA = 262,
+    FUNCION2_PREDEFINIDA = 263,
+    INDEFINIDA = 264,
+    PRINT = 265,
+    WHILE = 266,
+    IF = 267,
+    ELSE = 268,
+    READ = 269,
+    _LUGAR = 270,
+    ASIGNACION = 271,
+    O_LOGICO = 272,
+    Y_LOGICO = 273,
+    MAYOR_QUE = 274,
+    MENOR_QUE = 275,
+    MENOR_IGUAL = 276,
+    MAYOR_IGUAL = 277,
+    DISTINTO = 278,
+    IGUAL = 279,
+    DIV_ENTERA = 280,
+    POTENCIA = 281,
+    MODULO = 282,
+    UNARIO = 283,
+    NEGACION = 284
   };
 #endif
 
@@ -63,12 +80,12 @@ extern int yydebug;
 typedef union YYSTYPE YYSTYPE;
 union YYSTYPE
 {
-#line 22 "ejemplo8.y" /* yacc.c:1909  */
-               /* tipos de datos de la pila */
-       Symbol *sym;   /* puntero a la tabla de simbolos */
-       Inst   *inst;  /* instruccion de maquina */ 
+#line 26 "final.y" /* yacc.c:1909  */
+             
+       Symbol *sym;    /* puntero a la tabla de simbolos */
+       Inst *inst;     /* instruccion de maquina */
 
-#line 72 "ejemplo8.tab.h" /* yacc.c:1909  */
+#line 89 "final.tab.h" /* yacc.c:1909  */
 };
 # define YYSTYPE_IS_TRIVIAL 1
 # define YYSTYPE_IS_DECLARED 1
@@ -79,4 +96,4 @@ extern YYSTYPE yylval;
 
 int yyparse (void);
 
-#endif /* !YY_YY_EJEMPLO8_TAB_H_INCLUDED  */
+#endif /* !YY_YY_FINAL_TAB_H_INCLUDED  */

@@ -15,7 +15,7 @@
 #include <stdio.h>
 #include <math.h>
 
-#include "ejemplo.h"
+#include "final.h"
 
 #include "macros.h"
 
@@ -28,14 +28,14 @@
        Inst *inst;     /* instruccion de maquina */
 }
 
-%token <sym> NUMBER VAR CONSTANTE FUNCION0_PREDEFINIDA FUNCION1_PREDEFINIDA FUNCION2_PREDEFINIDA INDEFINIDA PRINT WHILE IF ELSE READ
+%token <sym> NUMBER VAR CONSTANTE FUNCION0_PREDEFINIDA FUNCION1_PREDEFINIDA FUNCION2_PREDEFINIDA INDEFINIDA PRINT WHILE IF ELSE READ _LUGAR
 %type <inst> stmt asgn expr stmtlist cond while if end 
 %right ASIGNACION
 %left O_LOGICO
 %left Y_LOGICO
-%left MAYOR_QUE MENOR_QUE MENOR_IGUAL MAYOR_IGUAL DISTINTO IGUAL
+%left MAYOR_QUE MENOR_QUE MENOR_IGUAL MAYOR_IGUAL DISTINTO IGUAL DIV_ENTERA POTENCIA MODULO
 %left '+' '-'
-%left '*' '/' '%'
+%left '*' '/'
 %left UNARIO NEGACION
 %right '^'   
 %%
@@ -45,12 +45,11 @@ list :    /* nada: epsilon produccion */
         | list error ';'   {yyerrok;} 
         ;
 
-/* Hay que quitar lo de smlist, porque nuestras sentencias no tienen las llaves
-Entonces hay que quitar tambien los smt*/
 stmt :    /* nada: epsilon produccion */  {$$=progp;}
         | asgn          {code(pop2);}
-	| PRINT expr    {code(escribir); $$ = $2;}
+	      | PRINT expr    {code(escribir); $$ = $2;}
         | READ '(' VAR ')'    {code2(leervariable,(Inst)$3);}
+        | _LUGAR '(' expr ',' expr ')'   {$$=$3;code(lugar);}
         | while cond stmtlist end  
                   {
                    ($1)[1]=(Inst)$3; /* cuerpo del bucle */
@@ -104,8 +103,8 @@ expr :    NUMBER     		{$$=code2(constpush,(Inst)$1);}
         | expr '-' expr 	{code(restar);}
         | expr '*' expr 	{code(multiplicar);}
         | expr '/' expr 	{code(dividir);}
-        | expr '%' expr 	{code(modulo);}
-        | expr '^' expr 	{code(potencia);}
+        | expr MODULO expr 	{code(modulo);}
+        | expr POTENCIA expr 	{code(potencia);}
         |'-' expr %prec UNARIO 	{$$=$2; code(negativo);}
         |'+' expr %prec UNARIO 	{$$=$2; code(positivo);}
         | expr MAYOR_QUE expr 	{code(mayor_que);}
@@ -116,6 +115,7 @@ expr :    NUMBER     		{$$=code2(constpush,(Inst)$1);}
         | expr DISTINTO expr 	{code(distinto);}
         | expr Y_LOGICO expr 	{code(y_logico);}
         | expr O_LOGICO expr 	{code(o_logico);}
+        | expr DIV_ENTERA expr {code(dividir_entero);}
         | NEGACION expr 	{$$=$2; code(negacion);}
       	;
 

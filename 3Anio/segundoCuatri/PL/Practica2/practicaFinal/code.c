@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include  <math.h>
 
-#include "ejemplo.h"
-#include "ejemplo.tab.h"
+#include "final.h"
+#include "final.tab.h"
 
 #include "macros.h"
 
@@ -126,6 +126,21 @@ void dividir() /* dividir los dos valores superiores de la pila */
  push(d1);                    /* Apilar el resultado */
 }
 
+void dividir_entero(){
+   Datum d1,d2;
+ 
+ d2=pop();      /* Obtener el primer numero  */
+ d1=pop();      /* Obtener el segundo numero */
+ 
+/* Comprobar si hay division por 0 */ 
+ 
+ if (d2.val == 0.0)
+     execerror (" Division por cero ", (char *) 0);
+ 
+ d1.val = (int)d1.val / (int)d2.val;    /* Dividir             */
+ push(d1);                    /* Apilar el resultado */
+}
+
 void escribir() /* sacar de la pila el valor superior y escribirlo */
 {
  Datum d;
@@ -225,6 +240,24 @@ void positivo() /* tomar el valor positivo del elemento superior de la pila */
  push(d1);              /* Apilar resultado */
 }
 
+/* Esta es la funcion que llama el ++, suma 1 al numero*/
+void sumar1(){
+ Datum d1;
+ 
+ d1=pop();              /* Obtener numero   */
+ d1.val = d1.val + 1;     /* Aplicar mas 1   */
+ push(d1);              /* Apilar resultado */
+}
+
+/* Esta es la funcion que llama el --, resta 1 al numero*/
+void restar1(){
+ Datum d1;
+ 
+ d1=pop();              /* Obtener numero   */
+ d1.val = d1.val - 1;     /* Aplicar mas 1   */
+ push(d1);              /* Apilar resultado */
+}
+
 void potencia()  /* exponenciacion de los valores superiores de la pila */
 {
  Datum d1,d2;
@@ -272,6 +305,14 @@ void varpush()  /* meter una variable en la pila */
 
  d.sym=(Symbol *)(*pc++);
  push(d);
+}
+
+void lugar(){
+  Datum d1,d2;
+ 
+ d2=pop();                   /* Obtener el primer numero  */
+ d1=pop();                   /* Obtener el segundo numero */
+  LUGAR((int)d2.val, (int)d1.val);
 }
 /****************************************************************************/
 /****************************************************************************/
@@ -492,8 +533,3 @@ void ifcode()
  pc= *((Inst **)(savepc+2));
 }
 
-
-
-void pasaMinusculas(){
-  
-}

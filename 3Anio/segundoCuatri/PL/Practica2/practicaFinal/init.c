@@ -1,7 +1,7 @@
 #include <math.h>
 
-#include "ejemplo.h"
-#include "ejemplo.tab.h"
+#include "final.h"
+#include "final.tab.h"
 
 /* Prototipo de una nueva funcion matematica */
 extern double integer(double x), Azar();
@@ -25,13 +25,12 @@ static struct{   /* palabras clave */
               char *nombre;
 	      int  kval;
 	      } keywords[] = {
-                              "if",        IF,
-			     			 "else",      ELSE,
-			    			  "while",     WHILE,
-			    			  "print",     PRINT,
+                              "si",        IF,
+			      			  "else",      ELSE,
+			      			  "while",     WHILE,
+			      			  "escribir",     PRINT,
                               "leer",      READ,
-                              "leer_cadena",			LEER_CADENA,
-			    			  0,           0,
+			      0,           0,
                              };
 
 static struct {    /* Nombres predefinidos de funciones */ 

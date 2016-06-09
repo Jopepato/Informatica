@@ -30,7 +30,7 @@ static struct {    /* Nombres predefinidos de funciones */
 		               0,       0
 		              },
 		 funciones1[] = {
-	                       "seno",   sin,
+	                   "seno",   sin,
 		               "coseno", cos,
 		               "atan",   atan,
 		               "log",    Log,

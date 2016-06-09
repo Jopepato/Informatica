@@ -1,5 +1,5 @@
-#ifndef EJEMPLO_H_
-#define EJEMPLO_H_
+#ifndef FINAL_H
+#define FINAL_H
 
  /* ejemplo9.h */
 
@@ -18,7 +18,7 @@ typedef struct Symbol
             { /* elementos de la tabla de simbolos */
 	        char *nombre;
 	        short tipo; /* NUMBER,VAR,FUNCION,INDEFINIDA,CONSTANTE */ 
-	        struct {
+	        union {
 		       double val;      /* VAR, NUMBER, INDEFINIDA, CONSTANTE */
 		       double (*ptr)(); /* FUNCION  */
 		      } u;
@@ -27,7 +27,7 @@ typedef struct Symbol
 
 Symbol *install(), *lookup();
 
-typedef struct Datum { /* tipo de la pila del interprete */ 
+typedef union Datum { /* tipo de la pila del interprete */ 
                      double val;
                      Symbol *sym;
                     } Datum;
@@ -71,6 +71,9 @@ void potencia();
 void restar();
 void sumar();
 void varpush();
+void sumar1();
+void restar1();
+void lugar();
 
 void ifcode();
 void whilecode();
@@ -84,14 +87,8 @@ void distinto();
 void y_logico();
 void o_logico();
 void negacion();
-void concatenacion();
+void dividir_entero();
 
 void leervariable();
-
-
-void pasaMinusculas();
-
-void fin_sentencia();
-
 
 #endif

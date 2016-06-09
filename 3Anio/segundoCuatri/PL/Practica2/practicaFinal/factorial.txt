@@ -1,9 +1,9 @@
-read(dato__2);
+read(dato);
 
-if (dato__2 < 0) f := 0
+if (dato < 0) f := 0
 else
     {
-     i:=dato__2;
+     i:=dato;
      f := 1;
 
      while(i>1)

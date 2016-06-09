@@ -1,5 +1,5 @@
-FUENTE = ejemplo$(VERSION)
-LEXICO = lexico$(VERSION)
+FUENTE = final
+LEXICO = lexico
 
 CC = gcc
 CFLAGS = -c -g
@@ -10,16 +10,16 @@ OBJS= $(FUENTE).tab.o lex.yy.o  init.o   math.o   symbol.o  code.o
 $(FUENTE)3.exe: $(OBJS) 
 	$(CC) $(OBJS) $(LFLAGS) -o $(FUENTE).exe
 
-code.o:  code.c $(FUENTE).h
+code$(VERSION).o:  code.c $(FUENTE).h
 	$(CC) -c code.c
 
-init.o:  init.c $(FUENTE).h $(FUENTE).tab.h
+init$(VERSION).o:  init.c $(FUENTE).h $(FUENTE).tab.h
 	$(CC) -c init.c
 
-symbol.o:  symbol.c $(FUENTE).h $(FUENTE).tab.h
+symbol$(VERSION).o:  symbol.c $(FUENTE).h $(FUENTE).tab.h
 	$(CC) -c symbol.c
 
-math.o:  math.c $(FUENTE).h
+math$(VERSION).o:  math.c $(FUENTE).h
 	$(CC) -c math.c
 
 lex.yy.o:  lex.yy.c $(FUENTE).tab.h $(FUENTE).h macros.h
