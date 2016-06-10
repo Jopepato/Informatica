@@ -373,6 +373,25 @@ void leerCadena() /* Leer una variable numerica por teclado */
     fgets(variable->u.cadena, 100, stdin);
     variable->u.cadena[strlen(variable->u.cadena)-1] = '\0';
     //Habria que hacer el bucle de comprobación rigurosa
+          int i=1, j=0;
+          while(variable->u.cadena[i]!='\0'){
+            if( '\\' != variable->u.cadena[i]){
+              variable->u.cadena[j] = variable->u.cadena[i];
+            }else{
+              i++;
+            }if('t' != variable->u.cadena[i] && 'n' != variable->u.cadena[i]){
+              variable->u.cadena[j] = variable->u.cadena[i];
+            }else{
+              if('n' == variable->u.cadena[i]){
+                variable->u.cadena[j]='\n';
+              }else{
+                variable->u.cadena[j] = '\t';
+              }
+            }
+            i++;
+            j++;
+          }
+          variable->u.cadena[j-1]='\0';
     variable->tipo=CADENA;
     pc++;
 
@@ -404,6 +423,7 @@ if(d1.sym->tipo == CADENA || d2.sym->tipo == CADENA){
    d1.val=0;
  }
  push(d1);  /* Apilar resultado */
+
 }
 
 
@@ -427,10 +447,7 @@ if(d1.sym->tipo == CADENA || d2.sym->tipo == CADENA){
    d1.val= 1;
  else
    d1.val=0;
-}
-
-
- 
+} 
  push(d1);    /* Apilar el resultado */
 }
 
