@@ -96,8 +96,15 @@ void assign() /* asignar el valor superior al siguiente valor */
  
  if (d1.sym->tipo != VAR && d1.sym->tipo != INDEFINIDA)
    execerror(" asignacion a un elemento que no es una variable ", 
-	     d1.sym->nombre);
-  d1.sym->u.val=d2.val;   /* Asignar valor   */
+	d1.sym->nombre);
+  if(d1.sym->tipo == CADENA){
+    //Asignamos cadena
+    strcpy(d1.sym->u.cadena, d2.cadena);
+  }else{
+    //Asignamos valor
+    d1.sym->u.val=d2.val;   /* Asignar valor   */
+
+  }
   d1.sym->tipo=VAR;
   push(d2);               /* Apilar variable */
 }
@@ -382,11 +389,20 @@ void mayor_que()
  d2=pop();   /* Obtener el primer numero  */
  d1=pop();   /* Obtener el segundo numero */
  
+if(d1.sym->tipo == CADENA || d2.sym->tipo == CADENA){
+  //Los tratamos como cadenas
+  if(strcmp(d1.cadena, d2.cadena) > 0){
+    d1.val = 1;
+  }else{
+    d1.val = 0;
+  }
+
+}else{
  if (d1.val > d2.val)
    d1.val= 1;
  else
    d1.val=0;
- 
+ }
  push(d1);  /* Apilar resultado */
 }
 
@@ -397,11 +413,23 @@ void menor_que()
  
  d2=pop();    /* Obtener el primer numero  */
  d1=pop();    /* Obtener el segundo numero */
- 
+
+if(d1.sym->tipo == CADENA || d2.sym->tipo == CADENA){
+  //Los tratamos como cadenas
+  if(strcmp(d1.cadena, d2.cadena) < 0){
+    d1.val = 1;
+  }else{
+    d1.val = 0;
+  }
+
+}else{
  if (d1.val < d2.val)
    d1.val= 1;
  else
    d1.val=0;
+}
+
+
  
  push(d1);    /* Apilar el resultado */
 }
@@ -414,11 +442,20 @@ void igual()
  d2=pop();    /* Obtener el primer numero  */
  d1=pop();    /* Obtener el segundo numero */
  
+if(d1.sym->tipo == CADENA || d2.sym->tipo == CADENA){
+  //Los tratamos como cadenas
+  if(strcmp(d1.cadena, d2.cadena) == 0){
+    d1.val = 1;
+  }else{
+    d1.val = 0;
+  }
+
+}else{
  if (d1.val == d2.val)
    d1.val= 1;
  else
    d1.val=0;
- 
+ }
  push(d1);    /* Apilar resultado */
 }
 
@@ -429,11 +466,20 @@ void mayor_igual()
  d2=pop();    /* Obtener el primer numero  */
  d1=pop();    /* Obtener el segundo numero */
  
+if(d1.sym->tipo == CADENA || d2.sym->tipo == CADENA){
+  //Los tratamos como cadenas
+  if(strcmp(d1.cadena, d2.cadena) >= 0){
+    d1.val = 1;
+  }else{
+    d1.val = 0;
+  }
+
+}else{
  if (d1.val >= d2.val)
    d1.val= 1;
  else
    d1.val=0;
- 
+ }
  push(d1);    /* Apilar resultado */
 }
 
@@ -445,11 +491,20 @@ void menor_igual()
  d2=pop();     /* Obtener el primer numero  */
  d1=pop();     /* Obtener el segundo numero */
  
+if(d1.sym->tipo == CADENA || d2.sym->tipo == CADENA){
+  //Los tratamos como cadenas
+  if(strcmp(d1.cadena, d2.cadena) <= 0){
+    d1.val = 1;
+  }else{
+    d1.val = 0;
+  }
+
+}else{
  if (d1.val <= d2.val)
    d1.val= 1;
  else
    d1.val=0;
- 
+ }
  push(d1);     /* Apilar resultado */
 }
 
@@ -460,11 +515,20 @@ void distinto()
  d2=pop();    /* Obtener el primer numero  */
  d1=pop();    /* Obtener el segundo numero */
  
+if(d1.sym->tipo == CADENA || d2.sym->tipo == CADENA){
+  //Los tratamos como cadenas
+  if(strcmp(d1.cadena, d2.cadena) != 0){
+    d1.val = 1;
+  }else{
+    d1.val = 0;
+  }
+
+}else{
  if (d1.val != d2.val)
    d1.val= 1;
  else
    d1.val=0;
- 
+ }
  push(d1);    /* Apilar resultado */
 }
 
@@ -517,9 +581,8 @@ void negacion()
 
 void concatenacion(){
   Datum d1, d2;
-  d2.pop();
-  d1.pop();
-
+  d2 = pop();
+  d1 = pop();
   strcat(d1.cadena, d2.cadena);
 
   push(d1);

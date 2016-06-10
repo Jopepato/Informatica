@@ -106,7 +106,7 @@ expr :    NUMBER     		{$$=code2(constpush,(Inst)$1);}
         | expr '-' expr 	{code(restar);}
         | expr '*' expr 	{code(multiplicar);}
         | expr '/' expr 	{code(dividir);}
-        | expr CONCATENACION expr {code(concatenacion)}
+        | expr CONCATENACION expr {code(concatenacion);}
         | expr MODULO expr 	{code(modulo);}
         | expr POTENCIA expr 	{code(potencia);}
         |'-' expr %prec UNARIO 	{$$=$2; code(negativo);}

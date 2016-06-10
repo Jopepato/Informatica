@@ -73,8 +73,9 @@ extern int yydebug;
     DIV_ENTERA = 283,
     POTENCIA = 284,
     MODULO = 285,
-    UNARIO = 286,
-    NEGACION = 287
+    CONCATENACION = 286,
+    UNARIO = 287,
+    NEGACION = 288
   };
 #endif
 
@@ -88,7 +89,7 @@ union YYSTYPE
        Symbol *sym;    /* puntero a la tabla de simbolos */
        Inst *inst;     /* instruccion de maquina */
 
-#line 92 "final.tab.h" /* yacc.c:1909  */
+#line 93 "final.tab.h" /* yacc.c:1909  */
 };
 # define YYSTYPE_IS_TRIVIAL 1
 # define YYSTYPE_IS_DECLARED 1
