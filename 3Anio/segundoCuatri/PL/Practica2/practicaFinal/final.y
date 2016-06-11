@@ -28,8 +28,8 @@
        Inst *inst;     /* instruccion de maquina */
 }
 
-%token <sym> NUMBER VAR CONSTANTE FUNCION0_PREDEFINIDA FUNCION1_PREDEFINIDA FUNCION2_PREDEFINIDA INDEFINIDA PRINT WHILE IF ELSE READ _LUGAR CADENA READ_CADENA PRINT_CADENA
-%type <inst> stmt asgn expr stmtlist cond while if end 
+%token <sym> NUMBER VAR CONSTANTE FUNCION0_PREDEFINIDA FUNCION1_PREDEFINIDA FUNCION2_PREDEFINIDA INDEFINIDA PRINT WHILE IF ELSE READ _LUGAR CADENA READ_CADENA PRINT_CADENA HACER FIN_MIENTRAS FIN_SI REPETIR HASTA ENTONCES PARA PASO FIN_PARA
+%type <inst> stmt asgn expr stmtlist cond while if end repetir para
 %right ASIGNACION
 %left O_LOGICO
 %left Y_LOGICO
@@ -52,21 +52,34 @@ stmt :    /* nada: epsilon produccion */  {$$=progp;}
         | READ '(' VAR ')'    {code2(leervariable,(Inst)$3);}
         | READ_CADENA '(' VAR ')' {code2(leerCadena, (Inst)$3);}
         | _LUGAR '(' expr ',' expr ')'   {$$=$3;code(lugar);}
-        | while cond stmtlist end  
+        | while cond HACER stmtlist FIN_MIENTRAS end  
                   {
-                   ($1)[1]=(Inst)$3; /* cuerpo del bucle */
-                   ($1)[2]=(Inst)$4; /* siguiente instruccion al bucle */
+                   ($1)[1]=(Inst)$4; /* cuerpo del bucle */
+                   ($1)[2]=(Inst)$6; /* siguiente instruccion al bucle */
                   }
-        | if cond stmtlist end /* proposicion if sin parte else */
+        | if cond ENTONCES stmtlist FIN_SI end /* proposicion if sin parte else */
                   {
-                   ($1)[1]=(Inst)$3; /* cuerpo del if */
-                   ($1)[3]=(Inst)$4; /* siguiente instruccion al if */
+                   ($1)[1]=(Inst)$4; /* cuerpo del if */
+                   ($1)[3]=(Inst)$6; /* siguiente instruccion al if */
                   }
-        | if cond stmtlist end ELSE stmt end /* proposicion if con parte else */
+        | if cond ENTONCES stmtlist end ELSE stmtlist FIN_SI end /* proposicion if con parte else */
                   {
-                   ($1)[1]=(Inst)$3; /* cuerpo del if */
-                   ($1)[2]=(Inst)$6; /* cuerpo del else */
-                   ($1)[3]=(Inst)$7; /* siguiente instruccion al if-else */
+                   ($1)[1]=(Inst)$4; /* cuerpo del if */
+                   ($1)[2]=(Inst)$7; /* cuerpo del else */
+                   ($1)[3]=(Inst)$9; /* siguiente instruccion al if-else */
+                  }
+        | repetir stmtlist HASTA cond end
+                  {
+                    ($1)[1]=(Inst)$4; /* cuerpo del repetir */
+                    ($1)[2]=(Inst)$5; /* siguiente instruccion al if */
+                  }
+        | para VAR DESDE expr HASTA expr PASO expr HACER stmtlist FIN_PARA end
+                  {
+                    ($1)[1] = (Inst)$4; //expr 1
+                    ($1)[2] = (Inst)$6; //expr 2
+                    ($1)[3] = (Inst)$8; //expr 3
+                    ($1)[4] = (Inst)$10 //Cuerpo del for
+                    ($1)[5] = (Inst)$12 //Siguiente instruccion a ejecutar
                   }
         ;
 
@@ -82,7 +95,12 @@ cond :    '(' expr ')' {code(STOP); $$ =$2;}
 while:    WHILE      {$$= code3(whilecode,STOP,STOP);}
         ;
 
+repetir: REPETIR     {$$ = code3(dowhilecode, STOP, STOP);}
+
 if:       IF         {$$= code(ifcode); code3(STOP,STOP,STOP);}
+        ;
+
+para:     PARA        {$$=code3(forcode, STOP, STOP);}
         ;
 
 end :    /* nada: produccion epsilon */  {code(STOP); $$ = progp;}

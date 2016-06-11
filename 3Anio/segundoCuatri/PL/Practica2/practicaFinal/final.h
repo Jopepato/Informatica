@@ -82,6 +82,7 @@ void lugar();
 
 void ifcode();
 void whilecode();
+void dowhilecode();
 
 void mayor_que();
 void menor_que();
@@ -97,7 +98,6 @@ void dividir_entero();
 
 void leervariable();
 void leerCadena();
-
 
 char *emalloc(unsigned n);
 #endif

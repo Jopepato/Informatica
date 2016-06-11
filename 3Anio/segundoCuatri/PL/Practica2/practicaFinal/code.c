@@ -373,13 +373,13 @@ void leerCadena() /* Leer una variable numerica por teclado */
     fgets(variable->u.cadena, 100, stdin);
     variable->u.cadena[strlen(variable->u.cadena)-1] = '\0';
     //Habria que hacer el bucle de comprobación rigurosa
-          int i=1, j=0;
+          int i=0, j=0;
           while(variable->u.cadena[i]!='\0'){
             if( '\\' != variable->u.cadena[i]){
               variable->u.cadena[j] = variable->u.cadena[i];
             }else{
               i++;
-            }if('t' != variable->u.cadena[i] && 'n' != variable->u.cadena[i]){
+            if('t' != variable->u.cadena[i] && 'n' != variable->u.cadena[i]){
               variable->u.cadena[j] = variable->u.cadena[i];
             }else{
               if('n' == variable->u.cadena[i]){
@@ -388,10 +388,11 @@ void leerCadena() /* Leer una variable numerica por teclado */
                 variable->u.cadena[j] = '\t';
               }
             }
+          }
             i++;
             j++;
           }
-          variable->u.cadena[j-1]='\0';
+          variable->u.cadena[j]='\0';
     variable->tipo=CADENA;
     pc++;
 
@@ -408,7 +409,7 @@ void mayor_que()
  d2=pop();   /* Obtener el primer numero  */
  d1=pop();   /* Obtener el segundo numero */
  
-if(d1.sym->tipo == CADENA || d2.sym->tipo == CADENA){
+if(strlen(d1.cadena)!=0){
   //Los tratamos como cadenas
   if(strcmp(d1.cadena, d2.cadena) > 0){
     d1.val = 1;
@@ -434,7 +435,7 @@ void menor_que()
  d2=pop();    /* Obtener el primer numero  */
  d1=pop();    /* Obtener el segundo numero */
 
-if(d1.sym->tipo == CADENA || d2.sym->tipo == CADENA){
+if(strlen(d1.cadena)!=0){
   //Los tratamos como cadenas
   if(strcmp(d1.cadena, d2.cadena) < 0){
     d1.val = 1;
@@ -459,7 +460,7 @@ void igual()
  d2=pop();    /* Obtener el primer numero  */
  d1=pop();    /* Obtener el segundo numero */
  
-if(d1.sym->tipo == CADENA || d2.sym->tipo == CADENA){
+if(strlen(d1.cadena)!=0){
   //Los tratamos como cadenas
   if(strcmp(d1.cadena, d2.cadena) == 0){
     d1.val = 1;
@@ -483,7 +484,7 @@ void mayor_igual()
  d2=pop();    /* Obtener el primer numero  */
  d1=pop();    /* Obtener el segundo numero */
  
-if(d1.sym->tipo == CADENA || d2.sym->tipo == CADENA){
+if(strlen(d1.cadena)!=0){
   //Los tratamos como cadenas
   if(strcmp(d1.cadena, d2.cadena) >= 0){
     d1.val = 1;
@@ -508,7 +509,7 @@ void menor_igual()
  d2=pop();     /* Obtener el primer numero  */
  d1=pop();     /* Obtener el segundo numero */
  
-if(d1.sym->tipo == CADENA || d2.sym->tipo == CADENA){
+if(strlen(d1.cadena)!=0){
   //Los tratamos como cadenas
   if(strcmp(d1.cadena, d2.cadena) <= 0){
     d1.val = 1;
@@ -532,7 +533,7 @@ void distinto()
  d2=pop();    /* Obtener el primer numero  */
  d1=pop();    /* Obtener el segundo numero */
  
-if(d1.sym->tipo == CADENA || d2.sym->tipo == CADENA){
+if(strlen(d1.cadena)!=0){
   //Los tratamos como cadenas
   if(strcmp(d1.cadena, d2.cadena) != 0){
     d1.val = 1;
@@ -627,6 +628,19 @@ void whilecode()
  pc= *((Inst **)(savepc+1));  
 }
 
+void dowhilecode(){
+  Datum d;
+  Inst *savepc = pc;
+
+  do{
+    execute(*((Inst **)(savepc)));
+    execute(savepc+2);
+    d = pop();
+  }while(d.val);
+
+   pc= *((Inst **)(savepc+1)); 
+}
+
 void ifcode()
 {
  Datum d;
@@ -657,3 +671,12 @@ void ifcode()
  pc= *((Inst **)(savepc+2));
 }
 
+
+void forcode(){
+  Datum d;
+  Inst * savepc = pc;
+
+  execute(savepc+5);
+  d=pop();
+
+}

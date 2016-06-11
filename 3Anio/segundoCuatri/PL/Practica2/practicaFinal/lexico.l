@@ -86,7 +86,7 @@ _y	{return Y_LOGICO;}
 			    		c[j] = c[i];
 			    	}else{
 			    		i++;
-			    	}if('t' != c[i] && 'n' != c[i]){
+			    	if('t' != c[i] && 'n' != c[i]){
 			    		c[j] = c[i];
 			    	}else{
 			    		if('n' == c[i]){
@@ -94,6 +94,7 @@ _y	{return Y_LOGICO;}
 			    		}else{
 			    			c[j] = '\t';
 			    		}
+			    	}
 			    	}
 			    	i++;
 			    	j++;
