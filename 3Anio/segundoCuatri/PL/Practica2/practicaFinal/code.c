@@ -370,6 +370,7 @@ void leerCadena() /* Leer una variable numerica por teclado */
   if ((variable->tipo == INDEFINIDA) || (variable->tipo == VAR))
     { 
     printf("Valor--> ");
+    fflush(stdout);
     fgets(variable->u.cadena, 100, stdin);
     variable->u.cadena[strlen(variable->u.cadena)-1] = '\0';
     //Habria que hacer el bucle de comprobación rigurosa
@@ -679,4 +680,9 @@ void forcode(){
   execute(savepc+5);
   d=pop();
 
+}
+
+
+void borrar(){
+  BORRAR;
 }

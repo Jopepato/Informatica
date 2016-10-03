@@ -928,7 +928,7 @@ YY_RULE_SETUP
 case 18:
 YY_RULE_SETUP
 #line 57 "lexico.l"
-{BORRAR;}
+{return _BORRAR;}
 	YY_BREAK
 case 19:
 YY_RULE_SETUP

@@ -70,21 +70,23 @@ extern int yydebug;
     PARA = 280,
     PASO = 281,
     FIN_PARA = 282,
-    ASIGNACION = 283,
-    O_LOGICO = 284,
-    Y_LOGICO = 285,
-    MAYOR_QUE = 286,
-    MENOR_QUE = 287,
-    MENOR_IGUAL = 288,
-    MAYOR_IGUAL = 289,
-    DISTINTO = 290,
-    IGUAL = 291,
-    DIV_ENTERA = 292,
-    POTENCIA = 293,
-    MODULO = 294,
-    CONCATENACION = 295,
-    UNARIO = 296,
-    NEGACION = 297
+    DESDE = 283,
+    _BORRAR = 284,
+    ASIGNACION = 285,
+    O_LOGICO = 286,
+    Y_LOGICO = 287,
+    MAYOR_QUE = 288,
+    MENOR_QUE = 289,
+    MENOR_IGUAL = 290,
+    MAYOR_IGUAL = 291,
+    DISTINTO = 292,
+    IGUAL = 293,
+    DIV_ENTERA = 294,
+    POTENCIA = 295,
+    MODULO = 296,
+    CONCATENACION = 297,
+    UNARIO = 298,
+    NEGACION = 299
   };
 #endif
 
@@ -98,7 +100,7 @@ union YYSTYPE
        Symbol *sym;    /* puntero a la tabla de simbolos */
        Inst *inst;     /* instruccion de maquina */
 
-#line 102 "final.tab.h" /* yacc.c:1909  */
+#line 104 "final.tab.h" /* yacc.c:1909  */
 };
 # define YYSTYPE_IS_TRIVIAL 1
 # define YYSTYPE_IS_DECLARED 1

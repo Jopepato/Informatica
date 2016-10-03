@@ -28,7 +28,7 @@
        Inst *inst;     /* instruccion de maquina */
 }
 
-%token <sym> NUMBER VAR CONSTANTE FUNCION0_PREDEFINIDA FUNCION1_PREDEFINIDA FUNCION2_PREDEFINIDA INDEFINIDA PRINT WHILE IF ELSE READ _LUGAR CADENA READ_CADENA PRINT_CADENA HACER FIN_MIENTRAS FIN_SI REPETIR HASTA ENTONCES PARA PASO FIN_PARA
+%token <sym> NUMBER VAR CONSTANTE FUNCION0_PREDEFINIDA FUNCION1_PREDEFINIDA FUNCION2_PREDEFINIDA INDEFINIDA PRINT WHILE IF ELSE READ _LUGAR CADENA READ_CADENA PRINT_CADENA HACER FIN_MIENTRAS FIN_SI REPETIR HASTA ENTONCES PARA PASO FIN_PARA DESDE _BORRAR
 %type <inst> stmt asgn expr stmtlist cond while if end repetir para
 %right ASIGNACION
 %left O_LOGICO
@@ -52,6 +52,7 @@ stmt :    /* nada: epsilon produccion */  {$$=progp;}
         | READ '(' VAR ')'    {code2(leervariable,(Inst)$3);}
         | READ_CADENA '(' VAR ')' {code2(leerCadena, (Inst)$3);}
         | _LUGAR '(' expr ',' expr ')'   {$$=$3;code(lugar);}
+        | _BORRAR     {code(borrar);}
         | while cond HACER stmtlist FIN_MIENTRAS end  
                   {
                    ($1)[1]=(Inst)$4; /* cuerpo del bucle */
@@ -73,13 +74,13 @@ stmt :    /* nada: epsilon produccion */  {$$=progp;}
                     ($1)[1]=(Inst)$4; /* cuerpo del repetir */
                     ($1)[2]=(Inst)$5; /* siguiente instruccion al if */
                   }
-        | para VAR DESDE expr HASTA expr PASO expr HACER stmtlist FIN_PARA end
+        | para VAR DESDE expr end HASTA expr end PASO expr end HACER stmtlist FIN_PARA end
                   {
                     ($1)[1] = (Inst)$4; //expr 1
                     ($1)[2] = (Inst)$6; //expr 2
                     ($1)[3] = (Inst)$8; //expr 3
-                    ($1)[4] = (Inst)$10 //Cuerpo del for
-                    ($1)[5] = (Inst)$12 //Siguiente instruccion a ejecutar
+                    ($1)[4] = (Inst)$10; //Cuerpo del for
+                    ($1)[5] = (Inst)$12; //Siguiente instruccion a ejecutar
                   }
         ;
 

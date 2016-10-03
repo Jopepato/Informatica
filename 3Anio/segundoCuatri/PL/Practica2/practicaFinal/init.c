@@ -38,6 +38,7 @@ static struct{   /* palabras clave */
                     "paso",         PASO,
                     "fin_para",     FIN_PARA,
 			      			  "escribir",     PRINT,
+                    "desde",        DESDE,
                               "leer",      READ,
                               "leer_cadena", 	READ_CADENA,
                               "escribir_cadena", PRINT_CADENA,

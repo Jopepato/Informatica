@@ -54,7 +54,7 @@ _y	{return Y_LOGICO;}
 {_mod}	{return MODULO;}
 
 
-{_borrar} 	{BORRAR;}
+{_borrar} 	{return _BORRAR;}
 {_lugar}	{return _LUGAR;}
 
 "@"		{BEGIN ESTADO_COMENTARIO;}
