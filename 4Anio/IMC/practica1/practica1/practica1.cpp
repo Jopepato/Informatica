@@ -1,7 +1,7 @@
 //============================================================================
 // Introducción a los Modelos Computacionales
 // Name        : practica1.cpp
-// Author      : Pedro A. Gutiérrez
+// Author      : José Pérez-Parras Toledano
 // Version     :
 // Copyright   : Universidad de Córdoba
 //============================================================================
@@ -14,6 +14,7 @@
 #include <cstdlib>  // Para establecer la semilla srand() y generar números aleatorios rand()
 #include <string.h>
 #include <math.h>
+#include <fstream>
 #include "imc/PerceptronMulticapa.h"
 
 using namespace imc;
@@ -26,6 +27,7 @@ int main(int argc, char **argv) {
     char *tvalue = NULL , *Tvalue = NULL;
     int ivalue = 1000, lvalue = 1, hvalue = 5;
     float evalue = 0.1, mvalue = 0.9;
+    fstream myfile;
     int c;
     // ....
     //Vamos a procesar la linea de comandos
@@ -73,19 +75,19 @@ int main(int argc, char **argv) {
             case 'b':
                 bflag = true;
                 break;
+
+            default:
+                break;
         }
 
     }
 
     //Comprueba si existen ficheros de entrenamiento y de test, si no existen dichos ficheros cierra el programa
 
-    if(tflag == false || Tflag ==false){
+    if(tflag == false || Tflag == false){
         //Nos salimos porque no hay ficheros de entrada
         cout << "No se ha introducido fichero de test o de prueba" << endl:
         exit(-1);
-    }else{
-        //Comprobamos que existen y se pueden abrir
-
     }
 
     PerceptronMulticapa mlp;

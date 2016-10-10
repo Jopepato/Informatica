@@ -36,6 +36,15 @@ PerceptronMulticapa::PerceptronMulticapa()
 // Rellenar vector Capa* pCapas
 int PerceptronMulticapa::inicializar(int nl, int npl[]) {
 
+	pCapas = (Capa *)malloc(nl*sizeof(Capa));
+
+	//Ahora rellenamos el pCapas
+	for(int i=0; i<nl; i++){
+		pCapas[i].nNumNeuronas = npl[i];
+		pCapas[i].pNeuronas = (Neurona *)malloc(npl[i]*sizeof(Neurona));
+	}
+	
+	return 1;
 }
 
 
@@ -50,11 +59,27 @@ PerceptronMulticapa::~PerceptronMulticapa() {
 // Liberar memoria para las estructuras de datos
 void PerceptronMulticapa::liberarMemoria() {
 
+		//jeeeeeeeeeeeeeeeeeee
+
 }
 
 // ------------------------------
 // Rellenar todos los pesos (w) aleatoriamente entre -1 y 1
 void PerceptronMulticapa::pesosAleatorios() {
+
+	//Asignamos los pesos aleatorios a las neuronas, dichos pesos son el numero de neuronas de la capa anterior
+	for(int i=1; i<nNumCapas; i++){
+		for(int j=0; j<pCapas[i].nNumNeuronas; j++){
+			//Reservamos memoria para el vector de pesos de cada neurona
+			pCapas[i].pNeuronas[j].w = (double *)malloc(pCapas[i-1].nNumNeuronas*sizeof(double));
+
+			for(int k=0; k<pCapas[i-1].nNumNeuronas; k++){
+				//Asignamos el numero aleatorio al vector de entradas de dicha neurona
+				pCapas[i].pNeuronas[j].w[k] = realAleatorio(-1, 1);
+			}
+
+		}
+	}
 
 }
 
@@ -74,11 +99,35 @@ void PerceptronMulticapa::recogerSalidas(double* output) {
 // Hacer una copia de todos los pesos (copiar w en copiaW)
 void PerceptronMulticapa::copiarPesos() {
 
+	//Asignamos los pesos aleatorios a las neuronas, dichos pesos son el numero de neuronas de la capa anterior
+	for(int i=1; i<nNumCapas; i++){
+		for(int j=0; j<pCapas[i].nNumNeuronas; j++){
+			//Reservamos memoria para el vector de pesos de cada neurona
+			pCapas[i].pNeuronas[j].wCopia = (double *)malloc(pCapas[i-1].nNumNeuronas*sizeof(double));
+
+			for(int k=0; k<pCapas[i-1].nNumNeuronas; k++){
+				//Salvamos los pesos en copiaW
+				pCapas[i].pNeuronas[j].wCopia[k] = pCapas[i].pNeuronas[j].w[k];
+			}
+
+		}
+	}
+
 }
 
 // ------------------------------
 // Restaurar una copia de todos los pesos (copiar copiaW en w)
 void PerceptronMulticapa::restaurarPesos() {
+
+	for(int i=1; i<nNumCapas; i++){
+		for(int j=0; j<pCapas[i].nNumNeuronas; j++){
+			for(int k=0; k<pCapas[i-1].nNumNeuronas; k++){
+				//Restauramos los pesos de copiaW
+				pCapas[i].pNeuronas[j].w[k] = pCapas[i].pNeuronas[j].wCopia[k];
+			}
+
+		}
+	}
 
 }
 
@@ -117,6 +166,8 @@ void PerceptronMulticapa::ajustarPesos() {
 // Imprimir la red, es decir, todas las matrices de pesos
 void PerceptronMulticapa::imprimirRed() {
 
+	//Vamos a imprimir la red
+
 }
 
 // ------------------------------
@@ -129,7 +180,59 @@ void PerceptronMulticapa::simularRedOnline(double* entrada, double* objetivo) {
 // ------------------------------
 // Leer una matriz de datos a partir de un nombre de fichero y devolverla
 Datos* PerceptronMulticapa::leerDatos(const char *archivo) {
+	//Comprobamos que los ficheros existen
+	ifstream myfile;
+	Datos *aux;
+	string line;
+	myfile.open(archivo);
+	if(myfile.is_open()){
 
+		//Leemos el fichero y rellenamos Datos
+		getline(myfile, line, ' ');
+		aux->nNumEntradas = atoi(line.c_str());
+		getline(myfile, line, ' ');
+		aux->nNumSalidas = atoi(line.c_str());
+		getline(myfile, line, '\n');
+		aux->nNumPatrones = atoi(line.c_str());
+		//Reservamos memoria para las matrices
+		aux->entradas = (double **)malloc(aux->nNumPatrones * sizeof(double *));
+		aux->salidas = (double **)malloc(aux->nNumPatrones * sizeof(double *));
+
+		for(int i=0 ; i<aux->nNumPatrones; i++){
+			aux->entradas[i] = (double *)malloc(aux->nNumEntradas*sizeof(double));
+		}
+
+		for(int i=0; i<aux->nNumPatrones; i++){
+			aux->salidas[i] = (double *)malloc(aux->nNumSalidas*sizeof(double));
+		}
+
+		//Recorremos las filas metiendo los elemento en la matriz
+
+		for(int i=0; i<aux->nNumPatrones; i++){
+
+			for(int j=0; j<aux->nNumEntradas; j++){
+				getline(myfile, line, ' ');
+				aux->entradas[i][j] = atof(line.c_str());
+			}
+
+			for(int j=0; j<aux->nNumSalidas; j++){
+				if(j != aux->nNumSalidas-1){
+					getline(myfile, line, ' ');
+					aux->salidas[i][j] = atof(line.c_str());
+				}else{
+					getline(myfile, line, '\n');
+					aux->salidas[i][j] = atof(line.c_str());
+				}
+			}
+
+
+		}
+
+		return(aux);
+	}else{
+		cout << "El fichero no existe" << endl;
+		exit(-1);
+	}
 }
 
 // ------------------------------
