@@ -21,13 +21,14 @@ using namespace std;
 double realAleatorio(double Low, double High)
 {
 	double f = (double)rand() / RAND_MAX;
-    return Low + f * (Low - High);
+    return Low + f * (High - Low);
 }
 
 // ------------------------------
 // CONSTRUCTOR: Dar valor por defecto a todos los parámetros
 PerceptronMulticapa::PerceptronMulticapa()
 {
+
 
 }
 
@@ -60,6 +61,7 @@ PerceptronMulticapa::~PerceptronMulticapa() {
 void PerceptronMulticapa::liberarMemoria() {
 
 		//jeeeeeeeeeeeeeeeeeee
+
 
 }
 
@@ -140,7 +142,17 @@ void PerceptronMulticapa::propagarEntradas() {
 // ------------------------------
 // Calcular el error de salida (MSE) del out de la capa de salida con respecto a un vector objetivo y devolverlo
 double PerceptronMulticapa::calcularErrorSalida(double* target) {
+	double mse;
 
+	//Recorremos las neuronas de salida y comparamos con el target
+	for(int i=0; i<pCapas[nNumCapas-1].nNumNeuronas; i++){
+		mse += pow(pCapas[nNumCapas-1].pNeuronas[i] - target[i], 2)
+	}
+
+	//Dividimos entre el numero de neuronas de la ultima capa
+	mse = mse/pCapas[nNumCapas-1].nNumNeuronas;
+
+	return mse;
 }
 
 
@@ -167,6 +179,19 @@ void PerceptronMulticapa::ajustarPesos() {
 void PerceptronMulticapa::imprimirRed() {
 
 	//Vamos a imprimir la red
+	cout << "Vamos  a imprimir las entradas de las neuronas" << endl << endl;
+
+		for(int i=1; i<nNumCapas; i++){
+			cout << "Capa: " << i << endl;
+			for(int j=0; j<pCapas[i].nNumNeuronas; j++){
+				for(int k=0; k<pCapas[i-1].nNumNeuronas; k++){
+					//Restauramos los pesos de copiaW
+					cout << pCapas[i].pNeuronas[j].w[k] << " ";
+				}
+				cout << endl;
+
+			}
+	}
 
 }
 

@@ -30,6 +30,8 @@ int main(int argc, char **argv) {
     fstream myfile;
     int c;
     // ....
+
+    //hvalue = topologia
     //Vamos a procesar la linea de comandos
 
     // Leer iteraciones, capas y neuronas desde la línea de comandos
@@ -96,6 +98,8 @@ int main(int argc, char **argv) {
     Datos * pDatosTest = mlp.leerDatos(Tvalue);
 
     // Inicializar el vector "topología"
+    int * topologia;
+
     // (número de neuronas por cada capa, incluyendo la de entrada
     //  y la de salida)
     // ...
@@ -110,7 +114,7 @@ int main(int argc, char **argv) {
     mlp.dMu = mvalue;
 
     // Inicialización propiamente dicha
-    mlp.inicializar(numCapas+2,topologia);
+    mlp.inicializar(hvalue+2,topologia);
 
     // Semilla de los números aleatorios
     int semillas[] = {10,20,30,40,50};
