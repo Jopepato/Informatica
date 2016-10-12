@@ -62,6 +62,18 @@ void PerceptronMulticapa::liberarMemoria() {
 
 		//jeeeeeeeeeeeeeeeeeee
 
+		for(int i=0; i< nNumCapas; i++){
+			//Vamos liberando todo dentro de cada capa
+			for(int j=0; j<pCapas[i].nNumNeuronas; j++){
+				free(pCapas[i].pNeuronas[j].w);
+				free(pCapas[i].pNeuronas[j].deltaW);
+				free(pCapas[i].pNeuronas[j].ultimoDeltaW);
+				free(pCapas[i].pNeuronas[j].wCopia);
+			}
+			free(pCapas[i].pNeuronas);
+		}
+
+		free(pCapas);
 
 }
 
@@ -89,11 +101,19 @@ void PerceptronMulticapa::pesosAleatorios() {
 // Alimentar las neuronas de entrada de la red con un patrón pasado como argumento
 void PerceptronMulticapa::alimentarEntradas(double* input) {
 
+	for(int i=0; i<pCapas[0].nNumNeuronas; i++){
+		pCapas[0].pNeuronas[i].x = input[i];
+	}
 }
 
 // ------------------------------
 // Recoger los valores predichos por la red (out de la capa de salida) y almacenarlos en el vector pasado como argumento
 void PerceptronMulticapa::recogerSalidas(double* output) {
+
+	//Guardamos las x de la ultima capa en el output
+	for(int i=0; i<pCapas[nNumCapas-1].nNumNeuronas; i++){
+		output[i] = pCapas[nNumCapas-1].pNeuronas[i].x; 
+	}
 
 }
 
@@ -137,16 +157,24 @@ void PerceptronMulticapa::restaurarPesos() {
 // Calcular y propagar las salidas de las neuronas, desde la primera capa hasta la última
 void PerceptronMulticapa::propagarEntradas() {
 
+	for(int i=1; i<nNumCapas; i++){
+		for(int j=0; j<pCapas[i].nNumNeuronas; j++){
+
+
+
+		}
+	}
+
 }
 
 // ------------------------------
 // Calcular el error de salida (MSE) del out de la capa de salida con respecto a un vector objetivo y devolverlo
 double PerceptronMulticapa::calcularErrorSalida(double* target) {
-	double mse;
+	double mse = 0.0;
 
 	//Recorremos las neuronas de salida y comparamos con el target
 	for(int i=0; i<pCapas[nNumCapas-1].nNumNeuronas; i++){
-		mse += pow(pCapas[nNumCapas-1].pNeuronas[i] - target[i], 2)
+		mse += pow(target[i] - pCapas[nNumCapas-1].pNeuronas[i].x, 2);
 	}
 
 	//Dividimos entre el numero de neuronas de la ultima capa
@@ -207,7 +235,7 @@ void PerceptronMulticapa::simularRedOnline(double* entrada, double* objetivo) {
 Datos* PerceptronMulticapa::leerDatos(const char *archivo) {
 	//Comprobamos que los ficheros existen
 	ifstream myfile;
-	Datos *aux;
+	Datos *aux = NULL;
 	string line;
 	myfile.open(archivo);
 	if(myfile.is_open()){

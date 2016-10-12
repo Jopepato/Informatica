@@ -88,7 +88,7 @@ int main(int argc, char **argv) {
 
     if(tflag == false || Tflag == false){
         //Nos salimos porque no hay ficheros de entrada
-        cout << "No se ha introducido fichero de test o de prueba" << endl:
+        cout << "No se ha introducido fichero de test o de prueba" << endl;
         exit(-1);
     }
 
