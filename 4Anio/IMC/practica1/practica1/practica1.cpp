@@ -23,7 +23,7 @@ using namespace std;
 int main(int argc, char **argv) {
 
     // Procesar la línea de comandos
-    bool tflag = false, Tflag= false, iflag, lflag, hflag, eflag, mflag, bflag;
+    bool tflag = false, Tflag= false;
     char *tvalue = NULL , *Tvalue = NULL;
     int ivalue = 1000, lvalue = 1, hvalue = 5;
     float evalue = 0.1, mvalue = 0.9;
@@ -100,6 +100,19 @@ int main(int argc, char **argv) {
     // Inicializar el vector "topología"
     int * topologia;
 
+    topologia = (int*)malloc(lvalue+2*sizeof(int));
+
+    //Y lo rellenamos
+    for(int i=0; i<lvalue+2; i++){
+        if(i==0){
+            topologia = pDatosTest->nNumEntradas;
+        }else if(i==lvalue-1){
+            topologia = pDatosTest->nNumSalidas;
+        }else{
+            topologia = hvalue;
+        }
+    }
+
     // (número de neuronas por cada capa, incluyendo la de entrada
     //  y la de salida)
     // ...
@@ -114,7 +127,7 @@ int main(int argc, char **argv) {
     mlp.dMu = mvalue;
 
     // Inicialización propiamente dicha
-    mlp.inicializar(hvalue+2,topologia);
+    mlp.inicializar(lvalue+2,topologia);
 
     // Semilla de los números aleatorios
     int semillas[] = {10,20,30,40,50};
@@ -133,6 +146,27 @@ int main(int argc, char **argv) {
 
     // Calcular media y desviación típica de los errores de Train y de Test
     // ....
+
+    double mediaErrorTrain = 0.0, mediaErrorTest=0.0, desviacionTipicaErrorTrain=0.0, desviacionTipicaErrorTest=0.0;
+
+    //Las calculamos
+    for(int i=0; i<5; i++){
+        mediaErrorTrain += erroresTrain[i];
+        mediaErrorTest += erroresTest[i];
+    }
+    mediaErrorTest /= 5;
+    mediaErrorTrain /= 5;
+
+    //Ahora la desviacion tipica
+    double auxTest = 0.0, auxTrain=0.0;
+
+    for(int i=0; i<5; i++){
+        auxTest += pow(erroresTest[i] - mediaErrorTest,2);
+        auxTrain += pow(erroresTrain[i] - mediaErrorTrain, 2);
+    }
+    desviacionTipicaErrorTest = sqrt((1/4)*auxTest);
+    desviacionTipicaErrorTrain = sqrt((1/4)*auxTrain);
+
 
     cout << "INFORME FINAL" << endl;
     cout << "*************" << endl;
