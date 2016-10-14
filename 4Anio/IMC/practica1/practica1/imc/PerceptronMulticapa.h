@@ -38,6 +38,7 @@ private:
 	int    nNumCapas;     /* Número de capas total en la red */
 	Capa* pCapas;         /* Vector con cada una de las capas */
 
+
 	// Liberar memoria para las estructuras de datos
 	void liberarMemoria();
 

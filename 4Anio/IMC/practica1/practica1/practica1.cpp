@@ -99,8 +99,6 @@ int main(int argc, char **argv) {
 
     Datos * pDatosTrain = mlp.leerDatos(tvalue);
     Datos * pDatosTest = mlp.leerDatos(Tvalue);
-    cout << "Hola, he pasado bien lo de leer datos" << endl;
-    fflush(stdout);
 
     // Inicializar el vector "topología"
     int * topologia;
