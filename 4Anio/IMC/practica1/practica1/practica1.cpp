@@ -16,6 +16,7 @@
 #include <math.h>
 #include <fstream>
 #include "imc/PerceptronMulticapa.h"
+#include "practica1.hpp"
 
 using namespace imc;
 using namespace std;
@@ -23,7 +24,7 @@ using namespace std;
 int main(int argc, char **argv) {
 
     // Procesar la línea de comandos
-    bool tflag = false, Tflag= false;
+    bool tflag = false, Tflag= false, bflag = false;;
     char *tvalue = NULL , *Tvalue = NULL;
     int ivalue = 1000, lvalue = 1, hvalue = 5;
     float evalue = 0.1, mvalue = 0.9;
@@ -67,17 +68,19 @@ int main(int argc, char **argv) {
                 break;
 
             case 'e':
-                eflag = atof(optarg);
+                evalue = atof(optarg);
                 break;
 
             case 'm':
-                mflag = atof(optarg);
+                mvalue = atof(optarg);
                 break;
 
             case 'b':
                 bflag = true;
                 break;
 
+            case '?':
+                ayuda();
             default:
                 break;
         }
@@ -88,7 +91,7 @@ int main(int argc, char **argv) {
 
     if(tflag == false || Tflag == false){
         //Nos salimos porque no hay ficheros de entrada
-        cout << "No se ha introducido fichero de test o de prueba" << endl;
+        ayuda();
         exit(-1);
     }
 
@@ -96,22 +99,20 @@ int main(int argc, char **argv) {
 
     Datos * pDatosTrain = mlp.leerDatos(tvalue);
     Datos * pDatosTest = mlp.leerDatos(Tvalue);
+    cout << "Hola, he pasado bien lo de leer datos" << endl;
+    fflush(stdout);
 
     // Inicializar el vector "topología"
     int * topologia;
 
-    topologia = (int*)malloc(lvalue+2*sizeof(int));
-
+    topologia = (int*)malloc((lvalue+2)*sizeof(int));
+    topologia[0] = pDatosTest->nNumEntradas;
     //Y lo rellenamos
-    for(int i=0; i<lvalue+2; i++){
-        if(i==0){
-            topologia = pDatosTest->nNumEntradas;
-        }else if(i==lvalue-1){
-            topologia = pDatosTest->nNumSalidas;
-        }else{
-            topologia = hvalue;
-        }
+    for(int i=1; i<lvalue+1; i++){
+            topologia[i] = hvalue;
     }
+    topologia[lvalue+1] = pDatosTest->nNumSalidas;
+
 
     // (número de neuronas por cada capa, incluyendo la de entrada
     //  y la de salida)
@@ -129,6 +130,7 @@ int main(int argc, char **argv) {
     // Inicialización propiamente dicha
     mlp.inicializar(lvalue+2,topologia);
 
+
     // Semilla de los números aleatorios
     int semillas[] = {10,20,30,40,50};
     double *erroresTest = new double[5];
@@ -138,7 +140,7 @@ int main(int argc, char **argv) {
     	cout << "**********" << endl;
     	cout << "SEMILLA " << semillas[i] << endl;
     	cout << "**********" << endl;
-        mlp.ejecutarAlgoritmoOnline(pDatosTrain,pDatosTest,iteraciones,&(erroresTrain[i]),&(erroresTest[i]));
+        mlp.ejecutarAlgoritmoOnline(pDatosTrain,pDatosTest,ivalue,&(erroresTrain[i]),&(erroresTest[i]));
 		cout << "Finalizamos => Error de test final: " << erroresTest[i] << endl;
     }
 

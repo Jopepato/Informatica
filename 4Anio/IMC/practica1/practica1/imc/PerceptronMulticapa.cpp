@@ -28,7 +28,9 @@ double realAleatorio(double Low, double High)
 // CONSTRUCTOR: Dar valor por defecto a todos los parámetros
 PerceptronMulticapa::PerceptronMulticapa()
 {
-
+	dEta = 0.1;
+	dMu = 0.9;
+	bSesgo = false;
 }
 
 // Reservar memoria para las estructuras de datos
@@ -36,20 +38,33 @@ PerceptronMulticapa::PerceptronMulticapa()
 // Rellenar vector Capa* pCapas
 int PerceptronMulticapa::inicializar(int nl, int npl[]) {
 
+
+	//pCapas = (Capa *)malloc(nl*sizeof(Capa));
+	nNumCapas = nl;
+	int aux = 0;
 	pCapas = (Capa *)malloc(nl*sizeof(Capa));
 	//Ahora rellenamos el pCapas
-	for(int i=0; i<nl; i++){
-		pCapas[i].nNumNeuronas = npl[i];
-		pCapas[i].pNeuronas = (Neurona *)malloc(npl[i]*sizeof(Neurona));
+	pCapas[0].nNumNeuronas = npl[0];
+	pCapas[0].pNeuronas = (Neurona *)malloc(npl[0]*sizeof(Neurona));
+	//pCapas[0].pNeuronas = new Neurona[npl[0]];
+	
 
-		if(i!=0){
-			for(int j=0; j<npl[i-1]; j++){
-				pCapas[i].pNeuronas[j].w = (double *)malloc(npl[i-1]*sizeof(double));
-				pCapas[i].pNeuronas[j].deltaW = (double *)malloc(npl[i-1]*sizeof(double));
-				pCapas[i].pNeuronas[j].ultimoDeltaW = (double *)malloc(npl[i-1]*sizeof(double));
-				pCapas[i].pNeuronas[j].wCopia = (double *)malloc(npl[i-1]*sizeof(double));
+	for(int i=1; i<nl; i++){
+		pCapas[i].nNumNeuronas = npl[i];
+		//pCapas[i].pNeuronas = new Neurona[npl[i]];
+		pCapas[i].pNeuronas = (Neurona *)malloc(npl[i]*sizeof(Neurona));
+			for(int j=0; j<npl[i]; j++){
+				aux = npl[i-1] + 1;
+				pCapas[i].pNeuronas[j].w = (double *)malloc(aux*sizeof(double));
+				//pCapas[i].pNeuronas[j].w = new double[aux];
+				pCapas[i].pNeuronas[j].deltaW = (double *)malloc(aux*sizeof(double));
+				//pCapas[i].pNeuronas[j].deltaW = new double[aux];
+				pCapas[i].pNeuronas[j].ultimoDeltaW = (double *)malloc(aux*sizeof(double));
+				//pCapas[i].pNeuronas[j].ultimoDeltaW = new double[aux];
+				pCapas[i].pNeuronas[j].wCopia = (double *)malloc(aux*sizeof(double));
+				//pCapas[i].pNeuronas[j].wCopia = new double[aux];
 			}
-		}
+			aux = 0;
 	}
 	
 	return 1;
@@ -89,17 +104,15 @@ void PerceptronMulticapa::liberarMemoria() {
 void PerceptronMulticapa::pesosAleatorios() {
 
 	//Asignamos los pesos aleatorios a las neuronas, dichos pesos son el numero de neuronas de la capa anterior
-	for(int i=1; i<nNumCapas; i++){
-		for(int j=0; j<pCapas[i].nNumNeuronas; j++){
-			for(int k=0; k<pCapas[i].nNumNeuronas; k++){
-				//Asignamos el numero aleatorio al vector de entradas de dicha neurona
-				if(bSesgo && k==0){
-					pCapas[i].pNeuronas[j].w[k] = realAleatorio(-1, 1);
-				}else{
-				pCapas[i].pNeuronas[j].w[k] = realAleatorio(-1, 1);
-				}
-			}
 
+	for(int i=1; i<nNumCapas; i++){
+		cout << pCapas[i].nNumNeuronas << endl;
+		fflush(stdout);
+		for(int j=0; j<pCapas[i].nNumNeuronas; j++){
+			for(int k=0; k<pCapas[i-1].nNumNeuronas+1; k++){
+				//Asignamos el numero aleatorio al vector de entradas de dicha neurona
+				pCapas[i].pNeuronas[j].w[k] = realAleatorio(-1, 1);
+			}
 		}
 	}
 
@@ -290,17 +303,30 @@ void PerceptronMulticapa::simularRedOnline(double* entrada, double* objetivo) {
 	for(int i=1; i<nNumCapas; i++){
 		for(int j=0; j<pCapas[i].nNumNeuronas; j++){
 			for(int k=0; k<pCapas[i-1].nNumNeuronas; k++){
-				pCapas[i].pNeuronas[j].deltaW[k] = 0;
+				pCapas[i].pNeuronas[j].ultimoDeltaW[k] = pCapas[i].pNeuronas[j].deltaW[k];
+				pCapas[i].pNeuronas[j].deltaW[k] = 0.0;
 			}
 		}
 	}
 
+	cout << "DeltaW 0" << endl;
+	fflush(stdout);
 
 	alimentarEntradas(entrada);
+	cout << "Alimentar entradas" << endl;
+	fflush(stdout);
 	propagarEntradas();
+	cout << "Propagar entradas" << endl;
+	fflush(stdout);
 	retropropagarError(objetivo);
+	cout << "Retropropagar error" << endl;
+	fflush(stdout);
 	acumularCambio();
+		cout << "acumularCambio" << endl;
+	fflush(stdout);
 	ajustarPesos();
+		cout << "ajustarPesos" << endl;
+	fflush(stdout);
 
 }
 
@@ -309,11 +335,10 @@ void PerceptronMulticapa::simularRedOnline(double* entrada, double* objetivo) {
 Datos* PerceptronMulticapa::leerDatos(const char *archivo) {
 	//Comprobamos que los ficheros existen
 	ifstream myfile;
-	Datos *aux = NULL;
+	Datos *aux = new Datos;
 	string line;
 	myfile.open(archivo);
 	if(myfile.is_open()){
-
 		//Leemos el fichero y rellenamos Datos
 		getline(myfile, line, ' ');
 		aux->nNumEntradas = atoi(line.c_str());
@@ -321,6 +346,7 @@ Datos* PerceptronMulticapa::leerDatos(const char *archivo) {
 		aux->nNumSalidas = atoi(line.c_str());
 		getline(myfile, line, '\n');
 		aux->nNumPatrones = atoi(line.c_str());
+
 		//Reservamos memoria para las matrices
 		aux->entradas = (double **)malloc(aux->nNumPatrones * sizeof(double *));
 		aux->salidas = (double **)malloc(aux->nNumPatrones * sizeof(double *));
@@ -393,9 +419,11 @@ double PerceptronMulticapa::test(Datos* pDatosTest) {
 void PerceptronMulticapa::ejecutarAlgoritmoOnline(Datos * pDatosTrain, Datos * pDatosTest, int maxiter, double *errorTrain, double *errorTest)
 {
 	int countTrain = 0;
-
 	// Inicialización de pesos
 	pesosAleatorios();
+	cout << "Pesos aleatorios bien" << endl;
+	fflush(stdout);
+
 
 	double minTrainError = 0;
 	int numSinMejorar;
@@ -405,6 +433,8 @@ void PerceptronMulticapa::ejecutarAlgoritmoOnline(Datos * pDatosTrain, Datos * p
 	do {
 
 		entrenarOnline(pDatosTrain);
+		cout << "Entrenar bien" << endl;
+		fflush(stdout);
 		double trainError = test(pDatosTrain);
 		// El 0.00001 es un valor de tolerancia, podría parametrizarse
 		if(countTrain==0 || fabs(trainError - minTrainError) > 0.00001){
