@@ -1,0 +1,382 @@
+**********
+SEMILLA 10
+**********
+Iteración 1	 Error de entrenamiento: 0.504104
+Iteración 2	 Error de entrenamiento: 0.501369
+Iteración 3	 Error de entrenamiento: 0.500308
+Iteración 4	 Error de entrenamiento: 0.500058
+Iteración 5	 Error de entrenamiento: 0.50001
+Iteración 6	 Error de entrenamiento: 0.500002
+Iteración 7	 Error de entrenamiento: 0.5
+Iteración 8	 Error de entrenamiento: 0.5
+Iteración 9	 Error de entrenamiento: 0.5
+Iteración 10	 Error de entrenamiento: 0.5
+Iteración 11	 Error de entrenamiento: 0.5
+Iteración 12	 Error de entrenamiento: 0.5
+Iteración 13	 Error de entrenamiento: 0.5
+Iteración 14	 Error de entrenamiento: 0.5
+Iteración 15	 Error de entrenamiento: 0.5
+Iteración 16	 Error de entrenamiento: 0.5
+Iteración 17	 Error de entrenamiento: 0.5
+Iteración 18	 Error de entrenamiento: 0.5
+Iteración 19	 Error de entrenamiento: 0.5
+Iteración 20	 Error de entrenamiento: 0.5
+Iteración 21	 Error de entrenamiento: 0.5
+Iteración 22	 Error de entrenamiento: 0.5
+Iteración 23	 Error de entrenamiento: 0.5
+Iteración 24	 Error de entrenamiento: 0.5
+Iteración 25	 Error de entrenamiento: 0.5
+Iteración 26	 Error de entrenamiento: 0.5
+Iteración 27	 Error de entrenamiento: 0.5
+Iteración 28	 Error de entrenamiento: 0.5
+Iteración 29	 Error de entrenamiento: 0.5
+Iteración 30	 Error de entrenamiento: 0.5
+Iteración 31	 Error de entrenamiento: 0.5
+Iteración 32	 Error de entrenamiento: 0.5
+Iteración 33	 Error de entrenamiento: 0.5
+Iteración 34	 Error de entrenamiento: 0.5
+Iteración 35	 Error de entrenamiento: 0.5
+Iteración 36	 Error de entrenamiento: 0.5
+Iteración 37	 Error de entrenamiento: 0.5
+Iteración 38	 Error de entrenamiento: 0.5
+Iteración 39	 Error de entrenamiento: 0.5
+Iteración 40	 Error de entrenamiento: 0.5
+Iteración 41	 Error de entrenamiento: 0.5
+Iteración 42	 Error de entrenamiento: 0.5
+Iteración 43	 Error de entrenamiento: 0.5
+Iteración 44	 Error de entrenamiento: 0.5
+Iteración 45	 Error de entrenamiento: 0.5
+Iteración 46	 Error de entrenamiento: 0.5
+Iteración 47	 Error de entrenamiento: 0.5
+Iteración 48	 Error de entrenamiento: 0.5
+Iteración 49	 Error de entrenamiento: 0.5
+Iteración 50	 Error de entrenamiento: 0.5
+Iteración 51	 Error de entrenamiento: 0.5
+Iteración 52	 Error de entrenamiento: 0.5
+Iteración 53	 Error de entrenamiento: 0.5
+Iteración 54	 Error de entrenamiento: 0.5
+Iteración 55	 Error de entrenamiento: 0.5
+Iteración 56	 Error de entrenamiento: 0.5
+Iteración 2001	 Error de entrenamiento: 0.5
+PESOS DE LA RED
+===============
+Vamos  a imprimir las entradas de las neuronas
+
+Capa: 1
+0.757702 0.663973 
+0.0513465 -0.848366 
+0.292296 -0.117848 
+0.913761 -0.429526 
+0.465731 -1.1943 
+Capa: 2
+0.088983 -0.231116 1.63195 0.639601 0.703151 
+Salida Esperada Vs Salida Obtenida (test)
+=========================================
+1 -- 1
+0 -- 1
+1 -- 1
+0 -- 1
+Finalizamos => Error de test final: 0.5
+**********
+SEMILLA 20
+**********
+Iteración 1	 Error de entrenamiento: 0.503921
+Iteración 2	 Error de entrenamiento: 0.500496
+Iteración 3	 Error de entrenamiento: 0.500042
+Iteración 4	 Error de entrenamiento: 0.500003
+Iteración 5	 Error de entrenamiento: 0.5
+Iteración 6	 Error de entrenamiento: 0.5
+Iteración 7	 Error de entrenamiento: 0.5
+Iteración 8	 Error de entrenamiento: 0.5
+Iteración 9	 Error de entrenamiento: 0.5
+Iteración 10	 Error de entrenamiento: 0.5
+Iteración 11	 Error de entrenamiento: 0.5
+Iteración 12	 Error de entrenamiento: 0.5
+Iteración 13	 Error de entrenamiento: 0.5
+Iteración 14	 Error de entrenamiento: 0.5
+Iteración 15	 Error de entrenamiento: 0.5
+Iteración 16	 Error de entrenamiento: 0.5
+Iteración 17	 Error de entrenamiento: 0.5
+Iteración 18	 Error de entrenamiento: 0.5
+Iteración 19	 Error de entrenamiento: 0.5
+Iteración 20	 Error de entrenamiento: 0.5
+Iteración 21	 Error de entrenamiento: 0.5
+Iteración 22	 Error de entrenamiento: 0.5
+Iteración 23	 Error de entrenamiento: 0.5
+Iteración 24	 Error de entrenamiento: 0.5
+Iteración 25	 Error de entrenamiento: 0.5
+Iteración 26	 Error de entrenamiento: 0.5
+Iteración 27	 Error de entrenamiento: 0.5
+Iteración 28	 Error de entrenamiento: 0.5
+Iteración 29	 Error de entrenamiento: 0.5
+Iteración 30	 Error de entrenamiento: 0.5
+Iteración 31	 Error de entrenamiento: 0.5
+Iteración 32	 Error de entrenamiento: 0.5
+Iteración 33	 Error de entrenamiento: 0.5
+Iteración 34	 Error de entrenamiento: 0.5
+Iteración 35	 Error de entrenamiento: 0.5
+Iteración 36	 Error de entrenamiento: 0.5
+Iteración 37	 Error de entrenamiento: 0.5
+Iteración 38	 Error de entrenamiento: 0.5
+Iteración 39	 Error de entrenamiento: 0.5
+Iteración 40	 Error de entrenamiento: 0.5
+Iteración 41	 Error de entrenamiento: 0.5
+Iteración 42	 Error de entrenamiento: 0.5
+Iteración 43	 Error de entrenamiento: 0.5
+Iteración 44	 Error de entrenamiento: 0.5
+Iteración 45	 Error de entrenamiento: 0.5
+Iteración 46	 Error de entrenamiento: 0.5
+Iteración 47	 Error de entrenamiento: 0.5
+Iteración 48	 Error de entrenamiento: 0.5
+Iteración 49	 Error de entrenamiento: 0.5
+Iteración 50	 Error de entrenamiento: 0.5
+Iteración 51	 Error de entrenamiento: 0.5
+Iteración 52	 Error de entrenamiento: 0.5
+Iteración 53	 Error de entrenamiento: 0.5
+Iteración 2001	 Error de entrenamiento: 0.5
+PESOS DE LA RED
+===============
+Vamos  a imprimir las entradas de las neuronas
+
+Capa: 1
+0.173748 0.615915 
+-0.638237 -0.329116 
+0.200203 0.595715 
+-0.662668 0.337154 
+0.466423 -0.403728 
+Capa: 2
+-0.375614 0.612283 0.0472375 0.307995 -0.134059 
+Salida Esperada Vs Salida Obtenida (test)
+=========================================
+1 -- 1
+0 -- 1
+1 -- 1.00001
+0 -- 1.00001
+Finalizamos => Error de test final: 0.500003
+**********
+SEMILLA 30
+**********
+Iteración 1	 Error de entrenamiento: 0.503538
+Iteración 2	 Error de entrenamiento: 0.500457
+Iteración 3	 Error de entrenamiento: 0.500034
+Iteración 4	 Error de entrenamiento: 0.500002
+Iteración 5	 Error de entrenamiento: 0.5
+Iteración 6	 Error de entrenamiento: 0.5
+Iteración 7	 Error de entrenamiento: 0.5
+Iteración 8	 Error de entrenamiento: 0.5
+Iteración 9	 Error de entrenamiento: 0.5
+Iteración 10	 Error de entrenamiento: 0.5
+Iteración 11	 Error de entrenamiento: 0.5
+Iteración 12	 Error de entrenamiento: 0.5
+Iteración 13	 Error de entrenamiento: 0.5
+Iteración 14	 Error de entrenamiento: 0.5
+Iteración 15	 Error de entrenamiento: 0.5
+Iteración 16	 Error de entrenamiento: 0.5
+Iteración 17	 Error de entrenamiento: 0.5
+Iteración 18	 Error de entrenamiento: 0.5
+Iteración 19	 Error de entrenamiento: 0.5
+Iteración 20	 Error de entrenamiento: 0.5
+Iteración 21	 Error de entrenamiento: 0.5
+Iteración 22	 Error de entrenamiento: 0.5
+Iteración 23	 Error de entrenamiento: 0.5
+Iteración 24	 Error de entrenamiento: 0.5
+Iteración 25	 Error de entrenamiento: 0.5
+Iteración 26	 Error de entrenamiento: 0.5
+Iteración 27	 Error de entrenamiento: 0.5
+Iteración 28	 Error de entrenamiento: 0.5
+Iteración 29	 Error de entrenamiento: 0.5
+Iteración 30	 Error de entrenamiento: 0.5
+Iteración 31	 Error de entrenamiento: 0.5
+Iteración 32	 Error de entrenamiento: 0.5
+Iteración 33	 Error de entrenamiento: 0.5
+Iteración 34	 Error de entrenamiento: 0.5
+Iteración 35	 Error de entrenamiento: 0.5
+Iteración 36	 Error de entrenamiento: 0.5
+Iteración 37	 Error de entrenamiento: 0.5
+Iteración 38	 Error de entrenamiento: 0.5
+Iteración 39	 Error de entrenamiento: 0.5
+Iteración 40	 Error de entrenamiento: 0.5
+Iteración 41	 Error de entrenamiento: 0.5
+Iteración 42	 Error de entrenamiento: 0.5
+Iteración 43	 Error de entrenamiento: 0.5
+Iteración 44	 Error de entrenamiento: 0.5
+Iteración 45	 Error de entrenamiento: 0.5
+Iteración 46	 Error de entrenamiento: 0.5
+Iteración 47	 Error de entrenamiento: 0.5
+Iteración 48	 Error de entrenamiento: 0.5
+Iteración 49	 Error de entrenamiento: 0.5
+Iteración 50	 Error de entrenamiento: 0.5
+Iteración 51	 Error de entrenamiento: 0.5
+Iteración 52	 Error de entrenamiento: 0.5
+Iteración 53	 Error de entrenamiento: 0.5
+Iteración 2001	 Error de entrenamiento: 0.5
+PESOS DE LA RED
+===============
+Vamos  a imprimir las entradas de las neuronas
+
+Capa: 1
+-0.410205 0.404869 
+0.672179 -0.557165 
+0.10811 -0.953519 
+-0.239097 0.304149 
+0.467115 -0.160221 
+Capa: 2
+-0.840211 -0.707054 0.731968 0.0257078 0.847235 
+Salida Esperada Vs Salida Obtenida (test)
+=========================================
+1 -- 1
+0 -- 1
+1 -- 1
+0 -- 1
+Finalizamos => Error de test final: 0.500002
+**********
+SEMILLA 40
+**********
+Iteración 1	 Error de entrenamiento: nan
+Iteración 2	 Error de entrenamiento: nan
+Iteración 3	 Error de entrenamiento: nan
+Iteración 4	 Error de entrenamiento: nan
+Iteración 5	 Error de entrenamiento: nan
+Iteración 6	 Error de entrenamiento: nan
+Iteración 7	 Error de entrenamiento: nan
+Iteración 8	 Error de entrenamiento: nan
+Iteración 9	 Error de entrenamiento: nan
+Iteración 10	 Error de entrenamiento: nan
+Iteración 11	 Error de entrenamiento: nan
+Iteración 12	 Error de entrenamiento: nan
+Iteración 13	 Error de entrenamiento: nan
+Iteración 14	 Error de entrenamiento: nan
+Iteración 15	 Error de entrenamiento: nan
+Iteración 16	 Error de entrenamiento: nan
+Iteración 17	 Error de entrenamiento: nan
+Iteración 18	 Error de entrenamiento: nan
+Iteración 19	 Error de entrenamiento: nan
+Iteración 20	 Error de entrenamiento: nan
+Iteración 21	 Error de entrenamiento: nan
+Iteración 22	 Error de entrenamiento: nan
+Iteración 23	 Error de entrenamiento: nan
+Iteración 24	 Error de entrenamiento: nan
+Iteración 25	 Error de entrenamiento: nan
+Iteración 26	 Error de entrenamiento: nan
+Iteración 27	 Error de entrenamiento: nan
+Iteración 28	 Error de entrenamiento: nan
+Iteración 29	 Error de entrenamiento: nan
+Iteración 30	 Error de entrenamiento: nan
+Iteración 31	 Error de entrenamiento: nan
+Iteración 32	 Error de entrenamiento: nan
+Iteración 33	 Error de entrenamiento: nan
+Iteración 34	 Error de entrenamiento: nan
+Iteración 35	 Error de entrenamiento: nan
+Iteración 36	 Error de entrenamiento: nan
+Iteración 37	 Error de entrenamiento: nan
+Iteración 38	 Error de entrenamiento: nan
+Iteración 39	 Error de entrenamiento: nan
+Iteración 40	 Error de entrenamiento: nan
+Iteración 41	 Error de entrenamiento: nan
+Iteración 42	 Error de entrenamiento: nan
+Iteración 43	 Error de entrenamiento: nan
+Iteración 44	 Error de entrenamiento: nan
+Iteración 45	 Error de entrenamiento: nan
+Iteración 46	 Error de entrenamiento: nan
+Iteración 47	 Error de entrenamiento: nan
+Iteración 48	 Error de entrenamiento: nan
+Iteración 49	 Error de entrenamiento: nan
+Iteración 50	 Error de entrenamiento: nan
+Iteración 2001	 Error de entrenamiento: nan
+PESOS DE LA RED
+===============
+Vamos  a imprimir las entradas de las neuronas
+
+Capa: 1
+-0.994159 nan 
+-0.0174053 nan 
+0.0160174 nan 
+0.184473 nan 
+0.467807 nan 
+Capa: 2
+0.695192 -nan -nan -nan -nan 
+Salida Esperada Vs Salida Obtenida (test)
+=========================================
+1 -- nan
+0 -- nan
+1 -- nan
+0 -- nan
+Finalizamos => Error de test final: nan
+**********
+SEMILLA 50
+**********
+Iteración 1	 Error de entrenamiento: nan
+Iteración 2	 Error de entrenamiento: nan
+Iteración 3	 Error de entrenamiento: nan
+Iteración 4	 Error de entrenamiento: nan
+Iteración 5	 Error de entrenamiento: nan
+Iteración 6	 Error de entrenamiento: nan
+Iteración 7	 Error de entrenamiento: nan
+Iteración 8	 Error de entrenamiento: nan
+Iteración 9	 Error de entrenamiento: nan
+Iteración 10	 Error de entrenamiento: nan
+Iteración 11	 Error de entrenamiento: nan
+Iteración 12	 Error de entrenamiento: nan
+Iteración 13	 Error de entrenamiento: nan
+Iteración 14	 Error de entrenamiento: nan
+Iteración 15	 Error de entrenamiento: nan
+Iteración 16	 Error de entrenamiento: nan
+Iteración 17	 Error de entrenamiento: nan
+Iteración 18	 Error de entrenamiento: nan
+Iteración 19	 Error de entrenamiento: nan
+Iteración 20	 Error de entrenamiento: nan
+Iteración 21	 Error de entrenamiento: nan
+Iteración 22	 Error de entrenamiento: nan
+Iteración 23	 Error de entrenamiento: nan
+Iteración 24	 Error de entrenamiento: nan
+Iteración 25	 Error de entrenamiento: nan
+Iteración 26	 Error de entrenamiento: nan
+Iteración 27	 Error de entrenamiento: nan
+Iteración 28	 Error de entrenamiento: nan
+Iteración 29	 Error de entrenamiento: nan
+Iteración 30	 Error de entrenamiento: nan
+Iteración 31	 Error de entrenamiento: nan
+Iteración 32	 Error de entrenamiento: nan
+Iteración 33	 Error de entrenamiento: nan
+Iteración 34	 Error de entrenamiento: nan
+Iteración 35	 Error de entrenamiento: nan
+Iteración 36	 Error de entrenamiento: nan
+Iteración 37	 Error de entrenamiento: nan
+Iteración 38	 Error de entrenamiento: nan
+Iteración 39	 Error de entrenamiento: nan
+Iteración 40	 Error de entrenamiento: nan
+Iteración 41	 Error de entrenamiento: nan
+Iteración 42	 Error de entrenamiento: nan
+Iteración 43	 Error de entrenamiento: nan
+Iteración 44	 Error de entrenamiento: nan
+Iteración 45	 Error de entrenamiento: nan
+Iteración 46	 Error de entrenamiento: nan
+Iteración 47	 Error de entrenamiento: nan
+Iteración 48	 Error de entrenamiento: nan
+Iteración 49	 Error de entrenamiento: nan
+Iteración 50	 Error de entrenamiento: nan
+Iteración 2001	 Error de entrenamiento: nan
+PESOS DE LA RED
+===============
+Vamos  a imprimir las entradas de las neuronas
+
+Capa: 1
+0.421887 -nan 
+-0.706989 -nan 
+-0.0760753 -nan 
+0.608044 -nan 
+0.468499 -nan 
+Capa: 2
+0.230595 -nan -nan -nan -nan 
+Salida Esperada Vs Salida Obtenida (test)
+=========================================
+1 -- nan
+0 -- nan
+1 -- nan
+0 -- nan
+Finalizamos => Error de test final: nan
+HEMOS TERMINADO TODAS LAS SEMILLAS
+INFORME FINAL
+*************
+Error de entrenamiento (Media +- DT): nan +- nan
+Error de test (Media +- DT):          nan +- nan

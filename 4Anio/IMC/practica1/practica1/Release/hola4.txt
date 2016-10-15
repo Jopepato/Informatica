@@ -1,0 +1,1360 @@
+**********
+SEMILLA 10
+**********
+Alimentando entradas
+1 1
+-1 -1
+Propagando entradas
+1 -1 1 -1 1 -1 1 -1 1 -1 1.81032 1.28184 1.45219 2.04578 1.81193 
+retro entradas
+Acumular entradas
+ajustar pesos
+Alimentando entradas
+-1 -1
+-1 -1
+Propagando entradas
+-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 2.26288 2.00032 1.3312 1.18084 6.49531 
+retro entradas
+Acumular entradas
+ajustar pesos
+Alimentando entradas
+-1 -1
+1 1
+Propagando entradas
+-1 1 -1 1 -1 1 -1 1 -1 1 2.91653 5.78814 3.75514 2.64466 2.30835 
+retro entradas
+Acumular entradas
+ajustar pesos
+Alimentando entradas
+1 1
+1 1
+Propagando entradas
+1 1 1 1 1 1 1 1 1 1 1.89853 2.09601 4.21074 7.43883 1.1466 
+retro entradas
+Acumular entradas
+ajustar pesos
+1 1
+-1 -1
+1 -1 1 -1 1 -1 1 -1 1 -1 1.41607 1.17872 1.32431 1.46051 1.79137 
+-1 -1
+-1 -1
+-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 1.99357 1.84329 1.29442 1.13515 8.1303 
+-1 -1
+1 1
+-1 1 -1 1 -1 1 -1 1 -1 1 3.40342 6.59538 4.08348 3.17152 2.26363 
+1 1
+1 1
+1 1 1 1 1 1 1 1 1 1 2.00647 2.18583 4.39653 8.39897 1.14025 
+Iteración 1	 Error de entrenamiento: 0.500008
+Alimentando entradas
+1 1
+-1 -1
+Propagando entradas
+1 -1 1 -1 1 -1 1 -1 1 -1 1.41607 1.17872 1.32431 1.46051 1.79137 
+retro entradas
+Acumular entradas
+ajustar pesos
+Alimentando entradas
+-1 -1
+-1 -1
+Propagando entradas
+-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 1.88701 1.77942 1.27831 1.11762 8.45327 
+retro entradas
+Acumular entradas
+ajustar pesos
+Alimentando entradas
+-1 -1
+1 1
+Propagando entradas
+-1 1 -1 1 -1 1 -1 1 -1 1 4.01555 7.54999 4.45054 3.86685 2.15643 
+retro entradas
+Acumular entradas
+ajustar pesos
+Alimentando entradas
+1 1
+1 1
+Propagando entradas
+1 1 1 1 1 1 1 1 1 1 2.41452 2.50189 5.02085 12.2254 1.12279 
+retro entradas
+Acumular entradas
+ajustar pesos
+1 1
+-1 -1
+1 -1 1 -1 1 -1 1 -1 1 -1 1.2643 1.13042 1.25898 1.2642 1.94487 
+-1 -1
+-1 -1
+-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 1.63114 1.6154 1.2351 1.07753 9.51288 
+-1 -1
+1 1
+-1 1 -1 1 -1 1 -1 1 -1 1 4.78359 8.66746 4.86135 4.78507 2.05835 
+1 1
+1 1
+1 1 1 1 1 1 1 1 1 1 2.58444 2.62496 5.25347 13.8985 1.11747 
+Iteración 2	 Error de entrenamiento: 0.5
+Alimentando entradas
+1 1
+-1 -1
+Propagando entradas
+1 -1 1 -1 1 -1 1 -1 1 -1 1.2643 1.13042 1.25898 1.2642 1.94487 
+retro entradas
+Acumular entradas
+ajustar pesos
+Alimentando entradas
+-1 -1
+-1 -1
+Propagando entradas
+-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 1.56345 1.56879 1.22224 1.06747 9.89859 
+retro entradas
+Acumular entradas
+ajustar pesos
+Alimentando entradas
+-1 -1
+1 1
+Propagando entradas
+-1 1 -1 1 -1 1 -1 1 -1 1 5.74725 9.97558 5.32106 5.99738 1.96859 
+retro entradas
+Acumular entradas
+ajustar pesos
+Alimentando entradas
+1 1
+1 1
+Propagando entradas
+1 1 1 1 1 1 1 1 1 1 3.22681 3.05806 6.03524 20.5678 1.10285 
+retro entradas
+Acumular entradas
+ajustar pesos
+1 1
+-1 -1
+1 -1 1 -1 1 -1 1 -1 1 -1 1.16789 1.09518 1.2068 1.15156 2.12811 
+-1 -1
+-1 -1
+-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 1.40091 1.44909 1.18774 1.04448 11.1638 
+-1 -1
+1 1
+-1 1 -1 1 -1 1 -1 1 -1 1 6.95634 11.5069 5.83551 7.59799 1.88644 
+1 1
+1 1
+1 1 1 1 1 1 1 1 1 1 3.49432 3.22671 6.32655 23.4841 1.09839 
+Iteración 3	 Error de entrenamiento: 0.5
+Alimentando entradas
+1 1
+-1 -1
+Propagando entradas
+1 -1 1 -1 1 -1 1 -1 1 -1 1.16789 1.09518 1.2068 1.15156 2.12811 
+retro entradas
+Acumular entradas
+ajustar pesos
+Alimentando entradas
+-1 -1
+-1 -1
+Propagando entradas
+-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 1.35791 1.41508 1.17747 1.03871 11.6243 
+retro entradas
+Acumular entradas
+ajustar pesos
+Alimentando entradas
+-1 -1
+1 1
+Propagando entradas
+-1 1 -1 1 -1 1 -1 1 -1 1 8.47338 13.2994 6.4112 9.71126 1.81126 
+retro entradas
+Acumular entradas
+ajustar pesos
+Alimentando entradas
+1 1
+1 1
+Propagando entradas
+1 1 1 1 1 1 1 1 1 1 4.50557 3.8202 7.30556 35.1099 1.08614 
+retro entradas
+Acumular entradas
+ajustar pesos
+1 1
+-1 -1
+1 -1 1 -1 1 -1 1 -1 1 -1 1.10665 1.06946 1.16514 1.08695 2.34688 
+-1 -1
+-1 -1
+-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 1.25467 1.32773 1.14992 1.02551 13.1349 
+-1 -1
+1 1
+-1 1 -1 1 -1 1 -1 1 -1 1 10.3768 15.3978 7.05543 12.5014 1.74246 
+1 1
+1 1
+1 1 1 1 1 1 1 1 1 1 4.9267 4.05131 7.67036 40.1936 1.08241 
+Iteración 4	 Error de entrenamiento: 0.5
+Alimentando entradas
+1 1
+-1 -1
+Propagando entradas
+1 -1 1 -1 1 -1 1 -1 1 -1 1.10665 1.06946 1.16514 1.08695 2.34688 
+retro entradas
+Acumular entradas
+ajustar pesos
+Alimentando entradas
+-1 -1
+-1 -1
+Propagando entradas
+-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 1.22735 1.30291 1.14172 1.0222 13.6847 
+retro entradas
+Acumular entradas
+ajustar pesos
+Alimentando entradas
+-1 -1
+1 1
+Propagando entradas
+-1 1 -1 1 -1 1 -1 1 -1 1 12.765 17.8541 7.77636 16.1852 1.67949 
+retro entradas
+Acumular entradas
+ajustar pesos
+Alimentando entradas
+1 1
+1 1
+Propagando entradas
+1 1 1 1 1 1 1 1 1 1 6.51866 4.86458 8.89636 60.4591 1.07215 
+retro entradas
+Acumular entradas
+ajustar pesos
+1 1
+-1 -1
+1 -1 1 -1 1 -1 1 -1 1 -1 1.06774 1.05069 1.13187 1.04988 2.60809 
+-1 -1
+-1 -1
+-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 1.16177 1.23916 1.11971 1.01464 15.4882 
+-1 -1
+1 1
+-1 1 -1 1 -1 1 -1 1 -1 1 15.7615 20.7295 8.58313 21.0488 1.62186 
+1 1
+1 1
+1 1 1 1 1 1 1 1 1 1 7.18163 5.18127 9.35319 69.3209 1.06902 
+Iteración 5	 Error de entrenamiento: 0.5
+PESOS DE LA RED
+===============
+Vamos  a imprimir las entradas de las neuronas
+
+Capa: 1
+0.131621 0.43522 
+-0.640706 0.775751 
+0.169306 -0.0483591 
+-0.367481 -0.613023 
+0.953582 1.09915 
+Capa: 2
+-0.893846 0.116191 -0.404955 1.22461 0.775295 
+Salida Esperada Vs Salida Obtenida (test)
+=========================================
+1 1
+-1 -1
+1 -1 1 -1 1 -1 1 -1 1 -1 1.06774 1.05069 1.13187 1.04988 2.60809 
+1 -- 1
+-1 -1
+-1 -1
+-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 1.16177 1.23916 1.11971 1.01464 15.4882 
+0 -- 1
+-1 -1
+1 1
+-1 1 -1 1 -1 1 -1 1 -1 1 15.7615 20.7295 8.58313 21.0488 1.62186 
+1 -- 1
+1 1
+1 1
+1 1 1 1 1 1 1 1 1 1 7.18163 5.18127 9.35319 69.3209 1.06902 
+0 -- 1
+1 1
+-1 -1
+1 -1 1 -1 1 -1 1 -1 1 -1 1.06774 1.05069 1.13187 1.04988 2.60809 
+-1 -1
+-1 -1
+-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 1.16177 1.23916 1.11971 1.01464 15.4882 
+-1 -1
+1 1
+-1 1 -1 1 -1 1 -1 1 -1 1 15.7615 20.7295 8.58313 21.0488 1.62186 
+1 1
+1 1
+1 1 1 1 1 1 1 1 1 1 7.18163 5.18127 9.35319 69.3209 1.06902 
+Finalizamos => Error de test final: 0.5
+**********
+SEMILLA 20
+**********
+Alimentando entradas
+1 1
+-1 -1
+Propagando entradas
+1 -1 1 -1 1 -1 1 -1 1 -1 1.65843 1.58887 2.51689 2.09882 1.66293 
+retro entradas
+Acumular entradas
+ajustar pesos
+Alimentando entradas
+-1 -1
+-1 -1
+Propagando entradas
+-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 2.72044 2.09526 1.90274 1.27477 5.76303 
+retro entradas
+Acumular entradas
+ajustar pesos
+Alimentando entradas
+-1 -1
+1 1
+Propagando entradas
+-1 1 -1 1 -1 1 -1 1 -1 1 inf inf inf inf inf 
+retro entradas
+Acumular entradas
+ajustar pesos
+Alimentando entradas
+1 1
+1 1
+Propagando entradas
+1 1 1 1 1 1 1 1 1 1 nan nan nan nan nan 
+retro entradas
+Acumular entradas
+ajustar pesos
+1 1
+-1 -1
+1 -1 1 -1 1 -1 1 -1 1 -1 -nan -nan -nan -nan -nan 
+-1 -1
+-1 -1
+-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -nan -nan -nan -nan -nan 
+-1 -1
+1 1
+-1 1 -1 1 -1 1 -1 1 -1 1 -nan -nan -nan -nan -nan 
+1 1
+1 1
+1 1 1 1 1 1 1 1 1 1 -nan -nan -nan -nan -nan 
+Iteración 1	 Error de entrenamiento: nan
+Alimentando entradas
+1 1
+-1 -1
+Propagando entradas
+1 -1 1 -1 1 -1 1 -1 1 -1 -nan -nan -nan -nan -nan 
+retro entradas
+Acumular entradas
+ajustar pesos
+Alimentando entradas
+-1 -1
+-1 -1
+Propagando entradas
+-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 nan nan nan nan nan 
+retro entradas
+Acumular entradas
+ajustar pesos
+Alimentando entradas
+-1 -1
+1 1
+Propagando entradas
+-1 1 -1 1 -1 1 -1 1 -1 1 -nan -nan -nan -nan -nan 
+retro entradas
+Acumular entradas
+ajustar pesos
+Alimentando entradas
+1 1
+1 1
+Propagando entradas
+1 1 1 1 1 1 1 1 1 1 nan nan nan nan nan 
+retro entradas
+Acumular entradas
+ajustar pesos
+1 1
+-1 -1
+1 -1 1 -1 1 -1 1 -1 1 -1 -nan -nan -nan -nan -nan 
+-1 -1
+-1 -1
+-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -nan -nan -nan -nan -nan 
+-1 -1
+1 1
+-1 1 -1 1 -1 1 -1 1 -1 1 -nan -nan -nan -nan -nan 
+1 1
+1 1
+1 1 1 1 1 1 1 1 1 1 -nan -nan -nan -nan -nan 
+Iteración 2	 Error de entrenamiento: nan
+Alimentando entradas
+1 1
+-1 -1
+Propagando entradas
+1 -1 1 -1 1 -1 1 -1 1 -1 -nan -nan -nan -nan -nan 
+retro entradas
+Acumular entradas
+ajustar pesos
+Alimentando entradas
+-1 -1
+-1 -1
+Propagando entradas
+-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 nan nan nan nan nan 
+retro entradas
+Acumular entradas
+ajustar pesos
+Alimentando entradas
+-1 -1
+1 1
+Propagando entradas
+-1 1 -1 1 -1 1 -1 1 -1 1 -nan -nan -nan -nan -nan 
+retro entradas
+Acumular entradas
+ajustar pesos
+Alimentando entradas
+1 1
+1 1
+Propagando entradas
+1 1 1 1 1 1 1 1 1 1 nan nan nan nan nan 
+retro entradas
+Acumular entradas
+ajustar pesos
+1 1
+-1 -1
+1 -1 1 -1 1 -1 1 -1 1 -1 -nan -nan -nan -nan -nan 
+-1 -1
+-1 -1
+-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -nan -nan -nan -nan -nan 
+-1 -1
+1 1
+-1 1 -1 1 -1 1 -1 1 -1 1 -nan -nan -nan -nan -nan 
+1 1
+1 1
+1 1 1 1 1 1 1 1 1 1 -nan -nan -nan -nan -nan 
+Iteración 3	 Error de entrenamiento: nan
+Alimentando entradas
+1 1
+-1 -1
+Propagando entradas
+1 -1 1 -1 1 -1 1 -1 1 -1 -nan -nan -nan -nan -nan 
+retro entradas
+Acumular entradas
+ajustar pesos
+Alimentando entradas
+-1 -1
+-1 -1
+Propagando entradas
+-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 nan nan nan nan nan 
+retro entradas
+Acumular entradas
+ajustar pesos
+Alimentando entradas
+-1 -1
+1 1
+Propagando entradas
+-1 1 -1 1 -1 1 -1 1 -1 1 -nan -nan -nan -nan -nan 
+retro entradas
+Acumular entradas
+ajustar pesos
+Alimentando entradas
+1 1
+1 1
+Propagando entradas
+1 1 1 1 1 1 1 1 1 1 nan nan nan nan nan 
+retro entradas
+Acumular entradas
+ajustar pesos
+1 1
+-1 -1
+1 -1 1 -1 1 -1 1 -1 1 -1 -nan -nan -nan -nan -nan 
+-1 -1
+-1 -1
+-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -nan -nan -nan -nan -nan 
+-1 -1
+1 1
+-1 1 -1 1 -1 1 -1 1 -1 1 -nan -nan -nan -nan -nan 
+1 1
+1 1
+1 1 1 1 1 1 1 1 1 1 -nan -nan -nan -nan -nan 
+Iteración 4	 Error de entrenamiento: nan
+Alimentando entradas
+1 1
+-1 -1
+Propagando entradas
+1 -1 1 -1 1 -1 1 -1 1 -1 -nan -nan -nan -nan -nan 
+retro entradas
+Acumular entradas
+ajustar pesos
+Alimentando entradas
+-1 -1
+-1 -1
+Propagando entradas
+-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 nan nan nan nan nan 
+retro entradas
+Acumular entradas
+ajustar pesos
+Alimentando entradas
+-1 -1
+1 1
+Propagando entradas
+-1 1 -1 1 -1 1 -1 1 -1 1 -nan -nan -nan -nan -nan 
+retro entradas
+Acumular entradas
+ajustar pesos
+Alimentando entradas
+1 1
+1 1
+Propagando entradas
+1 1 1 1 1 1 1 1 1 1 nan nan nan nan nan 
+retro entradas
+Acumular entradas
+ajustar pesos
+1 1
+-1 -1
+1 -1 1 -1 1 -1 1 -1 1 -1 -nan -nan -nan -nan -nan 
+-1 -1
+-1 -1
+-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -nan -nan -nan -nan -nan 
+-1 -1
+1 1
+-1 1 -1 1 -1 1 -1 1 -1 1 -nan -nan -nan -nan -nan 
+1 1
+1 1
+1 1 1 1 1 1 1 1 1 1 -nan -nan -nan -nan -nan 
+Iteración 5	 Error de entrenamiento: nan
+PESOS DE LA RED
+===============
+Vamos  a imprimir las entradas de las neuronas
+
+Capa: 1
+-0.702375 nan 
+-0.240363 nan 
+0.387627 nan 
+0.32357 nan 
+-0.0229366 nan 
+Capa: 2
+-0.704214 -nan -nan -nan -nan 
+Salida Esperada Vs Salida Obtenida (test)
+=========================================
+1 1
+-1 -1
+1 -1 1 -1 1 -1 1 -1 1 -1 -nan -nan -nan -nan -nan 
+1 -- nan
+-1 -1
+-1 -1
+-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -nan -nan -nan -nan -nan 
+0 -- nan
+-1 -1
+1 1
+-1 1 -1 1 -1 1 -1 1 -1 1 -nan -nan -nan -nan -nan 
+1 -- nan
+1 1
+1 1
+1 1 1 1 1 1 1 1 1 1 -nan -nan -nan -nan -nan 
+0 -- nan
+1 1
+-1 -1
+1 -1 1 -1 1 -1 1 -1 1 -1 -nan -nan -nan -nan -nan 
+-1 -1
+-1 -1
+-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -nan -nan -nan -nan -nan 
+-1 -1
+1 1
+-1 1 -1 1 -1 1 -1 1 -1 1 -nan -nan -nan -nan -nan 
+1 1
+1 1
+1 1 1 1 1 1 1 1 1 1 -nan -nan -nan -nan -nan 
+Finalizamos => Error de test final: nan
+**********
+SEMILLA 30
+**********
+Alimentando entradas
+1 1
+-1 -1
+Propagando entradas
+1 -1 1 -1 1 -1 1 -1 1 -1 1.53258 1.45048 1.68535 2.14925 2.46531 
+retro entradas
+Acumular entradas
+ajustar pesos
+Alimentando entradas
+-1 -1
+-1 -1
+Propagando entradas
+-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 3.33733 4.25035 3.453 4.07451 2.51321 
+retro entradas
+Acumular entradas
+ajustar pesos
+Alimentando entradas
+-1 -1
+1 1
+Propagando entradas
+-1 1 -1 1 -1 1 -1 1 -1 1 4.18588 1.76704 2.45664 21.4794 8.24604 
+retro entradas
+Acumular entradas
+ajustar pesos
+Alimentando entradas
+1 1
+1 1
+Propagando entradas
+1 1 1 1 1 1 1 1 1 1 1.49664 1.22798 1.40747 1.79273 2.28675 
+retro entradas
+Acumular entradas
+ajustar pesos
+1 1
+-1 -1
+1 -1 1 -1 1 -1 1 -1 1 -1 1.23934 3.24827 1.6871 1.00967 1.04109 
+-1 -1
+-1 -1
+-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 2.75826 6.76013 3.45524 1.56124 1.42405 
+-1 -1
+1 1
+-1 1 -1 1 -1 1 -1 1 -1 1 5.1781 1.44479 2.45538 104.459 25.3372 
+1 1
+1 1
+1 1 1 1 1 1 1 1 1 1 1.56874 1.17361 1.40729 2.78176 3.35819 
+Iteración 1	 Error de entrenamiento: 0.5
+Alimentando entradas
+1 1
+-1 -1
+Propagando entradas
+1 -1 1 -1 1 -1 1 -1 1 -1 1.23934 3.24827 1.6871 1.00967 1.04109 
+retro entradas
+Acumular entradas
+ajustar pesos
+Alimentando entradas
+-1 -1
+-1 -1
+Propagando entradas
+-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 2.53535 8.56426 3.4563 1.2497 1.23139 
+retro entradas
+Acumular entradas
+ajustar pesos
+Alimentando entradas
+-1 -1
+1 1
+Propagando entradas
+-1 1 -1 1 -1 1 -1 1 -1 1 6.47934 1.25792 2.45412 523.662 82.7409 
+retro entradas
+Acumular entradas
+ajustar pesos
+Alimentando entradas
+1 1
+1 1
+Propagando entradas
+1 1 1 1 1 1 1 1 1 1 1.85417 1.07666 1.40676 21.2314 15.5155 
+retro entradas
+Acumular entradas
+ajustar pesos
+1 1
+-1 -1
+1 -1 1 -1 1 -1 1 -1 1 -1 1.13916 7.68629 1.6883 1.00038 1.00364 
+-1 -1
+-1 -1
+-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 2.02231 18.1305 3.4595 1.02199 1.03759 
+-1 -1
+1 1
+-1 1 -1 1 -1 1 -1 1 -1 1 8.18586 1.14956 2.45286 2641.42 275.542 
+1 1
+1 1
+1 1 1 1 1 1 1 1 1 1 1.97818 1.05838 1.40659 46.4729 27.6022 
+Iteración 2	 Error de entrenamiento: 0.5
+Alimentando entradas
+1 1
+-1 -1
+Propagando entradas
+1 -1 1 -1 1 -1 1 -1 1 -1 1.13916 7.68629 1.6883 1.00038 1.00364 
+retro entradas
+Acumular entradas
+ajustar pesos
+Alimentando entradas
+-1 -1
+-1 -1
+Propagando entradas
+-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 1.89271 23.4959 3.46056 1.00978 1.02051 
+retro entradas
+Acumular entradas
+ajustar pesos
+Alimentando entradas
+-1 -1
+1 1
+Propagando entradas
+-1 1 -1 1 -1 1 -1 1 -1 1 10.4238 1.08673 2.4516 13340.1 923.1 
+retro entradas
+Acumular entradas
+ajustar pesos
+Alimentando entradas
+1 1
+1 1
+Propagando entradas
+1 1 1 1 1 1 1 1 1 1 2.46907 1.02578 1.40606 517.335 164.746 
+retro entradas
+Acumular entradas
+ajustar pesos
+1 1
+-1 -1
+1 -1 1 -1 1 -1 1 -1 1 -1 1.08091 20.8848 1.68949 1.00001 1.00032 
+-1 -1
+-1 -1
+-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 1.59441 51.9455 3.46376 1.00086 1.00333 
+-1 -1
+1 1
+-1 1 -1 1 -1 1 -1 1 -1 1 13.3589 1.05029 2.45034 67388.2 3098.05 
+1 1
+1 1
+1 1 1 1 1 1 1 1 1 1 2.68235 1.01963 1.40588 1161.53 301.093 
+Iteración 3	 Error de entrenamiento: 0.5
+Alimentando entradas
+1 1
+-1 -1
+Propagando entradas
+1 -1 1 -1 1 -1 1 -1 1 -1 1.08091 20.8848 1.68949 1.00001 1.00032 
+retro entradas
+Acumular entradas
+ajustar pesos
+Alimentando entradas
+-1 -1
+-1 -1
+Propagando entradas
+-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 1.51905 67.9022 3.46483 1.00038 1.00182 
+retro entradas
+Acumular entradas
+ajustar pesos
+Alimentando entradas
+-1 -1
+1 1
+Propagando entradas
+-1 1 -1 1 -1 1 -1 1 -1 1 17.208 1.02916 2.44909 340432 10403 
+retro entradas
+Acumular entradas
+ajustar pesos
+Alimentando entradas
+1 1
+1 1
+Propagando entradas
+1 1 1 1 1 1 1 1 1 1 3.52663 1.00867 1.40536 13178.6 1848.18 
+retro entradas
+Acumular entradas
+ajustar pesos
+1 1
+-1 -1
+1 -1 1 -1 1 -1 1 -1 1 -1 1.04705 60.1369 1.69069 1 1.00003 
+-1 -1
+-1 -1
+-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 1.34561 152.511 3.46804 1.00003 1.0003 
+-1 -1
+1 1
+-1 1 -1 1 -1 1 -1 1 -1 1 22.2558 1.01691 2.44783 1.71982e+06 34938.1 
+1 1
+1 1
+1 1 1 1 1 1 1 1 1 1 3.89345 1.0066 1.40518 29619.4 3386.28 
+Iteración 4	 Error de entrenamiento: 0.5
+Alimentando entradas
+1 1
+-1 -1
+Propagando entradas
+1 -1 1 -1 1 -1 1 -1 1 -1 1.04705 60.1369 1.69069 1 1.00003 
+retro entradas
+Acumular entradas
+ajustar pesos
+Alimentando entradas
+-1 -1
+-1 -1
+Propagando entradas
+-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 1.30179 199.965 3.46911 1.00002 1.00016 
+retro entradas
+Acumular entradas
+ajustar pesos
+Alimentando entradas
+-1 -1
+1 1
+Propagando entradas
+-1 1 -1 1 -1 1 -1 1 -1 1 28.8758 1.00981 2.44658 8.68828e+06 117344 
+retro entradas
+Acumular entradas
+ajustar pesos
+Alimentando entradas
+1 1
+1 1
+Propagando entradas
+1 1 1 1 1 1 1 1 1 1 5.34552 1.00291 1.40465 336311 20838.7 
+retro entradas
+Acumular entradas
+ajustar pesos
+1 1
+-1 -1
+1 -1 1 -1 1 -1 1 -1 1 -1 1.02735 176.872 1.69189 1 1 
+-1 -1
+-1 -1
+-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 1.20095 451.589 3.47232 1 1.00003 
+-1 -1
+1 1
+-1 1 -1 1 -1 1 -1 1 -1 1 37.5576 1.00569 2.44532 4.38921e+07 394118 
+1 1
+1 1
+1 1 1 1 1 1 1 1 1 1 5.97641 1.00222 1.40448 755904 38189.6 
+Iteración 5	 Error de entrenamiento: 0.5
+PESOS DE LA RED
+===============
+Vamos  a imprimir las entradas de las neuronas
+
+Capa: 1
+-0.540066 0.99709 
+0.155225 0.4704 
+0.599927 0.636746 
+0.00710718 2.03079 
+0.991291 1.16706 
+Capa: 2
+-0.525844 2.08538 2.91252 1.99651 2.80358 
+Salida Esperada Vs Salida Obtenida (test)
+=========================================
+1 1
+-1 -1
+1 -1 1 -1 1 -1 1 -1 1 -1 1.02735 176.872 1.69189 1 1 
+1 -- 1
+-1 -1
+-1 -1
+-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 1.20095 451.589 3.47232 1 1.00003 
+0 -- 1
+-1 -1
+1 1
+-1 1 -1 1 -1 1 -1 1 -1 1 37.5576 1.00569 2.44532 4.38921e+07 394118 
+1 -- 1
+1 1
+1 1
+1 1 1 1 1 1 1 1 1 1 5.97641 1.00222 1.40448 755904 38189.6 
+0 -- 1
+1 1
+-1 -1
+1 -1 1 -1 1 -1 1 -1 1 -1 1.02735 176.872 1.69189 1 1 
+-1 -1
+-1 -1
+-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 1.20095 451.589 3.47232 1 1.00003 
+-1 -1
+1 1
+-1 1 -1 1 -1 1 -1 1 -1 1 37.5576 1.00569 2.44532 4.38921e+07 394118 
+1 1
+1 1
+1 1 1 1 1 1 1 1 1 1 5.97641 1.00222 1.40448 755904 38189.6 
+Finalizamos => Error de test final: 0.5
+**********
+SEMILLA 40
+**********
+Alimentando entradas
+1 1
+-1 -1
+Propagando entradas
+1 -1 1 -1 1 -1 1 -1 1 -1 1.43346 3.5641 1.84814 2.21187 2.20177 
+retro entradas
+Acumular entradas
+ajustar pesos
+Alimentando entradas
+-1 -1
+-1 -1
+Propagando entradas
+-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 1.44451 2.35841 1.34779 1.66599 1.18883 
+retro entradas
+Acumular entradas
+ajustar pesos
+Alimentando entradas
+-1 -1
+1 1
+Propagando entradas
+-1 1 -1 1 -1 1 -1 1 -1 1 3.307 1.38996 2.17901 1.8251 1.832 
+retro entradas
+Acumular entradas
+ajustar pesos
+Alimentando entradas
+1 1
+1 1
+Propagando entradas
+1 1 1 1 1 1 1 1 1 1 3.24185 1.7218 3.86095 2.46695 6.26081 
+retro entradas
+Acumular entradas
+ajustar pesos
+1 1
+-1 -1
+1 -1 1 -1 1 -1 1 -1 1 -1 1.43388 3.57871 1.84935 2.21998 2.20419 
+-1 -1
+-1 -1
+-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 1.44644 2.39245 1.34994 1.68572 1.1902 
+-1 -1
+1 1
+-1 1 -1 1 -1 1 -1 1 -1 1 3.30481 1.38779 2.17737 1.81968 1.83043 
+1 1
+1 1
+1 1 1 1 1 1 1 1 1 1 3.23995 1.71816 3.85767 2.45832 6.25772 
+Iteración 1	 Error de entrenamiento: 0.513364
+Alimentando entradas
+1 1
+-1 -1
+Propagando entradas
+1 -1 1 -1 1 -1 1 -1 1 -1 1.43388 3.57871 1.84935 2.21998 2.20419 
+retro entradas
+Acumular entradas
+ajustar pesos
+Alimentando entradas
+-1 -1
+-1 -1
+Propagando entradas
+-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 1.44682 2.39951 1.35034 1.68978 1.19032 
+retro entradas
+Acumular entradas
+ajustar pesos
+Alimentando entradas
+-1 -1
+1 1
+Propagando entradas
+-1 1 -1 1 -1 1 -1 1 -1 1 3.30077 1.38386 2.17442 1.80992 1.82803 
+retro entradas
+Acumular entradas
+ajustar pesos
+Alimentando entradas
+1 1
+1 1
+Propagando entradas
+1 1 1 1 1 1 1 1 1 1 3.22714 1.69399 3.8344 2.40127 6.21086 
+retro entradas
+Acumular entradas
+ajustar pesos
+1 1
+-1 -1
+1 -1 1 -1 1 -1 1 -1 1 -1 1.43576 3.64591 1.85464 2.25728 2.21252 
+-1 -1
+-1 -1
+-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 1.44974 2.45536 1.35361 1.72193 1.19223 
+-1 -1
+1 1
+-1 1 -1 1 -1 1 -1 1 -1 1 3.29482 1.37794 2.17008 1.79537 1.82473 
+1 1
+1 1
+1 1 1 1 1 1 1 1 1 1 3.2235 1.68712 3.82797 2.38517 6.20203 
+Iteración 2	 Error de entrenamiento: 0.511638
+Alimentando entradas
+1 1
+-1 -1
+Propagando entradas
+1 -1 1 -1 1 -1 1 -1 1 -1 1.43576 3.64591 1.85464 2.25728 2.21252 
+retro entradas
+Acumular entradas
+ajustar pesos
+Alimentando entradas
+-1 -1
+-1 -1
+Propagando entradas
+-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 1.45047 2.46992 1.35441 1.73032 1.19257 
+retro entradas
+Acumular entradas
+ajustar pesos
+Alimentando entradas
+-1 -1
+1 1
+Propagando entradas
+-1 1 -1 1 -1 1 -1 1 -1 1 3.28723 1.37047 2.16456 1.77709 1.82069 
+retro entradas
+Acumular entradas
+ajustar pesos
+Alimentando entradas
+1 1
+1 1
+Propagando entradas
+1 1 1 1 1 1 1 1 1 1 3.20641 1.65477 3.79686 2.31008 6.14251 
+retro entradas
+Acumular entradas
+ajustar pesos
+1 1
+-1 -1
+1 -1 1 -1 1 -1 1 -1 1 -1 1.43899 3.76792 1.8637 2.32485 2.22571 
+-1 -1
+-1 -1
+-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 1.45428 2.54982 1.35872 1.77634 1.19498 
+-1 -1
+1 1
+-1 1 -1 1 -1 1 -1 1 -1 1 3.27797 1.36128 2.15781 1.7548 1.81585 
+1 1
+1 1
+1 1 1 1 1 1 1 1 1 1 3.20128 1.64523 3.7877 2.2881 6.12866 
+Iteración 3	 Error de entrenamiento: 0.509846
+Alimentando entradas
+1 1
+-1 -1
+Propagando entradas
+1 -1 1 -1 1 -1 1 -1 1 -1 1.43899 3.76792 1.8637 2.32485 2.22571 
+retro entradas
+Acumular entradas
+ajustar pesos
+Alimentando entradas
+-1 -1
+-1 -1
+Propagando entradas
+-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 1.45534 2.57272 1.3599 1.78958 1.19552 
+retro entradas
+Acumular entradas
+ajustar pesos
+Alimentando entradas
+-1 -1
+1 1
+Propagando entradas
+-1 1 -1 1 -1 1 -1 1 -1 1 3.26729 1.35082 2.15006 1.7296 1.81039 
+retro entradas
+Acumular entradas
+ajustar pesos
+Alimentando entradas
+1 1
+1 1
+Propagando entradas
+1 1 1 1 1 1 1 1 1 1 3.18069 1.60668 3.75018 2.20011 6.05888 
+retro entradas
+Acumular entradas
+ajustar pesos
+1 1
+-1 -1
+1 -1 1 -1 1 -1 1 -1 1 -1 1.44341 3.94997 1.87622 2.42586 2.24336 
+-1 -1
+-1 -1
+-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 1.45991 2.68024 1.36513 1.85181 1.19838 
+-1 -1
+1 1
+-1 1 -1 1 -1 1 -1 1 -1 1 3.25524 1.33899 2.14127 1.70133 1.80427 
+1 1
+1 1
+1 1 1 1 1 1 1 1 1 1 3.17433 1.59515 3.73876 2.17398 6.04082 
+Iteración 4	 Error de entrenamiento: 0.50808
+Alimentando entradas
+1 1
+-1 -1
+Propagando entradas
+1 -1 1 -1 1 -1 1 -1 1 -1 1.44341 3.94997 1.87622 2.42586 2.24336 
+retro entradas
+Acumular entradas
+ajustar pesos
+Alimentando entradas
+-1 -1
+-1 -1
+Propagando entradas
+-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 1.46126 2.71278 1.36665 1.87077 1.1991 
+retro entradas
+Acumular entradas
+ajustar pesos
+Alimentando entradas
+-1 -1
+1 1
+Propagando entradas
+-1 1 -1 1 -1 1 -1 1 -1 1 3.24202 1.32622 2.13166 1.67106 1.79764 
+retro entradas
+Acumular entradas
+ajustar pesos
+Alimentando entradas
+1 1
+1 1
+Propagando entradas
+1 1 1 1 1 1 1 1 1 1 3.15103 1.55252 3.69631 2.07837 5.96327 
+retro entradas
+Acumular entradas
+ajustar pesos
+1 1
+-1 -1
+1 -1 1 -1 1 -1 1 -1 1 -1 1.44889 4.2005 1.89188 2.56563 2.26507 
+-1 -1
+-1 -1
+-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 1.46648 2.8529 1.3727 1.95256 1.20235 
+-1 -1
+1 1
+-1 1 -1 1 -1 1 -1 1 -1 1 3.2277 1.31245 2.12123 1.63872 1.79047 
+1 1
+1 1
+1 1 1 1 1 1 1 1 1 1 3.14369 1.53969 3.68312 2.04981 5.94188 
+Iteración 5	 Error de entrenamiento: 0.506413
+PESOS DE LA RED
+===============
+Vamos  a imprimir las entradas de las neuronas
+
+Capa: 1
+0.638846 0.0192201 
+0.571069 -0.273276 
+0.836877 -0.436277 
+0.720559 -0.248448 
+-0.95828 -0.916436 
+Capa: 2
+-0.30379 0.481896 0.113676 0.402753 0.892885 
+Salida Esperada Vs Salida Obtenida (test)
+=========================================
+1 1
+-1 -1
+1 -1 1 -1 1 -1 1 -1 1 -1 1.44889 4.2005 1.89188 2.56563 2.26507 
+1 -- 1.00206
+-1 -1
+-1 -1
+-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 1.46648 2.8529 1.3727 1.95256 1.20235 
+0 -- 1.0127
+-1 -1
+1 1
+-1 1 -1 1 -1 1 -1 1 -1 1 3.2277 1.31245 2.12123 1.63872 1.79047 
+1 -- 1.00381
+1 1
+1 1
+1 1 1 1 1 1 1 1 1 1 3.14369 1.53969 3.68312 2.04981 5.94188 
+0 -- 1.00004
+1 1
+-1 -1
+1 -1 1 -1 1 -1 1 -1 1 -1 1.44889 4.2005 1.89188 2.56563 2.26507 
+-1 -1
+-1 -1
+-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 1.46648 2.8529 1.3727 1.95256 1.20235 
+-1 -1
+1 1
+-1 1 -1 1 -1 1 -1 1 -1 1 3.2277 1.31245 2.12123 1.63872 1.79047 
+1 1
+1 1
+1 1 1 1 1 1 1 1 1 1 3.14369 1.53969 3.68312 2.04981 5.94188 
+Finalizamos => Error de test final: 0.506413
+**********
+SEMILLA 50
+**********
+Alimentando entradas
+1 1
+-1 -1
+Propagando entradas
+1 -1 1 -1 1 -1 1 -1 1 -1 1.35026 1.72056 2.03957 2.26409 1.9738 
+retro entradas
+Acumular entradas
+ajustar pesos
+Alimentando entradas
+-1 -1
+-1 -1
+Propagando entradas
+-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 1.58595 2.43068 1.3331 1.95844 1.15348 
+retro entradas
+Acumular entradas
+ajustar pesos
+Alimentando entradas
+-1 -1
+1 1
+Propagando entradas
+-1 1 -1 1 -1 1 -1 1 -1 1 3.49017 1.07283 1283.01 5534.45 132.243 
+retro entradas
+Acumular entradas
+ajustar pesos
+Alimentando entradas
+1 1
+1 1
+Propagando entradas
+1 1 1 1 1 1 1 1 1 1 2.64206 1.30439 23.8438 13.6724 26.5916 
+retro entradas
+Acumular entradas
+ajustar pesos
+1 1
+-1 -1
+1 -1 1 -1 1 -1 1 -1 1 -1 1.43075 63.2475 1.00002 1 1.00063 
+-1 -1
+-1 -1
+-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 1.63072 7.99501 1.00692 1.00815 1.01127 
+-1 -1
+1 1
+-1 1 -1 1 -1 1 -1 1 -1 1 3.32153 1.01606 51325.3 518413 1579.91 
+1 1
+1 1
+1 1 1 1 1 1 1 1 1 1 2.58549 1.14296 145.539 123.659 89.7643 
+Iteración 1	 Error de entrenamiento: 0.5
+Alimentando entradas
+1 1
+-1 -1
+Propagando entradas
+1 -1 1 -1 1 -1 1 -1 1 -1 1.43075 63.2475 1.00002 1 1.00063 
+retro entradas
+Acumular entradas
+ajustar pesos
+Alimentando entradas
+-1 -1
+-1 -1
+Propagando entradas
+-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 1.65323 15.8936 1.00109 1.00084 1.00325 
+retro entradas
+Acumular entradas
+ajustar pesos
+Alimentando entradas
+-1 -1
+1 1
+Propagando entradas
+-1 1 -1 1 -1 1 -1 1 -1 1 3.16431 1.00354 2.05473e+06 4.85686e+07 18996 
+retro entradas
+Acumular entradas
+ajustar pesos
+Alimentando entradas
+1 1
+1 1
+Propagando entradas
+1 1 1 1 1 1 1 1 1 1 2.42719 1.01481 36613.8 111230 3704.91 
+retro entradas
+Acumular entradas
+ajustar pesos
+1 1
+-1 -1
+1 -1 1 -1 1 -1 1 -1 1 -1 1.4956 1280.3 1 1 1 
+-1 -1
+-1 -1
+-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 1.72568 144.76 1 1 1.00008 
+-1 -1
+1 1
+-1 1 -1 1 -1 1 -1 1 -1 1 3.01774 1.00078 8.22598e+07 4.55025e+09 228519 
+1 1
+1 1
+1 1 1 1 1 1 1 1 1 1 2.37801 1.00696 231660 1.07661e+06 12848 
+Iteración 2	 Error de entrenamiento: 0.5
+Alimentando entradas
+1 1
+-1 -1
+Propagando entradas
+1 -1 1 -1 1 -1 1 -1 1 -1 1.4956 1280.3 1 1 1 
+retro entradas
+Acumular entradas
+ajustar pesos
+Alimentando entradas
+-1 -1
+-1 -1
+Propagando entradas
+-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 1.75158 307.091 1 1 1.00002 
+retro entradas
+Acumular entradas
+ajustar pesos
+Alimentando entradas
+-1 -1
+1 1
+Propagando entradas
+-1 1 -1 1 -1 1 -1 1 -1 1 2.8811 1.00017 3.29321e+09 4.26299e+11 2.74918e+06 
+retro entradas
+Acumular entradas
+ajustar pesos
+Alimentando entradas
+1 1
+1 1
+Propagando entradas
+1 1 1 1 1 1 1 1 1 1 2.24043 1.00072 5.8681e+07 9.76286e+08 536073 
+retro entradas
+Acumular entradas
+ajustar pesos
+1 1
+-1 -1
+1 -1 1 -1 1 -1 1 -1 1 -1 1.57022 26292.9 1 1 1 
+-1 -1
+-1 -1
+-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 1.83494 2955.53 1 1 1 
+-1 -1
+1 1
+-1 1 -1 1 -1 1 -1 1 -1 1 2.75371 1.00004 1.31841e+11 3.99387e+13 3.30738e+07 
+1 1
+1 1
+1 1 1 1 1 1 1 1 1 1 2.19769 1.00034 3.71291e+08 9.44967e+09 1.85936e+06 
+Iteración 3	 Error de entrenamiento: 0.5
+Alimentando entradas
+1 1
+-1 -1
+Propagando entradas
+1 -1 1 -1 1 -1 1 -1 1 -1 1.57022 26292.9 1 1 1 
+retro entradas
+Acumular entradas
+ajustar pesos
+Alimentando entradas
+-1 -1
+-1 -1
+Propagando entradas
+-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 1.86473 6291.73 1 1 1 
+retro entradas
+Acumular entradas
+ajustar pesos
+Alimentando entradas
+-1 -1
+1 1
+Propagando entradas
+-1 1 -1 1 -1 1 -1 1 -1 1 2.63494 1.00001 5.27818e+12 3.74174e+15 3.97892e+08 
+retro entradas
+Acumular entradas
+ajustar pesos
+Alimentando entradas
+1 1
+1 1
+Propagando entradas
+1 1 1 1 1 1 1 1 1 1 2.07811 1.00004 9.40507e+10 8.56912e+12 7.75864e+07 
+retro entradas
+Acumular entradas
+ajustar pesos
+1 1
+-1 -1
+1 -1 1 -1 1 -1 1 -1 1 -1 1.65607 540347 1 1 1 
+-1 -1
+-1 -1
+-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 1.96065 60722 1 1 1 
+-1 -1
+1 1
+-1 1 -1 1 -1 1 -1 1 -1 1 2.52422 1 2.11308e+14 3.50553e+17 4.78681e+09 
+1 1
+1 1
+1 1 1 1 1 1 1 1 1 1 2.04096 1.00002 5.95084e+11 8.29423e+13 2.69108e+08 
+Iteración 4	 Error de entrenamiento: 0.5
+Alimentando entradas
+1 1
+-1 -1
+Propagando entradas
+1 -1 1 -1 1 -1 1 -1 1 -1 1.65607 540347 1 1 1 
+retro entradas
+Acumular entradas
+ajustar pesos
+Alimentando entradas
+-1 -1
+-1 -1
+Propagando entradas
+-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 1.99493 129287 1 1 1 
+retro entradas
+Acumular entradas
+ajustar pesos
+Alimentando entradas
+-1 -1
+1 1
+Propagando entradas
+-1 1 -1 1 -1 1 -1 1 -1 1 2.421 1 8.45958e+15 3.28423e+19 5.75875e+10 
+retro entradas
+Acumular entradas
+ajustar pesos
+Alimentando entradas
+1 1
+1 1
+Propagando entradas
+1 1 1 1 1 1 1 1 1 1 1.93703 1 1.50739e+14 7.52135e+16 1.12292e+10 
+retro entradas
+Acumular entradas
+ajustar pesos
+1 1
+-1 -1
+1 -1 1 -1 1 -1 1 -1 1 -1 1.75485 1.11051e+07 1 1 1 
+-1 -1
+-1 -1
+-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 2.10528 1.24793e+06 1 1 1 
+-1 -1
+1 1
+-1 1 -1 1 -1 1 -1 1 -1 1 2.32477 1 3.38673e+17 3.0769e+21 6.92802e+11 
+1 1
+1 1
+1 1 1 1 1 1 1 1 1 1 1.90475 1 9.53768e+14 7.28007e+17 3.89483e+10 
+Iteración 5	 Error de entrenamiento: 0.5
+PESOS DE LA RED
+===============
+Vamos  a imprimir las entradas de las neuronas
+
+Capa: 1
+0.788642 0.190668 
+0.951703 -1.09296 
+-0.968715 2.93619 
+-0.617337 4.17456 
+-0.969753 1.43925 
+Capa: 2
+0.843738 4.68896 6.21828 6.20416 7.83627 
+Salida Esperada Vs Salida Obtenida (test)
+=========================================
+1 1
+-1 -1
+1 -1 1 -1 1 -1 1 -1 1 -1 1.75485 1.11051e+07 1 1 1 
+1 -- 1
+-1 -1
+-1 -1
+-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 2.10528 1.24793e+06 1 1 1 
+0 -- 1
+-1 -1
+1 1
+-1 1 -1 1 -1 1 -1 1 -1 1 2.32477 1 3.38673e+17 3.0769e+21 6.92802e+11 
+1 -- 1
+1 1
+1 1
+1 1 1 1 1 1 1 1 1 1 1.90475 1 9.53768e+14 7.28007e+17 3.89483e+10 
+0 -- 1
+1 1
+-1 -1
+1 -1 1 -1 1 -1 1 -1 1 -1 1.75485 1.11051e+07 1 1 1 
+-1 -1
+-1 -1
+-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 2.10528 1.24793e+06 1 1 1 
+-1 -1
+1 1
+-1 1 -1 1 -1 1 -1 1 -1 1 2.32477 1 3.38673e+17 3.0769e+21 6.92802e+11 
+1 1
+1 1
+1 1 1 1 1 1 1 1 1 1 1.90475 1 9.53768e+14 7.28007e+17 3.89483e+10 
+Finalizamos => Error de test final: 0.5
+HEMOS TERMINADO TODAS LAS SEMILLAS
+INFORME FINAL
+*************
+Error de entrenamiento (Media +- DT): nan +- nan
+Error de test (Media +- DT):          nan +- nan

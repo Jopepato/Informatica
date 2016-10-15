@@ -39,8 +39,6 @@ private:
 	Capa* pCapas;         /* Vector con cada una de las capas */
 
 
-	// Liberar memoria para las estructuras de datos
-	void liberarMemoria();
 
 	// Rellenar todos los pesos (w) aleatoriamente entre -1 y 1
 	void pesosAleatorios();
@@ -85,6 +83,9 @@ public:
 	double dEta;        // Tasa de aprendizaje
 	double dMu;         // Factor de momento
 	bool   bSesgo;      // ¿Van a tener sesgo las neuronas?
+
+	// Liberar memoria para las estructuras de datos
+	void liberarMemoria();
 
 	// CONSTRUCTOR: Dar valor por defecto a todos los parámetros
 	PerceptronMulticapa();

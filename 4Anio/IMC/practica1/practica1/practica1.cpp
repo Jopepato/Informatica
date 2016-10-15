@@ -140,6 +140,11 @@ int main(int argc, char **argv) {
     	cout << "**********" << endl;
         mlp.ejecutarAlgoritmoOnline(pDatosTrain,pDatosTest,ivalue,&(erroresTrain[i]),&(erroresTest[i]));
 		cout << "Finalizamos => Error de test final: " << erroresTest[i] << endl;
+        mlp.liberarMemoria();
+        mlp.inicializar(lvalue+2, topologia);
+        mlp.bSesgo = bflag;
+        mlp.dEta = evalue;
+        mlp.dMu = mvalue;
     }
 
     cout << "HEMOS TERMINADO TODAS LAS SEMILLAS" << endl;
@@ -164,14 +169,13 @@ int main(int argc, char **argv) {
         auxTest += pow(erroresTest[i] - mediaErrorTest,2);
         auxTrain += pow(erroresTrain[i] - mediaErrorTrain, 2);
     }
-    desviacionTipicaErrorTest = sqrt((1/4)*auxTest);
-    desviacionTipicaErrorTrain = sqrt((1/4)*auxTrain);
-
+    desviacionTipicaErrorTest = sqrt(0.25*auxTest);
+    desviacionTipicaErrorTrain = sqrt(0.25*auxTrain);
 
     cout << "INFORME FINAL" << endl;
     cout << "*************" << endl;
     cout << "Error de entrenamiento (Media +- DT): " << mediaErrorTrain << " +- " << desviacionTipicaErrorTrain << endl;
     cout << "Error de test (Media +- DT):          " << mediaErrorTest << " +- " << desviacionTipicaErrorTest << endl;
+
     return EXIT_SUCCESS;
 }
-
