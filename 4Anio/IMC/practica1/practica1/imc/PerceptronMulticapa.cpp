@@ -225,7 +225,7 @@ void PerceptronMulticapa::retropropagarError(double* objetivo) {
 	double sumatorio = 0.0;
 
 	//Y ahora para las otras capas
-	for(int i=nNumCapas-2; i>=1; i--){
+	for(int i=nNumCapas-2; i>=0; i--){
 		for(int j=0; j<pCapas[i].nNumNeuronas; j++){
 			//Calculamos el sumatorio de las entradas y la derivada de la capa siguiente
 			for(int k=0; k<pCapas[i+1].nNumNeuronas; k++){
