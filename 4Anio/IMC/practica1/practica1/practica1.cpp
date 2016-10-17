@@ -15,7 +15,7 @@
 #include <string.h>
 #include <math.h>
 #include <fstream>
-#include "imc/PerceptronMulticapa.h"
+#include "PerceptronMulticapa.h"
 #include "practica1.hpp"
 
 using namespace imc;
