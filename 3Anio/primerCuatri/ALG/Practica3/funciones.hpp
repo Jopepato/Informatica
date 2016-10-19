@@ -7,6 +7,12 @@
 #include <cmath>
 #include <ctime>
 
+
+//ejcpspkycarhnfoybfrjx
+//HILL
+//[2 1 3; 2 3 4; 7 8 1]
+//mod 27
+
 using namespace std;
 template <class T>
 void rellenaVector(vector <T> &v, int nEle){
