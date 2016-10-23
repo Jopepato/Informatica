@@ -309,16 +309,10 @@ void PerceptronMulticapa::simularRedOnline(double* entrada, double* objetivo) {
 			}
 		}
 	}
-
-	//cout << "Alimentando entradas" << endl;
 	alimentarEntradas(entrada);
-	//cout << "Propagando entradas" << endl;
 	propagarEntradas();
-		//cout << "retro entradas" << endl;
 	retropropagarError(objetivo);
-		//cout << "Acumular entradas" << endl;
 	acumularCambio();
-		//cout << "ajustar pesos" << endl;
 	ajustarPesos();
 
 }
