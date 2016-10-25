@@ -1,5 +1,0 @@
-function permuta = permutacion_v(p)
-
-d = length(p);
-A = [1:d];
-sort(p);

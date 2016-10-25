@@ -17,7 +17,7 @@ if inv_modulo(A, m) ~= 0
         Y = mod(A*X, m);
         %Ahora tenemos que concatenar las columnas y pasarlo a letra
 
-         cifrado = reshape(Y, 1, []);
+        cifrado = reshape(Y, 1, []);
 
         %Con esto ya deberiamos de tener el texto cifrado
         cifrado = numeroletra(cifrado);

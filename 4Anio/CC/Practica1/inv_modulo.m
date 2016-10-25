@@ -19,7 +19,7 @@ else
             inver=mod(inverso_deter*adjA,m);
             inver=round(inver);
         else
-            error('ErrorTests:convertTest','la matriz no es inversible modulo%d\n',m)
+            error('ErrorTests:convertTest','la matriz no es inversible modulo%d \n',m)
             inver=0;
         end
     end
