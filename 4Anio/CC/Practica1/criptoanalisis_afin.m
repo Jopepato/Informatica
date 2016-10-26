@@ -7,7 +7,7 @@ frecCast = [0.1311 4; 0.106 0; 0.0847 19; 0.0823 15; 0.0716 8; 0.0714 13; 0.0695
 
 a = 0;
 
-    for i=1:length(v)-1
+    for i=1:length(v)-2
         
         %Cogemos las 2 letras mas utilizadas tanto del alfabeto castellano
         %como de la frase introducida y las relacionamos con un sistema de
@@ -18,17 +18,34 @@ a = 0;
         y2 = round(freordenada(i+1,2));
         B = [x1 1;x2 1];
         C = [y1; y2];
-        B = inv_modulo(B, length(abecedario));
-        A = B*C;
-        %Ahora resolvemos el sistema de ecuaciones para obtener k y d y
-        %desciframos con afin
-        clave = mod(A(1,1), length(abecedario))
-        d = mod(A(2,1), length(abecedario))
-        %Una vez tenemos la clave y d, se las pasamos al descifrado afin
-        %para que intente descifrar
-        descifradoafin = desafin(clave, d, v)
-        prompt = 'Si quieres probar otra clave introduce 1, en caso contrario introduce 0 ->';
-        a = input(prompt);
+        %antes de nada debemos de comprobar si va a tener inversa, puesto
+        %que si no tiene inversa nos saltamos esa clave y pasamos a la
+        %siguiente
+        B = mod(B, length(abecedario));
+        deter=round(mod(det(B),length(abecedario)));%porque gcd admite entradas enteras
+        [G ,U ,V]=gcd(length(abecedario),deter);
+        if(G==1)
+            %El mcd es 1, por lo que seguramente tendrá inversa. En caso
+            %contrario nos saltamos esa clave
+            B = inv_modulo(B, length(abecedario));
+            A = B*C;
+            %Ahora resolvemos el sistema de ecuaciones para obtener k y d y
+            %desciframos con afin
+            clave = mod(A(1,1), length(abecedario));
+            d = mod(A(2,1), length(abecedario));
+            %Una vez tenemos la clave y d, se las pasamos al descifrado afin
+            %para que intente descifrar
+            if gcd(clave, length(abecedario)) == 1
+                clave
+                d
+                descifradoafin = desafin(clave, d, v)
+            else
+                disp('La clave creada no es valida')
+            end
+            prompt = 'Si quieres probar otra clave introduce 1, en caso contrario introduce 0 ->';
+            a = input(prompt);
+        end
+
         if a == 0
             break
         end

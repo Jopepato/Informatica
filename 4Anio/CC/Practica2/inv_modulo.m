@@ -1,5 +1,6 @@
 function inver=inv_modulo(A,m)
 [filas,col]=size(A);
+inver = 1;
 if filas~=col  
     inver=0;
     error('ErrorTests:convertTest','la matriz no es cuadrada, no puede tener inversa')

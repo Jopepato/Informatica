@@ -6,26 +6,32 @@ function [texto, cifrado] = cifro_permutacion(p, texto)
 
 
 if permutacion_v(p) == 1
-   %Podemos permutar 
-   A = matper(p);
-   
-   d = size(A, 1);
-       %Comprobamos que el texto es divisible entre el numero de filas o
-       %columnas de A
-       a = mod(length(texto), d);
-       if a ~= 0
-            %Si no es divisible metemos X al final
-            for i=1:d-a
-               texto = strcat(texto, 'x');
-            end
-       end
-        %Pasamos el texto a numeros y lo dividimos en grupos
-        numeros = letranumero(texto);
-        X = reshape(numeros, d, []);
-        Y = mod(A*X, m);
-        for i=size(Y,1)
-            cifrado = strcat(cifrado, numeroletra(Y(:,i)));
+    %La permutacion es valida por lo tanto podemos continuar
+    A = matper(p);%Matriz de la permutacion
+    %Ahora ciframos con la matriz de permutacion y el cifrado hill
+    d = size(A, 1);
+
+    %Comprobamos que el texto es divisible entre el numero de filas o
+    %columnas de A
+    a = mod(length(texto), d);
+    numeros = letranumero(texto);
+    
+    if(a ~= 0)
+        %Si no es divisible metemos W al final
+        for i=1:(d-a)
+           numeros = [numeros, 23];
         end
+    end
+    
+    X = reshape(numeros, d, []);
+    Y = mod(A*X, 27);
+    %Ahora tenemos que concatenar las columnas y pasarlo a letra
+
+    cifrado = reshape(Y, 1, []);
+
+    %Con esto ya deberiamos de tener el texto cifrado
+    cifrado = numeroletra(cifrado);
+        
 else
-    error('ErrorTests:convertTest','La permutacion introducida no es válida\n',m)
+    error('ErrorTests:convertTest','Permutacion no valida')
 end
