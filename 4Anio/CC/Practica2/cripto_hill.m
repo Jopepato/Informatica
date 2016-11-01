@@ -12,7 +12,7 @@ aux = mod(length(textoclaro), orden);
         end
     end
     
-numerosClaro = letranumero(textoclaro)
+numerosClaro = letranumero(textoclaro);
 numerosCifrado = letranumero(textocifrado);
 
 Y = reshape(numerosCifrado, orden, []);
@@ -23,27 +23,14 @@ X = X';
 
 for i=1:orden
     aux = X(i,i);
+    X
+    Y
     [G, U, V] = gcd(27, aux);
     %Si el elemento tiene inverso, hacemos 0 tanto en las filas de arriba
     %como en las de abajo.
     %Si no tiene inverso, buscamos uno e intercambiamos filas.
-    if G == 1
-        %Tiene inverso
-        X(i, :) = mod(X(i,:)*V, 27);
-        Y(i, :) = mod(Y(i,:)*V, 27);
-        %Una vez tenemos 1 en el (i,i) Hacemos 0s en la columna i, pero en
-        %todas las filas tanto por encima como por debajo
-        for j=1:size(X,1)
-            if j~=i
-                %Hacemos ceros
-                aux2 = X(j,i);
-                X(j, :) = mod(X(j,:)-aux2*X(i,:),27);
-                Y(j, :) = mod(Y(j,:)-aux2*Y(i,:),27);
-            end
-            
-        end
-    else
-        %Si no tiene inverso, tenemos que buscar el primer numero de las
+    if G ~= 1
+         %Si no tiene inverso, tenemos que buscar el primer numero de las
         %filas de abajo que tenga e intercambiarlo
         for k=i+1:size(X,1)
             [G, U, V] = gcd(27, X(k, i));
@@ -61,9 +48,25 @@ for i=1:orden
             end
         end
     end
+        %Tiene inverso
+        X(i, :) = mod(X(i,:)*V, 27);
+        Y(i, :) = mod(Y(i,:)*V, 27);
+        %Una vez tenemos 1 en el (i,i) Hacemos 0s en la columna i, pero en
+        %todas las filas tanto por encima como por debajo
+        for j=1:size(X,1)
+            if j~=i
+                %Hacemos ceros
+                aux2 = X(j,i);
+                X(j, :) = mod(X(j,:)-aux2*X(i,:),27);
+                Y(j, :) = mod(Y(j,:)-aux2*Y(i,:),27);
+            end
+            
+        end
     
 end
 
+X
+Y
 %Despues de estas operaciones ya tenemos las dos matrices.
 %Ahora cogeremos la matriz clave de la matriz Y
 matrizclave = Y(1:orden,1:orden);

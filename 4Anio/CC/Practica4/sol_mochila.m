@@ -6,7 +6,6 @@ else
     valida = 0;
 end
 
-%Ordenamos el vector, en caso de que no este ordenador
 n = length(s);
 v = zeros(1,n);
 

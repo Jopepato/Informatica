@@ -13,9 +13,9 @@ if permutacion_v(p) == 1
 
     %Comprobamos que el texto es divisible entre el numero de filas o
     %columnas de A
-    a = mod(length(texto), d);
-    numeros = letranumero(texto);
     
+    numeros = letranumero(texto);
+    a = mod(length(numeros), d);
     if(a ~= 0)
         %Si no es divisible metemos W al final
         for i=1:(d-a)
