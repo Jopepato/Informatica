@@ -1,8 +1,8 @@
 //============================================================================
 // Introducción a los Modelos Computacionales
-// Name        : practica1.cpp
-// Author      : José Pérez-Parras Toledano
-// Version     :
+// Name        : practica2.cpp
+// Author      : Pedro A. Gutiérrez
+// Version     : 2016
 // Copyright   : Universidad de Córdoba
 //============================================================================
 
@@ -14,8 +14,7 @@
 #include <cstdlib>  // Para establecer la semilla srand() y generar números aleatorios rand()
 #include <string.h>
 #include <math.h>
-#include <fstream>
-#include "PerceptronMulticapa.hpp"
+#include "PerceptronMulticapa.h"
 #include "practica2.hpp"
 
 using namespace imc;
@@ -23,24 +22,24 @@ using namespace std;
 
 int main(int argc, char **argv) {
 
-    // Procesar la línea de comandos
-    bool tflag = false, Tflag= false, bflag = false;;
+
+    bool tflag = false, Tflag= false, bflag = false, oflag = false, sflag = false;
     char *tvalue = NULL , *Tvalue = NULL;
-    int ivalue = 1000, lvalue = 1, hvalue = 5;
+    int ivalue = 1000, lvalue = 1, hvalue = 5, fvalue = 0;
     float evalue = 0.1, mvalue = 0.9;
     fstream myfile;
     int c;
-    // ....
-
-    //hvalue = topologia
-    //Vamos a procesar la linea de comandos
+    // Procesar la línea de comandos
 
     // Leer iteraciones, capas y neuronas desde la línea de comandos
 
     // Leer sesgo, eta y mu de la línea desde comandos
 
     // Leer fichero de train y de test desde la línea de comandos
-    while((c = getopt(argc, argv, "t:T:i:l:h:e:m:b")) != -1){
+
+    // Leer tipo de error (0 MSE, 1 Entropía cruzada) de la línea de comandos
+
+    while((c = getopt(argc, argv, "t:T:i:l:h:e:m:bof:s")) != -1){
 
         switch(c){
 
@@ -78,7 +77,20 @@ int main(int argc, char **argv) {
             case 'b':
                 bflag = true;
                 break;
-
+            case 'o':
+                oflag = true;
+                break;
+            case 'f':
+                fvalue = atoi(optarg);
+                //Comprobamos que es 0 o 1
+                if(fvalue != 0 || fvalue != 1){
+                    ayuda();
+                    exit();
+                }
+                break;
+            case 's':
+                sflag = true;
+                break;
             case '?':
                 ayuda();
             default:
@@ -87,22 +99,17 @@ int main(int argc, char **argv) {
 
     }
 
-    //Comprueba si existen ficheros de entrenamiento y de test, si no existen dichos ficheros cierra el programa
+	PerceptronMulticapa mlp;
 
-    if(tflag == false || Tflag == false){
-        //Nos salimos porque no hay ficheros de entrada
-        ayuda();
-        exit(-1);
-    }
-
-    PerceptronMulticapa mlp;
-
-    Datos * pDatosTrain = mlp.leerDatos(tvalue);
-    Datos * pDatosTest = mlp.leerDatos(Tvalue);
+	Datos * pDatosTrain = mlp.leerDatos(tvalue);
+	Datos * pDatosTest = mlp.leerDatos(Tvalue);
 
     // Inicializar el vector "topología"
-    int * topologia;
+    // (número de neuronas por cada capa, incluyendo la de entrada
+    //  y la de salida)
+    // ...
 
+    int * topologia;
     topologia = (int*)malloc((lvalue+2)*sizeof(int));
     topologia[0] = pDatosTest->nNumEntradas;
     //Y lo rellenamos
@@ -111,71 +118,46 @@ int main(int argc, char **argv) {
     }
     topologia[lvalue+1] = pDatosTest->nNumSalidas;
 
-
-    // (número de neuronas por cada capa, incluyendo la de entrada
-    //  y la de salida)
-    // ...
-
-    // Sesgo
-    mlp.bSesgo = bflag;
-
-    // Eta
-    mlp.dEta = evalue;
-
-    // Mu
-    mlp.dMu = mvalue;
+	// Sesgo
+	mlp.bSesgo = bflag;
+	// Online?
+	mlp.bOnline = oflag;
+	// Eta
+	mlp.dEta = eta;
+	// Mu
+	mlp.dMu = mu;
 
     // Inicialización propiamente dicha
-    mlp.inicializar(lvalue+2,topologia);
+	mlp.inicializar(lvalue+2,topologia, sflag);
+    //En la inicialización ya le hemos metido a cada capa si va a ser de tipo sigmoide o softmax
 
 
     // Semilla de los números aleatorios
     int semillas[] = {10,20,30,40,50};
-    double *erroresTest = new double[5];
+    double *errores = new double[5];
     double *erroresTrain = new double[5];
+    double *ccrs = new double[5];
+    double *ccrsTrain = new double[5];
     for(int i=0; i<5; i++){
-        srand(semillas[i]);
     	cout << "**********" << endl;
     	cout << "SEMILLA " << semillas[i] << endl;
     	cout << "**********" << endl;
-        mlp.ejecutarAlgoritmoOnline(pDatosTrain,pDatosTest,ivalue,&(erroresTrain[i]),&(erroresTest[i]));
-		cout << "Finalizamos => Error de test final: " << erroresTest[i] << endl;
-        mlp.liberarMemoria();
-        mlp.inicializar(lvalue+2, topologia);
-        mlp.bSesgo = bflag;
-        mlp.dEta = evalue;
-        mlp.dMu = mvalue;
+		srand(semillas[i]);
+		mlp.ejecutarAlgoritmo(pDatosTrain,pDatosTest,iteraciones,&(erroresTrain[i]),&(errores[i]),&(ccrsTrain[i]),&(ccrs[i]),fvalue);
+		cout << "Finalizamos => CCR de test final: " << ccrs[i] << endl;
     }
-
-    cout << "HEMOS TERMINADO TODAS LAS SEMILLAS" << endl;
 
     // Calcular media y desviación típica de los errores de Train y de Test
     // ....
 
-    double mediaErrorTrain = 0.0, mediaErrorTest=0.0, desviacionTipicaErrorTrain=0.0, desviacionTipicaErrorTest=0.0;
+    cout << "HEMOS TERMINADO TODAS LAS SEMILLAS" << endl;
 
-    //Las calculamos
-    for(int i=0; i<5; i++){
-        mediaErrorTrain += erroresTrain[i];
-        mediaErrorTest += erroresTest[i];
-    }
-    mediaErrorTest /= 5;
-    mediaErrorTrain /= 5;
-
-    //Ahora la desviacion tipica
-    double auxTest = 0.0, auxTrain=0.0;
-
-    for(int i=0; i<5; i++){
-        auxTest += pow(erroresTest[i] - mediaErrorTest,2);
-        auxTrain += pow(erroresTrain[i] - mediaErrorTrain, 2);
-    }
-    desviacionTipicaErrorTest = sqrt(0.25*auxTest);
-    desviacionTipicaErrorTrain = sqrt(0.25*auxTrain);
-
-    cout << "INFORME FINAL" << endl;
-    cout << "*************" << endl;
+	cout << "RESUMEN FINAL" << endl;
+	cout << "*************" << endl;
     cout << "Error de entrenamiento (Media +- DT): " << mediaErrorTrain << " +- " << desviacionTipicaErrorTrain << endl;
-    cout << "Error de test (Media +- DT):          " << mediaErrorTest << " +- " << desviacionTipicaErrorTest << endl;
-
-    return EXIT_SUCCESS;
+    cout << "Error de test (Media +- DT): " << mediaError << " +- " << desviacionTipicaError << endl;
+    cout << "CCR de entrenamiento (Media +- DT): " << mediaCCRTrain << " +- " << desviacionTipicaCCRTrain << endl;
+    cout << "CCR de test (Media +- DT): " << mediaCCR << " +- " << desviacionTipicaCCR << endl;
+	return EXIT_SUCCESS;
 }
+

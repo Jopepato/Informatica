@@ -22,6 +22,7 @@ struct Neurona {
 
 struct Capa {
 	int     nNumNeuronas;   /* Número de neuronas de la capa*/
+	int     tipo;           /* Tipo de la capa (0=> sigmoide, 1=> softmax)*/
 	Neurona* pNeuronas;     /* Vector con las neuronas de la capa*/
 };
 
@@ -35,10 +36,12 @@ struct Datos {
 
 class PerceptronMulticapa {
 private:
-	int    nNumCapas;     /* Número de capas total en la red */
-	Capa* pCapas;         /* Vector con cada una de las capas */
+	int    nNumCapas;      /* Número de capas total en la red */
+	Capa* pCapas;          /* Vector con cada una de las capas */
+	int nNumPatronesTrain; /* Para ajustar pesos en la versión offline */
 
-
+	// Liberar memoria para las estructuras de datos
+	void liberarMemoria();
 
 	// Rellenar todos los pesos (w) aleatoriamente entre -1 y 1
 	void pesosAleatorios();
@@ -55,19 +58,21 @@ private:
 	// Restaurar una copia de todos los pesos (copiar copiaW en w)
 	void restaurarPesos();
 
-	// Calcular y propagar las salidas de las neuronas, desde la primera capa hasta la última
+	// Calcular y propagar las salidas de las neuronas, desde la segunda capa hasta la última
 	void propagarEntradas();
 
-	// Calcular el error de salida (MSE) del out de la capa de salida con respecto a un vector objetivo y devolverlo
-	double calcularErrorSalida(double* objetivo);
+	// Calcular el error de salida del out de la capa de salida con respecto a un vector objetivo y devolverlo
+	// funcionError=1 => EntropiaCruzada // funcionError=0 => MSE
+	double calcularErrorSalida(double* objetivo, int funcionError);
 
 	// Retropropagar el error de salida con respecto a un vector pasado como argumento, desde la última capa hasta la primera
-	void retropropagarError(double* objetivo);
+	// funcionError=1 => EntropiaCruzada // funcionError=0 => MSE
+	void retropropagarError(double* objetivo, int funcionError);
 
 	// Acumular los cambios producidos por un patrón en deltaW
 	void acumularCambio();
 
-	// Actualizar los pesos de la red, desde la primera capa hasta la última
+	// Actualizar los pesos de la red, desde la segunda capa hasta la última
 	void ajustarPesos();
 
 	// Imprimir la red, es decir, todas las matrices de pesos
@@ -75,42 +80,50 @@ private:
 
 	// Simular la red: propagar las entradas hacia delante, retropropagar el error y ajustar los pesos
 	// entrada es el vector de entradas del patrón y objetivo es el vector de salidas deseadas del patrón
-	void simularRedOnline(double* entrada, double* objetivo);
+	// El paso de ajustar pesos solo deberá hacerse si el algoritmo es on-line
+	// Si no lo es, el ajuste de pesos hay que hacerlo en la función "entrenar"
+	// funcionError=1 => EntropiaCruzada // funcionError=0 => MSE
+	void simularRed(double* entrada, double* objetivo, int funcionError);
 
 
 public:
 	// Valores de parámetros (son públicos, para que puedan ser actualizados desde fuera)
 	double dEta;        // Tasa de aprendizaje
 	double dMu;         // Factor de momento
+	double dPendiente;  // Pendiente de la sigmoide
 	bool   bSesgo;      // ¿Van a tener sesgo las neuronas?
+	bool   bOnline;     // ¿El aprendizaje va a ser online? (true->online,false->offline)
 
-	// Liberar memoria para las estructuras de datos
-	void liberarMemoria();
-
-	// CONSTRUCTOR: Dar valor por defecto a todos los parámetros
+	// Constructor
 	PerceptronMulticapa();
 
-	// DESTRUCTOR: liberar memoria
+	// Destructor
 	~PerceptronMulticapa();
 
 	// Reservar memoria para las estructuras de datos
     // nl tiene el numero de capas y npl es un vector que contiene el número de neuronas por cada una de las capas
     // Rellenar vector Capa* pCapas
-	int inicializar(int nl, int npl[]);
+	int inicializar(int nl, int npl[], bool bSigmoideCapaSalida);
 
 	// Leer una matriz de datos a partir de un nombre de fichero y devolverla
 	Datos* leerDatos(const char *archivo);
 
-	// Entrenar la red on-line para un determinado fichero de datos
-	void entrenarOnline(Datos* pDatosTrain);
-
 	// Probar la red con un conjunto de datos y devolver el error MSE cometido
-	double test(Datos* pDatosTest);
+	// funcionError=1 => EntropiaCruzada // funcionError=0 => MSE
+	double test(Datos* pDatosTest, int funcionError);
+
+	// Probar la red con un conjunto de datos y devolver el error CCR cometido
+	double testClassification(Datos* pDatosTest);
+
+	// Entrenar la red para un determinado fichero de datos (pasar una vez por todos los patrones)
+	// Si es offline, después de pasar por ellos hay que ajustar pesos. Sino, ya se ha ajustado en cada patrón
+	void entrenar(Datos* pDatosTrain, int funcionError);
 
 	// Ejecutar el algoritmo de entrenamiento durante un número de iteraciones, utilizando pDatosTrain
     // Una vez terminado, probar como funciona la red en pDatosTest
     // Tanto el error MSE de entrenamiento como el error MSE de test debe calcularse y almacenarse en errorTrain y errorTest
-	void ejecutarAlgoritmoOnline(Datos * pDatosTrain, Datos * pDatosTest, int maxiter, double *errorTrain, double *errorTest);
+	// funcionError=1 => EntropiaCruzada // funcionError=0 => MSE
+	void ejecutarAlgoritmo(Datos * pDatosTrain, Datos * pDatosTest, int maxiter, double *errorTrain, double *errorTest, double *ccrTrain, double *ccrTest, int funcionError);
 
 };
 

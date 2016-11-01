@@ -13,4 +13,7 @@ void ayuda(){
 	cout << "-e: Valor del parámetro eta \t Opcional=0.1" << endl;
 	cout << "-m: Valor del parámetro mu\t Opcional=0.9" << endl;
 	cout << "-b: Uso de sesgo\t Opcional=Falso" << endl;
+	cout << "-o: Uso de la versión on-line \t Opciona=Off-line" << endl;
+	cout << "-f: 0: Error MSE, 1: entropia cruzada \t Opcional: 1-entropia cruzada" << endl;
+	cout << "-s: Utilizar funcion softmax en la ultima capa \t Opcional Sigmoide"
 }
