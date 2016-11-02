@@ -20,5 +20,5 @@ end
 %Ahora ya es multiplo de 8
 aux = reshape(aux, 8,[])';
 %ahora lo pasamos a decimal
-dec = bi2de(aux, 'left-msb');
+dec = bin2dec(num2str(aux));
 mensaje = [char(dec)]';

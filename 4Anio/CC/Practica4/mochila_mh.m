@@ -6,7 +6,7 @@ if mochila(s1)
    salir = false;
    while (salir==false)
         mu = input(prompt);
-        if mu<2*s1(length(s1))
+        if mu<(2*s1(length(s1))+2)
             disp('El valor de mu introducido no es válido');
         else
             salir = true;
