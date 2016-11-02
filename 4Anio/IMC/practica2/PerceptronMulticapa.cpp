@@ -142,11 +142,19 @@ void PerceptronMulticapa::pesosAleatorios() {
 // Alimentar las neuronas de entrada de la red con un patrón pasado como argumento
 void PerceptronMulticapa::alimentarEntradas(double* input) {
 
+	for(int i=0; i<pCapas[0].nNumNeuronas; i++){
+		pCapas[0].pNeuronas[i].x = input[i];
+		pCapas[0].pNeuronas[i].dX = input[i];
+	}
 }
 
 // ------------------------------
 // Recoger los valores predichos por la red (out de la capa de salida) y almacenarlos en el vector pasado como argumento
 void PerceptronMulticapa::recogerSalidas(double* output) {
+	//Guardamos las x de la ultima capa en el output
+	for(int i=0; i<pCapas[nNumCapas-1].nNumNeuronas; i++){
+		output[i] = pCapas[nNumCapas-1].pNeuronas[i].x;
+	}
 
 }
 
@@ -154,17 +162,55 @@ void PerceptronMulticapa::recogerSalidas(double* output) {
 // Hacer una copia de todos los pesos (copiar w en copiaW)
 void PerceptronMulticapa::copiarPesos() {
 
+	//Asignamos los pesos aleatorios a las neuronas, dichos pesos son el numero de neuronas de la capa anterior
+	for(int i=1; i<nNumCapas; i++){
+		for(int j=0; j<pCapas[i].nNumNeuronas; j++){
+			for(int k=0; k<pCapas[i-1].nNumNeuronas+1; k++){
+				//Salvamos los pesos en copiaW
+				pCapas[i].pNeuronas[j].wCopia[k] = pCapas[i].pNeuronas[j].w[k];
+			}
+
+		}
+	}
+
+
 }
 
 // ------------------------------
 // Restaurar una copia de todos los pesos (copiar copiaW en w)
 void PerceptronMulticapa::restaurarPesos() {
 
+	for(int i=1; i<nNumCapas; i++){
+		for(int j=0; j<pCapas[i].nNumNeuronas; j++){
+			for(int k=0; k<pCapas[i-1].nNumNeuronas+1; k++){
+				//Restauramos los pesos de copiaW
+				pCapas[i].pNeuronas[j].w[k] = pCapas[i].pNeuronas[j].wCopia[k];
+			}
+
+		}
+	}
+
 }
 
 // ------------------------------
 // Calcular y propagar las salidas de las neuronas, desde la segunda capa hasta la última
+//En la ultima capa miramos si la capa es softmax y actuamos de forma distinta
 void PerceptronMulticapa::propagarEntradas() {
+
+double aux = 0.0;
+	for(int i=1; i<nNumCapas; i++){
+		for(int j=0; j<pCapas[i].nNumNeuronas; j++){
+
+			for(int k=1; k<pCapas[i-1].nNumNeuronas+1; k++){
+					aux += pCapas[i].pNeuronas[j].w[k] * pCapas[i-1].pNeuronas[k-1].x;
+			}
+			if(bSesgo){
+				aux += pCapas[i].pNeuronas[j].w[0];
+			}
+			pCapas[i].pNeuronas[j].x = (1/(1 + exp((-1)*aux)));
+			aux = 0.0;
+		}
+	}
 
 }
 
@@ -200,6 +246,19 @@ void PerceptronMulticapa::ajustarPesos() {
 // ------------------------------
 // Imprimir la red, es decir, todas las matrices de pesos
 void PerceptronMulticapa::imprimirRed() {
+	//Vamos a imprimir la red
+	cout << "Vamos  a imprimir las entradas de las neuronas" << endl << endl;
+
+		for(int i=1; i<nNumCapas; i++){
+			cout << "Capa: " << i << endl;
+			for(int j=0; j<pCapas[i].nNumNeuronas; j++){
+				for(int k=0; k<pCapas[i-1].nNumNeuronas; k++){
+					cout << pCapas[i].pNeuronas[j].w[k] << " ";
+				}
+				cout << endl;
+
+			}
+	}
 
 }
 
@@ -210,6 +269,8 @@ void PerceptronMulticapa::imprimirRed() {
 // Si no lo es, el ajuste de pesos hay que hacerlo en la función "entrenar"
 // funcionError=1 => EntropiaCruzada // funcionError=0 => MSE
 void PerceptronMulticapa::simularRed(double* entrada, double* objetivo, int funcionError) {
+
+
 
 }
 
@@ -290,7 +351,7 @@ double PerceptronMulticapa::test(Datos* pDatosTest, int funcionError) {
 // ------------------------------
 // Probar la red con un conjunto de datos y devolver el error CCR cometido
 double PerceptronMulticapa::testClassification(Datos* pDatosTest) {
-
+	//Que se hace aqui?
 }
 
 // ------------------------------

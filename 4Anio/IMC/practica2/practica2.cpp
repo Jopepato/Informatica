@@ -146,16 +146,34 @@ int main(int argc, char **argv) {
 		mlp.ejecutarAlgoritmo(pDatosTrain,pDatosTest,iteraciones,&(erroresTrain[i]),&(errores[i]),&(ccrsTrain[i]),&(ccrs[i]),fvalue);
 		cout << "Finalizamos => CCR de test final: " << ccrs[i] << endl;
     }
+    
+    double mediaErrorTrain = 0.0, mediaErrorTest=0.0, desviacionTipicaErrorTrain=0.0, desviacionTipicaErrorTest=0.0;
 
-    // Calcular media y desviación típica de los errores de Train y de Test
-    // ....
+
+    //Las calculamos
+    for(int i=0; i<5; i++){
+        mediaErrorTrain += erroresTrain[i];
+        mediaErrorTest += errores[i];
+    }
+    mediaErrorTest /= 5;
+    mediaErrorTrain /= 5;
+
+    //Ahora la desviacion tipica
+    double auxTest = 0.0, auxTrain=0.0;
+
+    for(int i=0; i<5; i++){
+        auxTest += pow(erroresTest[i] - mediaErrorTest,2);
+        auxTrain += pow(erroresTrain[i] - mediaErrorTrain, 2);
+    }
+    desviacionTipicaErrorTest = sqrt(0.25*auxTest);
+    desviacionTipicaErrorTrain = sqrt(0.25*auxTrain);
 
     cout << "HEMOS TERMINADO TODAS LAS SEMILLAS" << endl;
 
 	cout << "RESUMEN FINAL" << endl;
 	cout << "*************" << endl;
     cout << "Error de entrenamiento (Media +- DT): " << mediaErrorTrain << " +- " << desviacionTipicaErrorTrain << endl;
-    cout << "Error de test (Media +- DT): " << mediaError << " +- " << desviacionTipicaError << endl;
+    cout << "Error de test (Media +- DT): " << mediaErrorTest << " +- " << desviacionTipicaErrorTest << endl;
     cout << "CCR de entrenamiento (Media +- DT): " << mediaCCRTrain << " +- " << desviacionTipicaCCRTrain << endl;
     cout << "CCR de test (Media +- DT): " << mediaCCR << " +- " << desviacionTipicaCCR << endl;
 	return EXIT_SUCCESS;
