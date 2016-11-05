@@ -1,7 +1,7 @@
 //============================================================================
 // Introducción a los Modelos Computacionales
 // Name        : practica2.cpp
-// Author      : Pedro A. Gutiérrez
+// Author      : José Pérez-Parras Toledano
 // Version     : 2016
 // Copyright   : Universidad de Córdoba
 //============================================================================
@@ -14,6 +14,7 @@
 #include <cstdlib>  // Para establecer la semilla srand() y generar números aleatorios rand()
 #include <string.h>
 #include <math.h>
+#include <fstream>
 #include "PerceptronMulticapa.h"
 #include "practica2.hpp"
 
@@ -39,7 +40,7 @@ int main(int argc, char **argv) {
 
     // Leer tipo de error (0 MSE, 1 Entropía cruzada) de la línea de comandos
 
-    while((c = getopt(argc, argv, "t:T:i:l:h:e:m:bof:s")) != -1){
+    while((c = getopt(argc, argv, "bost:T:i:l:h:e:m:f:")) != -1){
 
         switch(c){
 
@@ -82,11 +83,6 @@ int main(int argc, char **argv) {
                 break;
             case 'f':
                 fvalue = atoi(optarg);
-                //Comprobamos que es 0 o 1
-                if(fvalue != 0 || fvalue != 1){
-                    ayuda();
-                    exit();
-                }
                 break;
             case 's':
                 sflag = true;
@@ -97,6 +93,12 @@ int main(int argc, char **argv) {
                 break;
         }
 
+    }
+
+    if(!tflag || !Tflag){
+        cout << "El programa no se puede ejecutar sin los ficheros de entrenamiento y test" << endl;
+        ayuda();
+        return(-1);
     }
 
 	PerceptronMulticapa mlp;
@@ -122,10 +124,13 @@ int main(int argc, char **argv) {
 	mlp.bSesgo = bflag;
 	// Online?
 	mlp.bOnline = oflag;
+    if(oflag==false){
+        evalue = evalue/pDatosTest->nNumPatrones;
+    }
 	// Eta
-	mlp.dEta = eta;
+	mlp.dEta = evalue;
 	// Mu
-	mlp.dMu = mu;
+	mlp.dMu = mvalue;
 
     // Inicialización propiamente dicha
 	mlp.inicializar(lvalue+2,topologia, sflag);
@@ -143,30 +148,40 @@ int main(int argc, char **argv) {
     	cout << "SEMILLA " << semillas[i] << endl;
     	cout << "**********" << endl;
 		srand(semillas[i]);
-		mlp.ejecutarAlgoritmo(pDatosTrain,pDatosTest,iteraciones,&(erroresTrain[i]),&(errores[i]),&(ccrsTrain[i]),&(ccrs[i]),fvalue);
+		mlp.ejecutarAlgoritmo(pDatosTrain,pDatosTest,ivalue,&(erroresTrain[i]),&(errores[i]),&(ccrsTrain[i]),&(ccrs[i]),fvalue);
 		cout << "Finalizamos => CCR de test final: " << ccrs[i] << endl;
     }
     
     double mediaErrorTrain = 0.0, mediaErrorTest=0.0, desviacionTipicaErrorTrain=0.0, desviacionTipicaErrorTest=0.0;
+    double mediaCCRTrain = 0.0, mediaCCR = 0.0, desviacionTipicaCCRTrain = 0.0, desviacionTipicaCCR = 0.0;
 
 
     //Las calculamos
     for(int i=0; i<5; i++){
         mediaErrorTrain += erroresTrain[i];
         mediaErrorTest += errores[i];
+        mediaCCRTrain += ccrsTrain[i];
+        mediaCCR += ccrs[i];
     }
     mediaErrorTest /= 5;
     mediaErrorTrain /= 5;
+    mediaCCRTrain /= 5;
+    mediaCCR /= 5;
 
     //Ahora la desviacion tipica
     double auxTest = 0.0, auxTrain=0.0;
+    double auxCCRTest = 0.0, auxCCRTrain = 0.0;
 
     for(int i=0; i<5; i++){
-        auxTest += pow(erroresTest[i] - mediaErrorTest,2);
+        auxTest += pow(errores[i] - mediaErrorTest,2);
         auxTrain += pow(erroresTrain[i] - mediaErrorTrain, 2);
+        auxCCRTrain += pow(ccrsTrain[i] - mediaCCRTrain, 2);
+        auxCCRTest += pow(ccrs[i] - mediaCCR, 2);
     }
     desviacionTipicaErrorTest = sqrt(0.25*auxTest);
     desviacionTipicaErrorTrain = sqrt(0.25*auxTrain);
+    desviacionTipicaCCRTrain = sqrt(0.25*auxCCRTrain);
+    desviacionTipicaCCR = sqrt(0.25*auxCCRTest);
 
     cout << "HEMOS TERMINADO TODAS LAS SEMILLAS" << endl;
 

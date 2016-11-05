@@ -15,5 +15,5 @@ void ayuda(){
 	cout << "-b: Uso de sesgo\t Opcional=Falso" << endl;
 	cout << "-o: Uso de la versión on-line \t Opciona=Off-line" << endl;
 	cout << "-f: 0: Error MSE, 1: entropia cruzada \t Opcional: 1-entropia cruzada" << endl;
-	cout << "-s: Utilizar funcion softmax en la ultima capa \t Opcional Sigmoide"
+	cout << "-s: Utilizar funcion softmax en la ultima capa \t Opcional Sigmoide" << endl;
 }

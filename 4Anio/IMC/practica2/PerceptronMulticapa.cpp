@@ -60,14 +60,6 @@ int PerceptronMulticapa::inicializar(int nl, int npl[],bool bSigmoideCapaSalida)
 		pCapas[i].nNumNeuronas = npl[i];
 		pCapas[i].pNeuronas = (Neurona *)malloc(npl[i]*sizeof(Neurona));
 		pCapas[i].tipo = 0;
-		if(i == nl-1){
-			//Estamos en la ultima capa
-			if(bSigmoideCapaSalida){
-				pCapas[i].tipo = 1;
-			}else{
-				pCapas[i].tipo = 0;
-			}
-		}
 			for(int j=0; j<npl[i]; j++){
 				aux = npl[i-1] + 1;
 				pCapas[i].pNeuronas[j].w = (double *)malloc(aux*sizeof(double));
@@ -83,6 +75,9 @@ int PerceptronMulticapa::inicializar(int nl, int npl[],bool bSigmoideCapaSalida)
 				}
 			}
 			aux = 0;
+	}
+	if(bSigmoideCapaSalida){
+		pCapas[nNumCapas-1].tipo = 1;
 	}
 
 	return 1;
@@ -197,10 +192,12 @@ void PerceptronMulticapa::restaurarPesos() {
 //En la ultima capa miramos si la capa es softmax y actuamos de forma distinta
 void PerceptronMulticapa::propagarEntradas() {
 
+//Hay que cambiar esta funcion para la ultima capa
 double aux = 0.0;
+double sumatorioNet = 0.0;
+double net = 0.0;
 	for(int i=1; i<nNumCapas; i++){
 		for(int j=0; j<pCapas[i].nNumNeuronas; j++){
-
 			for(int k=1; k<pCapas[i-1].nNumNeuronas+1; k++){
 					aux += pCapas[i].pNeuronas[j].w[k] * pCapas[i-1].pNeuronas[k-1].x;
 			}
@@ -212,6 +209,33 @@ double aux = 0.0;
 		}
 	}
 
+	//Voy a hacer otro bucle para ver si la ultima capa es softmax
+	if(pCapas[nNumCapas-1].tipo == 1){
+		//Tenemos softmax en la ultima capa
+		for(int i=0; i<pCapas[nNumCapas-1].nNumNeuronas; i++){
+			for(int j=1; j<pCapas[nNumCapas-2].nNumNeuronas; j++){
+				net += pCapas[nNumCapas-1].pNeuronas[i].w[j] * pCapas[nNumCapas-2].pNeuronas[j-1].x;
+			}
+			if(bSesgo){
+				net += pCapas[nNumCapas-1].pNeuronas[i].w[0];
+			}
+			sumatorioNet += exp(net);
+			net = 0.0;
+		}
+		//Una vez tenemos el sumatorio completo podemos sacar los outs de las salidas de la ultima capa
+		for(int i=0; i<pCapas[nNumCapas-1].nNumNeuronas; i++){
+			for(int j=1; j<pCapas[nNumCapas-2].nNumNeuronas; j++){
+				net += pCapas[nNumCapas-1].pNeuronas[i].w[j] * pCapas[nNumCapas-2].pNeuronas[j-1].x;
+			}
+			if(bSesgo){
+				net += pCapas[nNumCapas-1].pNeuronas[i].w[0];
+			}
+			pCapas[nNumCapas-1].pNeuronas[i].x = exp(net)/exp(sumatorioNet);
+			net = 0.0;
+		}
+
+		//Una vez hecho esto ya tendremos bien las salidas		
+	}
 }
 
 // ------------------------------
@@ -219,8 +243,22 @@ double aux = 0.0;
 // funcionError=1 => EntropiaCruzada // funcionError=0 => MSE
 double PerceptronMulticapa::calcularErrorSalida(double* target, int funcionError) {
 
+	double error = 0.0;
 	//Aqui se podrá calcular de dos formas, una ya la tenemos de la practica anterior
+	if(funcionError == 0){
+		//El error que se calcula es el de mse
+		for(int i=0; i<pCapas[nNumCapas-1].nNumNeuronas; i++){
+			error += pow(target[i] - pCapas[nNumCapas-1].pNeuronas[i].x, 2);
+		}
+		error = error/pCapas[nNumCapas-1].nNumNeuronas;
+	}else{
+		//Se calcula el error por entropiacruzada
+		for(int i=0; i<pCapas[nNumCapas-1].nNumNeuronas; i++){
+			error += target[i] * log(pCapas[nNumCapas-1].pNeuronas[i].x);
+		}
+	}
 
+	return error;
 }
 
 
@@ -229,17 +267,92 @@ double PerceptronMulticapa::calcularErrorSalida(double* target, int funcionError
 // funcionError=1 => EntropiaCruzada // funcionError=0 => MSE
 void PerceptronMulticapa::retropropagarError(double* objetivo, int funcionError) {
 
+	double sumatorio2=0.0;
+	//Solo tenemos que cambiar las derivadas para la capa de salida que es la de tipo softmax
+	//Además también se mirará la función de error a considerar.
+	if(pCapas[nNumCapas-1].tipo == 0){
+		for(int i=0; i<pCapas[nNumCapas-1].nNumNeuronas; i++){
+			if(funcionError == 0){
+				pCapas[nNumCapas-1].pNeuronas[i].dX =  (-1)*(objetivo[i] - pCapas[nNumCapas-1].pNeuronas[i].x) * pCapas[nNumCapas-1].pNeuronas[i].x * (1 - pCapas[nNumCapas-1].pNeuronas[i].x);
+			}else{
+				pCapas[nNumCapas-1].pNeuronas[i].dX =  (-1)*(objetivo[i]/pCapas[nNumCapas-1].pNeuronas[i].x) * pCapas[nNumCapas-1].pNeuronas[i].x * (1 - pCapas[nNumCapas-1].pNeuronas[i].x);
+			}
+		}
+	}else{
+		//Ahora para la capa de salida con softmax es distinto
+		for(int j=0; j<pCapas[nNumCapas-1].nNumNeuronas; j++){
+			for(int i=0; i<pCapas[nNumCapas-1].nNumNeuronas; i++){
+				if(i==j){
+					if(funcionError == 0){
+						sumatorio2 += (objetivo[i]-pCapas[nNumCapas-1].pNeuronas[i].x) * pCapas[nNumCapas-1].pNeuronas[i].x * (1 - pCapas[nNumCapas-1].pNeuronas[i].x);
+					}else{
+						sumatorio2 += (objetivo[i]/pCapas[nNumCapas-1].pNeuronas[i].x) * pCapas[nNumCapas-1].pNeuronas[i].x * (1 - pCapas[nNumCapas-1].pNeuronas[i].x);
+					}
+				}else{
+					if(funcionError == 0){
+						sumatorio2 += (objetivo[i]-pCapas[nNumCapas-1].pNeuronas[i].x) * pCapas[nNumCapas-1].pNeuronas[i].x * (0 - pCapas[nNumCapas-1].pNeuronas[i].x);
+					}else{
+						sumatorio2 += (objetivo[i]/pCapas[nNumCapas-1].pNeuronas[i].x) * pCapas[nNumCapas-1].pNeuronas[i].x * (0 - pCapas[nNumCapas-1].pNeuronas[i].x);
+					}
+				}
+			}
+			pCapas[nNumCapas-1].pNeuronas[j].dX = (-1)*sumatorio2;
+			sumatorio2 = 0.0;
+		}
+	}
+
+	//Esto tiene pinta de estar bien
+
+	double sumatorio = 0.0;
+
+	//Y ahora para las otras capas
+	for(int i=nNumCapas-2; i>=0; i--){
+		for(int j=0; j<pCapas[i].nNumNeuronas; j++){
+			//Calculamos el sumatorio de las entradas y la derivada de la capa siguiente
+			for(int k=0; k<pCapas[i+1].nNumNeuronas; k++){
+				sumatorio += pCapas[i+1].pNeuronas[k].w[j] * pCapas[i+1].pNeuronas[k].dX;
+			}
+
+			pCapas[i].pNeuronas[j].dX = sumatorio * pCapas[i].pNeuronas[j].x * (1 -pCapas[i].pNeuronas[j].x);
+		}
+	}
+
 }
 
 // ------------------------------
 // Acumular los cambios producidos por un patrón en deltaW
 void PerceptronMulticapa::acumularCambio() {
 
+	for(int i=1; i<nNumCapas; i++){
+		for(int j=0; j<pCapas[i].nNumNeuronas; j++){
+			for(int k=1; k<pCapas[i-1].nNumNeuronas+1; k++){
+				pCapas[i].pNeuronas[j].deltaW[k] +=  pCapas[i].pNeuronas[j].dX * pCapas[i-1].pNeuronas[k-1].x;
+			}
+
+			if(bSesgo){
+				pCapas[i].pNeuronas[j].deltaW[0] += pCapas[i].pNeuronas[j].dX;
+			}
+		}
+	}
+
 }
 
 // ------------------------------
 // Actualizar los pesos de la red, desde la segunda capa hasta la última
 void PerceptronMulticapa::ajustarPesos() {
+
+	for(int i=1; i<nNumCapas; i++){
+		for(int j=0; j<pCapas[i].nNumNeuronas; j++){
+
+			for(int k=1; k<pCapas[i-1].nNumNeuronas+1; k++){
+				pCapas[i].pNeuronas[j].w[k] += (-1)*dEta * pCapas[i].pNeuronas[j].deltaW[k] - dMu * (dEta*pCapas[i].pNeuronas[j].ultimoDeltaW[k]);
+			}
+
+			if(bSesgo){
+				pCapas[i].pNeuronas[j].w[0] += (-1)*dEta * pCapas[i].pNeuronas[j].deltaW[0] - dMu * (dEta*pCapas[i].pNeuronas[j].ultimoDeltaW[0]);
+			}
+		}
+	}
 
 }
 
@@ -255,6 +368,7 @@ void PerceptronMulticapa::imprimirRed() {
 				for(int k=0; k<pCapas[i-1].nNumNeuronas; k++){
 					cout << pCapas[i].pNeuronas[j].w[k] << " ";
 				}
+				cout << "Salida: " << pCapas[i].pNeuronas[j].x;
 				cout << endl;
 
 			}
@@ -270,7 +384,28 @@ void PerceptronMulticapa::imprimirRed() {
 // funcionError=1 => EntropiaCruzada // funcionError=0 => MSE
 void PerceptronMulticapa::simularRed(double* entrada, double* objetivo, int funcionError) {
 
+	if(bOnline){
+		//Lo del deltaW no sé como es, ah si se pone todo a cero
+		for(int i=1; i<nNumCapas; i++){
+			for(int j=0; j<pCapas[i].nNumNeuronas; j++){
+				for(int k=0; k<pCapas[i-1].nNumNeuronas; k++){
+					pCapas[i].pNeuronas[j].ultimoDeltaW[k] = pCapas[i].pNeuronas[j].deltaW[k];
+					pCapas[i].pNeuronas[j].deltaW[k] = 0.0;
+				}
+			}
+		}
+		alimentarEntradas(entrada);
+		propagarEntradas();
+		retropropagarError(objetivo, funcionError);
+		acumularCambio();
+		ajustarPesos();
 
+	}else{
+		alimentarEntradas(entrada);
+		propagarEntradas();
+		retropropagarError(objetivo, funcionError);
+		acumularCambio();
+	}
 
 }
 
@@ -337,6 +472,24 @@ Datos* PerceptronMulticapa::leerDatos(const char *archivo) {
 // Entrenar la red para un determinado fichero de datos (pasar una vez por todos los patrones)
 // Si es offline, después de pasar por ellos hay que ajustar pesos. Sino, ya se ha ajustado en cada patrón
 void PerceptronMulticapa::entrenar(Datos* pDatosTrain, int funcionError) {
+	//En esta función llamamos a la funcion de simularRed
+	
+	if(!bOnline){
+		for(int i=1; i<nNumCapas; i++){
+			for(int j=0; j<pCapas[i].nNumNeuronas; j++){
+				for(int k=0; k<pCapas[i-1].nNumNeuronas; k++){
+					pCapas[i].pNeuronas[j].ultimoDeltaW[k] = pCapas[i].pNeuronas[j].deltaW[k];
+					pCapas[i].pNeuronas[j].deltaW[k] = 0.0;
+				}
+			}
+		}
+	}
+	for (int i=0; i<pDatosTrain->nNumPatrones; i++){
+		simularRed(pDatosTrain->entradas[i], pDatosTrain->salidas[i], funcionError);
+	}
+	if(!bOnline){
+		ajustarPesos();
+	}
 
 }
 
@@ -345,13 +498,66 @@ void PerceptronMulticapa::entrenar(Datos* pDatosTrain, int funcionError) {
 // funcionError=1 => EntropiaCruzada // funcionError=0 => MSE
 double PerceptronMulticapa::test(Datos* pDatosTest, int funcionError) {
 
+	//Tenemos que probar para todos los patrones
+	double dAvgTestError = 0;
+	for(int i=0; i<pDatosTest->nNumPatrones; i++){
+		//Alimentamos entradas y propagamos para despues sacar el error
+		alimentarEntradas(pDatosTest->entradas[i]);
+		propagarEntradas();
+		dAvgTestError += calcularErrorSalida(pDatosTest->salidas[i], funcionError);
+	}
+	//Despues de probar para todos los patrones, miramos la funcion error, porque cada una se divide por una cosa distinta
+	if(funcionError == 1){
+		dAvgTestError /= (-1)*pDatosTest->nNumPatrones * pCapas[nNumCapas-1].nNumNeuronas;
+	}else{
+		dAvgTestError /= pDatosTest->nNumPatrones;
+	}
+
+	return dAvgTestError;
 }
 
 
 // ------------------------------
 // Probar la red con un conjunto de datos y devolver el error CCR cometido
 double PerceptronMulticapa::testClassification(Datos* pDatosTest) {
-	//Que se hace aqui?
+	double ccr = 0.0;
+
+	//Tenemos que mirar las salidas tanto de nuestra red neuronal como del test y quedarnos con la mas grande, si dicha neurona es la misma entonces aumentamos el ccr
+	int indiceDatosTest = 0;
+	int indiceNeuronas = 0;
+	double maximoTest = 0.0, maximoNeuronas =0.0;
+
+	for(int i=0; i<pDatosTest->nNumPatrones; i++){
+		indiceNeuronas = 0;
+		indiceDatosTest = 0;
+		maximoTest = 0.0;
+		maximoNeuronas = 0.0;
+		alimentarEntradas(pDatosTest->entradas[i]);
+		propagarEntradas();
+
+		for(int j=0; j<pCapas[nNumCapas-1].nNumNeuronas; j++){
+
+			//Nos vamos quedando con el mayor indice
+			if(pCapas[nNumCapas-1].pNeuronas[j].x > maximoNeuronas){
+				maximoNeuronas = pCapas[nNumCapas-1].pNeuronas[j].x;
+				indiceNeuronas = j;
+			}
+
+			if(pDatosTest->salidas[i][j] > maximoTest){
+				maximoTest = pDatosTest->salidas[i][j];
+				indiceDatosTest = j;
+			}
+		}
+
+		//Ahora comprobamos si son el mismo y actuamos en consecuencia
+		if(indiceNeuronas == indiceDatosTest){
+			ccr++;
+		}
+	}
+	//Aplicamos al ccr el efecto porcentaje
+	ccr = 100 * ccr/pDatosTest->nNumPatrones;
+
+	return ccr;
 }
 
 // ------------------------------
@@ -368,14 +574,11 @@ void PerceptronMulticapa::ejecutarAlgoritmo(Datos * pDatosTrain, Datos * pDatosT
 
 	double minTrainError = 0;
 	int numSinMejorar;
-	//double testError = 0;
 
 	// Aprendizaje del algoritmo
 	do {
 
 		entrenar(pDatosTrain,funcionError);
-
-		//double trainError = testClassification(pDatosTrain);
 		double trainError = test(pDatosTrain,funcionError);
 		if(countTrain==0 || fabs(trainError - minTrainError) > 0.00001){
 			minTrainError = trainError;
@@ -389,10 +592,7 @@ void PerceptronMulticapa::ejecutarAlgoritmo(Datos * pDatosTrain, Datos * pDatosT
 		if(numSinMejorar==50)
 			countTrain = maxiter;
 
-		//testError = testClassification(pDatosTest);
-		//testError = test(pDatosTest,funcionError);
 		countTrain++;
-
 		cout << "Iteración " << countTrain << "\t Error de entrenamiento: " << trainError << endl;
 
 	} while ( countTrain<maxiter );

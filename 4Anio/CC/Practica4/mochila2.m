@@ -1,8 +1,10 @@
-function valida = mochila(s)
+function valida = mochila2(s)
 
+%Esta es una funcion como mochila pero sin comentarios para que en la
+%funcion de criptoanalisis no este todo el rato saliendo por pantalla los
+%comentarios de la funcion mochila
 n = length(s);
-%Funcion que comprueba si una mochila es supercreciente y para ello realiza
-%una serie de pruebas en un bucle para todos sus elementos
+
 for i=1:n-1
    if mod(s(i), 1) == 0 &&  s(i)>0
        sumatorio = 0;
@@ -10,19 +12,16 @@ for i=1:n-1
             sumatorio = sumatorio + s(j);
        end
        if s(i+1) < s(i)
-           disp('La mochila no esta ordenada crecientemente');
            valida = 0;
            return
        end
        
        if sumatorio > s(i+1)
             valida = 0;
-            disp('La mochila no es supercreciente');
             return
        end
    else
        valida = 0;
-       disp('Los elementos de la mochila no son naturales o positivos');
        return
    end
 end
