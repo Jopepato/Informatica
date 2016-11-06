@@ -124,9 +124,8 @@ int main(int argc, char **argv) {
 	mlp.bSesgo = bflag;
 	// Online?
 	mlp.bOnline = oflag;
-    if(oflag==false){
-        evalue = evalue/pDatosTest->nNumPatrones;
-    }
+    
+    evalue = evalue/pDatosTrain->nNumPatrones;
 	// Eta
 	mlp.dEta = evalue;
 	// Mu

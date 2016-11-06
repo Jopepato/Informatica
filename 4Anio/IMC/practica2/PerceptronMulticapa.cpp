@@ -195,7 +195,7 @@ void PerceptronMulticapa::propagarEntradas() {
 //Hay que cambiar esta funcion para la ultima capa
 double aux = 0.0;
 double sumatorioNet = 0.0;
-double net = 0.0;
+double net[pCapas[nNumCapas-1].nNumNeuronas];
 	for(int i=1; i<nNumCapas; i++){
 		for(int j=0; j<pCapas[i].nNumNeuronas; j++){
 			for(int k=1; k<pCapas[i-1].nNumNeuronas+1; k++){
@@ -204,37 +204,22 @@ double net = 0.0;
 			if(bSesgo){
 				aux += pCapas[i].pNeuronas[j].w[0];
 			}
-			pCapas[i].pNeuronas[j].x = (1/(1 + exp((-1)*aux)));
-			aux = 0.0;
+
+			if(i == nNumCapas-1 && pCapas[nNumCapas-1].tipo == 1){
+				net[j] = exp(aux);
+				sumatorioNet += exp(aux);
+			}else{
+				pCapas[i].pNeuronas[j].x = (1/(1 + exp((-1)*aux)));
+			}
 		}
 	}
 
 	//Voy a hacer otro bucle para ver si la ultima capa es softmax
+	//Ahora hacemos un bucle para esa capa de salida unicamente
 	if(pCapas[nNumCapas-1].tipo == 1){
-		//Tenemos softmax en la ultima capa
 		for(int i=0; i<pCapas[nNumCapas-1].nNumNeuronas; i++){
-			for(int j=1; j<pCapas[nNumCapas-2].nNumNeuronas; j++){
-				net += pCapas[nNumCapas-1].pNeuronas[i].w[j] * pCapas[nNumCapas-2].pNeuronas[j-1].x;
-			}
-			if(bSesgo){
-				net += pCapas[nNumCapas-1].pNeuronas[i].w[0];
-			}
-			sumatorioNet += exp(net);
-			net = 0.0;
+			pCapas[nNumCapas-1].pNeuronas[i].x = net[i]/sumatorioNet;
 		}
-		//Una vez tenemos el sumatorio completo podemos sacar los outs de las salidas de la ultima capa
-		for(int i=0; i<pCapas[nNumCapas-1].nNumNeuronas; i++){
-			for(int j=1; j<pCapas[nNumCapas-2].nNumNeuronas; j++){
-				net += pCapas[nNumCapas-1].pNeuronas[i].w[j] * pCapas[nNumCapas-2].pNeuronas[j-1].x;
-			}
-			if(bSesgo){
-				net += pCapas[nNumCapas-1].pNeuronas[i].w[0];
-			}
-			pCapas[nNumCapas-1].pNeuronas[i].x = exp(net)/exp(sumatorioNet);
-			net = 0.0;
-		}
-
-		//Una vez hecho esto ya tendremos bien las salidas		
 	}
 }
 
@@ -254,8 +239,11 @@ double PerceptronMulticapa::calcularErrorSalida(double* target, int funcionError
 	}else{
 		//Se calcula el error por entropiacruzada
 		for(int i=0; i<pCapas[nNumCapas-1].nNumNeuronas; i++){
+			//cout << pCapas[nNumCapas-1].pNeuronas[i].x << endl;
 			error += target[i] * log(pCapas[nNumCapas-1].pNeuronas[i].x);
 		}
+		//cout << error << endl;
+		//fflush(stdout);
 	}
 
 	return error;
@@ -284,15 +272,15 @@ void PerceptronMulticapa::retropropagarError(double* objetivo, int funcionError)
 			for(int i=0; i<pCapas[nNumCapas-1].nNumNeuronas; i++){
 				if(i==j){
 					if(funcionError == 0){
-						sumatorio2 += (objetivo[i]-pCapas[nNumCapas-1].pNeuronas[i].x) * pCapas[nNumCapas-1].pNeuronas[i].x * (1 - pCapas[nNumCapas-1].pNeuronas[i].x);
+						sumatorio2 += (objetivo[i]-pCapas[nNumCapas-1].pNeuronas[i].x) * pCapas[nNumCapas-1].pNeuronas[j].x * (1 - pCapas[nNumCapas-1].pNeuronas[i].x);
 					}else{
-						sumatorio2 += (objetivo[i]/pCapas[nNumCapas-1].pNeuronas[i].x) * pCapas[nNumCapas-1].pNeuronas[i].x * (1 - pCapas[nNumCapas-1].pNeuronas[i].x);
+						sumatorio2 += (objetivo[i]/pCapas[nNumCapas-1].pNeuronas[i].x) * pCapas[nNumCapas-1].pNeuronas[j].x * (1 - pCapas[nNumCapas-1].pNeuronas[i].x);
 					}
 				}else{
 					if(funcionError == 0){
-						sumatorio2 += (objetivo[i]-pCapas[nNumCapas-1].pNeuronas[i].x) * pCapas[nNumCapas-1].pNeuronas[i].x * (0 - pCapas[nNumCapas-1].pNeuronas[i].x);
+						sumatorio2 += (objetivo[i]-pCapas[nNumCapas-1].pNeuronas[i].x) * pCapas[nNumCapas-1].pNeuronas[j].x * (0 - pCapas[nNumCapas-1].pNeuronas[i].x);
 					}else{
-						sumatorio2 += (objetivo[i]/pCapas[nNumCapas-1].pNeuronas[i].x) * pCapas[nNumCapas-1].pNeuronas[i].x * (0 - pCapas[nNumCapas-1].pNeuronas[i].x);
+						sumatorio2 += (objetivo[i]/pCapas[nNumCapas-1].pNeuronas[i].x) * pCapas[nNumCapas-1].pNeuronas[j].x * (0 - pCapas[nNumCapas-1].pNeuronas[i].x);
 					}
 				}
 			}
@@ -310,7 +298,7 @@ void PerceptronMulticapa::retropropagarError(double* objetivo, int funcionError)
 		for(int j=0; j<pCapas[i].nNumNeuronas; j++){
 			//Calculamos el sumatorio de las entradas y la derivada de la capa siguiente
 			for(int k=0; k<pCapas[i+1].nNumNeuronas; k++){
-				sumatorio += pCapas[i+1].pNeuronas[k].w[j] * pCapas[i+1].pNeuronas[k].dX;
+				sumatorio += pCapas[i+1].pNeuronas[k].w[j+1] * pCapas[i+1].pNeuronas[k].dX;
 			}
 
 			pCapas[i].pNeuronas[j].dX = sumatorio * pCapas[i].pNeuronas[j].x * (1 -pCapas[i].pNeuronas[j].x);
