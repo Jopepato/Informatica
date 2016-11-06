@@ -139,7 +139,6 @@ void PerceptronMulticapa::alimentarEntradas(double* input) {
 
 	for(int i=0; i<pCapas[0].nNumNeuronas; i++){
 		pCapas[0].pNeuronas[i].x = input[i];
-		pCapas[0].pNeuronas[i].dX = input[i];
 	}
 }
 
@@ -211,6 +210,7 @@ double net[pCapas[nNumCapas-1].nNumNeuronas];
 			}else{
 				pCapas[i].pNeuronas[j].x = (1/(1 + exp((-1)*aux)));
 			}
+			aux = 0.0;
 		}
 	}
 
@@ -239,11 +239,8 @@ double PerceptronMulticapa::calcularErrorSalida(double* target, int funcionError
 	}else{
 		//Se calcula el error por entropiacruzada
 		for(int i=0; i<pCapas[nNumCapas-1].nNumNeuronas; i++){
-			//cout << pCapas[nNumCapas-1].pNeuronas[i].x << endl;
 			error += target[i] * log(pCapas[nNumCapas-1].pNeuronas[i].x);
 		}
-		//cout << error << endl;
-		//fflush(stdout);
 	}
 
 	return error;
@@ -302,6 +299,7 @@ void PerceptronMulticapa::retropropagarError(double* objetivo, int funcionError)
 			}
 
 			pCapas[i].pNeuronas[j].dX = sumatorio * pCapas[i].pNeuronas[j].x * (1 -pCapas[i].pNeuronas[j].x);
+			sumatorio = 0.0;
 		}
 	}
 
@@ -559,6 +557,9 @@ void PerceptronMulticapa::ejecutarAlgoritmo(Datos * pDatosTrain, Datos * pDatosT
 
 	// Inicialización de pesos
 	pesosAleatorios();
+	//ofstream fichero;
+
+	//fichero.open("ccr2.txt");
 
 	double minTrainError = 0;
 	int numSinMejorar;
@@ -582,6 +583,9 @@ void PerceptronMulticapa::ejecutarAlgoritmo(Datos * pDatosTrain, Datos * pDatosT
 
 		countTrain++;
 		cout << "Iteración " << countTrain << "\t Error de entrenamiento: " << trainError << endl;
+		//Aqui vamos a guardar el ccr en un fichero para hacer una grafiquita
+		//fichero << countTrain << " " << testClassification(pDatosTrain) << endl;
+
 
 	} while ( countTrain<maxiter );
 
@@ -611,6 +615,6 @@ void PerceptronMulticapa::ejecutarAlgoritmo(Datos * pDatosTrain, Datos * pDatosT
 	*errorTrain=minTrainError;
 	*ccrTest = testClassification(pDatosTest);
 	*ccrTrain = testClassification(pDatosTrain);
-
+	//fichero.close();
 }
 

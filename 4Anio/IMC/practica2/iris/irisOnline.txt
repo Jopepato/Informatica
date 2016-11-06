@@ -1,0 +1,1034 @@
+**********
+SEMILLA 10
+**********
+Iteración 1	 Error de entrenamiento: 0.355706
+Iteración 2	 Error de entrenamiento: 0.329412
+Iteración 3	 Error de entrenamiento: 0.233326
+Iteración 4	 Error de entrenamiento: 0.199719
+Iteración 5	 Error de entrenamiento: 0.187137
+Iteración 6	 Error de entrenamiento: 0.172014
+Iteración 7	 Error de entrenamiento: 0.156396
+Iteración 8	 Error de entrenamiento: 0.148137
+Iteración 9	 Error de entrenamiento: 0.147429
+Iteración 10	 Error de entrenamiento: 0.144191
+Iteración 11	 Error de entrenamiento: 0.134547
+Iteración 12	 Error de entrenamiento: 0.121838
+Iteración 13	 Error de entrenamiento: 0.111447
+Iteración 14	 Error de entrenamiento: 0.105342
+Iteración 15	 Error de entrenamiento: 0.100694
+Iteración 16	 Error de entrenamiento: 0.095157
+Iteración 17	 Error de entrenamiento: 0.0904152
+Iteración 18	 Error de entrenamiento: 0.0862935
+Iteración 19	 Error de entrenamiento: 0.0827629
+Iteración 20	 Error de entrenamiento: 0.0814577
+Iteración 21	 Error de entrenamiento: 0.0827339
+Iteración 22	 Error de entrenamiento: 0.0838957
+Iteración 23	 Error de entrenamiento: 0.0834541
+Iteración 24	 Error de entrenamiento: 0.0817844
+Iteración 25	 Error de entrenamiento: 0.0791534
+Iteración 26	 Error de entrenamiento: 0.0755579
+Iteración 27	 Error de entrenamiento: 0.0714953
+Iteración 28	 Error de entrenamiento: 0.0690153
+Iteración 29	 Error de entrenamiento: 0.0693637
+Iteración 30	 Error de entrenamiento: 0.0686796
+Iteración 31	 Error de entrenamiento: 0.0681552
+Iteración 32	 Error de entrenamiento: 0.0689361
+Iteración 33	 Error de entrenamiento: 0.068234
+Iteración 34	 Error de entrenamiento: 0.067217
+Iteración 35	 Error de entrenamiento: 0.0661422
+Iteración 36	 Error de entrenamiento: 0.0637471
+Iteración 37	 Error de entrenamiento: 0.0616132
+Iteración 38	 Error de entrenamiento: 0.0594706
+Iteración 39	 Error de entrenamiento: 0.0578846
+Iteración 40	 Error de entrenamiento: 0.0576633
+Iteración 41	 Error de entrenamiento: 0.0583397
+Iteración 42	 Error de entrenamiento: 0.0589379
+Iteración 43	 Error de entrenamiento: 0.058957
+Iteración 44	 Error de entrenamiento: 0.0583404
+Iteración 45	 Error de entrenamiento: 0.0570123
+Iteración 46	 Error de entrenamiento: 0.0550946
+Iteración 47	 Error de entrenamiento: 0.0531127
+Iteración 48	 Error de entrenamiento: 0.0518422
+Iteración 49	 Error de entrenamiento: 0.0516211
+Iteración 50	 Error de entrenamiento: 0.0518081
+Iteración 51	 Error de entrenamiento: 0.0518786
+Iteración 52	 Error de entrenamiento: 0.052205
+Iteración 53	 Error de entrenamiento: 0.0523468
+Iteración 54	 Error de entrenamiento: 0.0518567
+Iteración 55	 Error de entrenamiento: 0.0511775
+Iteración 56	 Error de entrenamiento: 0.0502776
+Iteración 57	 Error de entrenamiento: 0.0490891
+Iteración 58	 Error de entrenamiento: 0.0480216
+Iteración 59	 Error de entrenamiento: 0.0473566
+Iteración 60	 Error de entrenamiento: 0.0472156
+Iteración 61	 Error de entrenamiento: 0.0475277
+Iteración 62	 Error de entrenamiento: 0.0479671
+Iteración 63	 Error de entrenamiento: 0.0481164
+Iteración 64	 Error de entrenamiento: 0.0477821
+Iteración 65	 Error de entrenamiento: 0.0470954
+Iteración 66	 Error de entrenamiento: 0.046241
+Iteración 67	 Error de entrenamiento: 0.0453403
+Iteración 68	 Error de entrenamiento: 0.0445595
+Iteración 69	 Error de entrenamiento: 0.0441224
+Iteración 70	 Error de entrenamiento: 0.0441316
+Iteración 71	 Error de entrenamiento: 0.0444268
+Iteración 72	 Error de entrenamiento: 0.0446703
+Iteración 73	 Error de entrenamiento: 0.0446612
+Iteración 74	 Error de entrenamiento: 0.0445289
+Iteración 75	 Error de entrenamiento: 0.0443906
+Iteración 76	 Error de entrenamiento: 0.0440762
+Iteración 77	 Error de entrenamiento: 0.0435158
+Iteración 78	 Error de entrenamiento: 0.0429413
+Iteración 79	 Error de entrenamiento: 0.0425662
+Iteración 80	 Error de entrenamiento: 0.0424424
+Iteración 81	 Error de entrenamiento: 0.0424921
+Iteración 82	 Error de entrenamiento: 0.0425533
+Iteración 83	 Error de entrenamiento: 0.0424922
+Iteración 84	 Error de entrenamiento: 0.0423149
+Iteración 85	 Error de entrenamiento: 0.042144
+Iteración 86	 Error de entrenamiento: 0.0419986
+Iteración 87	 Error de entrenamiento: 0.0417133
+Iteración 88	 Error de entrenamiento: 0.0412624
+Iteración 89	 Error de entrenamiento: 0.0408304
+Iteración 90	 Error de entrenamiento: 0.0405471
+Iteración 91	 Error de entrenamiento: 0.040413
+Iteración 92	 Error de entrenamiento: 0.0403623
+Iteración 93	 Error de entrenamiento: 0.0403397
+Iteración 94	 Error de entrenamiento: 0.0403277
+Iteración 95	 Error de entrenamiento: 0.0403116
+Iteración 96	 Error de entrenamiento: 0.040275
+Iteración 97	 Error de entrenamiento: 0.0402163
+Iteración 98	 Error de entrenamiento: 0.0401347
+Iteración 99	 Error de entrenamiento: 0.0400193
+Iteración 100	 Error de entrenamiento: 0.039862
+Iteración 101	 Error de entrenamiento: 0.03967
+Iteración 102	 Error de entrenamiento: 0.0394687
+Iteración 103	 Error de entrenamiento: 0.0392982
+Iteración 104	 Error de entrenamiento: 0.0391932
+Iteración 105	 Error de entrenamiento: 0.0391505
+Iteración 106	 Error de entrenamiento: 0.039126
+Iteración 107	 Error de entrenamiento: 0.0390701
+Iteración 108	 Error de entrenamiento: 0.0389611
+Iteración 109	 Error de entrenamiento: 0.0388179
+Iteración 110	 Error de entrenamiento: 0.0386833
+Iteración 111	 Error de entrenamiento: 0.0385691
+Iteración 112	 Error de entrenamiento: 0.0384379
+Iteración 113	 Error de entrenamiento: 0.0382661
+Iteración 114	 Error de entrenamiento: 0.0380799
+Iteración 115	 Error de entrenamiento: 0.0379179
+Iteración 116	 Error de entrenamiento: 0.0377991
+Iteración 117	 Error de entrenamiento: 0.0377135
+Iteración 118	 Error de entrenamiento: 0.0376385
+Iteración 119	 Error de entrenamiento: 0.0375629
+Iteración 120	 Error de entrenamiento: 0.0374867
+Iteración 121	 Error de entrenamiento: 0.03741
+Iteración 122	 Error de entrenamiento: 0.0373347
+Iteración 123	 Error de entrenamiento: 0.0372615
+Iteración 124	 Error de entrenamiento: 0.0371849
+Iteración 125	 Error de entrenamiento: 0.0370984
+Iteración 126	 Error de entrenamiento: 0.0369992
+Iteración 127	 Error de entrenamiento: 0.0368879
+Iteración 128	 Error de entrenamiento: 0.0367679
+Iteración 129	 Error de entrenamiento: 0.0366468
+Iteración 130	 Error de entrenamiento: 0.0365315
+Iteración 131	 Error de entrenamiento: 0.0364237
+Iteración 132	 Error de entrenamiento: 0.0363212
+Iteración 133	 Error de entrenamiento: 0.036219
+Iteración 134	 Error de entrenamiento: 0.0361132
+Iteración 135	 Error de entrenamiento: 0.0360041
+Iteración 136	 Error de entrenamiento: 0.0358963
+Iteración 137	 Error de entrenamiento: 0.0357905
+Iteración 138	 Error de entrenamiento: 0.0356818
+Iteración 139	 Error de entrenamiento: 0.0355645
+Iteración 140	 Error de entrenamiento: 0.0354392
+Iteración 141	 Error de entrenamiento: 0.0353122
+Iteración 142	 Error de entrenamiento: 0.0351899
+Iteración 143	 Error de entrenamiento: 0.035073
+Iteración 144	 Error de entrenamiento: 0.0349568
+Iteración 145	 Error de entrenamiento: 0.0348377
+Iteración 146	 Error de entrenamiento: 0.0347164
+Iteración 147	 Error de entrenamiento: 0.0345964
+Iteración 148	 Error de entrenamiento: 0.0344812
+Iteración 149	 Error de entrenamiento: 0.0343718
+Iteración 150	 Error de entrenamiento: 0.0342665
+Iteración 151	 Error de entrenamiento: 0.0341632
+Iteración 152	 Error de entrenamiento: 0.0340618
+Iteración 153	 Error de entrenamiento: 0.0339635
+Iteración 154	 Error de entrenamiento: 0.0338692
+Iteración 155	 Error de entrenamiento: 0.0337785
+Iteración 156	 Error de entrenamiento: 0.0336896
+Iteración 157	 Error de entrenamiento: 0.0336005
+Iteración 158	 Error de entrenamiento: 0.03351
+Iteración 159	 Error de entrenamiento: 0.0334185
+Iteración 160	 Error de entrenamiento: 0.0333267
+Iteración 161	 Error de entrenamiento: 0.0332354
+Iteración 162	 Error de entrenamiento: 0.0331447
+Iteración 163	 Error de entrenamiento: 0.0330537
+Iteración 164	 Error de entrenamiento: 0.0329619
+Iteración 165	 Error de entrenamiento: 0.0328689
+Iteración 166	 Error de entrenamiento: 0.0327754
+Iteración 167	 Error de entrenamiento: 0.0326816
+Iteración 168	 Error de entrenamiento: 0.0325878
+Iteración 169	 Error de entrenamiento: 0.0324934
+Iteración 170	 Error de entrenamiento: 0.0323979
+Iteración 171	 Error de entrenamiento: 0.0323008
+Iteración 172	 Error de entrenamiento: 0.0322022
+Iteración 173	 Error de entrenamiento: 0.0321024
+Iteración 174	 Error de entrenamiento: 0.0320018
+Iteración 175	 Error de entrenamiento: 0.0319005
+Iteración 176	 Error de entrenamiento: 0.0317984
+Iteración 177	 Error de entrenamiento: 0.0316956
+Iteración 178	 Error de entrenamiento: 0.0315924
+Iteración 179	 Error de entrenamiento: 0.031489
+Iteración 180	 Error de entrenamiento: 0.0313855
+Iteración 181	 Error de entrenamiento: 0.031282
+Iteración 182	 Error de entrenamiento: 0.0311779
+Iteración 183	 Error de entrenamiento: 0.0310734
+Iteración 184	 Error de entrenamiento: 0.0309683
+Iteración 185	 Error de entrenamiento: 0.0308629
+Iteración 186	 Error de entrenamiento: 0.0307573
+Iteración 187	 Error de entrenamiento: 0.0306517
+Iteración 188	 Error de entrenamiento: 0.030546
+Iteración 189	 Error de entrenamiento: 0.0304406
+Iteración 190	 Error de entrenamiento: 0.0303356
+Iteración 191	 Error de entrenamiento: 0.0302311
+Iteración 192	 Error de entrenamiento: 0.0301271
+Iteración 193	 Error de entrenamiento: 0.0300235
+Iteración 194	 Error de entrenamiento: 0.0299203
+Iteración 195	 Error de entrenamiento: 0.0298173
+Iteración 196	 Error de entrenamiento: 0.0297147
+Iteración 197	 Error de entrenamiento: 0.0296123
+Iteración 198	 Error de entrenamiento: 0.0295102
+Iteración 199	 Error de entrenamiento: 0.0294084
+Iteración 200	 Error de entrenamiento: 0.0293068
+Iteración 201	 Error de entrenamiento: 0.0292055
+Iteración 202	 Error de entrenamiento: 0.0291046
+Iteración 203	 Error de entrenamiento: 0.0290041
+Iteración 204	 Error de entrenamiento: 0.0289041
+Iteración 205	 Error de entrenamiento: 0.0288043
+Iteración 206	 Error de entrenamiento: 0.0287049
+Iteración 207	 Error de entrenamiento: 0.0286058
+Iteración 208	 Error de entrenamiento: 0.0285071
+Iteración 209	 Error de entrenamiento: 0.0284087
+Iteración 210	 Error de entrenamiento: 0.0283107
+Iteración 211	 Error de entrenamiento: 0.028213
+Iteración 212	 Error de entrenamiento: 0.0281157
+Iteración 213	 Error de entrenamiento: 0.0280187
+Iteración 214	 Error de entrenamiento: 0.0279222
+Iteración 215	 Error de entrenamiento: 0.0278261
+Iteración 216	 Error de entrenamiento: 0.0277306
+Iteración 217	 Error de entrenamiento: 0.0276355
+Iteración 218	 Error de entrenamiento: 0.027541
+Iteración 219	 Error de entrenamiento: 0.027447
+Iteración 220	 Error de entrenamiento: 0.0273536
+Iteración 221	 Error de entrenamiento: 0.0272608
+Iteración 222	 Error de entrenamiento: 0.0271687
+Iteración 223	 Error de entrenamiento: 0.0270773
+Iteración 224	 Error de entrenamiento: 0.0269865
+Iteración 225	 Error de entrenamiento: 0.0268965
+Iteración 226	 Error de entrenamiento: 0.0268072
+Iteración 227	 Error de entrenamiento: 0.0267188
+Iteración 228	 Error de entrenamiento: 0.0266312
+Iteración 229	 Error de entrenamiento: 0.0265444
+Iteración 230	 Error de entrenamiento: 0.0264585
+Iteración 231	 Error de entrenamiento: 0.0263735
+Iteración 232	 Error de entrenamiento: 0.0262894
+Iteración 233	 Error de entrenamiento: 0.0262063
+Iteración 234	 Error de entrenamiento: 0.0261242
+Iteración 235	 Error de entrenamiento: 0.026043
+Iteración 236	 Error de entrenamiento: 0.0259629
+Iteración 237	 Error de entrenamiento: 0.0258839
+Iteración 238	 Error de entrenamiento: 0.0258059
+Iteración 239	 Error de entrenamiento: 0.0257289
+Iteración 240	 Error de entrenamiento: 0.0256531
+Iteración 241	 Error de entrenamiento: 0.0255783
+Iteración 242	 Error de entrenamiento: 0.0255047
+Iteración 243	 Error de entrenamiento: 0.0254322
+Iteración 244	 Error de entrenamiento: 0.0253608
+Iteración 245	 Error de entrenamiento: 0.0252905
+Iteración 246	 Error de entrenamiento: 0.0252214
+Iteración 247	 Error de entrenamiento: 0.0251534
+Iteración 248	 Error de entrenamiento: 0.0250865
+Iteración 249	 Error de entrenamiento: 0.0250208
+Iteración 250	 Error de entrenamiento: 0.0249562
+Iteración 251	 Error de entrenamiento: 0.0248928
+Iteración 252	 Error de entrenamiento: 0.0248304
+Iteración 253	 Error de entrenamiento: 0.0247692
+Iteración 254	 Error de entrenamiento: 0.0247091
+Iteración 255	 Error de entrenamiento: 0.0246501
+Iteración 256	 Error de entrenamiento: 0.0245921
+Iteración 257	 Error de entrenamiento: 0.0245353
+Iteración 258	 Error de entrenamiento: 0.0244795
+Iteración 259	 Error de entrenamiento: 0.0244247
+Iteración 260	 Error de entrenamiento: 0.024371
+Iteración 261	 Error de entrenamiento: 0.0243183
+Iteración 262	 Error de entrenamiento: 0.0242666
+Iteración 263	 Error de entrenamiento: 0.0242158
+Iteración 264	 Error de entrenamiento: 0.0241661
+Iteración 265	 Error de entrenamiento: 0.0241172
+Iteración 266	 Error de entrenamiento: 0.0240693
+Iteración 267	 Error de entrenamiento: 0.0240223
+Iteración 268	 Error de entrenamiento: 0.0239762
+Iteración 269	 Error de entrenamiento: 0.0239309
+Iteración 270	 Error de entrenamiento: 0.0238865
+Iteración 271	 Error de entrenamiento: 0.0238429
+Iteración 272	 Error de entrenamiento: 0.0238
+Iteración 273	 Error de entrenamiento: 0.023758
+Iteración 274	 Error de entrenamiento: 0.0237167
+Iteración 275	 Error de entrenamiento: 0.0236761
+Iteración 276	 Error de entrenamiento: 0.0236362
+Iteración 277	 Error de entrenamiento: 0.023597
+Iteración 278	 Error de entrenamiento: 0.0235585
+Iteración 279	 Error de entrenamiento: 0.0235206
+Iteración 280	 Error de entrenamiento: 0.0234833
+Iteración 281	 Error de entrenamiento: 0.0234466
+Iteración 282	 Error de entrenamiento: 0.0234105
+Iteración 283	 Error de entrenamiento: 0.023375
+Iteración 284	 Error de entrenamiento: 0.02334
+Iteración 285	 Error de entrenamiento: 0.0233055
+Iteración 286	 Error de entrenamiento: 0.0232715
+Iteración 287	 Error de entrenamiento: 0.023238
+Iteración 288	 Error de entrenamiento: 0.0232049
+Iteración 289	 Error de entrenamiento: 0.0231723
+Iteración 290	 Error de entrenamiento: 0.0231401
+Iteración 291	 Error de entrenamiento: 0.0231083
+Iteración 292	 Error de entrenamiento: 0.0230769
+Iteración 293	 Error de entrenamiento: 0.0230459
+Iteración 294	 Error de entrenamiento: 0.0230152
+Iteración 295	 Error de entrenamiento: 0.0229849
+Iteración 296	 Error de entrenamiento: 0.0229549
+Iteración 297	 Error de entrenamiento: 0.0229252
+Iteración 298	 Error de entrenamiento: 0.0228958
+Iteración 299	 Error de entrenamiento: 0.0228667
+Iteración 300	 Error de entrenamiento: 0.0228379
+Iteración 301	 Error de entrenamiento: 0.0228093
+Iteración 302	 Error de entrenamiento: 0.022781
+Iteración 303	 Error de entrenamiento: 0.0227529
+Iteración 304	 Error de entrenamiento: 0.0227251
+Iteración 305	 Error de entrenamiento: 0.0226974
+Iteración 306	 Error de entrenamiento: 0.02267
+Iteración 307	 Error de entrenamiento: 0.0226428
+Iteración 308	 Error de entrenamiento: 0.0226157
+Iteración 309	 Error de entrenamiento: 0.0225888
+Iteración 310	 Error de entrenamiento: 0.0225621
+Iteración 311	 Error de entrenamiento: 0.0225356
+Iteración 312	 Error de entrenamiento: 0.0225092
+Iteración 313	 Error de entrenamiento: 0.022483
+Iteración 314	 Error de entrenamiento: 0.0224569
+Iteración 315	 Error de entrenamiento: 0.022431
+Iteración 316	 Error de entrenamiento: 0.0224052
+Iteración 317	 Error de entrenamiento: 0.0223795
+Iteración 318	 Error de entrenamiento: 0.022354
+Iteración 319	 Error de entrenamiento: 0.0223285
+Iteración 320	 Error de entrenamiento: 0.0223032
+Iteración 321	 Error de entrenamiento: 0.022278
+Iteración 322	 Error de entrenamiento: 0.0222528
+Iteración 323	 Error de entrenamiento: 0.0222278
+Iteración 324	 Error de entrenamiento: 0.0222029
+Iteración 325	 Error de entrenamiento: 0.0221781
+Iteración 326	 Error de entrenamiento: 0.0221534
+Iteración 327	 Error de entrenamiento: 0.0221287
+Iteración 328	 Error de entrenamiento: 0.0221042
+Iteración 329	 Error de entrenamiento: 0.0220797
+Iteración 330	 Error de entrenamiento: 0.0220553
+Iteración 331	 Error de entrenamiento: 0.022031
+Iteración 332	 Error de entrenamiento: 0.0220068
+Iteración 333	 Error de entrenamiento: 0.0219827
+Iteración 334	 Error de entrenamiento: 0.0219586
+Iteración 335	 Error de entrenamiento: 0.0219347
+Iteración 336	 Error de entrenamiento: 0.0219108
+Iteración 337	 Error de entrenamiento: 0.021887
+Iteración 338	 Error de entrenamiento: 0.0218632
+Iteración 339	 Error de entrenamiento: 0.0218396
+Iteración 340	 Error de entrenamiento: 0.021816
+Iteración 341	 Error de entrenamiento: 0.0217925
+Iteración 342	 Error de entrenamiento: 0.0217691
+Iteración 343	 Error de entrenamiento: 0.0217458
+Iteración 344	 Error de entrenamiento: 0.0217225
+Iteración 345	 Error de entrenamiento: 0.0216994
+Iteración 346	 Error de entrenamiento: 0.0216763
+Iteración 347	 Error de entrenamiento: 0.0216533
+Iteración 348	 Error de entrenamiento: 0.0216304
+Iteración 349	 Error de entrenamiento: 0.0216076
+Iteración 350	 Error de entrenamiento: 0.0215849
+Iteración 351	 Error de entrenamiento: 0.0215623
+Iteración 352	 Error de entrenamiento: 0.0215398
+Iteración 353	 Error de entrenamiento: 0.0215174
+Iteración 354	 Error de entrenamiento: 0.021495
+Iteración 355	 Error de entrenamiento: 0.0214728
+Iteración 356	 Error de entrenamiento: 0.0214507
+Iteración 357	 Error de entrenamiento: 0.0214287
+Iteración 358	 Error de entrenamiento: 0.0214068
+Iteración 359	 Error de entrenamiento: 0.0213849
+Iteración 360	 Error de entrenamiento: 0.0213632
+Iteración 361	 Error de entrenamiento: 0.0213417
+Iteración 362	 Error de entrenamiento: 0.0213202
+Iteración 363	 Error de entrenamiento: 0.0212988
+Iteración 364	 Error de entrenamiento: 0.0212776
+Iteración 365	 Error de entrenamiento: 0.0212564
+Iteración 366	 Error de entrenamiento: 0.0212354
+Iteración 367	 Error de entrenamiento: 0.0212145
+Iteración 368	 Error de entrenamiento: 0.0211938
+Iteración 369	 Error de entrenamiento: 0.0211731
+Iteración 370	 Error de entrenamiento: 0.0211526
+Iteración 371	 Error de entrenamiento: 0.0211322
+Iteración 372	 Error de entrenamiento: 0.0211119
+Iteración 373	 Error de entrenamiento: 0.0210917
+Iteración 374	 Error de entrenamiento: 0.0210717
+Iteración 375	 Error de entrenamiento: 0.0210518
+Iteración 376	 Error de entrenamiento: 0.021032
+Iteración 377	 Error de entrenamiento: 0.0210123
+Iteración 378	 Error de entrenamiento: 0.0209928
+Iteración 379	 Error de entrenamiento: 0.0209734
+Iteración 380	 Error de entrenamiento: 0.0209541
+Iteración 381	 Error de entrenamiento: 0.0209349
+Iteración 382	 Error de entrenamiento: 0.0209159
+Iteración 383	 Error de entrenamiento: 0.020897
+Iteración 384	 Error de entrenamiento: 0.0208781
+Iteración 385	 Error de entrenamiento: 0.0208595
+Iteración 386	 Error de entrenamiento: 0.0208409
+Iteración 387	 Error de entrenamiento: 0.0208224
+Iteración 388	 Error de entrenamiento: 0.0208041
+Iteración 389	 Error de entrenamiento: 0.0207858
+Iteración 390	 Error de entrenamiento: 0.0207677
+Iteración 391	 Error de entrenamiento: 0.0207497
+Iteración 392	 Error de entrenamiento: 0.0207318
+Iteración 393	 Error de entrenamiento: 0.020714
+Iteración 394	 Error de entrenamiento: 0.0206963
+Iteración 395	 Error de entrenamiento: 0.0206787
+Iteración 396	 Error de entrenamiento: 0.0206612
+Iteración 397	 Error de entrenamiento: 0.0206438
+Iteración 398	 Error de entrenamiento: 0.0206265
+Iteración 399	 Error de entrenamiento: 0.0206092
+Iteración 400	 Error de entrenamiento: 0.0205921
+Iteración 401	 Error de entrenamiento: 0.020575
+Iteración 402	 Error de entrenamiento: 0.0205581
+Iteración 403	 Error de entrenamiento: 0.0205412
+Iteración 404	 Error de entrenamiento: -nan
+Iteración 405	 Error de entrenamiento: nan
+Iteración 406	 Error de entrenamiento: nan
+Iteración 407	 Error de entrenamiento: nan
+Iteración 408	 Error de entrenamiento: nan
+Iteración 409	 Error de entrenamiento: nan
+Iteración 410	 Error de entrenamiento: nan
+Iteración 411	 Error de entrenamiento: nan
+Iteración 412	 Error de entrenamiento: nan
+Iteración 413	 Error de entrenamiento: nan
+Iteración 414	 Error de entrenamiento: nan
+Iteración 415	 Error de entrenamiento: nan
+Iteración 416	 Error de entrenamiento: nan
+Iteración 417	 Error de entrenamiento: nan
+Iteración 418	 Error de entrenamiento: nan
+Iteración 419	 Error de entrenamiento: nan
+Iteración 420	 Error de entrenamiento: nan
+Iteración 421	 Error de entrenamiento: nan
+Iteración 422	 Error de entrenamiento: nan
+Iteración 423	 Error de entrenamiento: nan
+Iteración 424	 Error de entrenamiento: nan
+Iteración 425	 Error de entrenamiento: nan
+Iteración 426	 Error de entrenamiento: nan
+Iteración 427	 Error de entrenamiento: nan
+Iteración 428	 Error de entrenamiento: nan
+Iteración 429	 Error de entrenamiento: nan
+Iteración 430	 Error de entrenamiento: nan
+Iteración 431	 Error de entrenamiento: nan
+Iteración 432	 Error de entrenamiento: nan
+Iteración 433	 Error de entrenamiento: nan
+Iteración 434	 Error de entrenamiento: nan
+Iteración 435	 Error de entrenamiento: nan
+Iteración 436	 Error de entrenamiento: nan
+Iteración 437	 Error de entrenamiento: nan
+Iteración 438	 Error de entrenamiento: nan
+Iteración 439	 Error de entrenamiento: nan
+Iteración 440	 Error de entrenamiento: nan
+Iteración 441	 Error de entrenamiento: nan
+Iteración 442	 Error de entrenamiento: nan
+Iteración 443	 Error de entrenamiento: nan
+Iteración 444	 Error de entrenamiento: nan
+Iteración 445	 Error de entrenamiento: nan
+Iteración 446	 Error de entrenamiento: nan
+Iteración 447	 Error de entrenamiento: nan
+Iteración 448	 Error de entrenamiento: nan
+Iteración 449	 Error de entrenamiento: nan
+Iteración 450	 Error de entrenamiento: nan
+Iteración 451	 Error de entrenamiento: nan
+Iteración 452	 Error de entrenamiento: nan
+Iteración 1001	 Error de entrenamiento: nan
+PESOS DE LA RED
+===============
+Vamos  a imprimir las entradas de las neuronas
+
+Capa: 1
+0.0472632 0.235509 0.0449948 -0.627244 Salida: -nan
+-0.631985 0.194165 -0.138814 -0.953384 Salida: -nan
+-0.930758 -0.829987 0.971247 0.963242 Salida: -nan
+-0.887348 -0.468334 -0.811759 0.752981 Salida: -nan
+0.324625 0.968373 0.915547 -0.704039 Salida: -nan
+-0.548536 -0.981976 0.73546 -0.346705 Salida: -nan
+0.0819976 0.808215 -0.70385 -0.852226 Salida: -nan
+0.926469 -0.510286 0.319998 -0.225504 Salida: -nan
+0.977418 -0.11566 -0.326338 0.940967 Salida: -nan
+-2.00149 -0.344333 1.90495 -1.18035 Salida: -nan
+Capa: 2
+-0.423046 1.06139 0.76713 -0.450923 -0.774037 -0.713721 -0.143099 -0.64005 1.00072 0.571211 Salida: -nan
+-0.00577957 0.25428 0.631074 0.0742152 0.500723 0.48796 0.66347 -0.265102 -0.719582 -0.839729 Salida: -nan
+0.120441 -0.229948 -0.385501 -1.06963 0.367826 -0.442443 0.493545 -1.11944 -0.648853 0.923275 Salida: -nan
+-0.892643 -0.697539 -0.819811 -0.740542 0.292417 -0.618241 -0.661795 -0.293515 0.738972 0.295076 Salida: -nan
+0.415173 -0.552006 0.605854 -0.0319085 -0.842163 -0.626159 0.39888 -0.688801 0.134125 -0.438013 Salida: -nan
+0.864641 -0.282592 -0.36731 -0.430844 -0.838435 -0.336837 -0.00581091 -0.831901 -0.370751 0.219349 Salida: -nan
+-0.120899 0.641244 0.880867 0.396127 0.905562 -0.274467 0.192514 0.30963 -0.139253 -0.324639 Salida: -nan
+-0.496371 0.768786 0.98575 -0.0513899 0.0772738 -0.607726 -0.962521 0.754865 0.659194 0.948163 Salida: -nan
+-0.839336 -0.64749 -0.513822 -0.231361 0.462645 -0.395016 0.506564 -0.431095 0.185818 -0.701168 Salida: -nan
+0.104399 0.402699 -0.843664 0.68301 0.104031 0.18811 -0.0607171 0.167218 -0.020545 0.325319 Salida: -nan
+Capa: 3
+0.647681 0.930737 -0.244122 0.98321 1.44462 1.44913 0.105655 1.33803 -0.694631 0.83227 Salida: nan
+-0.216552 -0.810064 0.74427 0.71198 0.774099 -0.470992 -0.147185 -0.994258 -0.488305 1.08209 Salida: nan
+-0.468633 0.841815 -0.853132 -1.26259 -1.08095 -1.48629 0.577005 0.10596 0.509384 -0.820899 Salida: nan
+Salida Esperada Vs Salida Obtenida (test)
+=========================================
+1 -- 0.991995 \\ 0 -- 0.00800069 \\ 0 -- 4.4376e-06 \\ 
+1 -- 0.991995 \\ 0 -- 0.00800069 \\ 0 -- 4.4376e-06 \\ 
+1 -- 0.991995 \\ 0 -- 0.00800069 \\ 0 -- 4.4376e-06 \\ 
+1 -- 0.991995 \\ 0 -- 0.00800069 \\ 0 -- 4.4376e-06 \\ 
+1 -- 0.991995 \\ 0 -- 0.00800069 \\ 0 -- 4.4376e-06 \\ 
+1 -- 0.991995 \\ 0 -- 0.00800069 \\ 0 -- 4.4376e-06 \\ 
+1 -- 0.991995 \\ 0 -- 0.00800069 \\ 0 -- 4.4376e-06 \\ 
+1 -- 0.991995 \\ 0 -- 0.00800069 \\ 0 -- 4.4376e-06 \\ 
+1 -- 0.991995 \\ 0 -- 0.00800069 \\ 0 -- 4.4376e-06 \\ 
+1 -- 0.991995 \\ 0 -- 0.00800069 \\ 0 -- 4.4376e-06 \\ 
+1 -- 0.991995 \\ 0 -- 0.00800069 \\ 0 -- 4.4376e-06 \\ 
+1 -- 0.991995 \\ 0 -- 0.00800069 \\ 0 -- 4.4376e-06 \\ 
+1 -- 0.991995 \\ 0 -- 0.00800069 \\ 0 -- 4.4376e-06 \\ 
+0 -- 1.02751e-160 \\ 1 -- 0.933907 \\ 0 -- 0.0660933 \\ 
+0 -- 2.53349e-127 \\ 1 -- 0.974774 \\ 0 -- 0.0252263 \\ 
+0 -- 8.51998e-51 \\ 1 -- 0.997375 \\ 0 -- 0.0026248 \\ 
+0 -- 1.52375e-19 \\ 1 -- 0.998966 \\ 0 -- 0.00103429 \\ 
+0 -- 7.0796e-272 \\ 1 -- 0.0426173 \\ 0 -- 0.957383 \\ 
+0 -- 2.41432e-252 \\ 1 -- 0.24346 \\ 0 -- 0.75654 \\ 
+0 -- 2.207e-186 \\ 1 -- 0.865464 \\ 0 -- 0.134536 \\ 
+0 -- 7.08402e-38 \\ 1 -- 0.998214 \\ 0 -- 0.00178638 \\ 
+0 -- 5.26166e-117 \\ 1 -- 0.98135 \\ 0 -- 0.01865 \\ 
+0 -- 1.0047e-23 \\ 1 -- 0.998828 \\ 0 -- 0.00117161 \\ 
+0 -- 1.24633e-49 \\ 1 -- 0.997465 \\ 0 -- 0.0025353 \\ 
+0 -- 4.92063e-44 \\ 1 -- 0.997854 \\ 0 -- 0.00214609 \\ 
+0 -- 5.28048e-318 \\ 0 -- 4.90469e-05 \\ 1 -- 0.999951 \\ 
+0 -- 4.79569e-313 \\ 0 -- 8.90473e-05 \\ 1 -- 0.999911 \\ 
+0 -- 3.39024e-307 \\ 0 -- 0.00018982 \\ 1 -- 0.99981 \\ 
+0 -- 4.3284e-307 \\ 0 -- 0.000192516 \\ 1 -- 0.999807 \\ 
+0 -- 1.3364e-274 \\ 0 -- 0.0257847 \\ 1 -- 0.974215 \\ 
+0 -- 2.95849e-313 \\ 0 -- 8.67581e-05 \\ 1 -- 0.999913 \\ 
+0 -- 1.1059e-296 \\ 0 -- 0.000863983 \\ 1 -- 0.999136 \\ 
+0 -- 6.20823e-312 \\ 0 -- 0.000102357 \\ 1 -- 0.999898 \\ 
+0 -- 1.02619e-315 \\ 0 -- 6.42722e-05 \\ 1 -- 0.999936 \\ 
+0 -- 1.16249e-310 \\ 0 -- 0.000120353 \\ 1 -- 0.99988 \\ 
+0 -- 1.88062e-317 \\ 0 -- 5.23096e-05 \\ 1 -- 0.999948 \\ 
+0 -- 1.26763e-317 \\ 0 -- 5.12711e-05 \\ 1 -- 0.999949 \\ 
+0 -- 9.92634e-303 \\ 0 -- 0.000352646 \\ 1 -- 0.999647 \\ 
+Finalizamos => CCR de test final: 94.7368
+**********
+SEMILLA 20
+**********
+Iteración 1	 Error de entrenamiento: -nan
+Iteración 2	 Error de entrenamiento: -nan
+Iteración 3	 Error de entrenamiento: -nan
+Iteración 4	 Error de entrenamiento: -nan
+Iteración 5	 Error de entrenamiento: -nan
+Iteración 6	 Error de entrenamiento: -nan
+Iteración 7	 Error de entrenamiento: -nan
+Iteración 8	 Error de entrenamiento: -nan
+Iteración 9	 Error de entrenamiento: -nan
+Iteración 10	 Error de entrenamiento: -nan
+Iteración 11	 Error de entrenamiento: -nan
+Iteración 12	 Error de entrenamiento: -nan
+Iteración 13	 Error de entrenamiento: -nan
+Iteración 14	 Error de entrenamiento: -nan
+Iteración 15	 Error de entrenamiento: -nan
+Iteración 16	 Error de entrenamiento: -nan
+Iteración 17	 Error de entrenamiento: -nan
+Iteración 18	 Error de entrenamiento: -nan
+Iteración 19	 Error de entrenamiento: -nan
+Iteración 20	 Error de entrenamiento: -nan
+Iteración 21	 Error de entrenamiento: -nan
+Iteración 22	 Error de entrenamiento: -nan
+Iteración 23	 Error de entrenamiento: -nan
+Iteración 24	 Error de entrenamiento: -nan
+Iteración 25	 Error de entrenamiento: -nan
+Iteración 26	 Error de entrenamiento: -nan
+Iteración 27	 Error de entrenamiento: -nan
+Iteración 28	 Error de entrenamiento: -nan
+Iteración 29	 Error de entrenamiento: -nan
+Iteración 30	 Error de entrenamiento: -nan
+Iteración 31	 Error de entrenamiento: -nan
+Iteración 32	 Error de entrenamiento: -nan
+Iteración 33	 Error de entrenamiento: -nan
+Iteración 34	 Error de entrenamiento: -nan
+Iteración 35	 Error de entrenamiento: -nan
+Iteración 36	 Error de entrenamiento: -nan
+Iteración 37	 Error de entrenamiento: -nan
+Iteración 38	 Error de entrenamiento: -nan
+Iteración 39	 Error de entrenamiento: -nan
+Iteración 40	 Error de entrenamiento: -nan
+Iteración 41	 Error de entrenamiento: -nan
+Iteración 42	 Error de entrenamiento: -nan
+Iteración 43	 Error de entrenamiento: -nan
+Iteración 44	 Error de entrenamiento: -nan
+Iteración 45	 Error de entrenamiento: -nan
+Iteración 46	 Error de entrenamiento: -nan
+Iteración 47	 Error de entrenamiento: -nan
+Iteración 48	 Error de entrenamiento: -nan
+Iteración 49	 Error de entrenamiento: -nan
+Iteración 50	 Error de entrenamiento: -nan
+Iteración 1001	 Error de entrenamiento: -nan
+PESOS DE LA RED
+===============
+Vamos  a imprimir las entradas de las neuronas
+
+Capa: 1
+nan nan nan nan Salida: -nan
+nan nan nan nan Salida: -nan
+nan nan nan nan Salida: -nan
+nan nan nan nan Salida: -nan
+nan nan nan nan Salida: -nan
+nan nan nan nan Salida: -nan
+nan nan nan nan Salida: -nan
+nan nan nan nan Salida: -nan
+nan nan nan nan Salida: -nan
+nan nan nan nan Salida: -nan
+Capa: 2
+-nan nan nan nan nan nan nan nan nan nan Salida: -nan
+-nan nan nan nan nan nan nan nan nan nan Salida: -nan
+-nan nan nan nan nan nan nan nan nan nan Salida: -nan
+-nan nan nan nan nan nan nan nan nan nan Salida: -nan
+-nan nan nan nan nan nan nan nan nan nan Salida: -nan
+-nan nan nan nan nan nan nan nan nan nan Salida: -nan
+-nan nan nan nan nan nan nan nan nan nan Salida: -nan
+-nan nan nan nan nan nan nan nan nan nan Salida: -nan
+-nan nan nan nan nan nan nan nan nan nan Salida: -nan
+-nan nan nan nan nan nan nan nan nan nan Salida: -nan
+Capa: 3
+nan -nan -nan -nan -nan -nan -nan -nan -nan -nan Salida: -nan
+nan -nan -nan -nan -nan -nan -nan -nan -nan -nan Salida: -nan
+nan -nan -nan -nan -nan -nan -nan -nan -nan -nan Salida: -nan
+Salida Esperada Vs Salida Obtenida (test)
+=========================================
+1 -- -nan \\ 0 -- -nan \\ 0 -- -nan \\ 
+1 -- -nan \\ 0 -- -nan \\ 0 -- -nan \\ 
+1 -- -nan \\ 0 -- -nan \\ 0 -- -nan \\ 
+1 -- -nan \\ 0 -- -nan \\ 0 -- -nan \\ 
+1 -- -nan \\ 0 -- -nan \\ 0 -- -nan \\ 
+1 -- -nan \\ 0 -- -nan \\ 0 -- -nan \\ 
+1 -- -nan \\ 0 -- -nan \\ 0 -- -nan \\ 
+1 -- -nan \\ 0 -- -nan \\ 0 -- -nan \\ 
+1 -- -nan \\ 0 -- -nan \\ 0 -- -nan \\ 
+1 -- -nan \\ 0 -- -nan \\ 0 -- -nan \\ 
+1 -- -nan \\ 0 -- -nan \\ 0 -- -nan \\ 
+1 -- -nan \\ 0 -- -nan \\ 0 -- -nan \\ 
+1 -- -nan \\ 0 -- -nan \\ 0 -- -nan \\ 
+0 -- -nan \\ 1 -- -nan \\ 0 -- -nan \\ 
+0 -- -nan \\ 1 -- -nan \\ 0 -- -nan \\ 
+0 -- -nan \\ 1 -- -nan \\ 0 -- -nan \\ 
+0 -- -nan \\ 1 -- -nan \\ 0 -- -nan \\ 
+0 -- -nan \\ 1 -- -nan \\ 0 -- -nan \\ 
+0 -- -nan \\ 1 -- -nan \\ 0 -- -nan \\ 
+0 -- -nan \\ 1 -- -nan \\ 0 -- -nan \\ 
+0 -- -nan \\ 1 -- -nan \\ 0 -- -nan \\ 
+0 -- -nan \\ 1 -- -nan \\ 0 -- -nan \\ 
+0 -- -nan \\ 1 -- -nan \\ 0 -- -nan \\ 
+0 -- -nan \\ 1 -- -nan \\ 0 -- -nan \\ 
+0 -- -nan \\ 1 -- -nan \\ 0 -- -nan \\ 
+0 -- -nan \\ 0 -- -nan \\ 1 -- -nan \\ 
+0 -- -nan \\ 0 -- -nan \\ 1 -- -nan \\ 
+0 -- -nan \\ 0 -- -nan \\ 1 -- -nan \\ 
+0 -- -nan \\ 0 -- -nan \\ 1 -- -nan \\ 
+0 -- -nan \\ 0 -- -nan \\ 1 -- -nan \\ 
+0 -- -nan \\ 0 -- -nan \\ 1 -- -nan \\ 
+0 -- -nan \\ 0 -- -nan \\ 1 -- -nan \\ 
+0 -- -nan \\ 0 -- -nan \\ 1 -- -nan \\ 
+0 -- -nan \\ 0 -- -nan \\ 1 -- -nan \\ 
+0 -- -nan \\ 0 -- -nan \\ 1 -- -nan \\ 
+0 -- -nan \\ 0 -- -nan \\ 1 -- -nan \\ 
+0 -- -nan \\ 0 -- -nan \\ 1 -- -nan \\ 
+0 -- -nan \\ 0 -- -nan \\ 1 -- -nan \\ 
+Finalizamos => CCR de test final: 34.2105
+**********
+SEMILLA 30
+**********
+Iteración 1	 Error de entrenamiento: nan
+Iteración 2	 Error de entrenamiento: nan
+Iteración 3	 Error de entrenamiento: nan
+Iteración 4	 Error de entrenamiento: nan
+Iteración 5	 Error de entrenamiento: nan
+Iteración 6	 Error de entrenamiento: nan
+Iteración 7	 Error de entrenamiento: nan
+Iteración 8	 Error de entrenamiento: nan
+Iteración 9	 Error de entrenamiento: nan
+Iteración 10	 Error de entrenamiento: nan
+Iteración 11	 Error de entrenamiento: nan
+Iteración 12	 Error de entrenamiento: nan
+Iteración 13	 Error de entrenamiento: nan
+Iteración 14	 Error de entrenamiento: nan
+Iteración 15	 Error de entrenamiento: nan
+Iteración 16	 Error de entrenamiento: nan
+Iteración 17	 Error de entrenamiento: nan
+Iteración 18	 Error de entrenamiento: nan
+Iteración 19	 Error de entrenamiento: nan
+Iteración 20	 Error de entrenamiento: nan
+Iteración 21	 Error de entrenamiento: nan
+Iteración 22	 Error de entrenamiento: nan
+Iteración 23	 Error de entrenamiento: nan
+Iteración 24	 Error de entrenamiento: nan
+Iteración 25	 Error de entrenamiento: nan
+Iteración 26	 Error de entrenamiento: nan
+Iteración 27	 Error de entrenamiento: nan
+Iteración 28	 Error de entrenamiento: nan
+Iteración 29	 Error de entrenamiento: nan
+Iteración 30	 Error de entrenamiento: nan
+Iteración 31	 Error de entrenamiento: nan
+Iteración 32	 Error de entrenamiento: nan
+Iteración 33	 Error de entrenamiento: nan
+Iteración 34	 Error de entrenamiento: nan
+Iteración 35	 Error de entrenamiento: nan
+Iteración 36	 Error de entrenamiento: nan
+Iteración 37	 Error de entrenamiento: nan
+Iteración 38	 Error de entrenamiento: nan
+Iteración 39	 Error de entrenamiento: nan
+Iteración 40	 Error de entrenamiento: nan
+Iteración 41	 Error de entrenamiento: nan
+Iteración 42	 Error de entrenamiento: nan
+Iteración 43	 Error de entrenamiento: nan
+Iteración 44	 Error de entrenamiento: nan
+Iteración 45	 Error de entrenamiento: nan
+Iteración 46	 Error de entrenamiento: nan
+Iteración 47	 Error de entrenamiento: nan
+Iteración 48	 Error de entrenamiento: nan
+Iteración 49	 Error de entrenamiento: nan
+Iteración 50	 Error de entrenamiento: nan
+Iteración 1001	 Error de entrenamiento: nan
+PESOS DE LA RED
+===============
+Vamos  a imprimir las entradas de las neuronas
+
+Capa: 1
+-nan -nan -nan -nan Salida: nan
+-nan -nan -nan -nan Salida: nan
+-nan -nan -nan -nan Salida: nan
+-nan -nan -nan -nan Salida: nan
+-nan -nan -nan -nan Salida: nan
+-nan -nan -nan -nan Salida: nan
+-nan -nan -nan -nan Salida: nan
+-nan -nan -nan -nan Salida: nan
+-nan -nan -nan -nan Salida: nan
+-nan -nan -nan -nan Salida: nan
+Capa: 2
+nan -nan -nan -nan -nan -nan -nan -nan -nan -nan Salida: nan
+nan -nan -nan -nan -nan -nan -nan -nan -nan -nan Salida: nan
+nan -nan -nan -nan -nan -nan -nan -nan -nan -nan Salida: nan
+nan -nan -nan -nan -nan -nan -nan -nan -nan -nan Salida: nan
+nan -nan -nan -nan -nan -nan -nan -nan -nan -nan Salida: nan
+nan -nan -nan -nan -nan -nan -nan -nan -nan -nan Salida: nan
+nan -nan -nan -nan -nan -nan -nan -nan -nan -nan Salida: nan
+nan -nan -nan -nan -nan -nan -nan -nan -nan -nan Salida: nan
+nan -nan -nan -nan -nan -nan -nan -nan -nan -nan Salida: nan
+nan -nan -nan -nan -nan -nan -nan -nan -nan -nan Salida: nan
+Capa: 3
+-nan nan nan nan nan nan nan nan nan nan Salida: nan
+-nan nan nan nan nan nan nan nan nan nan Salida: nan
+-nan nan nan nan nan nan nan nan nan nan Salida: nan
+Salida Esperada Vs Salida Obtenida (test)
+=========================================
+1 -- nan \\ 0 -- nan \\ 0 -- nan \\ 
+1 -- nan \\ 0 -- nan \\ 0 -- nan \\ 
+1 -- nan \\ 0 -- nan \\ 0 -- nan \\ 
+1 -- nan \\ 0 -- nan \\ 0 -- nan \\ 
+1 -- nan \\ 0 -- nan \\ 0 -- nan \\ 
+1 -- nan \\ 0 -- nan \\ 0 -- nan \\ 
+1 -- nan \\ 0 -- nan \\ 0 -- nan \\ 
+1 -- nan \\ 0 -- nan \\ 0 -- nan \\ 
+1 -- nan \\ 0 -- nan \\ 0 -- nan \\ 
+1 -- nan \\ 0 -- nan \\ 0 -- nan \\ 
+1 -- nan \\ 0 -- nan \\ 0 -- nan \\ 
+1 -- nan \\ 0 -- nan \\ 0 -- nan \\ 
+1 -- nan \\ 0 -- nan \\ 0 -- nan \\ 
+0 -- nan \\ 1 -- nan \\ 0 -- nan \\ 
+0 -- nan \\ 1 -- nan \\ 0 -- nan \\ 
+0 -- nan \\ 1 -- nan \\ 0 -- nan \\ 
+0 -- nan \\ 1 -- nan \\ 0 -- nan \\ 
+0 -- nan \\ 1 -- nan \\ 0 -- nan \\ 
+0 -- nan \\ 1 -- nan \\ 0 -- nan \\ 
+0 -- nan \\ 1 -- nan \\ 0 -- nan \\ 
+0 -- nan \\ 1 -- nan \\ 0 -- nan \\ 
+0 -- nan \\ 1 -- nan \\ 0 -- nan \\ 
+0 -- nan \\ 1 -- nan \\ 0 -- nan \\ 
+0 -- nan \\ 1 -- nan \\ 0 -- nan \\ 
+0 -- nan \\ 1 -- nan \\ 0 -- nan \\ 
+0 -- nan \\ 0 -- nan \\ 1 -- nan \\ 
+0 -- nan \\ 0 -- nan \\ 1 -- nan \\ 
+0 -- nan \\ 0 -- nan \\ 1 -- nan \\ 
+0 -- nan \\ 0 -- nan \\ 1 -- nan \\ 
+0 -- nan \\ 0 -- nan \\ 1 -- nan \\ 
+0 -- nan \\ 0 -- nan \\ 1 -- nan \\ 
+0 -- nan \\ 0 -- nan \\ 1 -- nan \\ 
+0 -- nan \\ 0 -- nan \\ 1 -- nan \\ 
+0 -- nan \\ 0 -- nan \\ 1 -- nan \\ 
+0 -- nan \\ 0 -- nan \\ 1 -- nan \\ 
+0 -- nan \\ 0 -- nan \\ 1 -- nan \\ 
+0 -- nan \\ 0 -- nan \\ 1 -- nan \\ 
+0 -- nan \\ 0 -- nan \\ 1 -- nan \\ 
+Finalizamos => CCR de test final: 34.2105
+**********
+SEMILLA 40
+**********
+Iteración 1	 Error de entrenamiento: -nan
+Iteración 2	 Error de entrenamiento: -nan
+Iteración 3	 Error de entrenamiento: -nan
+Iteración 4	 Error de entrenamiento: -nan
+Iteración 5	 Error de entrenamiento: -nan
+Iteración 6	 Error de entrenamiento: -nan
+Iteración 7	 Error de entrenamiento: -nan
+Iteración 8	 Error de entrenamiento: -nan
+Iteración 9	 Error de entrenamiento: -nan
+Iteración 10	 Error de entrenamiento: -nan
+Iteración 11	 Error de entrenamiento: -nan
+Iteración 12	 Error de entrenamiento: -nan
+Iteración 13	 Error de entrenamiento: -nan
+Iteración 14	 Error de entrenamiento: -nan
+Iteración 15	 Error de entrenamiento: -nan
+Iteración 16	 Error de entrenamiento: -nan
+Iteración 17	 Error de entrenamiento: -nan
+Iteración 18	 Error de entrenamiento: -nan
+Iteración 19	 Error de entrenamiento: -nan
+Iteración 20	 Error de entrenamiento: -nan
+Iteración 21	 Error de entrenamiento: -nan
+Iteración 22	 Error de entrenamiento: -nan
+Iteración 23	 Error de entrenamiento: -nan
+Iteración 24	 Error de entrenamiento: -nan
+Iteración 25	 Error de entrenamiento: -nan
+Iteración 26	 Error de entrenamiento: -nan
+Iteración 27	 Error de entrenamiento: -nan
+Iteración 28	 Error de entrenamiento: -nan
+Iteración 29	 Error de entrenamiento: -nan
+Iteración 30	 Error de entrenamiento: -nan
+Iteración 31	 Error de entrenamiento: -nan
+Iteración 32	 Error de entrenamiento: -nan
+Iteración 33	 Error de entrenamiento: -nan
+Iteración 34	 Error de entrenamiento: -nan
+Iteración 35	 Error de entrenamiento: -nan
+Iteración 36	 Error de entrenamiento: -nan
+Iteración 37	 Error de entrenamiento: -nan
+Iteración 38	 Error de entrenamiento: -nan
+Iteración 39	 Error de entrenamiento: -nan
+Iteración 40	 Error de entrenamiento: -nan
+Iteración 41	 Error de entrenamiento: -nan
+Iteración 42	 Error de entrenamiento: -nan
+Iteración 43	 Error de entrenamiento: -nan
+Iteración 44	 Error de entrenamiento: -nan
+Iteración 45	 Error de entrenamiento: -nan
+Iteración 46	 Error de entrenamiento: -nan
+Iteración 47	 Error de entrenamiento: -nan
+Iteración 48	 Error de entrenamiento: -nan
+Iteración 49	 Error de entrenamiento: -nan
+Iteración 50	 Error de entrenamiento: -nan
+Iteración 1001	 Error de entrenamiento: -nan
+PESOS DE LA RED
+===============
+Vamos  a imprimir las entradas de las neuronas
+
+Capa: 1
+nan nan nan nan Salida: -nan
+nan nan nan nan Salida: -nan
+nan nan nan nan Salida: -nan
+nan nan nan nan Salida: -nan
+nan nan nan nan Salida: -nan
+nan nan nan nan Salida: -nan
+nan nan nan nan Salida: -nan
+nan nan nan nan Salida: -nan
+nan nan nan nan Salida: -nan
+nan nan nan nan Salida: -nan
+Capa: 2
+-nan nan nan nan nan nan nan nan nan nan Salida: -nan
+-nan nan nan nan nan nan nan nan nan nan Salida: -nan
+-nan nan nan nan nan nan nan nan nan nan Salida: -nan
+-nan nan nan nan nan nan nan nan nan nan Salida: -nan
+-nan nan nan nan nan nan nan nan nan nan Salida: -nan
+-nan nan nan nan nan nan nan nan nan nan Salida: -nan
+-nan nan nan nan nan nan nan nan nan nan Salida: -nan
+-nan nan nan nan nan nan nan nan nan nan Salida: -nan
+-nan nan nan nan nan nan nan nan nan nan Salida: -nan
+-nan nan nan nan nan nan nan nan nan nan Salida: -nan
+Capa: 3
+nan -nan -nan -nan -nan -nan -nan -nan -nan -nan Salida: -nan
+nan -nan -nan -nan -nan -nan -nan -nan -nan -nan Salida: -nan
+nan -nan -nan -nan -nan -nan -nan -nan -nan -nan Salida: -nan
+Salida Esperada Vs Salida Obtenida (test)
+=========================================
+1 -- -nan \\ 0 -- -nan \\ 0 -- -nan \\ 
+1 -- -nan \\ 0 -- -nan \\ 0 -- -nan \\ 
+1 -- -nan \\ 0 -- -nan \\ 0 -- -nan \\ 
+1 -- -nan \\ 0 -- -nan \\ 0 -- -nan \\ 
+1 -- -nan \\ 0 -- -nan \\ 0 -- -nan \\ 
+1 -- -nan \\ 0 -- -nan \\ 0 -- -nan \\ 
+1 -- -nan \\ 0 -- -nan \\ 0 -- -nan \\ 
+1 -- -nan \\ 0 -- -nan \\ 0 -- -nan \\ 
+1 -- -nan \\ 0 -- -nan \\ 0 -- -nan \\ 
+1 -- -nan \\ 0 -- -nan \\ 0 -- -nan \\ 
+1 -- -nan \\ 0 -- -nan \\ 0 -- -nan \\ 
+1 -- -nan \\ 0 -- -nan \\ 0 -- -nan \\ 
+1 -- -nan \\ 0 -- -nan \\ 0 -- -nan \\ 
+0 -- -nan \\ 1 -- -nan \\ 0 -- -nan \\ 
+0 -- -nan \\ 1 -- -nan \\ 0 -- -nan \\ 
+0 -- -nan \\ 1 -- -nan \\ 0 -- -nan \\ 
+0 -- -nan \\ 1 -- -nan \\ 0 -- -nan \\ 
+0 -- -nan \\ 1 -- -nan \\ 0 -- -nan \\ 
+0 -- -nan \\ 1 -- -nan \\ 0 -- -nan \\ 
+0 -- -nan \\ 1 -- -nan \\ 0 -- -nan \\ 
+0 -- -nan \\ 1 -- -nan \\ 0 -- -nan \\ 
+0 -- -nan \\ 1 -- -nan \\ 0 -- -nan \\ 
+0 -- -nan \\ 1 -- -nan \\ 0 -- -nan \\ 
+0 -- -nan \\ 1 -- -nan \\ 0 -- -nan \\ 
+0 -- -nan \\ 1 -- -nan \\ 0 -- -nan \\ 
+0 -- -nan \\ 0 -- -nan \\ 1 -- -nan \\ 
+0 -- -nan \\ 0 -- -nan \\ 1 -- -nan \\ 
+0 -- -nan \\ 0 -- -nan \\ 1 -- -nan \\ 
+0 -- -nan \\ 0 -- -nan \\ 1 -- -nan \\ 
+0 -- -nan \\ 0 -- -nan \\ 1 -- -nan \\ 
+0 -- -nan \\ 0 -- -nan \\ 1 -- -nan \\ 
+0 -- -nan \\ 0 -- -nan \\ 1 -- -nan \\ 
+0 -- -nan \\ 0 -- -nan \\ 1 -- -nan \\ 
+0 -- -nan \\ 0 -- -nan \\ 1 -- -nan \\ 
+0 -- -nan \\ 0 -- -nan \\ 1 -- -nan \\ 
+0 -- -nan \\ 0 -- -nan \\ 1 -- -nan \\ 
+0 -- -nan \\ 0 -- -nan \\ 1 -- -nan \\ 
+0 -- -nan \\ 0 -- -nan \\ 1 -- -nan \\ 
+Finalizamos => CCR de test final: 34.2105
+**********
+SEMILLA 50
+**********
+Iteración 1	 Error de entrenamiento: nan
+Iteración 2	 Error de entrenamiento: nan
+Iteración 3	 Error de entrenamiento: nan
+Iteración 4	 Error de entrenamiento: nan
+Iteración 5	 Error de entrenamiento: nan
+Iteración 6	 Error de entrenamiento: nan
+Iteración 7	 Error de entrenamiento: nan
+Iteración 8	 Error de entrenamiento: nan
+Iteración 9	 Error de entrenamiento: nan
+Iteración 10	 Error de entrenamiento: nan
+Iteración 11	 Error de entrenamiento: nan
+Iteración 12	 Error de entrenamiento: nan
+Iteración 13	 Error de entrenamiento: nan
+Iteración 14	 Error de entrenamiento: nan
+Iteración 15	 Error de entrenamiento: nan
+Iteración 16	 Error de entrenamiento: nan
+Iteración 17	 Error de entrenamiento: nan
+Iteración 18	 Error de entrenamiento: nan
+Iteración 19	 Error de entrenamiento: nan
+Iteración 20	 Error de entrenamiento: nan
+Iteración 21	 Error de entrenamiento: nan
+Iteración 22	 Error de entrenamiento: nan
+Iteración 23	 Error de entrenamiento: nan
+Iteración 24	 Error de entrenamiento: nan
+Iteración 25	 Error de entrenamiento: nan
+Iteración 26	 Error de entrenamiento: nan
+Iteración 27	 Error de entrenamiento: nan
+Iteración 28	 Error de entrenamiento: nan
+Iteración 29	 Error de entrenamiento: nan
+Iteración 30	 Error de entrenamiento: nan
+Iteración 31	 Error de entrenamiento: nan
+Iteración 32	 Error de entrenamiento: nan
+Iteración 33	 Error de entrenamiento: nan
+Iteración 34	 Error de entrenamiento: nan
+Iteración 35	 Error de entrenamiento: nan
+Iteración 36	 Error de entrenamiento: nan
+Iteración 37	 Error de entrenamiento: nan
+Iteración 38	 Error de entrenamiento: nan
+Iteración 39	 Error de entrenamiento: nan
+Iteración 40	 Error de entrenamiento: nan
+Iteración 41	 Error de entrenamiento: nan
+Iteración 42	 Error de entrenamiento: nan
+Iteración 43	 Error de entrenamiento: nan
+Iteración 44	 Error de entrenamiento: nan
+Iteración 45	 Error de entrenamiento: nan
+Iteración 46	 Error de entrenamiento: nan
+Iteración 47	 Error de entrenamiento: nan
+Iteración 48	 Error de entrenamiento: nan
+Iteración 49	 Error de entrenamiento: nan
+Iteración 50	 Error de entrenamiento: nan
+Iteración 1001	 Error de entrenamiento: nan
+PESOS DE LA RED
+===============
+Vamos  a imprimir las entradas de las neuronas
+
+Capa: 1
+-nan -nan -nan -nan Salida: nan
+-nan -nan -nan -nan Salida: nan
+-nan -nan -nan -nan Salida: nan
+-nan -nan -nan -nan Salida: nan
+-nan -nan -nan -nan Salida: nan
+-nan -nan -nan -nan Salida: nan
+-nan -nan -nan -nan Salida: nan
+-nan -nan -nan -nan Salida: nan
+-nan -nan -nan -nan Salida: nan
+-nan -nan -nan -nan Salida: nan
+Capa: 2
+nan -nan -nan -nan -nan -nan -nan -nan -nan -nan Salida: nan
+nan -nan -nan -nan -nan -nan -nan -nan -nan -nan Salida: nan
+nan -nan -nan -nan -nan -nan -nan -nan -nan -nan Salida: nan
+nan -nan -nan -nan -nan -nan -nan -nan -nan -nan Salida: nan
+nan -nan -nan -nan -nan -nan -nan -nan -nan -nan Salida: nan
+nan -nan -nan -nan -nan -nan -nan -nan -nan -nan Salida: nan
+nan -nan -nan -nan -nan -nan -nan -nan -nan -nan Salida: nan
+nan -nan -nan -nan -nan -nan -nan -nan -nan -nan Salida: nan
+nan -nan -nan -nan -nan -nan -nan -nan -nan -nan Salida: nan
+nan -nan -nan -nan -nan -nan -nan -nan -nan -nan Salida: nan
+Capa: 3
+-nan nan nan nan nan nan nan nan nan nan Salida: nan
+-nan nan nan nan nan nan nan nan nan nan Salida: nan
+-nan nan nan nan nan nan nan nan nan nan Salida: nan
+Salida Esperada Vs Salida Obtenida (test)
+=========================================
+1 -- nan \\ 0 -- nan \\ 0 -- nan \\ 
+1 -- nan \\ 0 -- nan \\ 0 -- nan \\ 
+1 -- nan \\ 0 -- nan \\ 0 -- nan \\ 
+1 -- nan \\ 0 -- nan \\ 0 -- nan \\ 
+1 -- nan \\ 0 -- nan \\ 0 -- nan \\ 
+1 -- nan \\ 0 -- nan \\ 0 -- nan \\ 
+1 -- nan \\ 0 -- nan \\ 0 -- nan \\ 
+1 -- nan \\ 0 -- nan \\ 0 -- nan \\ 
+1 -- nan \\ 0 -- nan \\ 0 -- nan \\ 
+1 -- nan \\ 0 -- nan \\ 0 -- nan \\ 
+1 -- nan \\ 0 -- nan \\ 0 -- nan \\ 
+1 -- nan \\ 0 -- nan \\ 0 -- nan \\ 
+1 -- nan \\ 0 -- nan \\ 0 -- nan \\ 
+0 -- nan \\ 1 -- nan \\ 0 -- nan \\ 
+0 -- nan \\ 1 -- nan \\ 0 -- nan \\ 
+0 -- nan \\ 1 -- nan \\ 0 -- nan \\ 
+0 -- nan \\ 1 -- nan \\ 0 -- nan \\ 
+0 -- nan \\ 1 -- nan \\ 0 -- nan \\ 
+0 -- nan \\ 1 -- nan \\ 0 -- nan \\ 
+0 -- nan \\ 1 -- nan \\ 0 -- nan \\ 
+0 -- nan \\ 1 -- nan \\ 0 -- nan \\ 
+0 -- nan \\ 1 -- nan \\ 0 -- nan \\ 
+0 -- nan \\ 1 -- nan \\ 0 -- nan \\ 
+0 -- nan \\ 1 -- nan \\ 0 -- nan \\ 
+0 -- nan \\ 1 -- nan \\ 0 -- nan \\ 
+0 -- nan \\ 0 -- nan \\ 1 -- nan \\ 
+0 -- nan \\ 0 -- nan \\ 1 -- nan \\ 
+0 -- nan \\ 0 -- nan \\ 1 -- nan \\ 
+0 -- nan \\ 0 -- nan \\ 1 -- nan \\ 
+0 -- nan \\ 0 -- nan \\ 1 -- nan \\ 
+0 -- nan \\ 0 -- nan \\ 1 -- nan \\ 
+0 -- nan \\ 0 -- nan \\ 1 -- nan \\ 
+0 -- nan \\ 0 -- nan \\ 1 -- nan \\ 
+0 -- nan \\ 0 -- nan \\ 1 -- nan \\ 
+0 -- nan \\ 0 -- nan \\ 1 -- nan \\ 
+0 -- nan \\ 0 -- nan \\ 1 -- nan \\ 
+0 -- nan \\ 0 -- nan \\ 1 -- nan \\ 
+0 -- nan \\ 0 -- nan \\ 1 -- nan \\ 
+Finalizamos => CCR de test final: 34.2105
+HEMOS TERMINADO TODAS LAS SEMILLAS
+RESUMEN FINAL
+*************
+Error de entrenamiento (Media +- DT): -nan +- nan
+Error de test (Media +- DT): -nan +- nan
+CCR de entrenamiento (Media +- DT): 45.8929 +- 28.7494
+CCR de test (Media +- DT): 46.3158 +- 27.0682
