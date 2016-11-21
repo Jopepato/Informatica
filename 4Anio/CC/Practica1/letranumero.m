@@ -1,5 +1,6 @@
 function numero = letranumero(texto)
-    abecedario = 'abcdefghijklmnñopqrstuvwxyz';
+    abecedario = 'abcdefghijklmnnopqrstuvwxyz';
+    abecedario(15) = char(241);
     texto = lower(texto);
     numero = [];
     m = length(texto);

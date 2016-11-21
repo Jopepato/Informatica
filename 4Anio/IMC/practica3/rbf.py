@@ -12,7 +12,6 @@ import matplotlib.pyplot as plt
 import math
 import random
 
-from collections import Counter
 from scipy.spatial import distance
 from sklearn.cluster import KMeans
 from sklearn.linear_model import LogisticRegression
@@ -55,23 +54,24 @@ def entrenar_rbf(fichero_train, fichero_test, num_rbf, clasificacion, eta, l2):
     else:
         logreg = logreg_clasificacion(matriz_r, train_outputs, eta, l2)
 
-    """
-    TODO: Calcular las distancias de los centroides a los patrones de test
-          y la matriz R de test
-    """
 
+    distancias_test = calcular_distancias(test_inputs, centros, num_rbf)
+    matriz_r_test = calcular_matriz_r(distancias_test, radios)
+    
     if not clasificacion:
         """
         TODO: Obtener las predicciones de entrenamiento y de test y calcular
               el MSE
         """
+        #Tenemos que mirar el error del MSE de los train y test para después sacarlo
+        #Multiplicaremos r de test por los coeficientes y así obtendremos la y estimada esto debemos hacerlo tanto para test como para train
     else:
         """
         TODO: Obtener las predicciones de entrenamiento y de test y calcular
               el CCR. Calcular también el MSE, comparando las probabilidades 
               obtenidas y las probabilidades objetivo
         """
-
+        #Tenemos que mirar el error de MSE de train y test, también hemos de mirar el CCR que serán el % de los patrones bien clasificados
     return train_mse, test_mse, train_ccr, test_ccr
     
 def lectura_datos(fichero_train, fichero_test):
@@ -115,22 +115,25 @@ def inicializar_centroides_clas(train_inputs, train_outputs, num_rbf):
     """
     #Aqui vamos a hacer lo de los centroides
     #Primero comprobamos cuantos patrones hay de cada clase
+    
     num_clases = np.unique(train_outputs).shape[0]
     num_entradas = train_inputs.shape[1]
-    clases = []
-    for clase in range(num_clases):
-        clases.append([])
-    for patron in range(train_inputs.shape[0]):
-        clases[int(train_outputs[patron, 0])].append(patron)
+    centroides = np.empty([num_rbf, num_entradas])
+    clases = np.empty([num_rbf])
+    for i in range(num_rbf):
+        j = i % num_clases
+        clases[i] = np.unique(train_outputs)[j]
     
-    #Eleccion de centroides
-    centroides = np.zeros((num_rbf, num_entradas))
-    for num_centroide in range(num_rbf):
-        clase = num_centroide % num_clases
-        rand = random.randint(0, len(clases[clase])-1)
-        i_centroide = clases[clase].pop(rand)
-        centroides[num_centroide] = train_inputs[i_centroide]
-        
+    for i in range(num_rbf):
+        #Metemos 'num_rbf' patrones en la matriz centroides
+        while 1:
+            rand = random.randint(0, train_outputs.shape[0]-1)
+            if train_outputs[rand] == clases[i]:
+                centroides[i] = train_inputs[rand]
+                np.delete(train_inputs, [rand])
+                np.delete(train_outputs, [rand])
+                break   
+    
     return centroides
 
 def clustering(clasificacion, train_inputs, train_outputs, num_rbf):
@@ -154,10 +157,10 @@ def clustering(clasificacion, train_inputs, train_outputs, num_rbf):
     
     if clasificacion == True:
         centros = inicializar_centroides_clas(train_inputs, train_outputs, num_rbf)
-        kmedias = KMeans(n_clusters = num_rbf, init = centros, n_init = 1)
+        kmedias = KMeans(n_clusters = num_rbf, init = centros, max_iter = 500)
     else:
         #Obtenemos num_brf numeros aleatorios
-        kmedias = KMeans(n_clusters = num_rbf, init = 'random', n_init = 1)
+        kmedias = KMeans(n_clusters = num_rbf, init = 'random', n_init = 1, max_iter = 500)
         
     
     kmedias.fit(train_inputs, train_outputs)
@@ -187,6 +190,7 @@ def calcular_radios(centros, num_rbf):
         Devuelve:
             - radios: vector (num_rbf) con el radio de cada RBF.
     """
+    #Este lo hace bien
 
     radios = np.empty(num_rbf)
     aux = 0.0
@@ -214,8 +218,8 @@ def calcular_matriz_r(distancias, radios):
               al principio, en la primera columna, un vector con todos los 
               valores a 1, que actuará como sesgo.
     """
-
-    matriz_r = np.empty(distancias.shape[0], distancias.shape[1]+1)
+    
+    matriz_r = np.empty([distancias.shape[0], distancias.shape[1]+1])
     matriz_r[:, 0] = 1
     
     #Vamos mirando cada distancia con el radio y asi vamos viendo
@@ -223,10 +227,7 @@ def calcular_matriz_r(distancias, radios):
     #Mientras que si la distancia es menor que el radio, la salida será 1
     for i in range(0, matriz_r.shape[0]):
         for j in range(0, matriz_r.shape[1]-1):
-            if distancias[i][j]>radios[j]:
-                matriz_r[i][j+1] = 0
-            else:
-                matriz_r[i][j+1] = 1
+            matriz_r[i][j+1] = math.exp(-distancias[i][j]/2*radios[j]**2)
     
     return matriz_r
 
@@ -272,17 +273,14 @@ def logreg_clasificacion(matriz_r, train_outputs, eta, l2):
               entrenado.
     """
 
-    """
-    TODO: Completar el código de la función
-    """
-    if l2== True:
+    pen = ''
+    if l2 == True:
         pen = 'l2'
     else:
         pen = 'l1'
         
-    logreg = LogisticRegression(penalty=pen,C = eta)
+    logreg = LogisticRegression(penalty=pen,C = 1/eta)
     #En esta habria que pasarle R o los train_inputs, pero claro eso no lo tenemos
-    #
     logreg.fit(matriz_r, train_outputs)
 
     return logreg

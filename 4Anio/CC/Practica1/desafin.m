@@ -1,7 +1,8 @@
 function descifradoafin = desaafin(clave, d, texto)
 numero = letranumero(texto);
 cifradoafin = [];
-abecedario = 'abcdefghijklmnñopqrstuvwxyz';
+    abecedario = 'abcdefghijklmnnopqrstuvwxyz';
+    abecedario(15) = char(241);
 
 if gcd(clave, length(abecedario)) == 1
    [G, U, V]= gcd(length(abecedario), clave);

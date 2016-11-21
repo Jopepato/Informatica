@@ -3,7 +3,8 @@ numero = letranumero(texto);
 cifradoafin = [];
 clave = floor(clave);
 d = floor(d);
-abecedario = 'abcdefghijklmnñopqrstuvwxyz';
+abecedario = 'abcdefghijklmnnopqrstuvwxyz';
+abecedario(15) = char(241);
 
 if gcd(clave, length(abecedario)) == 1
     

@@ -242,7 +242,6 @@ double PerceptronMulticapa::calcularErrorSalida(double* target, int funcionError
 			error += target[i] * log(pCapas[nNumCapas-1].pNeuronas[i].x);
 		}
 	}
-
 	return error;
 }
 

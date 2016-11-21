@@ -1,5 +1,6 @@
 function [frecuencia, freordenada] = cripto_ana_orden(v)
-    abecedario = 'abcdefghijklmnñopqrstuvwxyz';
+    abecedario = 'abcdefghijklmnnopqrstuvwxyz';
+    abecedario(15) = char(241);
     m = length(abecedario);
     frecuencia = zeros(27,2);
     numeros = letranumero(v);
