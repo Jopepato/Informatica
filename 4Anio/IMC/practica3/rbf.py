@@ -15,6 +15,7 @@ import random
 from scipy.spatial import distance
 from sklearn.cluster import KMeans
 from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import mean_squared_error
 
 def entrenar_rbf(fichero_train, fichero_test, num_rbf, clasificacion, eta, l2):
     """ Función principal
@@ -59,19 +60,29 @@ def entrenar_rbf(fichero_train, fichero_test, num_rbf, clasificacion, eta, l2):
     matriz_r_test = calcular_matriz_r(distancias_test, radios)
     
     if not clasificacion:
-        """
-        TODO: Obtener las predicciones de entrenamiento y de test y calcular
-              el MSE
-        """
+        
         #Tenemos que mirar el error del MSE de los train y test para después sacarlo
         #Multiplicaremos r de test por los coeficientes y así obtendremos la y estimada esto debemos hacerlo tanto para test como para train
+        matriz_y_estimada_train = np.dot(matriz_r, coeficientes)
+        matriz_y_estimada_test = np.dot(matriz_r_test, coeficientes)
+        train_mse = mean_squared_error(train_outputs, matriz_y_estimada_train)
+        test_mse = mean_squared_error(test_outputs, matriz_y_estimada_test)
+        train_ccr = 0
+        test_ccr = 0
     else:
         """
-        TODO: Obtener las predicciones de entrenamiento y de test y calcular
+        Obtener las predicciones de entrenamiento y de test y calcular
               el CCR. Calcular también el MSE, comparando las probabilidades 
               obtenidas y las probabilidades objetivo
         """
         #Tenemos que mirar el error de MSE de train y test, también hemos de mirar el CCR que serán el % de los patrones bien clasificados
+        train_ccr = logreg.score(matriz_r, train_outputs)*100
+        test_ccr = logreg.score(matriz_r_test, test_outputs)*100
+        train_predict = logreg.predict(matriz_r)
+        test_predict = logreg.predict(matriz_r_test)
+        train_mse = mean_squared_error(train_predict, train_outputs)
+        test_mse = mean_squared_error(test_predict, test_outputs)        
+        
     return train_mse, test_mse, train_ccr, test_ccr
     
 def lectura_datos(fichero_train, fichero_test):
@@ -157,10 +168,10 @@ def clustering(clasificacion, train_inputs, train_outputs, num_rbf):
     
     if clasificacion == True:
         centros = inicializar_centroides_clas(train_inputs, train_outputs, num_rbf)
-        kmedias = KMeans(n_clusters = num_rbf, init = centros, max_iter = 500)
+        kmedias = KMeans(n_clusters = num_rbf, init = centros, n_init=1, max_iter = 500)
     else:
         #Obtenemos num_brf numeros aleatorios
-        kmedias = KMeans(n_clusters = num_rbf, init = 'random', n_init = 1, max_iter = 500)
+        kmedias = KMeans(n_clusters = num_rbf, init = 'random', max_iter = 500)
         
     
     kmedias.fit(train_inputs, train_outputs)
@@ -249,8 +260,7 @@ def invertir_matriz_regresion(matriz_r, train_outputs):
     #Haremos el caso mas comun que será lo de tener que hacer la matriz de Moore-Penrose
     moore = np.linalg.pinv(matriz_r)
     
-    coeficientesTransp = moore * train_outputs #Esta operacion lo que nos da es la transpuesta
-    coeficientes = coeficientesTransp.transpose()
+    coeficientes = np.dot(moore,train_outputs) #Esta operacion lo que nos da es la transpuesta
     
     return coeficientes
 
@@ -279,7 +289,7 @@ def logreg_clasificacion(matriz_r, train_outputs, eta, l2):
     else:
         pen = 'l1'
         
-    logreg = LogisticRegression(penalty=pen,C = 1/eta)
+    logreg = LogisticRegression(penalty=pen,C = 1/eta, fit_intercept = False)
     #En esta habria que pasarle R o los train_inputs, pero claro eso no lo tenemos
     logreg.fit(matriz_r, train_outputs)
 
@@ -299,7 +309,7 @@ if __name__ == "__main__":
         np.random.seed(s)
         train_mses[s/10-1], test_mses[s/10-1], train_ccrs[s/10-1], test_ccrs[s/10-1] = \
             entrenar_rbf(fichero_train='./csv/train_iris.csv', 
-                         fichero_test='./csv/test_iris.csv', num_rbf=10, clasificacion=True, eta=10e-1, l2=True)
+                         fichero_test='./csv/test_iris.csv', num_rbf=10, clasificacion=True, eta=10e-3, l2=True)
         print "MSE de entrenamiento: %f" % train_mses[s/10-1]
         print "MSE de test: %f" % test_mses[s/10-1]
         print "CCR de entrenamiento: %.2f%%" % train_ccrs[s/10-1]
@@ -308,42 +318,23 @@ if __name__ == "__main__":
     """
     Imprimir la media y la desviación típica del MSE y del CCR
     """
-    mediaErrorTrain, mediaErrorTest, mediaErrorCCRTrain, mediaErrorCCRTest = 0.0,0.0,0.0,0.0
-    for i in range(0,5):
-        mediaErrorTrain += train_mses[i]
-        mediaErrorTest += test_mses[i]
-        mediaErrorCCRTrain += train_ccrs[i]
-        mediaErrorCCRTest += test_ccrs[i]
-    
-    mediaErrorTrain /= 5
-    mediaErrorTest /= 5
-    mediaErrorCCRTrain /= 5
-    mediaErrorCCRTest /= 5
+    mediaErrorTrain = np.mean(train_mses)
+    mediaErrorTest = np.mean(test_mses)
+    mediaErrorCCRTrain = np.mean(train_ccrs)
+    mediaErrorCCRTest = np.mean(test_ccrs)
     
     #Ahora hacemos la desviacion tipica
-    auxErrorTrain, desvErrorTrain = 0.0, 0.0
-    auxErrorTest, desvErrorTest = 0.0, 0.0
-    auxCCRTrain, desvCCRTrain = 0.0, 0.0
-    auxCCRTest, desvCCRTest = 0.0, 0.0
-    
-    for i in range(0,5):
-        auxErrorTrain = (train_mses[i]-mediaErrorTrain)**2
-        auxErrorTest = (test_mses[i]-mediaErrorTest)**2
-        auxCCRTrain = (train_ccrs[i]-mediaErrorCCRTrain)**2
-        auxCCRTest = (test_ccrs[i]-mediaErrorCCRTest)**2
-
-    #Ahora hacemos la desviacion tipica
-    desvErrorTrain = math.sqrt(0.25*auxErrorTrain)
-    desvErrorTest = math.sqrt(0.25*auxErrorTest)
-    desvCCRTrain = math.sqrt(0.25*auxCCRTrain)
-    desvCCRTest = math.sqrt(0.25*auxCCRTest)
+    desvErrorTrain = np.std(train_mses)
+    desvErrorTest = np.std(test_mses)
+    desvCCRTrain = np.std(train_ccrs)
+    desvCCRTest = np.std(test_ccrs)
 
     #Aqui imprimimos los errores de mse y ccr finales de media y desviacion tipica      
     print "HEMOS TERMINADO TODAS LAS SEMILLAS"
     print "----------------------------------"
     print "RESUMEN FINAL"
     print "*************"
-    print "Error de entrenamiento (Media  +- desv): %f +- %f" % mediaErrorTrain, desvErrorTrain
-    print "Error de test (Media  +- desv): %f +- %f" % mediaErrorTest, desvErrorTest
-    print "CCR de entrenamiento (Media  +- desv): %f +- %f" % mediaErrorCCRTrain, desvCCRTrain
-    print "CCR de test (Media  +- desv): %f +- %f" % mediaErrorCCRTest, desvCCRTest
+    print "Error de entrenamiento (Media  +- desv): %f +- %f" % (mediaErrorTrain, desvErrorTrain)
+    print "Error de test (Media  +- desv): %f +- %f" % (mediaErrorTest, desvErrorTest)
+    print "CCR de entrenamiento (Media  +- desv): %f%% +- %f%%" % (mediaErrorCCRTrain, desvCCRTrain)
+    print "CCR de test (Media  +- desv): %f%% +- %f%%" % (mediaErrorCCRTest, desvCCRTest)
