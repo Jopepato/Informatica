@@ -78,6 +78,7 @@ def entrenar_rbf(fichero_train, fichero_test, num_rbf, clasificacion, eta, l2):
         #Tenemos que mirar el error de MSE de train y test, también hemos de mirar el CCR que serán el % de los patrones bien clasificados
         train_ccr = logreg.score(matriz_r, train_outputs)*100
         test_ccr = logreg.score(matriz_r_test, test_outputs)*100
+        
         train_predict = logreg.predict(matriz_r)
         test_predict = logreg.predict(matriz_r_test)
         train_mse = mean_squared_error(train_predict, train_outputs)
@@ -238,7 +239,7 @@ def calcular_matriz_r(distancias, radios):
     #Mientras que si la distancia es menor que el radio, la salida será 1
     for i in range(0, matriz_r.shape[0]):
         for j in range(0, matriz_r.shape[1]-1):
-            matriz_r[i][j+1] = math.exp(-distancias[i][j]/2*radios[j]**2)
+            matriz_r[i][j+1] = math.exp(-(distancias[i][j]**2)/(2*radios[j]**2))
     
     return matriz_r
 
@@ -308,8 +309,8 @@ if __name__ == "__main__":
         
         np.random.seed(s)
         train_mses[s/10-1], test_mses[s/10-1], train_ccrs[s/10-1], test_ccrs[s/10-1] = \
-            entrenar_rbf(fichero_train='./csv/train_iris.csv', 
-                         fichero_test='./csv/test_iris.csv', num_rbf=10, clasificacion=True, eta=10e-3, l2=True)
+            entrenar_rbf(fichero_train='./csv/train_digits.csv', 
+                         fichero_test='./csv/test_digits.csv', num_rbf=10, clasificacion=True, eta=0.0001, l2=True)
         print "MSE de entrenamiento: %f" % train_mses[s/10-1]
         print "MSE de test: %f" % test_mses[s/10-1]
         print "CCR de entrenamiento: %.2f%%" % train_ccrs[s/10-1]
