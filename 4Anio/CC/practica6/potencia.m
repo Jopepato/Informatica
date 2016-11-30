@@ -4,8 +4,8 @@ function pote = potencia(c, d, n)
 exponente = dec2bin(d);
 
 valoresExponente =[];
-baseModulo = mod(c, n);
-aux = baseModulo;
+baseModulo = uint64(mod(c, n));
+aux = uint64(baseModulo);
 pote = 1;
 for i=length(exponente):-1:1
    if exponente(i) == '1'
