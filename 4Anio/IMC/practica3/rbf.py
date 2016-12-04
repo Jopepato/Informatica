@@ -14,8 +14,10 @@ import random
 
 from scipy.spatial import distance
 from sklearn.cluster import KMeans
+from sklearn.metrics import accuracy_score
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import mean_squared_error
+from sklearn.metrics import confusion_matrix
 
 def entrenar_rbf(fichero_train, fichero_test, num_rbf, clasificacion, eta, l2):
     """ Función principal
@@ -67,8 +69,12 @@ def entrenar_rbf(fichero_train, fichero_test, num_rbf, clasificacion, eta, l2):
         matriz_y_estimada_test = np.dot(matriz_r_test, coeficientes)
         train_mse = mean_squared_error(train_outputs, matriz_y_estimada_train)
         test_mse = mean_squared_error(test_outputs, matriz_y_estimada_test)
-        train_ccr = 0
-        test_ccr = 0
+        matriz_y_estimada_train_redondeada = np.around(matriz_y_estimada_train, decimals=0)
+        matriz_y_estimada_test_redondeada = np.around(matriz_y_estimada_test, decimals=0)
+        
+        train_ccr = accuracy_score(matriz_y_estimada_train_redondeada, train_outputs)*100
+        test_ccr = accuracy_score(matriz_y_estimada_test_redondeada, test_outputs)*100
+        
     else:
         """
         Obtener las predicciones de entrenamiento y de test y calcular
@@ -83,6 +89,11 @@ def entrenar_rbf(fichero_train, fichero_test, num_rbf, clasificacion, eta, l2):
         test_predict = logreg.predict(matriz_r_test)
         train_mse = mean_squared_error(train_predict, train_outputs)
         test_mse = mean_squared_error(test_predict, test_outputs)        
+        #Mostramos la matriz de confusion
+        matriz_confusion = confusion_matrix(test_outputs, test_predict)
+        for i in range(test_predict.shape[0]):
+            print "%i %i %i" % (i, test_predict[i], test_outputs[i])
+        
         
     return train_mse, test_mse, train_ccr, test_ccr
     
@@ -112,6 +123,7 @@ def lectura_datos(fichero_train, fichero_test):
 
     return train_inputs, train_outputs, test_inputs, test_outputs
 
+    
 def inicializar_centroides_clas(train_inputs, train_outputs, num_rbf):
     """ Inicializa los centroides para el caso de clasificación.
         Debe elegir, aprox., num_rbf/num_clases patrones por cada clase.
@@ -309,8 +321,8 @@ if __name__ == "__main__":
         
         np.random.seed(s)
         train_mses[s/10-1], test_mses[s/10-1], train_ccrs[s/10-1], test_ccrs[s/10-1] = \
-            entrenar_rbf(fichero_train='./csv/train_digits.csv', 
-                         fichero_test='./csv/test_digits.csv', num_rbf=10, clasificacion=True, eta=0.0001, l2=True)
+        entrenar_rbf(fichero_train='./csv/train_digits.csv', 
+                         fichero_test='./csv/test_digits.csv', num_rbf=637, clasificacion=True, eta=10**-8, l2=True)
         print "MSE de entrenamiento: %f" % train_mses[s/10-1]
         print "MSE de test: %f" % test_mses[s/10-1]
         print "CCR de entrenamiento: %.2f%%" % train_ccrs[s/10-1]

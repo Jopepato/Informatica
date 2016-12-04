@@ -1,0 +1,43 @@
+-----------
+Semilla: 10
+-----------
+MSE de entrenamiento: 0,022911
+MSE de test: 0,032600
+CCR de entrenamiento: 97,32%
+CCR de test: 97,37%
+-----------
+Semilla: 20
+-----------
+MSE de entrenamiento: 0,022673
+MSE de test: 0,037461
+CCR de entrenamiento: 97,32%
+CCR de test: 97,37%
+-----------
+Semilla: 30
+-----------
+MSE de entrenamiento: 0,022901
+MSE de test: 0,032595
+CCR de entrenamiento: 98,21%
+CCR de test: 97,37%
+-----------
+Semilla: 40
+-----------
+MSE de entrenamiento: 0,019995
+MSE de test: 0,025661
+CCR de entrenamiento: 96,43%
+CCR de test: 97,37%
+-----------
+Semilla: 50
+-----------
+MSE de entrenamiento: 0,021492
+MSE de test: 0,029788
+CCR de entrenamiento: 97,32%
+CCR de test: 97,37%
+HEMOS TERMINADO TODAS LAS SEMILLAS
+----------------------------------
+RESUMEN FINAL
+*************
+Error de entrenamiento (Media  +- desv): 0,021994 +- 0,001129
+Error de test (Media  +- desv): 0,031621 +- 0,003870
+CCR de entrenamiento (Media  +- desv): 97,321429% +- 0,564692%
+CCR de test (Media  +- desv): 97,368421% +- 0,000000%
