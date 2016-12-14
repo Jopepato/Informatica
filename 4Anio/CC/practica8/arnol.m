@@ -9,20 +9,34 @@ if filasA == 2 && columA == 2
     %de foto
     matrizFoto = imread(foto);
     [filasFoto, columFoto, capas] = size(matrizFoto);
-    %Recortamos la foto
-    if columFoto-1 <filasFoto-1
-        nuevaFoto = matrizFoto(1:columFoto-1, 1:columFoto-1, 1:3);
+    %Miramos si la foto es cuadrada
+    if filasFoto ~= columFoto
+        %Recortamos la foto
+        if columFoto <filasFoto
+            nuevaFoto = matrizFoto(1:columFoto, 1:columFoto, 1:3);
+        else
+            nuevaFoto = matrizFoto(1:filasFoto, 1:filasFoto, 1:3);
+        end
     else
-        nuevaFoto = matrizFoto(1:filasFoto-1, 1:filasFoto-1, 1:3);
+        nuevaFoto = matrizFoto;
     end
+    %Ahora miraremos la opcion, si es 0, lo que se hace es desordenar, si
+    %es 1 se ordena
+    opcion = inpunt('1 Para desordenar, 2 para ordenar: ');
+    switch opcion
+        case 1
+            desorden_pixel(nuevaFoto, A);
+            imagen = getappdata(gcf, 'imagenDesordenada');
+            imshow(imagen);
+            imwrite(imagen, 'imagenDesordenada.bmp')
     
-    %imshow(nuevaFoto);
-    
-    desorden_pixel(nuevaFoto, A);
-    imagen = getappdata(gcf, 'imagenDesordenada');
-    imshow(imagen);
-    imwrite(imagen, 'fotoDesordenada.bmp')
-    
+        case 2
+            invA = inv_modulo(A, size(nuevaFoto)[0]);
+            desorden_pixel(nuevaFoto, invA);
+            imagen = getappdata(gcf, 'imagenDesordenada');
+            imshow(imagen);
+            imwrite(imagen, 'imagenOrdenada.bmp');
+    end
 else
     disp('La matriz A no es cuadrada y no se puede aplicar el metodo');
 end

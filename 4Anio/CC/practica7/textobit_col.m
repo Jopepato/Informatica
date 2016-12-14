@@ -1,6 +1,6 @@
 function [amplio, texto_bit] = textobit_col(texto, col)
 
-numeros = uint8(texto)
+numeros = uint8(texto);
 bits = dec2bin(numeros, 8);
 bits = reshape(bits', 1, []);
 texto_bit =[];

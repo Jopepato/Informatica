@@ -13,13 +13,13 @@ from sklearn.datasets import load_svmlight_file
 from sklearn import svm
 
 # Cargar el dataset
-X_sparse, y = load_svmlight_file("dataset1.libsvm")
+X_sparse, y = load_svmlight_file("dataset2.libsvm")
 
 # Convertirlo a formato denso
 X = np.array(X_sparse.todense())
 
 # Entrenar el modelo SVM
-svm_model = svm.SVC(kernel='linear',C=1,gamma=100)
+svm_model = svm.SVC(kernel='rbf',C=10**3,gamma=100)
 svm_model.fit(X, y)
 
 # Representar los puntos
