@@ -1,0 +1,11 @@
+function encuentro_img(c_chica, f_chica, fotogande_mod)
+
+matrizImagen = imread(fotogrande_mod);
+[rows, cols, capas] = size(matrizImagen);
+elementos = c_chica * f_chica * 8;
+admas = mod(elementos, cols);
+fin_filas = int(elementos/rows);
+vector_bit = obtengo_bit(matrizImagen(:,:, 1:3), 1, fin_filas, admas);
+
+matriz_bit = reshape(vector_bit, 8, [])';
+

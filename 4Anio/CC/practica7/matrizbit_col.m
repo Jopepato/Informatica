@@ -11,7 +11,6 @@ for i=1:size(matriz, 1)
 end
 amplio = 0;
 if mod(length(arrayBits), col) ~= 0
-    
     for i=1:col - mod(length(arrayBits), col)
        arrayBits = [arrayBits, '0'];
        amplio = amplio +1;

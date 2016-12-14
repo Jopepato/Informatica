@@ -7,4 +7,4 @@ matrizImagenCobertura = imread(fotocobertura);
 %Ahora metemos la imagen pequeña en la grande
 [amplio, f_chica] = modificamos_img(matrizImagenCobertura(:,:,1:3), matrizImagenChica(:,:,1:3), 1);
 c_chica = size(matrizImagenChica,1) * size(matrizImagenChica,2) * 8;
-imwrite(fchica, 'matriz_con_oculta.png');
+imwrite(f_chica, 'matriz_con_oculta.bmp');
