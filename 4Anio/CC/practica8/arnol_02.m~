@@ -25,29 +25,9 @@ switch opcion
     case 1
        %Averiguamos la potencia de A, que será las veces que desordenaremos
        %dicha imagen
-       potencia = pote(A, filasFoto);
-       auxFoto = nuevaFoto;
-       for i=1:potencia
-           desorden_pixel(auxFoto, A)
-           auxFoto = getappdata(gcf, 'imagenDesordenada');
-       end
-       imshow(auxFoto);
-       imwrite(auxFoto, 'FotoOrdenadaArnol2.bmp')
+        
     case 2
-        %Iremos desordenando una por una, mientras el usuario quiera
-        salir = 1;
-        auxFoto = nuevaFoto;
-        potencia = 1;
-        while salir~=0
-            %Desordenamos y mostramos
-            desorden_pixel(auxFoto, A);
-            potencia = potencia +1;
-            auxFoto = getappdata(gcf, 'imagenDesordenada');
-            imshow(auxFoto);
-            salir = input('Repetir 1, salir 0: ');
-        end
-        %Y ahora guardamos la imagen
-        imwrite(auxFoto, 'FotoOrdenadaArnol2.bmp')
+        %Iremos desordenando una por una, mientras el usuari
         
 end
 end

@@ -22,7 +22,7 @@ if filasA == 2 && columA == 2
     end
     %Ahora miraremos la opcion, si es 0, lo que se hace es desordenar, si
     %es 1 se ordena
-    opcion = inpunt('1 Para desordenar, 2 para ordenar: ');
+    opcion = input('1 Para desordenar, 2 para ordenar: ');
     switch opcion
         case 1
             desorden_pixel(nuevaFoto, A);
@@ -31,7 +31,7 @@ if filasA == 2 && columA == 2
             imwrite(imagen, 'imagenDesordenada.bmp')
     
         case 2
-            invA = inv_modulo(A, size(nuevaFoto)[0]);
+            invA = inv_modulo(A, size(nuevaFoto,1));
             desorden_pixel(nuevaFoto, invA);
             imagen = getappdata(gcf, 'imagenDesordenada');
             imshow(imagen);
