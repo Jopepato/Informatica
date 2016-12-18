@@ -91,8 +91,8 @@ def entrenar_rbf(fichero_train, fichero_test, num_rbf, clasificacion, eta, l2):
         test_mse = mean_squared_error(test_predict, test_outputs)        
         #Mostramos la matriz de confusion
         matriz_confusion = confusion_matrix(test_outputs, test_predict)
-        for i in range(test_predict.shape[0]):
-            print "%i %i %i" % (i, test_predict[i], test_outputs[i])
+        #for i in range(test_predict.shape[0]):
+        #    print "%i %i %i" % (i, test_predict[i], test_outputs[i])
         
         
     return train_mse, test_mse, train_ccr, test_ccr
@@ -115,11 +115,13 @@ def lectura_datos(fichero_train, fichero_test):
 
     train = pd.read_csv(fichero_train, header = None)
     test = pd.read_csv(fichero_test, header = None)
+    train_y = pd.read_csv("train_y.csv", header = None)
+    test_y = pd.read_csv("test_y.csv", header=None)
     #Ahora sacamos las variables de entrada y las variables de salida de cada una
-    train_inputs = train.values[:, 0:-1]
-    train_outputs = train.values[:, -1]
-    test_inputs = test.values[:, 0:-1]
-    test_outputs = test.values[:, -1]
+    train_inputs = train.values[:, :]
+    train_outputs = train_y.values[:, :]
+    test_inputs = test.values[:, :]
+    test_outputs = test_y.values[:, :]
 
     return train_inputs, train_outputs, test_inputs, test_outputs
 
@@ -314,15 +316,15 @@ if __name__ == "__main__":
     test_mses = np.empty(5)
     test_ccrs = np.empty(5)
     
-    for s in range(10,60,10):
+    for s in range(30,40,10):
         print "-----------"
         print "Semilla: %d" % s
         print "-----------"
         
         np.random.seed(s)
         train_mses[s/10-1], test_mses[s/10-1], train_ccrs[s/10-1], test_ccrs[s/10-1] = \
-        entrenar_rbf(fichero_train='./csv/train_digits.csv', 
-                         fichero_test='./csv/test_digits.csv', num_rbf=637, clasificacion=True, eta=10**-8, l2=True)
+        entrenar_rbf(fichero_train='./train_spam.csv', 
+                         fichero_test='./test_spam.csv', num_rbf=2000, clasificacion=True, eta=10**-5, l2=True)
         print "MSE de entrenamiento: %f" % train_mses[s/10-1]
         print "MSE de test: %f" % test_mses[s/10-1]
         print "CCR de entrenamiento: %.2f%%" % train_ccrs[s/10-1]
