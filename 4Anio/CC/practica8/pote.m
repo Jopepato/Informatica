@@ -4,14 +4,12 @@ function n = pote(A,m)
 [filasA, columA] = size(A);
 if filasA == 2 && columA == 2
     I = [1 0;0 1];
-    n = 2;
+    n = 1;
     auxA = A;
-    while 1
+    while ~isequal(auxA, I)
         auxA = mod(auxA*A, m);
-        if auxA == I
-            break;
-        end
         n = n+1;
+
     end
 else
    disp('La matriz A introducida no es de 2x2'); 

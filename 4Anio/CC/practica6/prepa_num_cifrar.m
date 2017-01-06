@@ -1,24 +1,24 @@
 function blo = prepa_num_cifrar(tama, bloque)
 
 
-while 1
-    if mod(length(bloque), tama) ~= 0
-        %Hacemos cosas de añadir 30 y 0
-        if mod(tama-mod(length(bloque), tama), 2) == 0
-            %Es par
+
+if mod(length(bloque), tama) ~= 0
+    %Hacemos cosas de añadir 30 y 0
+    if mod(tama-mod(length(bloque), tama), 2) == 0
+        %Es par
+        while(mod(length(bloque), tama)~=0)
             bloque = strcat(bloque, '30');
-        else
-            %Es impar
-            bloque = strcat(bloque, '0');
         end
     else
-        break;
+        %Es impar
+        while(tama-mod(length(bloque),tama) ~= 1)
+            bloque = strcat(bloque, '30');
+        end
+        bloque = strcat(bloque, '0');
     end
 end
-
-
 bloque = reshape(bloque, tama, []);
-bloque = bloque'
+bloque = bloque';
 
 blo = [];
 

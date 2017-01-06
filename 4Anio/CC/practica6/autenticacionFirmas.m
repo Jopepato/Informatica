@@ -1,4 +1,4 @@
-function descifrado = autenticacionFirmas(na, ea, da, nb, eb, db, mens_f, f)
+function autenticacionFirmas(na, ea, da, nb, eb, db, mens_f, f)
     %A cifra el texto con la clave publica de B
     cif_mens_f=cifro_rsa(eb, nb, mens_f)
     %A cifra la firma con la clave privada de A
@@ -19,8 +19,6 @@ function descifrado = autenticacionFirmas(na, ea, da, nb, eb, db, mens_f, f)
     
     %Se prepara la firma cifrada
     aux = prepabloque(nb,na, descif_f_da_eb);
-    %tama = length(num2str(na))-1;
-    %blo=prepa_num_cifrar(tama, aux)
 
     %B obtiene la firma con la clave publica de A
     descif_f_da = descifro_rsa(ea, na, aux)

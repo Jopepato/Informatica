@@ -26,8 +26,11 @@ switch opcion
        %Averiguamos la potencia de A, que será las veces que desordenaremos
        %dicha imagen
        potencia = pote(A, filasFoto);
+       %Le pedimos al usuario el numero de veces que quiere desordenar
+       potencia
+       usuario = input('Numero de veces que quieres desordenar, menor que potencia')
        auxFoto = nuevaFoto;
-       for i=1:potencia
+       for i=1:potencia-usuario
            desorden_pixel(auxFoto, A)
            auxFoto = getappdata(gcf, 'imagenDesordenada');
        end

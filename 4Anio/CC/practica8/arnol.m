@@ -13,9 +13,9 @@ if filasA == 2 && columA == 2
     if filasFoto ~= columFoto
         %Recortamos la foto
         if columFoto <filasFoto
-            nuevaFoto = matrizFoto(1:columFoto-1, 1:columFoto-1, 1:3);
+            nuevaFoto = matrizFoto(1:columFoto-1, 1:columFoto-1, :);
         else
-            nuevaFoto = matrizFoto(1:filasFoto-1, 1:filasFoto-1, 1:3);
+            nuevaFoto = matrizFoto(1:filasFoto-1, 1:filasFoto-1, :);
         end
     else
         nuevaFoto = matrizFoto;

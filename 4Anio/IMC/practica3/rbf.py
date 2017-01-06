@@ -115,13 +115,11 @@ def lectura_datos(fichero_train, fichero_test):
 
     train = pd.read_csv(fichero_train, header = None)
     test = pd.read_csv(fichero_test, header = None)
-    train_y = pd.read_csv("train_y.csv", header = None)
-    test_y = pd.read_csv("test_y.csv", header=None)
     #Ahora sacamos las variables de entrada y las variables de salida de cada una
-    train_inputs = train.values[:, :]
-    train_outputs = train_y.values[:, :]
-    test_inputs = test.values[:, :]
-    test_outputs = test_y.values[:, :]
+    train_inputs = train.values[:, 0:-1]
+    train_outputs = train.values[:, -1]
+    test_inputs = test.values[:, 0:-1]
+    test_outputs = test.values[:, -1]
 
     return train_inputs, train_outputs, test_inputs, test_outputs
 

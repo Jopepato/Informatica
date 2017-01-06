@@ -5,11 +5,8 @@ function obten = obtengo_bit(matriz, ini_filas, fin_filas, admas)
 obten = [];
 for i=ini_filas:fin_filas
    for j=1:cols
-       if i == fin_filas
-          %Aqui tenemos que llegar hasta el numero de admas
-          if j> admas
-              break;
-          end
+       if i == fin_filas && j>admas
+           break;
        end
        %Metemos el ultimo bit en el vector
        aux = dec2bin(matriz(i,j), 8);

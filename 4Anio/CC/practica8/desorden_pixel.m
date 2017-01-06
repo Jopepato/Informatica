@@ -9,9 +9,20 @@ matrizCopia = foto;
 for i=1:fil
     for j=1:col
         coord = mod(A*[i;j], fil);
-        x=coord(1)+1;
-        y=coord(2)+1;
-        matrizCopia(i,j,1:3)=foto(x,y,1:3);
+        x=coord(1);
+        y=coord(2);
+        if(x==0)
+            x=fil;
+        end
+        if(y==0)
+            y=col;
+        end
+        %Tenemos que mirar lo de las 3 capas
+        if(capas>1)
+            matrizCopia(i,j,1:3)=foto(x,y,1:3);
+        else
+            matrizCopia(i,j,1) = foto(x,y,1);
+        end
     end
 end
 
