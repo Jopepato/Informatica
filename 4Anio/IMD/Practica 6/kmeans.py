@@ -14,7 +14,7 @@ from sklearn.metrics import confusion_matrix
 from scipy.spatial import distance
 
 # Cargar el dataset
-X_sparse, y = load_svmlight_file("iris.libsvm")
+X_sparse, y = load_svmlight_file("ionosphere.libsvm")
 
 # Convertirlo a formato denso
 X = np.array(X_sparse.todense())
@@ -26,7 +26,7 @@ for train_index, test_index in kf.split(y):
 	X_train, X_test = X[train_index], X[test_index]
 	y_train, y_test = y[train_index], y[test_index]
 
-kmeans = KMeans(init='random', n_clusters=3).fit(X_train)
+kmeans = KMeans(init='random', n_clusters=2).fit(X_train)
 
 prediccion = kmeans.predict(X_test)
 
@@ -46,3 +46,13 @@ for i in range(0, X_test.shape[0]):
 print matrizDistancias
 
 #Falta la matriz de incidencia
+
+matrizIncidencia = np.empty([X_test.shape[0], X_test.shape[0]])
+for i in range(0, X_test.shape[0]):
+	for j in range(0, X_test.shape[0]):
+		if prediccion[i] == prediccion[j]:
+			matrizIncidencia[i,j] = 1
+		else:
+			matrizIncidencia[i,j] = 0
+
+print matrizIncidencia
