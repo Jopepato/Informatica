@@ -7,24 +7,58 @@
 
 
 
-%We are going to load the three different files and plot them
+%We are going to read the the folders and make a vector with each one, but
+%only with the 10000 first bits of each file
 
-file = fopen('IDSdata/DLL/ABOUTWEP.DLL', 'r');
-fileDll = fread(file);
-fclose(file);
-figure(1)
-subplot(1,3,1);
-plot(fileDll);
+%vectorDll = [];
+%vectorOutputDll = [];
+%vectorImages = [];
+%vectorOutputImages = [];
+%vectorShell = [];
+%vectorOutputShell = [];
 
-file = fopen('IDSdata/IMAGES/Im001.jpg', 'r');
-fileJpg = fread(file);
-fclose(file);
-subplot(1,3,2);
-plot(fileJpg);
+inputVector = [];
+outputVector = [];
+files = dir('IDSdata/DLL/');
+cd IDSdata/DLL/
+
+for i=3:length(files)
+    file = fopen(files(i).name);
+    fileAux = fread(file);
+    fclose(file);
+    inputVector = [inputVector, fileAux(1:200,:)];
+    outputVector = [outputVector, 1];
+end
+cd ../..
+files = dir('IDSdata/IMAGES/');
+cd IDSdata/IMAGES/
+
+for i=3:length(files)
+    file = fopen(files(i).name);
+    fileAux = fread(file);
+    fclose(file);
+    inputVector = [inputVector, fileAux(1:200,:)];
+    outputVector = [outputVector, 2];
+end
 
 
-file = fopen('IDSdata/SHELL/13244.c.execute', 'r');
-fileShell = fread(file);
-fclose(file);
-subplot(1,3,3);
-plot(fileShell);
+cd ../..
+files = dir('IDSdata/SHELL/');
+cd IDSdata/SHELL/
+
+for i=3:length(files)
+    file = fopen(files(i).name);
+    fileAux = fread(file);
+    fclose(file);
+    inputVector = [inputVector, fileAux(1:200,:)];
+    outputVector = [outputVector, 3];
+end
+
+cd ../..
+
+%Now we have the vector with the files, but only with the first 2249 bits
+%as we can't take more because that is the minimum of the image, and if we
+%take more we would have to fill that ghostly bits  with some imaginary
+%values
+
+nntool
